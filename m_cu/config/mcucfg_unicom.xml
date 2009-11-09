@@ -1,0 +1,14 @@
+﻿<config>
+	<apptitle>宽视界</apptitle>
+	<lenspeed>5</lenspeed>
+  <server></server>
+  <logindlg>1</logindlg>
+  <region></region>
+  <ptzspeed>5</ptzspeed>
+  <capturedir></capturedir>
+  <issave>1</issave>
+  <user></user>
+  <password></password>
+  <stream>1</stream>
+  <minspace>10485760</minspace>
+</config>

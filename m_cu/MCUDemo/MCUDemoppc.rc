@@ -1,0 +1,732 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resourceppc.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resourceppc.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\MCUDemoppc.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#endif\r\n"
+    "\r\n"
+    "1 TYPELIB ""m_cu.tlb\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\mcu.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MCUDEMO_DIALOG DIALOG  0, 0, 156, 151
+STYLE DS_SETFONT | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+FONT 9, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "打开",IDC_BUTTON_TEST,99,7,50,14,NOT WS_VISIBLE | WS_DISABLED
+    COMBOBOX        IDC_COMBO_URL,7,7,90,87,CBS_DROPDOWN | NOT WS_VISIBLE | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    CTEXT           "底部菜单条背景",IDC_STATIC_BOTTOM_BG,43,121,57,8
+    PUSHBUTTON      "图片",IDC_BUTTON_PIC,0,103,50,14
+    PUSHBUTTON      "设置",IDC_BUTTON_CONFIG,99,103,50,14
+    PUSHBUTTON      "输入法",IDC_BUTTON_SIP_BUTTON,47,107,59,15
+END
+
+IDD_MCUDEMO_DIALOG_WIDE DIALOG  0, 0, 210, 129
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+CAPTION "MCUDemo"
+FONT 9, "MS Sans Serif"
+BEGIN
+    LTEXT           "Hillo World Wide!!!",IDC_STATIC_1,57,49,112,23
+END
+
+IDD_DIALOG_UDP DIALOG  0, 0, 149, 183
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    EDITTEXT        IDC_EDIT_CONTENT,7,7,135,146,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "发送",IDC_BUTTON_SEND,92,162,50,14
+    EDITTEXT        IDC_EDIT_ADDR,7,162,81,14,ES_AUTOHSCROLL
+END
+
+IDD_DIALOG_VIDEO_PLAYER DIALOG  0, 0, 153, 183
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 10, "宋体"
+BEGIN
+    PUSHBUTTON      "停",IDC_BUTTON_PAUSE,7,162,18,14
+    PUSHBUTTON      "录",IDC_BUTTON_RECORD,26,162,18,14
+    PUSHBUTTON      "拍",IDC_BUTTON_CAPTURE,43,162,18,14
+    PUSHBUTTON      "控",IDC_BUTTON_PTZ,89,162,18,14
+    PUSHBUTTON      "全",IDC_BUTTON_FULLSCREEN,107,162,18,14
+    PUSHBUTTON      "关",IDC_BUTTON_CLOSE,128,162,18,14
+    CTEXT           "浏览状态",IDC_STATIC_VIDEO_STATUS,16,145,106,11,NOT WS_VISIBLE | WS_DISABLED | WS_BORDER
+    LTEXT           "底部条背景",IDC_STATIC_BOTTOM_BG,54,156,38,8
+END
+
+IDD_DIALOG_VIDEO_WND DIALOG  0, 0, 156, 183
+STYLE DS_SETFONT | WS_CHILD | WS_VISIBLE
+FONT 10, "宋体"
+BEGIN
+    CTEXT           "浏览状态",IDC_STATIC_VIDEO_STATUS,7,145,124,11,WS_BORDER
+END
+
+IDD_DIALOG_LOGIN DIALOG  0, 0, 135, 186
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "登录"
+FONT 10, "宋体"
+BEGIN
+    EDITTEXT        IDC_EDIT_UERID,56,54,50,12,ES_AUTOHSCROLL | NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_PASSWORD,56,78,50,12,ES_PASSWORD | ES_AUTOHSCROLL | NOT WS_BORDER,WS_EX_STATICEDGE
+    CONTROL         "保存用户登录信息",IDC_CHECK_SAVE_LOGIN_INFO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,23,97,81,10
+    CONTROL         "清晰(3G网络支持)",IDC_CHECK_3G_STREAM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,23,113,84,10
+    PUSHBUTTON      "帐号登录",IDC_BUTTON_LOGIN,13,141,50,14
+    PUSHBUTTON      "一键登录",IDC_BUTTON_LOGIN_THIS_PHONE,71,141,50,14
+    PUSHBUTTON      "图片录像管理",IDC_BUTTON_PIC_REC_MANAGE,6,165,50,14
+    PUSHBUTTON      "输入法",IDC_BUTTON_SIP_BUTTON,43,165,50,14,BS_NOTIFY
+    PUSHBUTTON      "设置",IDC_BUTTON_CONFIG,78,165,50,14
+    CTEXT           "密码",IDC_STATIC_PASSWORD_TITLE,22,81,30,14
+    CTEXT           "帐号",IDC_STATIC_USER_ID_TITLE,22,55,33,14
+    LTEXT           "静态",IDC_STATIC_LOGO,26,7,79,49,NOT WS_VISIBLE
+    LTEXT           "静态",IDC_STATIC_USERID_LOGO,6,55,12,14
+    LTEXT           "静态",IDC_STATIC_PASSWORD_LOGO,6,81,12,14
+    LTEXT           "底部菜单条背景",IDC_STATIC_BOTTOM_BG,43,160,65,8
+    LTEXT           "静态",IDC_STATIC_MCUVER,25,129,84,8
+END
+
+IDD_DIALOG_CFG_SYS DIALOG  0, 0, 147, 183
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "系统设置"
+FONT 10, "宋体"
+BEGIN
+    EDITTEXT        IDC_EDIT_SERVER,7,18,120,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_USER_REGION,7,45,120,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO_PIC_SAVE_DIR,7,74,120,102,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_SLIDER_PTZ_SPEED,"msctls_trackbar32",TBS_AUTOTICKS | WS_TABSTOP,7,105,100,15
+    CONTROL         "",IDC_SLIDER_LEN_SPEED,"msctls_trackbar32",TBS_AUTOTICKS | WS_TABSTOP,7,134,100,15
+    PUSHBUTTON      "保存",IDC_BUTTON_SAVE,0,158,50,14
+    CONTROL         "使用自带登录界面",IDC_CHECK_SHOW_LOGIN_DIALOG,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_DISABLED | WS_TABSTOP,60,166,80,10
+    PUSHBUTTON      "返回",IDC_BUTTON_RETURN,90,155,50,14
+    LTEXT           "服务器地址",IDC_STATIC_SERVER_ADDR_TITLE,7,7,90,8
+    LTEXT           "客户域名",IDC_STATIC_CLIENT_ID_TITLE,7,35,92,8
+    LTEXT           "抓拍图像保存地址",IDC_STATIC_IMAGE_DIRECTRY_TITLE,7,62,88,8
+    LTEXT           "镜头控制步长",IDC_STATIC_LEN_SPEED_TITLE,7,123,84,8
+    LTEXT           "云台控制步长",IDC_STATIC_PTZ_SPEED_TITLE,7,96,84,8
+    LTEXT           "8",IDC_STATIC_LEN_SPEED,113,135,20,8
+    LTEXT           "8",IDC_STATIC_PTZ_SPEED,114,107,20,8
+    LTEXT           "底部菜单背景",IDC_STATIC_BOTOOM_BG,47,156,46,8
+    PUSHBUTTON      "输入法",IDC_BUTTON_SIP_BUTTON,43,165,50,14
+END
+
+IDD_DIALOG_PTZ DIALOG  0, 0, 138, 20
+STYLE DS_SETFONT | WS_CHILD | WS_SYSMENU
+FONT 10, "宋体"
+BEGIN
+    PUSHBUTTON      "上",IDC_BUTTON_PTZ_UP,18,1,11,14
+    PUSHBUTTON      "下",IDC_BUTTON_PTZ_DOWN,30,1,11,14
+    PUSHBUTTON      "左",IDC_BUTTON_PTZ_LEFT,42,1,11,14
+    PUSHBUTTON      "右",IDC_BUTTON_PTZ_RIGHT,54,1,11,14
+    PUSHBUTTON      "亮",IDC_BUTTON_PTZ_BRIGHT,66,1,11,14
+    PUSHBUTTON      "暗",IDC_BUTTON_PTZ_DARK,78,1,11,14
+    PUSHBUTTON      "大",IDC_BUTTON_PTZ_ZOOM_IN,90,1,11,14
+    PUSHBUTTON      "小",IDC_BUTTON_PTZ_ZOOM_OUT,102,1,11,14
+    PUSHBUTTON      "近",IDC_BUTTON_PTZ_NEAR,114,1,11,14
+    PUSHBUTTON      "远",IDC_BUTTON_PTZ_FAR,126,1,11,14
+END
+
+IDD_DIALOG_HTML_WND DIALOG  0, 0, 156, 183
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+END
+
+IDD_DIALOG_INIT DIALOG  0, 0, 157, 186
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "MCU"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "登陆",IDC_BUTTON1,25,38,50,14
+    PUSHBUTTON      "设置",IDC_BUTTON2,85,38,50,14
+END
+
+IDD_DIALOG_MAIN DIALOG  0, 0, 180, 191
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "KDMCU"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "登录",IDC_BUTTON_LOGIN,7,54,41,32
+    PUSHBUTTON      "设置",IDC_BUTTON_CONFIG,64,55,41,32
+    PUSHBUTTON      "Button1",IDC_BUTTON3,123,55,41,32
+END
+
+IDD_DIALOG_UNIT_TEST_MAIN DIALOG  0, 0, 189, 178
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "单元测试"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "Decode Test",IDC_BUTTON_DECODE_TEST,7,23,50,14
+    PUSHBUTTON      "Udp Test",IDC_BUTTON_UDP_TEST,75,20,50,14
+    PUSHBUTTON      "Rtsp Test",IDC_BUTTON_RTSP_TEST,7,49,50,14
+    PUSHBUTTON      "UI Test",IDC_BUTTON_UI_TEST,77,47,50,14
+    PUSHBUTTON      "Close",IDOK,42,137,50,14
+    PUSHBUTTON      "Player Dlg Test",IDC_BUTTON_PLAYER_DIALOG_TEST,7,75,55,14
+    PUSHBUTTON      "Html Test",IDC_BUTTON_HTML_TEST,77,73,55,14
+    PUSHBUTTON      "Image Test",IDC_BUTTON_IMAGE_TEST,7,98,55,14
+END
+
+IDD_DIALOG_DECODE_TEST DIALOG  0, 0, 142, 186
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "解码测试"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "PLAY",IDC_BUTTON_PLAY,11,151,50,14
+    COMBOBOX        IDC_COMBO_FILE_PATH,7,134,118,99,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "EXPLORE",IDC_BUTTON_EXPLORE,85,150,50,14
+    CONTROL         "显示图像",IDC_CHECK_SHOW_VIDEO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,169,74,10
+    CONTROL         "录像",IDC_CHECK_RECORD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,169,52,10
+END
+
+IDD_DIALOG_RTSP_TEST DIALOG  0, 0, 156, 129
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+CAPTION "MCUDemo"
+FONT 9, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "打开",IDC_BUTTON_OPN,42,69,50,14
+    COMBOBOX        IDC_COMBO_RTSP_URL,7,7,98,87,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_DIALOG_UI_TEST DIALOG  0, 0, 189, 178
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "界面测试"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "Player Dlg PTZ",IDC_BUTTON_PLAYER_DLG_TEST,7,25,50,14
+    PUSHBUTTON      "Login Dlg",IDC_BUTTON_LOGIN_DIALOG_TEST,67,26,50,14
+    PUSHBUTTON      "HTML/Main",IDC_BUTTON_HTML_DIALOG_TEST,7,47,50,14
+    PUSHBUTTON      "Close",IDOK,45,145,50,14
+    PUSHBUTTON      "CONFIG DLG",IDC_BUTTON_CONFIG_DIALOG_TEST,67,49,50,14
+    PUSHBUTTON      "Main Dlg",IDC_BUTTON_MAIN_DIALOG_TEST,7,73,50,14
+    PUSHBUTTON      "Image",ID_BUTTON_IMAGE,68,73,50,14
+    PUSHBUTTON      "Controls",IDC_BUTTON_CONTROL_TEST,7,95,50,14
+    PUSHBUTTON      "Player NO PTZ",IDC_BUTTON_PLAYER_DLG_NO_PTZ,67,95,50,14
+    PUSHBUTTON      "DIR SEL",IDC_BUTTON_DIR_SEL_TEST,7,110,50,14
+END
+
+IDD_DIALOG_PLAYER_DIALOG_TEST DIALOG  0, 0, 142, 186
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "播放对话框测试"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "PLAY",IDC_BUTTON_PLAY,7,70,50,14
+    COMBOBOX        IDC_COMBO_FILE_PATH,7,21,128,99,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "EXPLORE",IDC_BUTTON_EXPLORE,75,72,50,14
+    PUSHBUTTON      "Play",IDC_BUTTON_OPN,15,150,50,13
+    COMBOBOX        IDC_COMBO_RTSP_URL,9,137,121,87,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "play file",IDC_STATIC,7,7,86,8
+    LTEXT           "Play Rtsp",IDC_STATIC,7,126,86,8
+    LTEXT           "帧率",IDC_STATIC,7,41,17,8
+    EDITTEXT        IDC_EDIT_FPS,41,40,80,13,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+END
+
+IDD_DIALOG_HTML_TEST DIALOG  0, 0, 156, 129
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+FONT 9, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "打开",IDC_BUTTON_OPEN_URL,109,0,24,14
+    COMBOBOX        IDC_COMBO_URL,7,0,102,87,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "T",IDC_BUTTON_TEST,133,0,16,14
+END
+
+IDD_DIALOG_IMAGE_TEST DIALOG  0, 0, 156, 129
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+FONT 9, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "打开",IDC_BUTTON_OPEN,109,0,24,14
+    COMBOBOX        IDC_COMBO_IMAGE_PATH,7,0,102,87,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "T",IDC_BUTTON_TEST,133,0,16,14
+END
+
+IDD_DIALOG_LOGO DIALOG  0, 0, 316, 22
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "静态",IDC_STATIC_LOGO,0,0,139,17
+END
+
+IDD_DIALOG_CONTROL_TEST DIALOG  0, 0, 189, 178
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "界面测试"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "Close",IDOK,65,122,50,14
+    PUSHBUTTON      "透明背景文本",IDC_BUTTON_TEST_STATIC_TEXT,7,138,50,14
+    PUSHBUTTON      "透明色图片",IDC_BUTTON_TEST_TRANSPARENT_MASK_IMAGE,7,121,50,14
+    PUSHBUTTON      "图片按钮",IDC_BUTTON_TEST_IMAGE_BUTTON,56,137,50,14
+    PUSHBUTTON      "复选按钮",IDC_BUTTON_TEST_CHECK_BUTTON,105,138,50,14
+    PUSHBUTTON      "按钮式复选按钮",IDC_BUTTON_TEST_CHECK_PUSH_BUTTON,116,121,50,14
+    PUSHBUTTON      "禁用启用",IDC_BUTTON_TEST_DISABLE_WND,7,150,50,14
+    PUSHBUTTON      "Slider",IDC_BUTTON_TEST_SLIDER,57,149,50,14
+END
+
+IDD_DIALOG_PIC_MANAGE DIALOG  0, 0, 180, 214
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION
+CAPTION "KDMCU"
+FONT 10, "宋体"
+BEGIN
+    PUSHBUTTON      "<",IDC_BUTTON_PRE_PAGE,7,167,50,14
+    PUSHBUTTON      ">",IDC_BUTTON_NEXT_PAGE,123,167,50,14
+    CTEXT           "静态",IDC_STATIC_PAGE_INFO,60,169,59,12
+    PUSHBUTTON      "删除",IDC_BUTTON_DELETE,7,193,50,14
+    PUSHBUTTON      "返回",IDC_BUTTON_RETURN,123,193,50,14
+    CTEXT           "底部条",IDC_STATIC_BOTTOM_BAR,58,195,59,12
+END
+
+IDD_DIALOG_PIC_VIEW DIALOG  0, 0, 180, 191
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION
+CAPTION "图片查看"
+FONT 10, "宋体"
+BEGIN
+    PUSHBUTTON      "+",IDC_BUTTON_ZOOM_IN,7,152,50,14
+    PUSHBUTTON      "-",IDC_BUTTON_ZOOM_OUT,123,145,50,14
+    CTEXT           "静态",IDC_STATIC_PIC_INFO,61,153,59,12
+    CTEXT           "背景",IDC_STATIC_BOTTOM_BG,40,172,100,12
+    PUSHBUTTON      "返回",IDC_BUTTON_RETURN,123,170,50,14
+    PUSHBUTTON      "删除",IDC_BUTTON_DELETE,7,170,50,14
+END
+
+IDD_DIALOG_DIR_SELECT DIALOG  0, 0, 180, 191
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION
+CAPTION "KDMCU"
+FONT 10, "宋体"
+BEGIN
+    CONTROL         "",IDC_LIST_DIR,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SORTASCENDING | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,28,166,156
+    EDITTEXT        IDC_EDIT_DIR,7,7,166,14,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "MCUDemo.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "MCUDemo.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_MCUDEMO_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 149
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 144
+    END
+
+    IDD_MCUDEMO_DIALOG_WIDE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_DIALOG_UDP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 142
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_DIALOG_VIDEO_PLAYER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 146
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_DIALOG_VIDEO_WND, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 149
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_DIALOG_LOGIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 128
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 179
+    END
+
+    IDD_DIALOG_CFG_SYS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 140
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_DIALOG_PTZ, DIALOG
+    BEGIN
+        RIGHTMARGIN, 137
+        BOTTOMMARGIN, 17
+    END
+
+    IDD_DIALOG_HTML_WND, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 149
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_DIALOG_INIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 150
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 179
+    END
+
+    IDD_DIALOG_MAIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 173
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 184
+    END
+
+    IDD_DIALOG_UNIT_TEST_MAIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 182
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_DIALOG_DECODE_TEST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 135
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 179
+    END
+
+    IDD_DIALOG_RTSP_TEST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 149
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_DIALOG_UI_TEST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 182
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_DIALOG_PLAYER_DIALOG_TEST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 135
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 179
+    END
+
+    IDD_DIALOG_HTML_TEST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 149
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_DIALOG_IMAGE_TEST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 149
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_DIALOG_CONTROL_TEST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 182
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_DIALOG_PIC_MANAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 173
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 207
+    END
+
+    IDD_DIALOG_PIC_VIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 173
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 184
+    END
+
+    IDD_DIALOG_DIR_SELECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 173
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 184
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU_LEFT MENU 
+BEGIN
+    MENUITEM "后退",                          ID_MENU_BACK
+    MENUITEM "前进",                          ID_MENU_FORWARD
+    MENUITEM "刷新",                          ID_MENU_REFRESH
+    MENUITEM "设置",                          ID_MENU_CONFIG
+    MENUITEM "注销",                          ID_MENU_LOGIN
+    POPUP "命令"
+    BEGIN
+        MENUITEM "设置",                          ID_MENU_CONFIG
+        MENUITEM "刷新",                          ID_MENU_REFRESH
+        MENUITEM "后退",                          ID_MENU_BACK
+        MENUITEM "前进",                          ID_MENU_FORWARD
+    END
+    POPUP "右边"
+    BEGIN
+        MENUITEM "UDP测试",                       ID_MENU_UDP_TEST
+        MENUITEM "视频播放测试",                      ID_MENU_VIDEO_PLAY
+        MENUITEM "设置",                          ID_MENU_CONFIG
+        MENUITEM "视频窗口测试",                      ID_MENU_VIDEO_WND_TEST
+        MENUITEM "PTZ",                         ID_MENU_PTZ
+        MENUITEM "播放文件",                        ID_MENU_PLAY_FILE
+    END
+END
+
+IDR_MENU_CONFIG MENU 
+BEGIN
+    MENUITEM "保存",                          ID_OK
+    MENUITEM "取消",                          ID_CANCEL
+END
+
+IDR_MENU_LOGIN MENU 
+BEGIN
+    MENUITEM "图片",                          ID_MENU_PIC
+    MENUITEM "设置",                          ID_MENU_CONFIG
+END
+
+IDR_MENU_MAIN MENU 
+BEGIN
+    MENUITEM "图片",                          ID_MENU_PIC
+    MENUITEM "设置",                          ID_MENU_CONFIG
+END
+
+IDR_MENU_PLAYER MENU 
+BEGIN
+    MENUITEM "暂停",                          ID_MENU_PAUSE
+    MENUITEM "录像",                          ID_MENU_RECODER
+    MENUITEM "抓拍",                          ID_MENU_CAPTURE
+    POPUP "PTZ"
+    BEGIN
+        MENUITEM "普通PTZ",                       ID_MENU_PTZ, CHECKED
+        MENUITEM "数字云台",                        ID_MENU_DIGITAL_PTZ
+    END
+    MENUITEM "全屏",                          ID_MENU_FULL_SCREEN
+    MENUITEM "返回",                          ID_MENU_CLOSE
+END
+
+IDR_MENU_PLAYER_FULLSCREEN MENU 
+BEGIN
+    MENUITEM "恢复",                          ID_MENU_RESTORE
+    MENUITEM "返回",                          ID_MENU_CLOSE
+END
+
+IDR_MENU_PTZ MENU 
+BEGIN
+    POPUP "PTZ"
+    BEGIN
+        MENUITEM "普通PTZ",                       ID_MENU_PTZ, CHECKED
+        MENUITEM "数字PTZ",                       ID_MENU_DIGITAL_PTZ
+    END
+END
+
+IDR_MENU_PIC_MANAGE MENU 
+BEGIN
+    MENUITEM "删除",                          ID_MENU_DELETE_PIC_FILE
+    MENUITEM "返回",                          ID_MENU_RETURN
+END
+
+IDR_MENU_PIC_VIEW MENU 
+BEGIN
+    MENUITEM "删除",                          ID_MENU_DELETE_PIC_FILE
+    MENUITEM "返回",                          ID_MENU_PIC_VIEW_RETURN
+END
+
+IDR_MENU_OKCANCEL MENU 
+BEGIN
+    MENUITEM "确定",                          ID_MENU_OK
+    MENUITEM "取消",                          ID_MENU_CANCEL
+END
+
+IDR_HTMLPOPMENU MENU 
+BEGIN
+    POPUP "HTMLPOPMENU"
+    BEGIN
+        MENUITEM "刷新",                          ID_HTMLPOPMENU_REFRESH
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_MCUDEMO             REGISTRY                "MCUDemo.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDP_SOCKETS_INIT_FAILED "Windows 套接字初始化失败。"
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\MCUDemoppc.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#endif
+
+1 TYPELIB "m_cu.tlb"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,18 @@
+// MCUDemo.idl : MCUDemo 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(MCUDemo.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(FFF187EB-F495-48BF-B454-554A2E1059CD),
+	version(1.0),
+	helpstring("MCUDemo 1.0 类型库")
+]
+library MCUDemoLib
+{
+	importlib("stdole2.tlb");
+};

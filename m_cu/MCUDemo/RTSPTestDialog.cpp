@@ -1,0 +1,76 @@
+// RTSPTestDialog.cpp : 实现文件
+//
+
+#include "stdafx.h"
+#include "MCUDemo.h"
+#include "RTSPTestDialog.h"
+
+#include "PlayerDialog.h"
+#include "MCUSession.h"
+
+// CRTSPTestDialog 对话框
+
+IMPLEMENT_DYNAMIC(CRTSPTestDialog, CDialog)
+
+CRTSPTestDialog::CRTSPTestDialog(CWnd* pParent /*=NULL*/)
+	: CDialog(CRTSPTestDialog::IDD, pParent)
+	, m_strRtspUrl(_T(""))
+{
+
+}
+
+CRTSPTestDialog::~CRTSPTestDialog()
+{
+}
+
+void CRTSPTestDialog::DoDataExchange(CDataExchange* pDX)
+{
+	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_COMBO_RTSP_URL, m_cmbRtspUrl);
+	DDX_CBString(pDX, IDC_COMBO_RTSP_URL, m_strRtspUrl);
+}
+
+
+BEGIN_MESSAGE_MAP(CRTSPTestDialog, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON_OPN, &CRTSPTestDialog::OnBnClickedButtonOpn)
+END_MESSAGE_MAP()
+
+
+// CRTSPTestDialog 消息处理程序
+
+void CRTSPTestDialog::OnBnClickedButtonOpn()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	UpdateData();
+
+	int nSel = this->m_cmbRtspUrl.GetCurSel();
+	tstringstream ssFakePuName ;
+	ssFakePuName << _T( "Rtsp测试：" ) << nSel;
+	
+	CMCUSession::Instance()->CurVideoSession()->PuName( ssFakePuName.str() );
+
+	CPlayerDialog playerDlg;
+	playerDlg.SetRtspUrl( (LPCTSTR)m_strRtspUrl );
+	playerDlg.DoModal();
+}
+
+BOOL CRTSPTestDialog::OnInitDialog()
+{
+	CDialog::OnInitDialog();
+
+	// TODO:  在此添加额外的初始化
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://221.224.163.200:554/service?PuId-ChannelNo=112200112000001000-1&PlayMethod=0&StreamingType=1" ) );
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://221.224.163.200:554/service?PuId-ChannelNo=112200112000001000-1&PlayMethod=0&StreamingType=2" ) );
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://218.4.130.248/service?PuId-ChannelNo=11040100000000000011100004400000-1&PlayMethod=0" ) );
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://invalidUrl" ) );
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://172.16.161.125:554/service?PuId-ChannelNo=110300112000001000-1&PlayMethod=0&StreamingType=2&UserID=110300400001001000" ) );
+
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://218.242.128.205:554/service?PuId-ChannelNo=110300112000001000-1&PlayMethod=0&StreamingType=1&UserID=110300400001001000" ) );
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://218.242.128.205:554/service?PuId-ChannelNo=110300112000001000-1&PlayMethod=0&StreamingType=2&UserID=110300400001001000" ) );
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://218.242.128.205:554/service?PuId-ChannelNo=110300112000001000-1&PlayMethod=0&StreamingType=3&UserID=110300400001001000" ) );
+
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://172.16.161.125:554/service?PuId-ChannelNo=110300112000001000-1&PlayMethod=0&StreamingType=1&UserID=110300400001001000" ) );
+	m_cmbRtspUrl.SetCurSel( 0 );
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// 异常: OCX 属性页应返回 FALSE
+}
