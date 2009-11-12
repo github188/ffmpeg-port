@@ -1,0 +1,16 @@
+##### End of variables to change
+
+MCU_LIB_OBJS_UNITTEST = $(SRC_DIR)/unittestmain.$(OBJ) \
+$(SRC_DIR)/xmlparsetest.$(OBJ) \
+$(SRC_DIR)/mcuconfigtest.$(OBJ) \
+$(SRC_DIR)/mcucommontest.$(OBJ) 
+
+
+MCU_LIB_LINK_OBJS_UNITTEST = unittestmain.$(OBJ) \
+xmlparsetest.$(OBJ) \
+mcuconfigtest.$(OBJ) \
+mcucommontest.$(OBJ) 
+
+
+
+##### Any additional, platform-specific rules come here:

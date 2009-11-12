@@ -1,0 +1,104 @@
+##### End of variables to change
+
+
+ALL = libmcu.$(LIB_SUFFIX)
+all:	$(ALL)
+
+.$(C).$(OBJ):
+	$(C_COMPILER) -c $(C_FLAGS) $(CIFLAG) $(MCULIBDEF) $<       
+
+.$(CPP).$(OBJ):
+	$(CPLUSPLUS_COMPILER) -c $(CPLUSPLUS_FLAGS) $(CIFLAG) $(MCULIBDEF) $<
+
+MCU_LIB_OBJS =  \
+	$(SRC_DIR)/virtualhelpwnd.$(OBJ) \
+	$(SRC_DIR)/virtualpicmanagewnd.$(OBJ) \
+	$(SRC_DIR)/ptzcontrol.$(OBJ) \
+	$(SRC_DIR)/message.$(OBJ) \
+	$(SRC_DIR)/virtualconfig.$(OBJ) \
+	$(SRC_DIR)/videoshow.$(OBJ) \
+	$(SRC_DIR)/virtualloginwnd.$(OBJ) \
+	$(SRC_DIR)/virtualwebpagectrl.$(OBJ) \
+	$(SRC_DIR)/virtualplayerwnd.$(OBJ) \
+	$(SRC_DIR)/ffmpegrecorderimpl.$(OBJ) \
+	$(SRC_DIR)/getconfig.$(OBJ) \
+	$(SRC_DIR)/basecodec.$(OBJ) \
+	$(SRC_DIR)/decoder.$(OBJ) \
+	$(SRC_DIR)/encoder.$(OBJ) \
+	$(SRC_DIR)/h264decoder.$(OBJ) \
+	$(SRC_DIR)/jpegencoder.$(OBJ) \
+	$(SRC_DIR)/kdvdecoderimpl.$(OBJ) \
+	$(SRC_DIR)/kdvencoderimpl.$(OBJ) \
+	$(SRC_DIR)/mpeg4decoder.$(OBJ) \
+	$(SRC_DIR)/encrypt.$(OBJ) \
+	$(SRC_DIR)/log.$(OBJ) \
+	$(SRC_DIR)/mem.$(OBJ) \
+	$(SRC_DIR)/scopelock.$(OBJ) \
+	$(SRC_DIR)/mcucommon.$(OBJ) \
+	$(SRC_DIR)/urlparse.$(OBJ) \
+	$(SRC_DIR)/mcuconfig.$(OBJ)  \
+	$(SRC_DIR)/xmlparse.$(OBJ) \
+	$(SRC_DIR)/mcudefine.$(OBJ)  \
+	$(SRC_DIR)/mcusession.$(OBJ) \
+	$(SRC_DIR)/videosession.$(OBJ) \
+	$(SRC_DIR)/h264streamparse.$(OBJ) \
+	$(SRC_DIR)/mpeg4streamparse.$(OBJ)  \
+	$(SRC_DIR)/h264streamdecodesink.$(OBJ) \
+	$(SRC_DIR)/medianet.$(OBJ) \
+	$(SRC_DIR)/mpeg4streamdecodesink.$(OBJ) \
+	
+	
+
+../src/testcpp.$(CPP):	../include/testcpp.h
+
+MCU_LIB_LINK_OBJS =  \
+	virtualhelpwnd.$(OBJ) \
+	virtualpicmanagewnd.$(OBJ) \
+	ptzcontrol.$(OBJ) \
+	message.$(OBJ) \
+	virtualconfig.$(OBJ) \
+	videoshow.$(OBJ) \
+	virtualloginwnd.$(OBJ) \
+	virtualwebpagectrl.$(OBJ) \
+	virtualplayerwnd.$(OBJ) \
+	h264streamdecodesink.$(OBJ) \
+	medianet.$(OBJ) \
+	mpeg4streamdecodesink.$(OBJ) \
+	ffmpegrecorderimpl.$(OBJ) \
+	getconfig.$(OBJ) \
+	basecodec.$(OBJ) \
+	decoder.$(OBJ) \
+	encoder.$(OBJ) \
+	h264decoder.$(OBJ) \
+	jpegencoder.$(OBJ) \
+	kdvdecoderimpl.$(OBJ) \
+	kdvencoderimpl.$(OBJ) \
+	mpeg4decoder.$(OBJ) \
+	encrypt.$(OBJ) \
+	log.$(OBJ) \
+	mem.$(OBJ) \
+	scopelock.$(OBJ) \
+	mcucommon.$(OBJ) \
+	urlparse.$(OBJ) \
+	mcuconfig.$(OBJ) \
+	xmlparse.$(OBJ) \
+	mcudefine.$(OBJ) \
+	mcusession.$(OBJ) \
+	videosession.$(OBJ) \
+	h264streamparse.$(OBJ) \
+	mpeg4streamparse.$(OBJ) 
+	
+	
+	
+
+libmcu.$(LIB_SUFFIX): $(MCU_LIB_OBJS) \
+    $(PLATFORM_SPECIFIC_LIB_OBJS) \
+    $(MCU_LIB_OBJS_UNITTEST) 
+	$(LIBRARY_LINK)$@ $(LIBRARY_LINK_OPTS) \
+		$(MCU_LIB_LINK_OBJS) \
+		$(MCU_LIB_LINK_OBJS_UNITTEST)
+
+clean:
+	-rm -rf *.$(OBJ) $(ALL) core *.core *~ include/*~
+
+##### Any additional, platform-specific rules come here:

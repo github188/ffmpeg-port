@@ -1,0 +1,51 @@
+
+#include "mcusession.h"
+
+CMCUSession *CMCUSession::s_instance = 0;
+CMutex CMCUSession::s_threadSafeLock;
+
+CMCUSession::CMCUSession(void)
+{
+}
+
+CMCUSession::~CMCUSession(void)
+{
+}
+
+CMCUSession *CMCUSession::Instance()
+{
+	if ( NULL == s_instance )
+	{
+		SCOPE_LOCK( s_threadSafeLock );
+		if ( NULL == s_instance )
+		{
+			s_instance = new CMCUSession();
+		}
+	}
+
+	return s_instance;
+}
+
+void CMCUSession::Release()
+{
+	if ( s_instance )
+	{
+		SCOPE_LOCK( s_threadSafeLock );
+		if ( s_instance )
+		{
+			delete s_instance;
+			s_instance = NULL;
+		}
+	}
+}
+
+tstring CMCUSession::UserId() const
+{
+	return m_strUserId;
+}
+
+void CMCUSession::UserId( tstring val)
+{ 
+	m_strUserId = val; 
+}
+

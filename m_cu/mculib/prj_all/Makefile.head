@@ -1,0 +1,18 @@
+
+
+TOP := ..
+COMM_DIR := ..
+SRC_DIR := $(TOP)/src
+
+INCLUDES := -Iinclude -I../include -I$(TOP)/include -I/usr/include/libxml2/ \
+		-I../../live/liveMedia/include -I../../live/groupsock/include \
+		-I../../live/UsageEnvironment/include -I../../live/BasicUsageEnvironment/include \
+		-I../../kdvdecode/include/video -I../../ffmpeg/libavformat -I../../ffmpeg/libavcodec -I../../ffmpeg/libavutil -I../../ffmpeg \
+		
+		
+
+CIFLAG := $(INCLUDE_DIR) -g
+
+MCULIBDEF := -DHAVE_MALLOC_H -DMEMALIGN_HACK
+
+##### Change the following for your environment: 
