@@ -18,6 +18,12 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 // Common routines for opening/closing named output files
 // Implementation
 
+#if defined(__SYMBIAN32__)
+// for symbian emulator version,there is win32 macro.undef it!
+#undef _WIN32
+#undef __WIN32__
+#endif
+
 #if (defined(__WIN32__) || defined(_WIN32)) && !defined(_WIN32_WCE)
 #include <io.h>
 #include <fcntl.h>

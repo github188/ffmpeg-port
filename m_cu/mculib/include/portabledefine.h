@@ -11,6 +11,17 @@
 #include <sys/stat.h>
 #endif
 
+// This is a GCCE toolchain workaround needed when compiling with GCCE
+// and using main() entry point
+#ifdef __GCCE__
+#include <staticlibinit_gcce.h>
+#endif
+
+#ifdef __SYMBIAN32__
+#include <e32cmn.h>
+#endif
+
+
 
 #ifdef __cplusplus
 
@@ -37,9 +48,15 @@ using namespace std;
 #include <stdlib.h>
 #endif
 
+#ifdef __SYMBIAN32__
+#undef _WIN32
+#undef __WIN32__
+#endif
+
 #ifdef __cplusplus
 
 #ifdef UNICODE
+
 #define tstring wstring
 #define  tcin	wcin 
 #define  tcout	wcout 
@@ -47,7 +64,9 @@ using namespace std;
 #define tfstram		wfstream
 #define tofstream	wofstream
 #define tifstream	wifstream
+
 #else
+
 #define  tstring string
 #define tcin cin 
 #define tcout cout 
@@ -55,6 +74,7 @@ using namespace std;
 #define tfstram		fstream
 #define tofstream	ofstream
 #define tifstream	ifstream
+
 #endif
 
 /** Ö»¶Á×Ö·û´®¡£ */
@@ -81,7 +101,7 @@ typedef int BOOL;
 #define TRUE (!FALSE)
 #endif
 
-typedef signed char mu_int8;
+typedef signed char mu_int8; 
 typedef unsigned char mu_uint8;
 
 typedef signed short mu_int16; 
@@ -105,7 +125,11 @@ typedef unsigned __int64 mu_uint64;
 
 #endif
 
-#ifdef __GNUC__
+#ifdef __SYMBIAN32__
+#define L( str ) L##str 
+#endif
+
+#if defined( __GNUC__ ) || defined ( __SYMBIAN32__ )
 
 #ifndef _TIME32_T_DEFINED
 typedef mu_uint32 __time32_t;   /* 32-bit time value */
@@ -124,7 +148,11 @@ typedef mu_uint64 __time64_t;     /* 64-bit time value */
  */
 typedef wchar_t TCHAR;
 typedef wchar_t _TCHAR;
+
+
 #define _T( str ) L( str )
+
+
 #else
 typedef char TCHAR;
 typedef char _TCHAR;
@@ -246,7 +274,7 @@ typedef const TCHAR *LPCTSTR;
 #endif /* __SYMBIAN32__ */
 
 
-#ifdef __GNUC__
+#if defined ( __GNUC__ ) || defined( __SYMBIAN32__ )
 
 #define INVALID_SOCKET (int)(~0)
 

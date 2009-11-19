@@ -21,6 +21,7 @@ CHtmlWnd::CHtmlWnd(CWnd* pParent /*=NULL*/)
 	m_nCurUrlHistoryIndex = INVALID_INDEX;
 	m_nHistoryEndIndex = INVALID_INDEX;
 	m_bWaittingNavigateComplete = FALSE;
+	m_bIsFaild = FALSE;
 }
 
 CHtmlWnd::~CHtmlWnd()
@@ -274,8 +275,9 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 		break;
 
 	case NM_DOCUMENTCOMPLETE:
-		if ( m_bWaittingNavigateComplete )
+		if ( m_bWaittingNavigateComplete && m_bIsFaild == FALSE)
 		{
+			mcu::tlog << _T( "NM_DOCUMENTCOMPLETE not do NM_NAVIGATECOMPLETE" ) << endl;
 			//tstring strUrl = UTF8toUTF16( (const char *)pnmHTMLView->szTarget );
 			//mcu::tlog << _T( "m_bWaittingNavigateComplete = false Url " )<< strUrl << endl;
 			tstring strModulePath = GetModulePath();
@@ -283,6 +285,12 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 			tstring strFailHtml = _T( "file://" ) + strDir + _T( "failhtml\\fail.htm" );
 			m_bWaittingNavigateComplete = FALSE;
 			this->OpenUrl( strFailHtml.c_str() );
+			m_bIsFaild = TRUE;
+		}
+		else
+		{
+			m_bWaittingNavigateComplete = FALSE;
+			m_bIsFaild = FALSE;
 		}
 		mcu::tlog << _T( "NM_DOCUMENTCOMPLETE" ) << endl;
 		break;

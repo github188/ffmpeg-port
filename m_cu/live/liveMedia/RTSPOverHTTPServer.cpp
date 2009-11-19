@@ -20,6 +20,13 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 // http://developer.apple.com/documentation/QuickTime/QTSS/Concepts/chapter_2_section_14.html
 // Implementation
 
+#if defined(__SYMBIAN32__)
+// for symbian emulator version,there is win32 macro.undef it!
+#undef _WIN32
+#undef __WIN32__
+#endif
+
+
 #include "RTSPOverHTTPServer.hh"
 #include "RTSPCommon.hh"
 #include <GroupsockHelper.hh>
@@ -27,7 +34,7 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #include <string.h>
 #if defined(__WIN32__) || defined(_WIN32) || defined(_QNX4)
 #define snprintf _snprintf
-#else
+#elif !defined( __SYMBIAN32__ )
 #include <signal.h>
 #define USE_SIGNALS 1
 #endif

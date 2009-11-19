@@ -747,7 +747,10 @@ LRESULT CMCUDemoDlg::OnHtmlPreLoad( WPARAM strUrlParam, LPARAM )
 	{
 		//_ASSERT( FALSE );
 //		strUrl = _T( "rtsp://172.16.160.125/PUID-ChannelNo=27000000000000000011200003300000-1&PlayMethod=0&StreamingType=2" );
-		
+		if( this->m_htmlWnd.m_bWaittingNavigateComplete == TRUE)
+		{
+			this->m_htmlWnd.m_bWaittingNavigateComplete = FALSE;
+		}
 		this->m_htmlWnd.Stop();
 		this->m_htmlWnd.HistoryBack( 2 );
 

@@ -23,19 +23,22 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #include "TunnelEncaps.hh"
 
 #ifndef NO_STRSTREAM
-#if (defined(__WIN32__) || defined(_WIN32)) && !defined(__MINGW32__)
+#if (defined(__WIN32__) || defined(_WIN32)) && !defined(__MINGW32__) && !defined( __SYMBIAN32__ )
 // by lizhixing!
 //#include <strstrea.h>
+
 #include <strstream>
 #else
-#if defined(__GNUC__) && (__GNUC__ > 3 || __GNUC__ == 3 && __GNUC_MINOR__ > 0)
+#if defined(__GNUC__) && (__GNUC__ > 3 || __GNUC__ == 3 && __GNUC_MINOR__ > 0) || defined( __SYMBIAN32__ )
 #include <strstream>
 #else
 #include <strstream.h>
+
 #endif
 #endif
 #endif
 #include <stdio.h>
+
 
 ///////// OutputSocket //////////
 
@@ -646,3 +649,6 @@ GroupsockLookupTable::Iterator::Iterator(GroupsockLookupTable& groupsocks)
 Groupsock* GroupsockLookupTable::Iterator::next() {
   return (Groupsock*) fIter.next();
 };
+
+
+

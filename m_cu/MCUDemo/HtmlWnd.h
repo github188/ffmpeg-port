@@ -76,13 +76,15 @@ private:
 
 	/** 原本的html 控件消息处理函数. */
 //	static WNDPROC s_lpOldHtmlProc;
+public :
+	BOOL m_bWaittingNavigateComplete;
+	BOOL m_bIsFaild;
 
 private:
 	/** html 控件 窗口. */
 	HWND m_hHtmlCtrlWnd;
 
 	/** 是否在等待Navigate完成.*/
-	BOOL m_bWaittingNavigateComplete;
 
 	/** 浏览的历史记录. */
 	typedef vector< tstring > THistoryUrlList;

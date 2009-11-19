@@ -23,7 +23,7 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #include <GroupsockHelper.hh>
 
 #if defined(__WIN32__) || defined(_WIN32) || defined(_QNX4)
-#else
+#elif !defined( __SYMBIAN32__ )
 #include <signal.h>
 #define USE_SIGNALS 1
 #endif

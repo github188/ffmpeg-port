@@ -23,6 +23,32 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 
 #if defined(IMN_PIM)
 #include "IMN_PIMNetCommon.h"
+#elif defined(__SYMBIAN32__)
+
+// for symbian emulator version,there is win32 macro.undef it!
+#undef _WIN32
+#undef __WIN32__
+
+/* symbian */
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/time.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <strings.h>
+#include <ctype.h>
+#include <sys/select.h>
+
+#define closeSocket close
+
+#ifndef SOCKLEN_T
+#define SOCKLEN_T unsigned int
+#endif
 
 #elif defined(__WIN32__) || defined(_WIN32) || defined(_WIN32_WCE)
 /* Windows */

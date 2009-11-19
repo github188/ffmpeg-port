@@ -134,6 +134,7 @@ Boolean parseRTSPRequestString(char const* reqStr,
   return True;
 }
 
+
 Boolean parseRangeHeader(char const* buf, double& rangeStart, double& rangeEnd) {
   // First, find "Range:"
   while (1) {
@@ -141,7 +142,7 @@ Boolean parseRangeHeader(char const* buf, double& rangeStart, double& rangeEnd) 
     if (_strncasecmp(buf, "Range: ", 7) == 0) break;
     ++buf;
   }
-
+  
   // Then, run through each of the fields, looking for ones we handle:
   char const* fields = buf + 7;
   while (*fields == ' ') ++fields;

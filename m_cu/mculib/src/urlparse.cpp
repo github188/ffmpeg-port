@@ -94,7 +94,10 @@ BOOL CUrlParse::ParamValue( LPCTSTR strParamName, int & iParamValue ) const
 	BOOL bResult = ParamValue( strParamName, strValue );
 	if ( bResult )
 	{
-		iParamValue = _ttoi( strValue.c_str() );
+		tstringstream ssTmp;
+		ssTmp << strValue;
+		ssTmp >> iParamValue;
+//		iParamValue = _ttoi( strValue.c_str() );
 	}
 	return bResult;
 }

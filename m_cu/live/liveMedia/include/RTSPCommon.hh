@@ -21,6 +21,13 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #ifndef _RTSP_COMMON_HH
 #define _RTSP_COMMON_HH
 
+#if defined(__SYMBIAN32__)
+// for symbian emulator version,there is win32 macro.undef it!
+#undef _WIN32
+#undef __WIN32__
+#endif
+
+
 #ifndef _BOOLEAN_HH
 #include "Boolean.hh"
 #endif

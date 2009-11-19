@@ -1,11 +1,8 @@
 
 #include "scopelock.h"
+#include "mcuthread.h"
 
-#ifdef _WIN32_WCE
-#include "SDL.h"
-#else
-#include <SDL/SDL.h>
-#endif
+
 
 CNoCopy::CNoCopy()
 {

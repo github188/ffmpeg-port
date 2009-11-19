@@ -70,7 +70,7 @@ void BasicTaskScheduler::SingleStep(unsigned maxDelayTime) {
   int selectResult = select(fMaxNumSockets, &readSet, NULL, NULL,
 			    &tv_timeToDelay);
   if (selectResult < 0) {
-#if defined(__WIN32__) || defined(_WIN32)
+#if ( defined(__WIN32__) || defined(_WIN32) ) && !defined( __SYMBIAN32__ )
     int err = WSAGetLastError();
     // For some unknown reason, select() in Windoze sometimes fails with WSAEINVAL if
     // it was called with no entries set in "readSet".  If this happens, ignore it:

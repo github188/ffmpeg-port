@@ -20,6 +20,7 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 
 #include "GroupsockHelper.hh"
 
+
 #if defined(__WIN32__) || defined(_WIN32)
 #include <time.h>
 extern "C" int initializeWinsockIfNecessary();
@@ -135,7 +136,7 @@ int setupDatagramSocket(UsageEnvironment& env, Port port,
 }
 
 Boolean makeSocketNonBlocking(int sock) {
-#if defined(__WIN32__) || defined(_WIN32) || defined(IMN_PIM)
+#if ( defined(__WIN32__) || defined(_WIN32) || defined(IMN_PIM) ) && !defined( __SYMBIAN32__ )
   unsigned long arg = 1;
   return ioctlsocket(sock, FIONBIO, &arg) == 0;
 #elif defined(VXWORKS)
