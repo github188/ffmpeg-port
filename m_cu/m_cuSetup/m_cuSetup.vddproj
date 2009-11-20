@@ -206,6 +206,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_613863F567E8488EA3C527473E4014BF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_62863082F48C4475A5390345D99217D9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -447,12 +453,6 @@
         "Entry"
         {
         "MsmKey" = "8:_D670765F3FAF4F48A68D2791B316B743"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D6E40D2EF8144A3F814354FBBCDC8E44"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2143,9 +2143,9 @@
                 {
                 }
             }
-            "{605BE39E-5046-48BD-AEC0-63C3A46626D5}:_D6E40D2EF8144A3F814354FBBCDC8E44"
+            "{605BE39E-5046-48BD-AEC0-63C3A46626D5}:_613863F567E8488EA3C527473E4014BF"
             {
-            "SourcePath" = "8:..\\SDL-1.2.13\\VisualCE\\SDL\\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\\Release\\SDL.dll"
+            "SourcePath" = "8:..\\sdl\\VisualCE\\SDL\\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\\Release\\SDL.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_498EA9CD317241238C891AD1282795B1"

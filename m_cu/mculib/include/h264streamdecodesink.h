@@ -2,9 +2,7 @@
 
 #include "MediaSink.hh"
 #include "decoder.h"
-#ifdef USE_FFMPEG
-#include "ffplay.h"
-#endif
+
 
 class CH264StreamDecodeSink : public MediaSink
 {
@@ -40,9 +38,6 @@ private: // redefined virtual functions:
 	virtual Boolean continuePlaying();
 
 private:
-#ifdef  USE_FFMPEG
-	DecoderID m_decoderId;	
-#endif
 
 	/** ½âÂë¿â. */
 	CDecoder *m_pDecoder;

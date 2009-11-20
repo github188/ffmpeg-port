@@ -688,7 +688,7 @@ void CPlayerDialog::UpdateRecordButton()
 	}
 }
 
-tstring CPlayerDialog::GetFileName( LPCTSTR strDir, LPCTSTR strPuName, LPCTSTR strFileExt )
+tstring CPlayerDialog::GetFileName( LPCTSTR strDir, LPCTSTR lpPuName, LPCTSTR strFileExt )
 {
 	tstringstream ssFileName;
 	SYSTEMTIME sysTime;
@@ -697,6 +697,9 @@ tstring CPlayerDialog::GetFileName( LPCTSTR strDir, LPCTSTR strPuName, LPCTSTR s
 
 	CString strTime;
 	strTime = ::TimeToStr( sysNow.GetTime() ).c_str();
+
+    tstring strPuName = lpPuName;
+    strPuName = strPuName.substr( 0, 5 );
 
 	// 文件名最后要加3位随机数。
 	int nRadom = GetTickCount();
