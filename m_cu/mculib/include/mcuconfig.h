@@ -38,6 +38,9 @@ public:
 
 	BOOL SetServer( LPCTSTR strUrl );
 
+    BOOL GetServerFullUrl( LPTSTR ServerFullStr);
+    BOOL GetServerFullSvrUrl(LPTSTR ServerFullStr);
+
 	/** 获取用户名，密码。*/
 	BOOL GetLoginInfo( tstring& strUserId, tstring& strPw, EStreamType& eStreamType );
 

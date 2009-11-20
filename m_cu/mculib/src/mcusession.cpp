@@ -2,7 +2,7 @@
 #include "mcusession.h"
 
 CMCUSession *CMCUSession::s_instance = 0;
-CMutex CMCUSession::s_threadSafeLock;
+CMCUMutex CMCUSession::s_threadSafeLock;
 
 CMCUSession::CMCUSession(void)
 {

@@ -12,7 +12,7 @@ public:
 	static void Release();
 private:
 	static CMCUSession *s_instance;
-	static CMutex s_threadSafeLock;
+	static CMCUMutex s_threadSafeLock;
 protected:
 	CMCUSession(void);
 	virtual ~CMCUSession(void);

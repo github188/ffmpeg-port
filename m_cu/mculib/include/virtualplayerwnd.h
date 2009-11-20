@@ -90,7 +90,7 @@ private:
 	time_t m_timeLastPic;
 
 	/** 线程同步锁。 */
-	mutable CMutex m_threadSafeLock;
+	mutable CMCUMutex m_threadSafeLock;
 
 };
 

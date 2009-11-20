@@ -467,7 +467,7 @@ void CVideoWndDialog::YUVCallback( const CDecoder::TVideoPicture *pic, const CBa
 	for( int i=0; i<3; ++i )
 	{
 		memcpy( m_pSDLOverlay->pixels[i], pic->data[i], pic->linesize[i] );
-		m_pSDLOverlay->pitches[i] = pic->linesize[i];
+		m_pSDLOverlay->pitches[i] = (mu_uint16)pic->linesize[i];
 	}
 	
 
@@ -639,13 +639,13 @@ void CVideoWndDialog::StorageSpaceCheck()
 
 void CVideoWndDialog::StatusCheck()
 {
-	CMediaNet::ERTSPStatus eRtspStat = this->m_MediaNet.GetRtspStatus();
+	ERTSPStatus eRtspStat = this->m_MediaNet.GetRtspStatus();
 
 	
 	// 检测RTSP是否正常工作.
 
 	// 检查是否达到了服务器的最大路数。
-	if ( CMediaNet::RTSPStatus_Error_Server_Full == eRtspStat && m_bCheckRtspError )
+	if ( RTSPStatus_Error_Server_Full == eRtspStat && m_bCheckRtspError )
 	{
 		// 服务器拒绝了客户端的请求，直接返回失败。
 		m_bCheckRtspError = FALSE;
@@ -653,15 +653,29 @@ void CVideoWndDialog::StatusCheck()
 		return;
 	}
 
-	if ( CMediaNet::RTSPStatus_Error_Connect_Srv == eRtspStat && m_bCheckRtspError )
+	if ( m_bCheckRtspError )
 	{
-		// 服务器拒绝了客户端的请求，直接返回失败。
-		m_bCheckRtspError = FALSE;
-		this->GetParent()->SendMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Unknow, 0 );
-		return;
+        switch( eRtspStat )
+        {
+        case RTSPStatus_Error_Unknown:		// 未知错误。	
+        case RTSPStatus_Error_Init_Fail:	// 初始化失败。
+        case RTSPStatus_Error_Opition:		// Opition 命令失败。
+        case RTSPStatus_Error_Description:
+        case RTSPStatus_Error_Setup:
+        case RTSPStatus_Error_Play:		
+        case RTSPStatus_Error_SDP:			// 解析sdp信息出错。
+        case RTSPStatus_Error_Create_Rcv:	// 码流接收创建失败
+            // 服务器拒绝了客户端的请求，直接返回失败。
+            m_bCheckRtspError = FALSE;
+            this->GetParent()->SendMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Unknow, 0 );
+            return;
+        default:
+            break;
+        }
+		
 	}
 
-	if ( CMediaNet::RTSPStatus_Idle != eRtspStat )	
+	if ( RTSPStatus_Idle != eRtspStat )	
 	{
 		m_timeLastWork = CTime::GetCurrentTime();		
 		m_bCheckRtspTimeout = TRUE;
@@ -679,7 +693,7 @@ void CVideoWndDialog::StatusCheck()
 	}
 
 	// 检测码流是否正常接收(通过检测是否绘制图形.).
-	if ( m_bCheckNoPacketTimeout && CMediaNet::RTSPStatus_Running == eRtspStat )
+	if ( m_bCheckNoPacketTimeout && RTSPStatus_Running == eRtspStat )
 	{
 		CTime now = CTime::GetCurrentTime();
 		CTimeSpan noPacketTime = now - m_timeLastDrawVideo;
@@ -694,14 +708,14 @@ void CVideoWndDialog::StatusCheck()
 		m_timeLastDrawVideo = CTime::GetCurrentTime();
 	}
 
-	if ( eRtspStat != m_eRtspStatus && eRtspStat == CMediaNet::RTSPStatus_Running )
+	if ( eRtspStat != m_eRtspStatus && eRtspStat == RTSPStatus_Running )
 	{
 		m_bCheckNoPacketTimeout = TRUE;
 	}
 
 	// 更新状态条显示.
 	// 只有非正常工作状态时才需要显示状态条.
-	BOOL bWorkBad = ( CMediaNet::RTSPStatus_Running != eRtspStat );	// RTSP没有在工作时需要显示.
+	BOOL bWorkBad = ( RTSPStatus_Running != eRtspStat );	// RTSP没有在工作时需要显示.
 	BOOL bNoPacket = FALSE;
 	if( !bWorkBad )
 	{
@@ -718,21 +732,21 @@ void CVideoWndDialog::StatusCheck()
 		tstring strShowVideoStatus;
 		switch( eRtspStat )
 		{
-		case CMediaNet::RTSPStatus_Idle:
+		case RTSPStatus_Idle:
 			strShowVideoStatus = _T( "播放停止" );
 			break;
-		case CMediaNet::RTSPStatus_Init:
+		case RTSPStatus_Init:
 			strShowVideoStatus = _T( "播放器初始化..." );
 			break;
-		case CMediaNet::RTSPStatus_Opitiion:
-		case CMediaNet::RTSPStatus_Description:
+		case RTSPStatus_Opition:
+		case RTSPStatus_Description:
 			strShowVideoStatus = _T( "连接视频服务器..." );
 			break;
-		case CMediaNet::RTSPStatus_Setup:
-		case CMediaNet::RTSPStatus_Play:
+		case RTSPStatus_Setup:
+		case RTSPStatus_Play:
 			strShowVideoStatus = _T( "正在请求视频..." );
 			break;
-		case CMediaNet::RTSPStatus_Running:
+		case RTSPStatus_Running:
 			if ( bNoPacket )
 			{
 				strShowVideoStatus = _T( "等待码流..." );
@@ -763,27 +777,27 @@ void CVideoWndDialog::StatusCheck()
 	tstring strStatus;
 	switch( eRtspStat )
 	{
-	case CMediaNet::RTSPStatus_Idle:
+	case RTSPStatus_Idle:
 		{
 			strStatus = _T( "Idle" );
 		}
 		break;
-	case CMediaNet::RTSPStatus_Init:
+	case RTSPStatus_Init:
 		strStatus = _T( "Init" );
 		break;
-	case CMediaNet::RTSPStatus_Opitiion:
+	case RTSPStatus_Opition:
 		strStatus = _T( "Opition" );
 	    break;
-	case CMediaNet::RTSPStatus_Description:
+	case RTSPStatus_Description:
 		strStatus = _T( "Description" );
 	    break;
-	case CMediaNet::RTSPStatus_Setup:
+	case RTSPStatus_Setup:
 		strStatus = _T( "Setup" );
 		break;
-	case CMediaNet::RTSPStatus_Play:
+	case RTSPStatus_Play:
 		strStatus = _T( "Play" );
 		break;
-	case CMediaNet::RTSPStatus_Running:
+	case RTSPStatus_Running:
 		strStatus = _T( "Running" );
 		
 		break;

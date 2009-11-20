@@ -6,7 +6,7 @@ using namespace mcu;
 
 CMCUMessage *CMCUMessage::s_instance = NULL;
 
-CMutex CMCUMessage::s_singletonLock;
+CMCUMutex CMCUMessage::s_singletonLock;
 
 namespace mcu
 {

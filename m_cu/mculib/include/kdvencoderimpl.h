@@ -46,7 +46,7 @@ private:
 	/** 线程安全. 
 	*	keda解码库接口只能单线程访问.
 	*/
-	CMutex m_threadSafeLock;
+	CMCUMutex m_threadSafeLock;
 
 	/** 内部缓冲区.存储编码后的码流 */
 	mu_uint8 *m_pDataBuf;

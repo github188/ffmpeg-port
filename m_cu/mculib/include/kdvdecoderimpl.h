@@ -35,7 +35,7 @@ private:
 	typedef std::map< tstring, CKDVDecoderImpl * > TDecoderNameTable;
 	static TDecoderNameTable s_tDecoderNameTable;
 	/** 为解码器名称映射表加锁保证线程安全的锁. */
-	static CMutex s_decoderNameTableLock;
+	static CMCUMutex s_decoderNameTableLock;
 public:
 	CKDVDecoderImpl(void);
 	~CKDVDecoderImpl(void);
@@ -72,7 +72,7 @@ private:
 	/** 线程安全. 
 	*	keda解码库接口只能单线程访问.
 	*/
-	CMutex m_threadSafeLock;
+	CMCUMutex m_threadSafeLock;
 
 	/** 内部图片缓冲区. */
 	mu_uint8 *m_pPicDataBuf;

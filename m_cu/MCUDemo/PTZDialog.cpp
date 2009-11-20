@@ -84,57 +84,57 @@ LRESULT CPTZDialog::OnPtzButtonDown( WPARAM btnId, LPARAM )
 {
 	UpdateData();
 
-	CPtzControl::PTZOpId ptzOp;
+	EPTZCmdId ptzOp;
 	// 是云台还是镜头.
 	BOOL bPtz = TRUE;	
 	if( btnId == m_btnMoveLeft.GetDlgCtrlID() )
 	{
-		ptzOp = CPtzControl::PTZ_MOVELEFT;
+		ptzOp = PTZ_MOVELEFT;
 		bPtz = TRUE;
 	}
 	else if( btnId == m_btnMoveRight.GetDlgCtrlID() )
 	{
-		ptzOp = CPtzControl::PTZ_MOVERIGHT;
+		ptzOp = PTZ_MOVERIGHT;
 		bPtz = TRUE;
 	}
 	else if( btnId == m_btnMoveUp.GetDlgCtrlID() )
 	{
-		ptzOp = CPtzControl::PTZ_MOVEUP;
+		ptzOp = PTZ_MOVEUP;
 		bPtz = TRUE;
 	}
 	else if( btnId == m_btnMoveDown.GetDlgCtrlID() )
 	{
-		ptzOp = CPtzControl::PTZ_MOVEDOWN;
+		ptzOp = PTZ_MOVEDOWN;
 		bPtz = TRUE;
 	}
 	else if( btnId == m_btnLight.GetDlgCtrlID() )
 	{
-		ptzOp = CPtzControl::PTZ_BRIGHTUP;
+		ptzOp = PTZ_BRIGHTUP;
 		bPtz = FALSE;
 	}
 	else if( btnId == m_btnDark.GetDlgCtrlID() )
 	{
-		ptzOp = CPtzControl::PTZ_BRIGHTDOWN;
+		ptzOp = PTZ_BRIGHTDOWN;
 		bPtz = FALSE;
 	}
 	else if( btnId == m_btnZoomIn.GetDlgCtrlID() )
 	{
-		ptzOp = CPtzControl::PTZ_ZOOMTELE;
+		ptzOp = PTZ_ZOOMTELE;
 		bPtz = FALSE;
 	}
 	else if( btnId == m_btnZoomOut.GetDlgCtrlID() )
 	{
-		ptzOp = CPtzControl::PTZ_ZOOMWIDE;
+		ptzOp = PTZ_ZOOMWIDE;
 		bPtz = FALSE;
 	}
 	else if( btnId == m_btnNear.GetDlgCtrlID() )
 	{
-		ptzOp = CPtzControl::PTZ_FOCUSNEAR;
+		ptzOp = PTZ_FOCUSNEAR;
 		bPtz = FALSE;
 	}
 	else if( btnId == m_btnFar.GetDlgCtrlID() )
 	{
-		ptzOp = CPtzControl::PTZ_FOCUSFAR;
+		ptzOp = PTZ_FOCUSFAR;
 		bPtz = FALSE;
 	}
 	else
@@ -149,7 +149,7 @@ LRESULT CPTZDialog::OnPtzButtonDown( WPARAM btnId, LPARAM )
 
 
 	int nAddrLen = sizeof( ptzServerAddr );
-	int nResult = WSAStringToAddress( const_cast<LPWSTR>( CMCUSession::Instance()->CurVideoSession()->PtzAddr().c_str() ), 
+	int nResult = WSAStringToAddress( const_cast<LPWSTR>( CMCUSession::Instance()->CurVideoSession()->PtzIP().c_str() ), 
 		AF_INET, NULL, (sockaddr*)&ptzServerAddr, &nAddrLen );
 	if( SOCKET_ERROR == nResult )
 	{
@@ -162,7 +162,7 @@ LRESULT CPTZDialog::OnPtzButtonDown( WPARAM btnId, LPARAM )
 	//serverAddr.sin_port = htons( _ttoi( strPort ) );
 	SetPTZAddr( ntohl( ptzServerAddr.sin_addr.s_addr ), 
 		CMCUSession::Instance()->CurVideoSession()->PtzPort() );
-	SetOpId( ptzOp );
+    this->SetPtzCmdId( ptzOp );
 
 	int nSpeed;
 	if ( bPtz )
@@ -187,14 +187,12 @@ LRESULT CPTZDialog::OnPtzButtonDown( WPARAM btnId, LPARAM )
 LRESULT CPTZDialog::OnPtzButtonUp( WPARAM btnId, LPARAM )
 {
 	// 发送停止命令.
-	SetOpId( PTZ_STOP );
-
 	// 不是数字云台,发送停止命令.
 	if ( !this->IsDigitalPtz() )
 	{
+        this->SetPtzCmdId( PTZ_STOP );
 		this->SendPTZCmd();
 	}
-//	SendPTZCmd();
 
 	return S_OK;
 }

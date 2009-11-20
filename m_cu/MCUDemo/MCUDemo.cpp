@@ -6,13 +6,12 @@
 #include "MCUDemoDlg.h"
 #include "MCUSession.h"
 
-#include "mcudef.h"
+#include "mculib.h"
 #include <initguid.h>
 //#include "MCUDemo_i.c"
 
 #include "MainDialog.h"
-#include "mcucommon.h"
-#include "config.h"
+
 #include "ImageFactory.h"
 
 /** 单元测试头文件*/

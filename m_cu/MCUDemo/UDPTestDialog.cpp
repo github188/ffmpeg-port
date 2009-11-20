@@ -95,7 +95,7 @@ void CUDPTestDialog::OnBnClickedButtonSend()
 	// ptz
 	CPtzControl ptzTest;
 	ptzTest.SetPTZAddr( ntohl( serverAddr.sin_addr.s_addr ), _ttoi( strPort ) );
-	ptzTest.SetOpId( CPtzControl::PTZOpId( 1 ) );
+	ptzTest.SetPtzCmdId( EPTZCmdId( 1 ) );
 	ptzTest.SetParam( 3, 1 );
 	ptzTest.SetPuId( _T( "27000000000000000011200003300000-1" ) );
 	ptzTest.SetUserId( _T( "admin@888.js" ) );

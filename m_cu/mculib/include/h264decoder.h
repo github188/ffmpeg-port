@@ -43,7 +43,7 @@ private:
 	BOOL m_bRecording;
 
 	/** 线程安全锁。 */
-	mutable CMutex m_threadSafeLock;
+	mutable CMCUMutex m_threadSafeLock;
 
 	/** 码率。 */
 	int m_nBandWidth;

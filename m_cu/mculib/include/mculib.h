@@ -10,6 +10,7 @@
 #include "mcusession.h"
 #include "basecodec.h"
 #include "message.h"
+#include "mcuconfig.h"
 
 #include "virtualwebpagectrl.h"
 #include "virtualloginwnd.h"

@@ -37,5 +37,5 @@ private:
 	typedef std::map< tstring, CEncoder * > TEncoderNameTable;
 	static TEncoderNameTable s_tEncoderNameTable;
 	/** 为解码器名称映射表加锁保证线程安全的锁. */
-	static CMutex s_encoderNameTableLock;
+	static CMCUMutex s_encoderNameTableLock;
 };

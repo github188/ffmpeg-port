@@ -86,7 +86,7 @@ private:
 
 	SDL_Overlay *m_pSDLOverlay;
 
-	CMutex m_threadSafeLock;
+	CMCUMutex m_threadSafeLock;
 
 	CB_VideoWndEvent m_pCbVideoEvent;
 	mu_uint32 m_uUserData;

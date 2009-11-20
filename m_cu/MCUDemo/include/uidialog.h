@@ -8,7 +8,7 @@
 
 #pragma once
 #include "afxwin.h"
-#include "mcudef.h"
+#include "mculib.h"
 #include <set>
 
 class CUIDialog :

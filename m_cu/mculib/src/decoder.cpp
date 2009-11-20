@@ -6,7 +6,7 @@
 
 /** 静态变量定义及初始化. */
 CDecoder::TDecoderNameTable CDecoder::s_tDecoderNameTable;
-CMutex CDecoder::s_decoderNameTableLock;
+CMCUMutex CDecoder::s_decoderNameTableLock;
 
 CDecoder::PictrueCallback CDecoder::m_pPicCallBack = NULL;
 void * CDecoder::m_picCallbackParam = NULL;

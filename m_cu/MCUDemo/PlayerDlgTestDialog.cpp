@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "MCUDemo.h"
 #include "PlayerDlgTestDialog.h"
-#include "mcudef.h"
+#include "mculib.h"
 #include "PlayerDialog.h"
 
 #ifdef USE_FFMPEG

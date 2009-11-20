@@ -2,7 +2,7 @@
 #include "ImageShow.h"
 #include <InitGuid.h>
 #include <imgguids.h>
-#include "mcudef.h"
+#include "mculib.h"
 
 CImageShow::CImageShow(void)
 {

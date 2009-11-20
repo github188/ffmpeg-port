@@ -13,7 +13,7 @@
 
 /** 静态变量定义及初始化. */
 CKDVDecoderImpl::TDecoderNameTable CKDVDecoderImpl::s_tDecoderNameTable;
-CMutex CKDVDecoderImpl::s_decoderNameTableLock;
+CMCUMutex CKDVDecoderImpl::s_decoderNameTableLock;
 
 CKDVDecoderImpl * CKDVDecoderImpl::GetDecoder( CBaseCodec::ECodecId eCodecId, LPCTSTR strName /* = NULL */ )
 {

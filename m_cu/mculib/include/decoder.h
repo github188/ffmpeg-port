@@ -90,7 +90,7 @@ private:
 	typedef std::map< tstring, CDecoder * > TDecoderNameTable;
 	static TDecoderNameTable s_tDecoderNameTable;
 	/** 为解码器名称映射表加锁保证线程安全的锁. */
-	static CMutex s_decoderNameTableLock;
+	static CMCUMutex s_decoderNameTableLock;
 
 private:
 	/** 用户设定的回调函数. */

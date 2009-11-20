@@ -386,7 +386,7 @@ void CMCUDemoDlg::OnMenuVideoPlay()
 
 	CMCUSession::Instance()->CurVideoSession()->PuId( _T( "27000000000000000011200003300000-1" ) );
 //	CMCUSession::Instance()->CurVideoSession()->PuId( _T( "12000000000000000011200001300000-1" ) );
-	CMCUSession::Instance()->CurVideoSession()->PtzAddr( _T( "172.16.160.125" ) );
+	CMCUSession::Instance()->CurVideoSession()->PtzIP( _T( "172.16.160.125" ) );
 //	CMCUSession::Instance()->CurVideoSession()->PtzAddr( _T( "172.16.131.100" ) );
 	CMCUSession::Instance()->CurVideoSession()->PtzPort( 5060 );
 	CMCUSession::Instance()->CurVideoSession()->StreamType( STREAM_1X );
@@ -728,7 +728,7 @@ LRESULT CMCUDemoDlg::OnHtmlPreLoad( WPARAM strUrlParam, LPARAM )
 	if ( !strPtzAddr.empty() && !strPtzPort.empty() && !strStreamType.empty() && !strPuId.empty() )
 	{
 		mcu::tlog << _T( "Is url with Param! " ) << strUrl << endl;
-		CMCUSession::Instance()->CurVideoSession()->PtzAddr( strPtzAddr );
+		CMCUSession::Instance()->CurVideoSession()->PtzIP( strPtzAddr );
 		CMCUSession::Instance()->CurVideoSession()->PtzPort( _ttoi( strPtzPort.c_str() ) );
 		CMCUSession::Instance()->CurVideoSession()->PuId( strPuId );
 		CMCUSession::Instance()->CurVideoSession()->StreamType( (EStreamType)_ttoi( strStreamType.c_str() ) );

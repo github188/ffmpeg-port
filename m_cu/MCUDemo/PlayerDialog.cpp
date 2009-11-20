@@ -913,7 +913,7 @@ void CPlayerDialog::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized)
 	{
 		if (g_bIsFirst)
   		{
-			g_bIsFirst = False;
+			g_bIsFirst = FALSE;
  		}else
 		{
 			BackupRtspPlayerRegKey();

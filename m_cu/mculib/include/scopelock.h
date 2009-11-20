@@ -22,11 +22,11 @@ private:
 
 /** 前置声明，摆脱头文件依赖。*/
 struct SDL_mutex;
-class MU_DECLSPEC CMutex : public CNoCopy
+class MU_DECLSPEC CMCUMutex : public CNoCopy
 {
 public:
-	CMutex();
-	~CMutex();
+	CMCUMutex();
+	~CMCUMutex();
 
 	BOOL Lock( const mu_uint32 dwTimeOut = INFINITE );
 	BOOL Unlock();
@@ -38,8 +38,8 @@ private:
 class MU_DECLSPEC CScopeLock
 {
 public:
-	CScopeLock( CMutex& pLock );
+	CScopeLock( CMCUMutex& pLock );
 	virtual ~CScopeLock(void);
 private:
-	CMutex *m_pMutex;
+	CMCUMutex *m_pMutex;
 };

@@ -9,12 +9,12 @@ CNoCopy::CNoCopy()
 
 }
 
-CMutex::CMutex()
+CMCUMutex::CMCUMutex()
 {
 	this->m_pMutex = SDL_CreateMutex();
 }
 
-CMutex::~CMutex()
+CMCUMutex::~CMCUMutex()
 {
 	if ( m_pMutex )
 	{
@@ -22,18 +22,18 @@ CMutex::~CMutex()
 	 }
 }
 
-BOOL CMutex::Lock( const mu_uint32 dwTimeOut /* = INFINITE */ )
+BOOL CMCUMutex::Lock( const mu_uint32 dwTimeOut /* = INFINITE */ )
 {
 //	mu_int32 ss = dwTimeOut;
 	return SDL_LockMutex( m_pMutex );
 }
 
-BOOL CMutex::Unlock()
+BOOL CMCUMutex::Unlock()
 {
 	return SDL_UnlockMutex( m_pMutex );
 }
 
-CScopeLock::CScopeLock( CMutex& pLock )
+CScopeLock::CScopeLock( CMCUMutex& pLock )
 {
 	m_pMutex = &pLock;
 	m_pMutex->Lock();

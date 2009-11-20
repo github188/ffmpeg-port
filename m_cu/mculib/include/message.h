@@ -124,10 +124,10 @@ namespace mcu
 		static CMCUMessage *s_instance;
 		
 		/** 单件模式安全锁。 */
-		static CMutex s_singletonLock;
+		static CMCUMutex s_singletonLock;
 		
 		/** 维持线程安全的锁。 */
-		CMutex m_threadSafeLock;
+		CMCUMutex m_threadSafeLock;
 		/** 消息处理线程。*/
 		SDL_Thread *m_pMessageHandleThread;
 
@@ -149,7 +149,7 @@ namespace mcu
 		/** 只能有一个SendMessage被处理。互斥锁。 
 		*	SendMessage 阻塞调用，所以使用Mutex就可以，不考虑同线程的调用。
 		*/
-		CMutex m_SendMessageLock;
+		CMCUMutex m_SendMessageLock;
 		/** 阻塞SendMessage等待处理结果的Semaphore*/
 		SDL_semaphore * m_semaphoreSendMessage;
 

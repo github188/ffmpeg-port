@@ -4,7 +4,7 @@
 #include "log.h"
 
 CEncoder::TEncoderNameTable CEncoder::s_tEncoderNameTable;
-CMutex CEncoder::s_encoderNameTableLock;
+CMCUMutex CEncoder::s_encoderNameTableLock;
 
 CEncoder::CEncoder(void)
 {

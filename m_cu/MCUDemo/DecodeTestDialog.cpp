@@ -167,7 +167,7 @@ int CDecodeTestDialog::DecodeThread( void * pvThis )
 		tPkt.data = videoBuf;
 		tPkt.datalen = nReadLen;
 	//	tPkt.timeStamp.tv_usec = ( nFrameCount * 100 ) % 1000;	// ²»ÓÃÉè¡£
-		tPkt.timeStamp.tv_sec = nFrameCount * 125;
+		tPkt.timeStamp = nFrameCount * 125 * 1000;
 
 		int nOldFrameCount = nFrameCount;
 		nFrameCount += pDec->InputStreamSync( tPkt );

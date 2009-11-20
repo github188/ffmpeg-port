@@ -4,9 +4,8 @@
 #include "stdafx.h"
 #include "MCUDemo.h"
 #include "HtmlWnd.h"
-#include "Config.h"
+#include "mculib.h"
 
-#include "mcucommon.h"
 // CHtmlWnd ¶Ô»°¿ò
 
 IMPLEMENT_DYNAMIC(CHtmlWnd, CDialog)

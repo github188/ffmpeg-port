@@ -104,7 +104,7 @@ private:
 //	CPTZDialog m_dlgPtz;
 
 	/** 线程安全锁.*/
-	CSDLMutex m_threadSafeLock;
+	CMCUMutex m_threadSafeLock;
 
 	/** 状态刷新定时器ID */
 	UINT_PTR m_dwStatusUpdateTimerId;
@@ -122,7 +122,7 @@ private:
 	int m_nTimeoutNoPacket;
 
 	/** 当前记录的RTSP状态. */
-	CMediaNet::ERTSPStatus m_eRtspStatus;
+	ERTSPStatus m_eRtspStatus;
 
 	/** 等待处理视频请求超时的消息. */
 	BOOL m_bCheckRtspTimeout;

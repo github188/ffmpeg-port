@@ -144,6 +144,86 @@ BOOL CConfig::SetServer( LPCTSTR strUrl )
 	return bResult;
 }
 
+BOOL CConfig::GetServerFullSvrUrl( LPTSTR ServerFullStr)
+{
+    BOOL bret = FALSE;
+    tstring strServer;
+    CConfig::Instance()->GetServer( strServer );
+
+    LPCTSTR ServerStr = strServer.c_str();
+    //LPCTSTR ServerStr = L"http:adf//172.16.160.24:8080/adfadf/adfadf/adfadf/";
+
+    TCHAR ServerPath[1024];
+    wcscpy( (LPTSTR)ServerPath, ServerStr);
+    LPCTSTR lpcopy = _wcslwr( (LPTSTR)ServerPath);
+
+    LPCTSTR lpProtocol = L"http://";
+    LPTSTR lpRet = wcsstr(ServerPath, lpProtocol);
+    if(lpRet != NULL && lpRet == lpcopy)
+    {
+        LPCTSTR lpRight = (LPCTSTR)ServerPath + wcslen(lpProtocol); 
+        LPTSTR lpRet2 = wcschr(lpRight,'/');
+        if((lpRet2 != NULL) && (lpRet2 > lpRet) && (lpRet2 - lpRet)>7 )
+        {
+            //符合格式 "http://server/..."
+            wcsncpy(ServerFullStr, ServerStr, (lpRet2 - lpRet) );
+            //wcsncpy(ServerFullStr, ServerStr, (lpRet2 - lpRet) + 1);
+            bret = TRUE;
+        }
+        else
+        {
+            //符合格式 "htpp://server" 需要补
+            //swprintf(ServerFullStr, L"%s%s", ServerStr, L"/");
+            wcscpy(ServerFullStr, ServerStr);
+            bret = TRUE;
+        }
+    }
+    else 
+    {
+        mcu::tlog << L"不是合法的HTTP地址" << endl;
+    }
+    return bret;
+}
+
+BOOL CConfig::GetServerFullUrl( LPTSTR ServerFullStr)
+{
+    BOOL bret = FALSE;
+    tstring strServer;
+    CConfig::Instance()->GetServer( strServer );
+
+    LPCTSTR ServerStr = strServer.c_str();
+    //LPCTSTR ServerStr = L"http:adf//172.16.160.24:8080/adfadf/adfadf/adfadf/";
+
+    TCHAR ServerPath[1024];
+    wcscpy( (LPTSTR)ServerPath, ServerStr);
+    LPCTSTR lpcopy = _wcslwr( (LPTSTR)ServerPath);
+
+    LPCTSTR lpProtocol = L"http://";
+    LPTSTR lpRet = wcsstr(ServerPath, lpProtocol);
+    if(lpRet != NULL && lpRet == lpcopy)
+    {
+        LPCTSTR lpRight = (LPCTSTR)ServerPath + wcslen(lpProtocol); 
+        LPTSTR lpRet2 = wcschr(lpRight,'/');
+        if((lpRet2 != NULL) && (lpRet2 > lpRet) && (lpRet2 - lpRet)>7 )
+        {
+            //符合格式 "http://server/..."
+            wcscpy(ServerFullStr, ServerStr);
+            bret = TRUE;
+        }
+        else
+        {
+            //符合格式 "htpp://server" 需要补/
+            swprintf(ServerFullStr, L"%s%s", ServerStr, L"/");
+            bret = TRUE;
+        }
+    }
+    else 
+    {
+        mcu::tlog << L"不是合法的HTTP地址" << endl;
+    }
+    return bret;
+}
+
 BOOL CConfig::GetLoginInfo( tstring& strUserId, tstring& strPw, EStreamType& eStreamType )
 {
 	strUserId = this->ReadConfig( CONFIG_ENTRY_USER, _T("") );

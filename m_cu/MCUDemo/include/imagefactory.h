@@ -1,6 +1,6 @@
 #pragma once
 
-#include "mcudef.h"
+#include "mculib.h"
 
 class CImageShow;
 

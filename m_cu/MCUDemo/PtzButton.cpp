@@ -4,7 +4,6 @@
 #include "stdafx.h"
 #include "MCUDemo.h"
 #include "PtzButton.h"
-#include "mcudef.h"
 
 #include "ImageFactory.h"
 #include "ImageShow.h"

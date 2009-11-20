@@ -58,7 +58,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\SDL\include;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;&quot;..\cppunit-1.12.1\include&quot;;..\mcucommonlib\include;..\kdvdecode\include\video;.\include;..\ffmpeg\libavformat;..\ffmpeg\libavcodec;..\ffmpeg\libavutil;..\ffmpeg\"
+				AdditionalIncludeDirectories="..\SDL\include;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;&quot;..\cppunit-1.12.1\include&quot;;..\mculib\include;..\kdvdecode\include\video;.\include;..\ffmpeg\libavformat;..\ffmpeg\libavcodec;..\ffmpeg\libavutil;..\ffmpeg\"
 				PreprocessorDefinitions="UNIT_TEST;_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
@@ -83,9 +83,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib imaging.lib uuid.lib cppunitd.lib mcucommonlib.lib wincecodec.lib libcmtd.lib ffmpeg.lib"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib imaging.lib uuid.lib cppunitd.lib wincecodec.lib libcmtd.lib ffmpeg.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\SDL\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Debug&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\debug&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/debug&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\debug&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/debug&quot;;&quot;..\cppunit-1.12.1\lib&quot;;..\kdvdecode\lib;&quot;..\mcucommonlib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Debug&quot;;&quot;..\ffmpeg\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Debug&quot;"
+				AdditionalLibraryDirectories="&quot;..\SDL\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Debug&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\debug&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/debug&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\debug&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/debug&quot;;&quot;..\cppunit-1.12.1\lib&quot;;..\kdvdecode\lib;&quot;..\mculib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Debug&quot;;&quot;..\ffmpeg\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Debug&quot;"
 				IgnoreDefaultLibraryNames="MSVCR90D.lib;MSVCR90.lib"
 				GenerateDebugInformation="true"
 				StackReserveSize="65536"
@@ -510,7 +510,7 @@
 				ExecutionBucket="7"
 				Optimization="2"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="&quot;..\SDL\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;..\mcucommonlib\include;..\kdvdecode\include\video;.\include;..\ffmpeg\libavformat;..\ffmpeg\libavutil;..\ffmpeg\libavcodec;..\ffmpeg\"
+				AdditionalIncludeDirectories="..\SDL\include;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;..\mculib\include;..\kdvdecode\include\video;.\include;..\ffmpeg\libavformat;..\ffmpeg\libavutil;..\ffmpeg\libavcodec;..\ffmpeg\"
 				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
@@ -533,10 +533,10 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib mcucommonlib.lib wincecodec.lib ffmpeg.lib"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib mculib.lib wincecodec.lib ffmpeg.lib"
 				OutputFile="$(OutDir)\KDMCU.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\SDL\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\kdvdecode\lib;&quot;..\mcucommonlib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\release&quot;;&quot;..\ffmpeg\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;"
+				AdditionalLibraryDirectories="&quot;..\SDL\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\kdvdecode\lib;&quot;..\mculib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\release&quot;;&quot;..\ffmpeg\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;"
 				GenerateDebugInformation="true"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
@@ -1897,7 +1897,7 @@
 				ExecutionBucket="7"
 				Optimization="2"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;..\mcucommonlib\include;..\kdvdecode\include\video;.\include;..\ffmpeg\libavformat;..\ffmpeg\libavutil;..\ffmpeg\libavcodec;..\ffmpeg\;&quot;..\cppunit-1.12.1\include&quot;"
+				AdditionalIncludeDirectories="..\SDL\include;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;..\mculib\include;..\kdvdecode\include\video;.\include;..\ffmpeg\libavformat;..\ffmpeg\libavutil;..\ffmpeg\libavcodec;..\ffmpeg\;&quot;..\cppunit-1.12.1\include&quot;"
 				PreprocessorDefinitions="UNIT_TEST;NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
@@ -1920,10 +1920,10 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="cppunit.lib htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib mcucommonlib.lib wincecodec.lib ffmpeg.lib"
+				AdditionalDependencies="cppunit.lib htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib mculib.lib wincecodec.lib ffmpeg.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\cppunit-1.12.1\lib&quot;;&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\kdvdecode\lib;&quot;..\mcucommonlib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\release&quot;;&quot;..\ffmpeg\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;"
+				AdditionalLibraryDirectories="&quot;..\cppunit-1.12.1\lib&quot;;&quot;..\SDL\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\kdvdecode\lib;&quot;..\mculib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\release&quot;;&quot;..\ffmpeg\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;"
 				GenerateDebugInformation="true"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
@@ -3295,7 +3295,7 @@
 				ExecutionBucket="7"
 				Optimization="2"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="&quot;..\SDL\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;..\mcucommonlib\include;..\kdvdecode\include\video;.\include;..\ffmpeg;..\ffmpeg\libavformat;..\ffmpeg\libavcodec;..\ffmpeg\libavutil"
+				AdditionalIncludeDirectories="..\SDL\include;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;..\mculib\include;..\kdvdecode\include\video;.\include;..\ffmpeg;..\ffmpeg\libavformat;..\ffmpeg\libavcodec;..\ffmpeg\libavutil"
 				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
@@ -3318,10 +3318,10 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib mcucommonlib.lib wincecodec.lib"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib mculib.lib wincecodec.lib"
 				OutputFile="$(OutDir)\Mega Eyes.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\SDL\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\kdvdecode\lib;&quot;..\mcucommonlib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\release&quot;"
+				AdditionalLibraryDirectories="&quot;..\SDL\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\kdvdecode\lib;&quot;..\mculib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\release&quot;"
 				GenerateDebugInformation="true"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
@@ -3766,7 +3766,7 @@
 				ExecutionBucket="7"
 				Optimization="2"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="&quot;..\SDL\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;..\mcucommonlib\include;..\kdvdecode\include\video;.\include;..\ffmpeg;..\ffmpeg\libavformat;..\ffmpeg\libavcodec;..\ffmpeg\libavutil"
+				AdditionalIncludeDirectories="..\SDL\include;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;..\mculib\include;..\kdvdecode\include\video;.\include;..\ffmpeg;..\ffmpeg\libavformat;..\ffmpeg\libavcodec;..\ffmpeg\libavutil"
 				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
@@ -3789,10 +3789,10 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib mcucommonlib.lib wincecodec.lib"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib mculib.lib wincecodec.lib"
 				OutputFile="$(OutDir)\CUView.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\SDL\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\kdvdecode\lib;&quot;..\mcucommonlib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\release&quot;"
+				AdditionalLibraryDirectories="&quot;..\SDL\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\kdvdecode\lib;&quot;..\mculib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\release&quot;"
 				GenerateDebugInformation="true"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
@@ -4807,10 +4807,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\MCUSession.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\MediaPlayer.cpp"
 				>
 			</File>
@@ -5182,14 +5178,6 @@
 					/>
 				</FileConfiguration>
 			</File>
-			<File
-				RelativePath=".\UrlParse.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\VideoSession.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="头文件"
@@ -5197,15 +5185,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\errno.h"
-				>
-			</File>
-			<File
 				RelativePath=".\MCUDemo.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MCUSession.h"
 				>
 			</File>
 			<File
@@ -5214,18 +5194,6 @@
 			</File>
 			<File
 				RelativePath=".\PtzButton.h"
-				>
-			</File>
-			<File
-				RelativePath=".\PtzControl.h"
-				>
-			</File>
-			<File
-				RelativePath=".\UrlParse.h"
-				>
-			</File>
-			<File
-				RelativePath=".\VideoSession.h"
 				>
 			</File>
 		</Filter>
@@ -6511,18 +6479,6 @@
 			Name="common"
 			>
 			<File
-				RelativePath=".\mcudef.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\mcudef.h"
-				>
-			</File>
-			<File
-				RelativePath=".\portab.h"
-				>
-			</File>
-			<File
 				RelativePath=".\resourceppc.h"
 				>
 			</File>
@@ -6542,34 +6498,6 @@
 		<Filter
 			Name="rtsp"
 			>
-			<File
-				RelativePath=".\H264StreamDecodeSink.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\H264StreamDecodeSink.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MediaNet.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\MediaNet.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Mpeg4StreamDecodeSink.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Mpeg4StreamDecodeSink.h"
-				>
-			</File>
-			<File
-				RelativePath=".\openRTSP.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="UI"
@@ -6612,10 +6540,6 @@
 			</File>
 			<File
 				RelativePath=".\include\pictruestatic.h"
-				>
-			</File>
-			<File
-				RelativePath=".\PtzControl.cpp"
 				>
 			</File>
 			<File
@@ -6663,14 +6587,6 @@
 			Name="配置"
 			>
 			<File
-				RelativePath=".\Config.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Config.h"
-				>
-			</File>
-			<File
 				RelativePath=".\src\configdialog.cpp"
 				>
 			</File>
@@ -6694,244 +6610,6 @@
 		<Filter
 			Name="Codec"
 			>
-			<File
-				RelativePath=".\src\basecodec.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\basecodec.h"
-				>
-			</File>
-			<File
-				RelativePath=".\decoder.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\decoder.h"
-				>
-			</File>
-			<File
-				RelativePath=".\src\encoder.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\encoder.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ffplay.c"
-				>
-				<FileConfiguration
-					Name="Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						CompileAs="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Windows Mobile 6 Professional SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						CompileAs="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="debug-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						CompileAs="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="debug-oldffmpeglib|Windows Mobile 6 Professional SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						CompileAs="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="UnitTestRelease|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DebugFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						CompileAs="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DebugFFMpeg|Windows Mobile 6 Professional SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						CompileAs="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\ffplay.h"
-				>
-				<FileConfiguration
-					Name="Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Windows Mobile 6 Professional SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="UnitTestRelease|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\src\h264decoder.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\h264decoder.h"
-				>
-			</File>
-			<File
-				RelativePath=".\src\h264streamparse.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\h264streamparse.h"
-				>
-			</File>
-			<File
-				RelativePath=".\src\jpegencoder.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\jpegencoder.h"
-				>
-			</File>
-			<File
-				RelativePath=".\src\kdvdecoderimpl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\kdvdecoderimpl.h"
-				>
-			</File>
-			<File
-				RelativePath=".\src\kdvencoderimpl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\kdvencoderimpl.h"
-				>
-			</File>
-			<File
-				RelativePath=".\src\mpeg4decoder.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\mpeg4decoder.h"
-				>
-			</File>
-			<File
-				RelativePath=".\src\mpeg4streamparse.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\mpeg4streamparse.h"
-				>
-			</File>
-			<Filter
-				Name="Recoder"
-				>
-				<File
-					RelativePath=".\src\ffmpegrecorderimpl.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\include\ffmpegrecorderimpl.h"
-					>
-				</File>
-				<File
-					RelativePath=".\src\getconfig.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\include\getconfig.h"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<Filter
 			Name="编解码库头文件"
