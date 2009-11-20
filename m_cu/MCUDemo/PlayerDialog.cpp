@@ -608,6 +608,8 @@ void CPlayerDialog::OnBnClickedButtonCapture()
 	tstring strPicDir;
 	CConfig::Instance()->GetCaptureDir( strPicDir );
 
+    
+
 	// 创建文件夹。
 	BOOL bResult = ::CreateDirectory( strPicDir.c_str(), NULL );
 
@@ -691,24 +693,30 @@ void CPlayerDialog::UpdateRecordButton()
 tstring CPlayerDialog::GetFileName( LPCTSTR strDir, LPCTSTR lpPuName, LPCTSTR strFileExt )
 {
 	tstringstream ssFileName;
-	SYSTEMTIME sysTime;
-	GetLocalTime( &sysTime );
-	CTime sysNow( sysTime );
 
-	CString strTime;
-	strTime = ::TimeToStr( sysNow.GetTime() ).c_str();
+    while( ssFileName.str().empty() || IsFileExist( ssFileName.str().c_str() ) )
+    {
+        tstring strTime;
+        strTime = ::TimeToStr( ::GetCurTime() ).c_str();
 
-    tstring strPuName = lpPuName;
-    strPuName = strPuName.substr( 0, 5 );
+        // 时间只保留月日小时。
+        strTime = strTime.substr( 4, 8 );
 
-	// 文件名最后要加3位随机数。
-	int nRadom = GetTickCount();
-	CString strRadom;
-	strRadom.Format( _T( "%03d" ), nRadom ) ;
-	strRadom = strRadom.Right( 3 );
+        // 前端名只保留5位，限制长度。
+        tstring strPuName = lpPuName;
+        strPuName = strPuName.substr( 0, 5 );
 
-	//strPicDir + strPuName + _T( "_" ) + (LPCTSTR)strTime + strRadom + _T( ".jpg" );
-	ssFileName << strDir << strPuName << _T( "_" ) << (LPCTSTR)strTime << (LPCTSTR)strRadom << _T( "." ) << strFileExt;
+        // 文件名最后要加3位随机数。
+        int nRadom = GetTickCount();
+        CString strRadom;
+        strRadom.Format( _T( "%03d" ), nRadom ) ;
+        strRadom = strRadom.Right( 3 );
+
+        //strPicDir + strPuName + _T( "_" ) + (LPCTSTR)strTime + strRadom + _T( ".jpg" );
+        ssFileName << strDir << strPuName << _T( "_" ) << strTime << (LPCTSTR)strRadom << _T( "." ) << strFileExt;
+    }
+
+	
 	return ssFileName.str();
 }
 void CPlayerDialog::OnOK()

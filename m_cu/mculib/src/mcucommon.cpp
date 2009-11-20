@@ -463,4 +463,27 @@ TFileList EnumAllFile( LPCTSTR strFolder )
 }
 
 
+void NormalizeDir( tstring& strFolder )
+{
+    if ( strFolder.empty() )
+    {
+        return;
+    }
+
+#if defined( _WIN32_WCE )
+    const TCHAR chDirToken = '\\';
+    const TCHAR chWrongDirToken = '/';
+#else
+    const TCHAR chDirToken = '/';
+    const TCHAR chWrongDirToken = '\\';
+#endif
+
+    replace( strFolder.begin(), strFolder.end(), chWrongDirToken, chDirToken );
+
+    if ( strFolder.at( strFolder.size() - 1 ) != chDirToken )
+    {
+        strFolder += chDirToken;
+    }
+}
+
 

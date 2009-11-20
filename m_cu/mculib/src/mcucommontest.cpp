@@ -6,6 +6,8 @@
 // Registers the fixture into the 'registry'
 CPPUNIT_TEST_SUITE_REGISTRATION( CMCUCommonTest );
 
+CMCUCommonTest kkkk;
+
 CMCUCommonTest::CMCUCommonTest(void)
 {
 }
@@ -135,4 +137,16 @@ void CMCUCommonTest::TestDelFile()
 	}
 }
 
+void CMCUCommonTest::TestNormalizeDir()
+{
+    tstring strDir = _T( "/root/test" );
+
+    NormalizeDir( strDir );
+
+#ifdef _WIN32_WCE
+    CPPUNIT_ASSERT_EQUAL( tstring( _T( "\\root\\test\\" ) ), strDir );
+#else
+    CPPUNIT_ASSERT_EQUAL( tstring( _T( "/root/test/" ) ), strDir );
+#endif
+}
 

@@ -19,6 +19,7 @@ private:
 	CPPUNIT_TEST( TestParsePath );
 	CPPUNIT_TEST( TestEnumFolder );
 	CPPUNIT_TEST( TestDelFile );
+    CPPUNIT_TEST( TestNormalizeDir );
 //	CPPUNIT_TEST_EXCEPTION( testAddThrow, IncompatibleMoneyError );
 	CPPUNIT_TEST_SUITE_END();
 public:
@@ -42,4 +43,7 @@ public:
 	
 	/** 测试删除文件。 */
 	void TestDelFile();
+
+    /** 测试文件夹名处理。 */
+    void TestNormalizeDir();
 };

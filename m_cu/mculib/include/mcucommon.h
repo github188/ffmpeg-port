@@ -83,5 +83,8 @@ MU_DECLSPEC BOOL GetLocalTime( const time_t time, tm * plocalTime );
 typedef std::vector< tstring > TFileList;
 MU_DECLSPEC TFileList EnumAllFile( LPCTSTR strFolder );
 
+/** 将一个文件夹变成标准的形式。 */
+MU_DECLSPEC void NormalizeDir( tstring& strFolder );
+
 
 

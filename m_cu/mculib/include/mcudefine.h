@@ -135,6 +135,8 @@ extern LPCTSTR UI_PIC_DIR ;
 */
 extern const int MIN_STORAGE_SPACE ;
 
+
+
 // º”√‹√‹‘ø°£
 extern char s_EncKey[16] ;
 

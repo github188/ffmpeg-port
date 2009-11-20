@@ -398,15 +398,9 @@ BOOL CConfig::GetCaptureDir( tstring& strCaptureDir )
 			strCaptureDir = CONFIG_DEFAULT_CAPTURE_DIR_RAM;
 		}
 	}
-	else
-	{
-		// 末尾添加 ‘/’
-		if ( strCaptureDir.at( strCaptureDir.size() - 1 ) != '/' )
-		{
-			strCaptureDir += _T( "/" );
-		}
-	}
 
+    // 标准化文件夹。
+    NormalizeDir( strCaptureDir );
 //	mcu::tlog << _T( "CConfig::GetCaptureDir [" ) << strCaptureDir << _T( "]" )<< endl;
 
 	return ( !strCaptureDir.empty() );

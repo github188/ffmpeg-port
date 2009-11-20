@@ -65,6 +65,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				LinkLibraryDependencies="false"
 				AdditionalOptions=" /subsystem:windowsce,5.01"
 				OutputFile="$(OutDir)/mculib.lib"
 			/>
