@@ -5,8 +5,23 @@
 #include "cppunit/extensions/TestFactoryRegistry.h"
 #include "cppunit/ui/text/TestRunner.h"
 
+#ifdef _WIN32_WCE
+#include "mcucommontest.h"
+#include "xmlparsetest.h"
+#include "mcuconfigtest.h"
+#endif
+
 BOOL RunUnitTest()
 {
+    // vc 链接的时候默认的会把单元测试的cpp去除。
+    // 修改链接选项无效，暂时在这里引用一下，强制链接。
+#ifdef _WIN32_WCE
+    CMCUCommonTest tmp0;
+    CXMLParseTest tmp1;
+    CMcuConfigTest tmp2;
+
+#endif
+
 	// Get the top level suite from the registry
 	CPPUNIT_NS::Test *suite = CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest();
 

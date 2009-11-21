@@ -154,14 +154,14 @@ BOOL CXmlParse::ReleaseXML()
 {
 	BOOL bSuccess = TRUE;
 #ifdef USE_MS_XML_PARSER
-	//if ( this->m_pXMLRootNode )
-	//{
-	//	this->m_pXMLRootNode.Release();
-	//}
-	//if ( this->m_pXMLDoc )
-	//{
-	//	this->m_pXMLDoc.Release();
-	//}
+	if ( this->m_pXMLRootNode )
+	{
+		this->m_pXMLRootNode.Release();
+	}
+	if ( this->m_pXMLDoc )
+	{
+		this->m_pXMLDoc.Release();
+	}
 #endif
 
 #ifdef USE_LIB_XML

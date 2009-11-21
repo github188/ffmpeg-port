@@ -228,6 +228,8 @@ BOOL CMCUDemoApp::IsAppNormalExit()
 	}
 }
 
+
+
 BOOL CMCUDemoApp::InitInstance()
 {
 #if defined(WIN32_PLATFORM_PSPC) || defined(WIN32_PLATFORM_WFSP)
@@ -241,6 +243,7 @@ BOOL CMCUDemoApp::InitInstance()
 		AfxMessageBox(IDP_SOCKETS_INIT_FAILED);
 		return FALSE;
 	}
+
 
 	AfxEnableControlContainer();
 	// 分析标准外壳命令、DDE、打开文件操作的命令行
@@ -425,18 +428,27 @@ BOOL CMCUDemoApp::ExitInstance(void)
 #ifdef UNIT_TEST
 void CMCUDemoApp::UnitTest()
 {
-	// Get the top level suite from the registry
-	CPPUNIT_NS::Test *suite = CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest();
 
-	// Adds the test to the list of test to run
-	CPPUNIT_NS::TextUi::TestRunner runner;
-	runner.addTest( suite );
+ //   // VC链接的时候总是会忽略掉单元测试类的cpp，这里把单元测试类引用一次，以便强制链接。
+ //   // 链接选项修改无效，后续再做深入研究。
+ //   CMCUCommonTest tmp0;
+ //   CXMLParseTest tmp1;
+ //   CMcuConfigTest tmp2;
 
-	// Change the default outputter to a compiler error format outputter
-	runner.setOutputter( new CPPUNIT_NS::CompilerOutputter( &runner.result(),
-		CPPUNIT_NS::stdCOut() ) );
-	// Run the test.
-	bool wasSucessful = runner.run();
+	//// Get the top level suite from the registry
+	//CPPUNIT_NS::Test *suite = CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest();
+
+	//// Adds the test to the list of test to run
+	//CPPUNIT_NS::TextUi::TestRunner runner;
+	//runner.addTest( suite );
+
+	//// Change the default outputter to a compiler error format outputter
+	//runner.setOutputter( new CPPUNIT_NS::CompilerOutputter( &runner.result(),
+	//	CPPUNIT_NS::stdCOut() ) );
+	//// Run the test.
+	//bool wasSucessful = runner.run();
+
+    BOOL wasSucessful = RunUnitTest();
 
 	if( !wasSucessful )
 	{

@@ -12,6 +12,8 @@
 #include "message.h"
 #include "mcuconfig.h"
 
+#include "unittestmain.h"
+
 #include "virtualwebpagectrl.h"
 #include "virtualloginwnd.h"
 #include "virtualplayerwnd.h"

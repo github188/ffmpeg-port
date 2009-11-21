@@ -6,7 +6,7 @@
 // Registers the fixture into the 'registry'
 CPPUNIT_TEST_SUITE_REGISTRATION( CMCUCommonTest );
 
-CMCUCommonTest kkkk;
+
 
 CMCUCommonTest::CMCUCommonTest(void)
 {

@@ -484,6 +484,7 @@ void NormalizeDir( tstring& strFolder )
     {
         strFolder += chDirToken;
     }
+
 }
 
 
