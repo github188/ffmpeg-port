@@ -47,11 +47,11 @@ void CRecordStatic::OnPaint()
 
 	// 写字.
 	// 解析文件名.
-	CString strRecFileBaseName = ParsePath( this->m_strRecPath.c_str() ).m_strBaseName.c_str();
+//	CString strRecFileBaseName = ParsePath( this->m_strRecPath.c_str() ).m_strBaseName.c_str();
 
 	CTime cRecTime;
 	tstring strPuName;
-	BOOL bResult = this->GetRecInfo( strRecFileBaseName, strPuName, cRecTime );
+	BOOL bResult = this->GetRecInfo( this->m_strRecPath.c_str(), strPuName, cRecTime );
 
 	CString strDate;
 	CString strTime;
@@ -124,22 +124,35 @@ void CRecordStatic::SetSelected( BOOL bSelected, BOOL bRepaint/* = TRUE*/ )
 	}
 }
 
-BOOL CRecordStatic::GetRecInfo( LPCTSTR lpstrRecFileName, tstring& strPuName, CTime& timeRec )
+BOOL CRecordStatic::GetRecInfo( LPCTSTR lpstrRecFilePath, tstring& strPuName, CTime& timeRec )
 {
-	// 文件名是 前端名_年月日时分秒XXX 其中XXX是3位随机数字。 
-	
-	CString strRecFileName = lpstrRecFileName;
+		
+	CString strRecFileName = ParsePath( lpstrRecFilePath ).m_strBaseName.c_str();
 
 	// 去掉最后面的随机数。
-	strRecFileName = strRecFileName.Left( strRecFileName.GetLength() - 3 );
+//	strRecFileName = strRecFileName.Left( strRecFileName.GetLength() - 3 );
+
+    int nIndex = strRecFileName.Find( '_' );
+    if ( nIndex > 0 )
+    {
+        strPuName = strRecFileName.Left( nIndex );
+    }
+    else if( nIndex < 0 )
+    {
+        strPuName = strRecFileName;
+    }
 
 	// 时间在文件名的最后。
-	const int conTimeLen = 4 + 2 + 2 + 2 + 2 + 2; // 年月日时分秒。 
-	CString strDateTime = strRecFileName.Right( conTimeLen );
-	strPuName = strRecFileName.Left( strRecFileName.GetLength() - conTimeLen - 1 );// 去掉时间和"_"连接符。
+//	const int conTimeLen = 4 + 2 + 2 + 2 + 2 + 2; // 年月日时分秒。 
+//	CString strDateTime = strRecFileName.Right( conTimeLen );
+//	strPuName = strRecFileName.Left( strRecFileName.GetLength() - conTimeLen - 1 );// 去掉时间和"_"连接符。
 
-	__time64_t nTime = ::StrToTime( strDateTime );
-	timeRec = CTime( nTime );
+    
+//	__time64_t nTime = ::StrToTime( strDateTime );
+//	timeRec = CTime( nTime );
+    CFileStatus cFS;
+    BOOL bResult = CFile::GetStatus( lpstrRecFilePath, cFS );
+    timeRec = cFS.m_ctime;
 
-	return ( nTime > 0 );
+	return bResult;
 }

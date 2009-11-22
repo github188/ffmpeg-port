@@ -387,23 +387,16 @@ __time64_t GetCurTime()
 tstring TimeToStr( __time64_t nTime )
 {
 	tstring strTimeResult;
-#ifdef _WIN32
-	CTime time( nTime );
-	CString strTime;
-	strTime.Format( _T( "%04d%02d%02d%02d%02d%02d" ), time.GetYear(), time.GetMonth(), 
-		time.GetDay(), time.GetHour(), time.GetMinute(), time.GetSecond() );
-	strTimeResult = (LPCTSTR)strTime;
-#else
+
 	tm localTime;
 	if( GetLocalTime( nTime, &localTime ) )
 	{
 		tstringstream ssTime;
-		ssTime << setfill( '0' ) << setw(4) << ( localTime.tm_year + 1900 );
-		ssTime << setw(2) << localTime.tm_mon + 1 << localTime.tm_mday;
-		ssTime << setw(2) << localTime.tm_hour << localTime.tm_min << localTime.tm_sec;
+		ssTime << setfill( _T( '0' ) ) << setw(4) << ( localTime.tm_year + 1900 );
+		ssTime << setw(2) << localTime.tm_mon + 1 << setw(2) << localTime.tm_mday;
+		ssTime << setw(2) << localTime.tm_hour << setw(2) << localTime.tm_min << setw(2) << localTime.tm_sec;
 		strTimeResult = ssTime.str();
 	}
-#endif
 	return strTimeResult;
 }
 

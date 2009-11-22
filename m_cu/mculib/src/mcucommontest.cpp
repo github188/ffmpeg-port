@@ -150,3 +150,16 @@ void CMCUCommonTest::TestNormalizeDir()
 #endif
 }
 
+void CMCUCommonTest::TestTimeStr()
+{
+    // 数字0，应该对应1970年1月1日 00：00：00 。但我们是东八区，时区转换后落后8小时。
+    // 于是测试数字选择为 3600 × 8 + 6，我们东八区应该正好是1970/1/1 00：00：06.
+    const __time64_t TestTime = 3600 * 8 + 6;
+    tstring strTime = TimeToStr( TestTime );
+
+    CPPUNIT_ASSERT_EQUAL( tstring( _T( "19700101000006" ) ), strTime );
+
+    __time64_t tTime = StrToTime( strTime.c_str() );
+
+    CPPUNIT_ASSERT_EQUAL( TestTime, tTime );
+}

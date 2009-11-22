@@ -44,6 +44,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_156A82EF67864D5FA59BC809A4ECCC20"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_173E036D95D74CA8B7BF069DE5A95D11"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -656,6 +662,24 @@
             "TargetName" = "8:titlebg.JPG"
             "Tag" = "8:"
             "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_156A82EF67864D5FA59BC809A4ECCC20"
+            {
+            "SourcePath" = "8:..\\config\\mcucfg_tel.xml"
+            "TargetName" = "8:mcucfg.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_498EA9CD317241238C891AD1282795B1"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"

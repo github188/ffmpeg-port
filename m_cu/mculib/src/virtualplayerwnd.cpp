@@ -192,11 +192,21 @@ BOOL CVirtualPlayerWnd::Capture( EMCU_ErrorCode& eErrorCode )
 	time_t now = GetCurTime();
 	tstring strTime = TimeToStr( now );
 
+    // 时间只保留 月 日 小时 分钟。
+    strTime = strTime.substr( 4, 8 );
+
 	tstring strDir;
 	CConfig::Instance()->GetCaptureDir( strDir );
 
 	tstring strPuName;
 	CMCUSession::Instance()->CurVideoSession()->PuName( strPuName );
+
+    // 前端名只保留5个字。需要区别unicode和非unicode下的中文，英文。
+    if ( !strPuName.empty() )
+    {
+        strPuName = strPuName.substr( 0, 10 / sizeof( strPuName[0] )  );
+    }
+    
 
 	tstringstream ssFileName;
 

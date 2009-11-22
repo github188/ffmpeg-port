@@ -11,6 +11,7 @@ CConfig *CConfig::s_instance = 0;
 
 /** 相关常量定义。 */
 static LPCTSTR CONFIG_FILE_NAME = _T( "mcucfg.xml" );
+static LPCTSTR CONFIG_BK_FILE = _T( "mcucfgbk.xml" );
 static LPCTSTR CONFIG_SECTION_CONFIG_NAME = _T( "config" );
 
 static LPCTSTR CONFIG_ENTRY_SERVER_URL = _T( "server" );
@@ -58,6 +59,14 @@ CConfig::CConfig(void)
 
 	mcu::tlog << _T( "config load xml: " ) << strXmlFile << _T( " result: ") << bResult << endl;
 	_ASSERT( bResult );
+
+    m_pBkCfgxmlParse = NULL;
+    this->m_pBkCfgxmlParse = new CXmlParse();
+    tstring strPresetFile = this->GetBkCfgFilePath();
+
+    bResult = this->m_pBkCfgxmlParse->LoadXML( strPresetFile.c_str(), CONFIG_SECTION_CONFIG_NAME );
+    mcu::tlog << _T( "config load preset: " ) << strPresetFile << _T( " result: " ) << bResult << endl;
+
 //	bResult = this->m_pXmlParse->SetCurRootElement( CONFIG_SECTION_CONFIG_NAME );
 //	mcu::tlog << _T( "config set config root: result: ") << bResult << endl;
 }
@@ -110,6 +119,21 @@ tstring CConfig::GetDefaultConfigFilePath() const
 		MakeDir( strPath.c_str() );
 	}
 	return  ( strPath + CONFIG_FILE_NAME ).c_str();
+#endif
+}
+
+tstring CConfig::GetBkCfgFilePath() const
+{
+#ifdef _WIN32
+    tstring strPath = ::GetAppDir();
+    return ( strPath + CONFIG_BK_FILE ).c_str();
+#else
+    tstring strPath = _T( "/usr/share/mcu/" );
+    if( !IsFileExist( strPath.c_str() ) )
+    {
+        MakeDir( strPath.c_str() );
+    }
+    return  ( strPath + CONFIG_BK_FILE ).c_str();
 #endif
 }
 
@@ -485,10 +509,18 @@ tstring CConfig::ReadConfig( LPCTSTR strCfgEntryName, LPCTSTR strDefault )
 {
 	tstring strResult;
 
+    if ( m_pXmlParse == NULL )
+    {
+        return _T( "" );
+    }
 	strResult = this->m_pXmlParse->GetElementValue( strCfgEntryName );
-	if ( strResult.empty() )
+	if ( strResult.empty() && m_pBkCfgxmlParse )
 	{
-		strResult = strDefault;
+        strResult = this->m_pBkCfgxmlParse->GetElementValue( strCfgEntryName );
+        if ( strResult.empty() )
+        {
+            strResult = strDefault;
+        }		
 	}
 	
 
@@ -498,7 +530,17 @@ tstring CConfig::ReadConfig( LPCTSTR strCfgEntryName, LPCTSTR strDefault )
 BOOL CConfig::WriteConfig( LPCTSTR strCfgEntryName, LPCTSTR strValue )
 {
 	BOOL bResult = FALSE;
-	bResult = this->m_pXmlParse->SetElementValue( strCfgEntryName, strValue );
+
+    if ( m_pXmlParse )
+    {
+        bResult = this->m_pXmlParse->SetElementValue( strCfgEntryName, strValue );
+
+        if ( m_pBkCfgxmlParse )
+        {
+            this->m_pBkCfgxmlParse->SetElementValue( strCfgEntryName, strValue );
+        }        
+    }
+	
 	return bResult;
 
 }

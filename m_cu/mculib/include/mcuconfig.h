@@ -92,6 +92,9 @@ private:
 	/** 获取XML文件名。 */
 	tstring GetDefaultConfigFilePath() const;
 
+    /** 获取预设文件路径。 */
+    tstring GetBkCfgFilePath() const;
+
 	/** 读取。 */
 	tstring ReadConfig( LPCTSTR strCfgEntryName, LPCTSTR strDefault );
 	int		ReadConfig( LPCTSTR strCfgEntryName, int nDefault );
@@ -102,4 +105,7 @@ private:
 
 private:
 	CXmlParse *m_pXmlParse;
+
+    /** 程序预设配置文件 */
+    CXmlParse *m_pBkCfgxmlParse;
 };

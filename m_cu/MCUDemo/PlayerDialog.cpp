@@ -699,7 +699,7 @@ tstring CPlayerDialog::GetFileName( LPCTSTR strDir, LPCTSTR lpPuName, LPCTSTR st
         tstring strTime;
         strTime = ::TimeToStr( ::GetCurTime() ).c_str();
 
-        // 时间只保留月日小时。
+        // 时间只保留月日小时分钟。
         strTime = strTime.substr( 4, 8 );
 
         // 前端名只保留5位，限制长度。
