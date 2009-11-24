@@ -41,7 +41,7 @@ CDecoder * CDecoder::CreateDecoder( ECodecId eCodecId, int nBandWidth, LPCTSTR s
 		pDec = new CMpeg4Decoder(); 
 		break;	
 	default:
-		mcu::tlog << _T( "unknown codec! " ) << endl;
+		mcu::log << _T( "unknown codec! " ) << endl;
 		_ASSERT( FALSE );
 		return 0;
 	    break;
@@ -50,7 +50,7 @@ CDecoder * CDecoder::CreateDecoder( ECodecId eCodecId, int nBandWidth, LPCTSTR s
 	BOOL bResult = pDec->Init( nBandWidth );
 	if ( !bResult )
 	{
-		mcu::tlog << _T( "decoder Init Fail! bandwidth: " ) << nBandWidth << endl;
+		mcu::log << _T( "decoder Init Fail! bandwidth: " ) << nBandWidth << endl;
 	}
 	
 	_ASSERT( bResult );

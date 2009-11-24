@@ -9,6 +9,10 @@
 #define IDP_SOCKETS_INIT_FAILED         103
 #define IDR_MCUDEMO                     104
 #define IDR_HTML_DIRSELECTDIALOG        105
+#define IDR_M_CU                        106
+#define IDR_M_CU1                       108
+#define IDR_M_CU2                       110
+#define IDR_M_CU3                       112
 #define IDR_MAINFRAME                   128
 #define IDD_DIALOG_LOGIN                129
 #define IDR_MENU_LEFT                   130
@@ -251,6 +255,6 @@
 #define _APS_NEXT_RESOURCE_VALUE        153
 #define _APS_NEXT_COMMAND_VALUE         32838
 #define _APS_NEXT_CONTROL_VALUE         1081
-#define _APS_NEXT_SYMED_VALUE           106
+#define _APS_NEXT_SYMED_VALUE           113
 #endif
 #endif

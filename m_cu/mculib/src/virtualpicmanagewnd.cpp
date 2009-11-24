@@ -42,12 +42,12 @@ void CVirtualPicManageWnd::CheckUpdatePicFile( )
 
 	if ( m_strPicFolder.empty() )
 	{
-		mcu::tlog << _T( "UpdatePicShow, Pic folder is empty!" ) << endl;
+		mcu::log << _T( "UpdatePicShow, Pic folder is empty!" ) << endl;
 		return ;
 	}
 	else
 	{
-		mcu::tlog << _T( "CheckUpdatePicFile enum all file" ) << endl;
+		mcu::log << _T( "CheckUpdatePicFile enum all file" ) << endl;
 		tAllFile = EnumAllFile( m_strPicFolder.c_str() );
 
 		m_tPicFileList.clear();
@@ -58,7 +58,7 @@ void CVirtualPicManageWnd::CheckUpdatePicFile( )
 			ParsePath( tAllFile[i].c_str(), tInfo );
 			if ( CompareNoCase( tInfo.m_strExtName, _T( "jpg" ) ) == 0 )
 			{
-//				mcu::tlog << _T( "find pic: " ) << tAllFile[i].c_str() << endl;
+//				mcu::log << _T( "find pic: " ) << tAllFile[i].c_str() << endl;
 				m_tPicFileList.push_back( tAllFile[i] );
 			}
 		}
@@ -136,7 +136,7 @@ int CVirtualPicManageWnd::GetTotalPageNum()
 	int nPicPerPage = m_nPicArrayRow * m_nPicArrayCol;
 	if ( nPicPerPage == 0 )
 	{
-		mcu::tlog << _T( "CVirtualPicManageWnd Row or Col can't be 0!" ) << endl;
+		mcu::log << _T( "CVirtualPicManageWnd Row or Col can't be 0!" ) << endl;
 		return 0;
 	}
 
@@ -156,7 +156,7 @@ BOOL CVirtualPicManageWnd::DelPic( int nRow, int nCol )
 	tstring strPic = this->GetPicName( nRow, nCol );
 	if ( strPic.empty() )
 	{
-		mcu::tlog << _T( "CVirtualPicManageWnd::DelPic file name empty!" ) << endl;
+		mcu::log << _T( "CVirtualPicManageWnd::DelPic file name empty!" ) << endl;
 		return FALSE;
 	}
 	else
@@ -168,7 +168,7 @@ BOOL CVirtualPicManageWnd::DelPic( int nRow, int nCol )
 		BOOL bDel = DelFile( strPic.c_str() );
 		if ( !bDel )
 		{
-			mcu::tlog << _T( "CVirtualPicManageWnd::DelPic del file fail!" ) << endl;
+			mcu::log << _T( "CVirtualPicManageWnd::DelPic del file fail!" ) << endl;
 			return FALSE;
 		}
 
@@ -200,7 +200,7 @@ void CVirtualPicManageWnd::CheckConfigChange()
 		m_strPicFolder = strPicFolderNow;
 		this->CheckUpdatePicFile();		
 	}
-//	mcu::tlog << _T( "CVirtualPicManageWnd::CheckConfigChange " ) << m_strPicFolder << strPicFolderNow << endl;
+//	mcu::log << _T( "CVirtualPicManageWnd::CheckConfigChange " ) << m_strPicFolder << strPicFolderNow << endl;
 }
 
 

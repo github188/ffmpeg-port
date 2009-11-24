@@ -38,7 +38,7 @@ BOOL RunUnitTest()
 	if( !wasSucessful )
 	{
 //		AfxMessageBox( _T( "单元测试未通过!请根据错误信息检查代码!" ) );
-		mcu::tlog << _T( "单元测试未通过!请根据错误信息检查代码!" ) << endl;
+		mcu::log << _T( "单元测试未通过!请根据错误信息检查代码!" ) << endl;
 	}
 	return wasSucessful;
 }

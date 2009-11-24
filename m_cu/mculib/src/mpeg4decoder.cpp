@@ -18,7 +18,7 @@ mu_int32 CMpeg4Decoder::InputStreamSync( const TStreamPacket& pkt )
 
 	if ( NULL == m_pKdvDecoder )
 	{
-		mcu::tlog << _T( "CMpeg4Decoder::InputStreamSync decoder not create!" ) << endl;
+		mcu::log << _T( "CMpeg4Decoder::InputStreamSync decoder not create!" ) << endl;
 		return 0;
 	}
 
@@ -82,7 +82,7 @@ BOOL CMpeg4Decoder::CapturePic(LPCTSTR strPicPath, CEncoder *pEnc)
 	}
 	else
 	{
-		mcu::tlog << _T( "CMpeg4Decoder::CapturePic decoder not created!" ) << endl;
+		mcu::log << _T( "CMpeg4Decoder::CapturePic decoder not created!" ) << endl;
 		return FALSE;
 	}
 }

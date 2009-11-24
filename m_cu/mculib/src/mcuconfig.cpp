@@ -38,7 +38,7 @@ static const BOOL CONFIG_DEFAULT_IS_SAVE = TRUE;
 static const int CONFIG_DEFAULT_PTZ_SPEED = 5;
 static const int CONFIG_DEFAULT_LEN_SPEED = 5;
 static const int CONFIG_DEFAULT_WEBPAGE_ZOOM_LEVEL = 100;
-static const int CONFIG_DEFAULT_WEBPAGE_HISTORY_BACK = 1;
+static const int CONFIG_DEFAULT_WEBPAGE_HISTORY_BACK = 2;
 
 #ifdef _WIN32_WCE
 static LPCTSTR CONFIG_DEFAULT_CAPTURE_DIR_RAM = _T( "\\My Documents\\M_CU\\" );
@@ -57,7 +57,7 @@ CConfig::CConfig(void)
 	tstring strXmlFile = this->GetDefaultConfigFilePath();
 	BOOL bResult = this->m_pXmlParse->LoadXML( strXmlFile.c_str(), CONFIG_SECTION_CONFIG_NAME);
 
-	mcu::tlog << _T( "config load xml: " ) << strXmlFile << _T( " result: ") << bResult << endl;
+	mcu::log << _T( "config load xml: " ) << strXmlFile << _T( " result: ") << bResult << endl;
 	_ASSERT( bResult );
 
     m_pBkCfgxmlParse = NULL;
@@ -65,10 +65,10 @@ CConfig::CConfig(void)
     tstring strPresetFile = this->GetBkCfgFilePath();
 
     bResult = this->m_pBkCfgxmlParse->LoadXML( strPresetFile.c_str(), CONFIG_SECTION_CONFIG_NAME );
-    mcu::tlog << _T( "config load preset: " ) << strPresetFile << _T( " result: " ) << bResult << endl;
+    mcu::log << _T( "config load preset: " ) << strPresetFile << _T( " result: " ) << bResult << endl;
 
 //	bResult = this->m_pXmlParse->SetCurRootElement( CONFIG_SECTION_CONFIG_NAME );
-//	mcu::tlog << _T( "config set config root: result: ") << bResult << endl;
+//	mcu::log << _T( "config set config root: result: ") << bResult << endl;
 }
 
 CConfig::~CConfig(void)
@@ -88,7 +88,7 @@ void CConfig::SetConfigFilePath( LPCTSTR strCfgFilePath )
 	}
 	else
 	{
-		mcu::tlog << _T( "SetConfigFilePath xml parse is null!" ) << endl;
+		mcu::log << _T( "SetConfigFilePath xml parse is null!" ) << endl;
 	}
 	
 //	this->m_pXmlParse->SetCurRootElement( CONFIG_SECTION_CONFIG_NAME );
@@ -102,7 +102,7 @@ tstring CConfig::GetConfigFilePath( ) const
 	}
 	else
 	{
-		mcu::tlog << _T( "GetConfigFilePath xml parse is null!" ) << endl;
+		mcu::log << _T( "GetConfigFilePath xml parse is null!" ) << endl;
 		return _T( "" );
 	}	
 }
@@ -204,7 +204,7 @@ BOOL CConfig::GetServerFullSvrUrl( LPTSTR ServerFullStr)
     }
     else 
     {
-        mcu::tlog << L"不是合法的HTTP地址" << endl;
+        mcu::log << L"不是合法的HTTP地址" << endl;
     }
     return bret;
 }
@@ -243,7 +243,7 @@ BOOL CConfig::GetServerFullUrl( LPTSTR ServerFullStr)
     }
     else 
     {
-        mcu::tlog << L"不是合法的HTTP地址" << endl;
+        mcu::log << L"不是合法的HTTP地址" << endl;
     }
     return bret;
 }
@@ -285,10 +285,10 @@ BOOL CConfig::GetLoginInfo( tstring& strUserId, tstring& strPw, EStreamType& eSt
 			unsigned char cLow = nLow> '9' ? ( 10 + nLow - 'A' ) : ( nLow - '0' );
 			pEncDataBuf[i] = ( cHigh << 4 ) + cLow;
 
-			//		mcu::tlog << pEncDataBuf[i];
+			//		mcu::log << pEncDataBuf[i];
 		}
 
-		//	mcu::tlog << endl;
+		//	mcu::log << endl;
 
 		// 解密。
 		tean_dec( s_EncKey, (char*)pEncDataBuf, nEncDataLen );
@@ -323,14 +323,14 @@ BOOL CConfig::SetLoginInfo( LPCTSTR strUserId, LPCTSTR strPw, EStreamType eStrea
 	tstring strSavePw;
 	for ( int i=0; i<nBufByteLen; ++i )
 	{
-		//		mcu::tlog << pDateBuf[i] ;
+		//		mcu::log << pDateBuf[i] ;
 		TCHAR tmpBuf[10] = {0};
 		_stprintf( tmpBuf,  _T("%02X" ), pDateBuf[i] );
 		strSavePw += tmpBuf;
 	}
 
 	
-//	mcu::tlog << endl;
+//	mcu::log << endl;
 
 
 
@@ -425,7 +425,7 @@ BOOL CConfig::GetCaptureDir( tstring& strCaptureDir )
 
     // 标准化文件夹。
     NormalizeDir( strCaptureDir );
-//	mcu::tlog << _T( "CConfig::GetCaptureDir [" ) << strCaptureDir << _T( "]" )<< endl;
+//	mcu::log << _T( "CConfig::GetCaptureDir [" ) << strCaptureDir << _T( "]" )<< endl;
 
 	return ( !strCaptureDir.empty() );
 }

@@ -497,11 +497,11 @@ void CMCUDemoDlg::Login()
 		memset(ServerFullUrl, 0, sizeof(ServerFullUrl));
 		if( CConfig::Instance()->GetServerFullUrl((LPTSTR)ServerFullUrl) )
 		{
-			mcu::tlog << L"ServerFullUrl:"<<ServerFullUrl << endl;
+			mcu::log << L"ServerFullUrl:"<<ServerFullUrl << endl;
 		}
 		else
 		{
-			mcu::tlog << L"服务器地址不是合法的HTTP地址:"<< endl;
+			mcu::log << L"服务器地址不是合法的HTTP地址:"<< endl;
 			MessageBox(L"服务器地址不是合法的HTTP地址!", L"错误", MB_OK);
 			return;
 		}
@@ -697,7 +697,7 @@ LRESULT CMCUDemoDlg::OnHtmlMeta( WPARAM wParam, LPARAM lParam )
 			
 			if ( strRtspUrl.Left( 7 ) != _T( "rtsp://" ) )
 			{
-				mcu::tlog << _T( "rtsp url error!!!" ) << endl;
+				mcu::log << _T( "rtsp url error!!!" ) << endl;
 			}
 			
 			
@@ -727,7 +727,7 @@ LRESULT CMCUDemoDlg::OnHtmlPreLoad( WPARAM strUrlParam, LPARAM )
 
 	if ( !strPtzAddr.empty() && !strPtzPort.empty() && !strStreamType.empty() && !strPuId.empty() )
 	{
-		mcu::tlog << _T( "Is url with Param! " ) << strUrl << endl;
+		mcu::log << _T( "Is url with Param! " ) << strUrl << endl;
 		CMCUSession::Instance()->CurVideoSession()->PtzIP( strPtzAddr );
 		CMCUSession::Instance()->CurVideoSession()->PtzPort( _ttoi( strPtzPort.c_str() ) );
 		CMCUSession::Instance()->CurVideoSession()->PuId( strPuId );
@@ -738,7 +738,7 @@ LRESULT CMCUDemoDlg::OnHtmlPreLoad( WPARAM strUrlParam, LPARAM )
 	}	
 	else
 	{
-		mcu::tlog << _T( "Not right url! " ) << (LPCTSTR)strUrl << endl;
+		mcu::log << _T( "Not right url! " ) << (LPCTSTR)strUrl << endl;
 	}
 
 
@@ -757,7 +757,7 @@ LRESULT CMCUDemoDlg::OnHtmlPreLoad( WPARAM strUrlParam, LPARAM )
 		CString strRtspUrl = strUrl;
 		if ( m_pPlayerDlg )
 		{
-			mcu::tlog << _T( "m_pPlayerDlg was not null!!!" ) << endl;
+			mcu::log << _T( "m_pPlayerDlg was not null!!!" ) << endl;
 			_ASSERT( FALSE );
 			return FALSE;
 		}
@@ -872,7 +872,7 @@ void CMCUDemoDlg::RestoreRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueName
 	}
 	else
 	{
-		mcu::tlog << _T( "RestoreRegValue 打开注册表失败！" ) << endl;
+		mcu::log << _T( "RestoreRegValue 打开注册表失败！" ) << endl;
 	}
 }
 

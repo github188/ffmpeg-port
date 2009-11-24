@@ -8,10 +8,10 @@
 
 // CImageShowTest 对话框
 
-IMPLEMENT_DYNAMIC(CImageShowTest, CDialog)
+IMPLEMENT_DYNAMIC(CImageShowTest, CUIDialog)
 
 CImageShowTest::CImageShowTest(CWnd* pParent /*=NULL*/)
-	: CDialog(CImageShowTest::IDD, pParent)
+	: CUIDialog(CImageShowTest::IDD, pParent)
 	, m_strImagePath(_T(""))
 {
 	m_pImgShow = new CImageShow();
@@ -27,13 +27,13 @@ CImageShowTest::~CImageShowTest()
 
 void CImageShowTest::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
+	CUIDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_COMBO_IMAGE_PATH, m_cmbImagePath);
 	DDX_CBString(pDX, IDC_COMBO_IMAGE_PATH, m_strImagePath);
 }
 
 
-BEGIN_MESSAGE_MAP(CImageShowTest, CDialog)
+BEGIN_MESSAGE_MAP(CImageShowTest, CUIDialog)
 	ON_BN_CLICKED(IDC_BUTTON_OPEN, &CImageShowTest::OnBnClickedButtonOpen)
 	ON_WM_PAINT()
 END_MESSAGE_MAP()
@@ -57,11 +57,19 @@ void CImageShowTest::OnPaint()
 {
 	if ( m_pImgShow && m_pImgShow->IsOk() )
 	{
+//        __super::OnPaint();
+
 		CPaintDC dc(this); // device context for painting
+
+        
+
 		// TODO: 在此处添加消息处理程序代码
-		// 不为绘图消息调用 CDialog::OnPaint()
+		// 不为绘图消息调用 CUIDialog::OnPaint()
 		CRect rcClient;
 		GetClientRect( rcClient );
+
+        dc.FillSolidRect( rcClient, RGB( 0, 128, 100 ) );
+
 		rcClient.top = 40;
 
 		m_pImgShow->Draw( dc, rcClient/*, CImageShow::IDF_Orientation_90*/ );
@@ -74,13 +82,16 @@ void CImageShowTest::OnPaint()
 
 BOOL CImageShowTest::OnInitDialog()
 {
-	CDialog::OnInitDialog();
+	CUIDialog::OnInitDialog();
 
 	// TODO:  在此添加额外的初始化
-	this->m_cmbImagePath.AddString( _T( "\\Storage Card\\1.jpg" ) );
+	this->m_cmbImagePath.AddString( _T( "\\1.jpg" ) );
+    this->m_cmbImagePath.AddString( _T( "\\mcu-check.png" ) );
+    this->m_cmbImagePath.AddString( _T( "\\mcu-check.gif" ) );
 
 	m_cmbImagePath.SetCurSel( 0 );
 
+    this->SetImage( _T( "main_bg.JPG" ), FALSE );
 	
 
 	return TRUE;  // return TRUE unless you set the focus to a control

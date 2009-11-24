@@ -645,6 +645,10 @@
 			DeploymentContent="true"
 			>
 		</File>
+		<File
+			RelativePath="..\..\config\wuju_mcucfg.xml"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

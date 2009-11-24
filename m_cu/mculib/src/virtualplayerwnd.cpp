@@ -48,7 +48,7 @@ BOOL CVirtualPlayerWnd::StartPlay( CVideoSession *pVideoSession, EMCU_ErrorCode&
 	else
 	{
 		pErrorCode = MCU_Error_Unknow;
-		mcu::tlog << _T( "player wnd startplay() fail! video session 0! " ) << endl;
+		mcu::log << _T( "player wnd startplay() fail! video session 0! " ) << endl;
 	}
 
 	// 是否开始监测。
@@ -64,7 +64,7 @@ BOOL CVirtualPlayerWnd::PausePlay( BOOL bPause )
 	// 服务器不支持暂停，直接停止。
 	if ( m_bPause == bPause )
 	{
-		mcu::tlog << _T( "CVirtualPlayerWnd::PausePlay already pause/restart!" ) << endl;
+		mcu::log << _T( "CVirtualPlayerWnd::PausePlay already pause/restart!" ) << endl;
 		return TRUE;
 	}
 	m_bPause = bPause;
@@ -94,7 +94,7 @@ BOOL CVirtualPlayerWnd::StopPlay()
 {
 	SCOPE_LOCK( m_threadSafeLock );
 
-	mcu::tlog << _T( "CVirtualPlayerWnd::StopPlay" ) << endl;
+	mcu::log << _T( "CVirtualPlayerWnd::StopPlay" ) << endl;
 	return this->m_MediaNet.CloseRTSP();
 }
 
@@ -117,7 +117,7 @@ BOOL CVirtualPlayerWnd::SendPtzCmd( EPTZCmdId eCmd )
 	BOOL bHasPtzPower =	CMCUSession::Instance()->CurVideoSession()->PtzControl();
 	if ( !bHasPtzPower )
 	{
-		mcu::tlog << _T( "用户没有PTZ权限！" ) << endl;
+		mcu::log << _T( "用户没有PTZ权限！" ) << endl;
 		return FALSE;
 	}
 
@@ -140,7 +140,7 @@ BOOL CVirtualPlayerWnd::SendPtzCmd( EPTZCmdId eCmd )
 		bPtz = FALSE;
 		break;
 	default:
-		mcu::tlog << _T( "Ptz Control Don't suport the cmd: " ) << eCmd << endl;
+		mcu::log << _T( "Ptz Control Don't suport the cmd: " ) << eCmd << endl;
 	    break;
 	}
 
@@ -231,7 +231,7 @@ BOOL CVirtualPlayerWnd::Capture( EMCU_ErrorCode& eErrorCode )
 	ssFileName << strDir << strPuName << _T( "_" ) << strTime << strRadom << _T( "." ) << _T( "jpg" );
 
 	BOOL bResult = this->Capture( ssFileName.str().c_str(), eErrorCode );
-	mcu::tlog << _T( "Capture file: " ) << ssFileName.str() << "result" << bResult  << endl;
+	mcu::log << _T( "Capture file: " ) << ssFileName.str() << "result" << bResult  << endl;
 	return bResult;
 }
 
@@ -282,7 +282,7 @@ void CVirtualPlayerWnd::StopCheckThread()
 
 int CVirtualPlayerWnd::CheckThread( void * pParam )
 {
-	mcu::tlog << _T( "CVirtualPlayerWnd CheckThread run!" ) << endl;
+	mcu::log << _T( "CVirtualPlayerWnd CheckThread run!" ) << endl;
 	CVirtualPlayerWnd *pThis = ( CVirtualPlayerWnd*) pParam;
 	if ( pThis )
 	{
@@ -295,7 +295,7 @@ int CVirtualPlayerWnd::CheckThread( void * pParam )
 		
 	}
 
-	mcu::tlog << _T( "CVirtualPlayerWnd CheckThread exit!" ) << endl;
+	mcu::log << _T( "CVirtualPlayerWnd CheckThread exit!" ) << endl;
 	return 0;
 
 }

@@ -65,7 +65,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDR_MAINFRAME           ICON                    "res\\MCUDemo.ico"
+IDR_MAINFRAME           ICON                    "res\\mcu.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -157,6 +157,7 @@ END
 //
 
 IDR_MCUDEMO             REGISTRY                "MCUDemo.rgs"
+IDR_M_CU                REGISTRY                "M_CU.rgs"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -195,7 +196,7 @@ LANGUAGE 4, 2
 #include "l.CHS\afxres.rc"      // 标准组件
 #endif
 
-1 TYPELIB "MCUDemo.tlb"
+1 TYPELIB "MCUDemo.tlb
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 

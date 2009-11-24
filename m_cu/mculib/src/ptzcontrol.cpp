@@ -88,7 +88,7 @@ void CPtzControl::SetDigitPtz( BOOL bUseDigitPtz )
 		this->SendPTZCmd();
 		this->SetPtzCmdId( eOldPtzCmd );
 	}
-	mcu::tlog << _T( "CPtzControl SetDigitPtz : " ) << bUseDigitPtz << endl;
+	mcu::log << _T( "CPtzControl SetDigitPtz : " ) << bUseDigitPtz << endl;
 	m_bUseDigitPtz = bUseDigitPtz;
 }
 
@@ -130,7 +130,7 @@ tstring CPtzControl::GetPtzCmd() const
 		strMsgRegType = _T( "MSG_PTZ_SET_REQ" );
 	}
 
-//	mcu::tlog << _T( "GetPtzCmd m_bUseDigitPtz: " ) << m_bUseDigitPtz << strMsgRegType << endl;
+//	mcu::log << _T( "GetPtzCmd m_bUseDigitPtz: " ) << m_bUseDigitPtz << strMsgRegType << endl;
 
 	ssContent << _T( "<IE_HEADER MessageType=\"" ) << strMsgRegType << _T( "\" " );
 
@@ -193,7 +193,7 @@ bool CPtzControl::NetSendPtzCmd( string strCmd )
 #ifdef _WIN32
 		nLastError = WSAGetLastError();
 #endif
-		mcu::tlog << _T( "Creat Socket Fail! ec: " ) << nLastError << endl;
+		mcu::log << _T( "Creat Socket Fail! ec: " ) << nLastError << endl;
 		_ASSERT( FALSE );
 		return false;
 	}
@@ -209,8 +209,8 @@ bool CPtzControl::NetSendPtzCmd( string strCmd )
 	int nLen = strCmd.length();
 	int nSentLen = ::sendto( m_hPtzSocket, strCmd.c_str(), nLen, 0, (sockaddr*)&serverAddr, sizeof( serverAddr ) );
 
-//	mcu::tlog << "send ptz data len: " << nSentLen << "socket: " << m_hPtzSocket << endl;
-//	mcu::tlog << strCmd << endl;
+//	mcu::log << "send ptz data len: " << nSentLen << "socket: " << m_hPtzSocket << endl;
+//	mcu::log << strCmd << endl;
 
 	//if ( NULL == m_pEnv )
 	//{

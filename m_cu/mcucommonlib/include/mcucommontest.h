@@ -12,7 +12,7 @@
 // (such as embedded vc++ 4.0; though even that platform you can use STLPort)
 inline CPPUNIT_NS::OStream &operator <<( CPPUNIT_NS::OStream &os, const wstring &value )
 {
-	mcu::tlog << value;
+	mcu::log << value;
 
 	std::wstringstream sswMsg;
 	sswMsg << _T( "output wstring addr=" ) <<  (void *)value.c_str() << _T( " < value=\"" ) << value << _T( "\" >" ) <<endl;

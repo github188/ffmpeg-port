@@ -693,6 +693,10 @@ END
 //
 
 IDR_MCUDEMO             REGISTRY                "MCUDemo.rgs"
+IDR_M_CU                REGISTRY                "M_CU.rgs"
+IDR_M_CU1               REGISTRY                "res\\m_cu1.bin"
+IDR_M_CU2               REGISTRY                "res\\m_cu2.bin"
+IDR_M_CU3               REGISTRY                "res\\m_cu3.bin"
 
 /////////////////////////////////////////////////////////////////////////////
 //

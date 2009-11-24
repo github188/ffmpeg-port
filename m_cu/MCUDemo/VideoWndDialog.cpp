@@ -83,7 +83,7 @@ BOOL CVideoWndDialog::OnInitDialog()
 	bResult = this->InitSDL();
 	if ( !bResult )
 	{
-		mcu::tlog << _T( "Only one video window is permit at one time！！！" ) << endl;
+		mcu::log << _T( "Only one video window is permit at one time！！！" ) << endl;
 		_ASSERT( FALSE );
 		EndDialog( 0 );
 		return FALSE;
@@ -249,16 +249,16 @@ int CVideoWndDialog::SDL_ThreadFunc( void *param )
 				  {
 
 		            case SDLK_LEFT:
-		                mcu::tlog << _T( "left" ) << endl;
+		                mcu::log << _T( "left" ) << endl;
 		                break; 
 		            case SDLK_RIGHT:
-		                mcu::tlog << _T( "right" ) << endl;
+		                mcu::log << _T( "right" ) << endl;
 		                break;
 		            case SDLK_UP:
-						mcu::tlog << _T( "up" ) << endl;
+						mcu::log << _T( "up" ) << endl;
 		                break;
 		            case SDLK_DOWN:
-						mcu::tlog << _T( "down" ) << endl;
+						mcu::log << _T( "down" ) << endl;
 		                break;			            
 		            default:
 		                break;
@@ -804,7 +804,7 @@ void CVideoWndDialog::StatusCheck()
 	default:
 	    break;
 	}
-	mcu::tlog << _T( "rtsp status: " ) << strStatus << endl;
+	mcu::log << _T( "rtsp status: " ) << strStatus << endl;
 
 	// 更新保存的RTSP状态.
 	this->m_eRtspStatus = eRtspStat;

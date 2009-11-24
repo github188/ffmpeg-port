@@ -30,12 +30,12 @@ BOOL CVirtualConfigWnd::ReadConfig( TConfigInfo& tConfInfo )
 			MakeDir( strPicFolder.c_str() );
 			if( !IsFileExist( strPicFolder.c_str() ) )
 			{
-				mcu::tlog << _T( "CVirtualConfigWnd::ReadConfig MakeDir failed. folder: " ) << strPicFolder << endl;
+				mcu::log << _T( "CVirtualConfigWnd::ReadConfig MakeDir failed. folder: " ) << strPicFolder << endl;
 				tConfInfo.m_strSavePath.clear();
 			}
 			else
 			{
-				mcu::tlog << _T( "CVirtualConfigWnd::ReadConfig makedir :" ) << strPicFolder << endl;
+				mcu::log << _T( "CVirtualConfigWnd::ReadConfig makedir :" ) << strPicFolder << endl;
 			}
 		}
 	}

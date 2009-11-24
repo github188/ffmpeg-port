@@ -13,11 +13,11 @@
 #if defined( UNICODE ) || defined ( _UNICODE )
 inline CPPUNIT_NS::OStream &operator <<( CPPUNIT_NS::OStream &os, const wstring &value )
 {
-	mcu::tlog << value;
+	mcu::log << value;
 
 	std::wstringstream sswMsg;
 	sswMsg << _T( "output wstring addr=" ) <<  (void *)value.c_str() << _T( " < value=\"" ) << value << _T( "\" >" ) <<endl;
-	mcu::tlog << sswMsg.str();
+	mcu::log << sswMsg.str();
 
 	os << "cpp unit don't surpport wstring !" << endl;
 	return os << "wstring < value has show above!! please search \"addr=" << value.c_str() << "\" >";

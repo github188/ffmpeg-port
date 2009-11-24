@@ -109,13 +109,13 @@ BOOL CALLBACK CMainDialog::WindowsEnumCB( HWND hWnd, LPARAM param )
 	{
 		if( ::IsWindowVisible( hWnd ) )
 		{
-			mcu::tlog << _T("Find a visitable menu_worker!!!!") << hWnd <<endl;
+			mcu::log << _T("Find a visitable menu_worker!!!!") << hWnd <<endl;
 
 			BOOL bEnable = ::IsWindowEnabled( hWnd );
 			HWND hParent = ::GetParent( hWnd );
 			if ( hParent == pThis->GetSafeHwnd() )
 			{
-				mcu::tlog << _T( "this window 's child window " ) << endl;
+				mcu::log << _T( "this window 's child window " ) << endl;
 
 				::ShowWindow( hWnd, SW_HIDE );
 			}
@@ -124,7 +124,7 @@ BOOL CALLBACK CMainDialog::WindowsEnumCB( HWND hWnd, LPARAM param )
 		}
 		//else
 		//{
-		//	mcu::tlog << _T("Find a unvisitable menu_worker!!!!") <<endl;
+		//	mcu::log << _T("Find a unvisitable menu_worker!!!!") <<endl;
 		//}
 
 		

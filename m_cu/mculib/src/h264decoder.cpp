@@ -18,13 +18,13 @@ mu_int32 CH264Decoder::InputStreamSync( const TStreamPacket& pkt )
 
 	if ( NULL == m_pKdvDecoder )
 	{
-		mcu::tlog << _T( "CH264Decoder::InputStreamSync decoder not create!" ) << endl;
+		mcu::log << _T( "CH264Decoder::InputStreamSync decoder not create!" ) << endl;
 		return 0;
 	}
 
 //#define TIMESTAMP_DEBUG
 #ifdef TIMESTAMP_DEBUG
-	mcu::tlog << _T( "timestamp: s:" ) << pkt.timeStamp.tv_sec << _T( "u: " )<< pkt.timeStamp.tv_usec << endl;
+	mcu::log << _T( "timestamp: s:" ) << pkt.timeStamp.tv_sec << _T( "u: " )<< pkt.timeStamp.tv_usec << endl;
 #endif
 
 	int nBufLeft = pkt.datalen;
@@ -90,7 +90,7 @@ BOOL CH264Decoder::CapturePic(LPCTSTR strPicPath, CEncoder *pEnc)
 	}
 	else
 	{
-		mcu::tlog << _T( "CH264Decoder::CapturePic decoder not created!" ) << endl;
+		mcu::log << _T( "CH264Decoder::CapturePic decoder not created!" ) << endl;
 		return FALSE;
 	}
 }

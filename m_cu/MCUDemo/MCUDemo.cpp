@@ -26,6 +26,7 @@
 //#include <locale>
 #ifdef UNIT_TEST
 #include "UnitTestMainDialog.h"
+#include "MCUDemo_i.c"
 #else
 #ifdef _DEBUG
 #include "UnitTestMainDialog.h"
@@ -49,6 +50,16 @@
 //	DECLARE_REGISTRY_APPID_RESOURCEID(IDR_MCUDEMO, "{B2FF6932-D2DC-4E20-8A78-80AF1772CC03}");};
 //
 //CMCUDemoModule _AtlModule;
+
+
+class CM_CUModule :
+    public CAtlMfcModule
+{
+public:
+    DECLARE_LIBID(LIBID_MCUDemoLib);
+    DECLARE_REGISTRY_APPID_RESOURCEID(IDR_M_CU, "{FDBB44A7-354A-4D07-BCA0-F2898A513884}");};
+
+CM_CUModule _AtlModule;
 
 BEGIN_MESSAGE_MAP(CMCUDemoApp, CWinApp)
 END_MESSAGE_MAP()
@@ -110,7 +121,7 @@ void CMCUDemoApp::BackupRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueName,
 			&ftLastWriteTime); // Last write time.
 		if( retCode != ERROR_SUCCESS )
 		{
-			mcu::tlog << _T( "RegQueryInfoKey 失败！" ) << endl;
+			mcu::log << _T( "RegQueryInfoKey 失败！" ) << endl;
 		}
 		
 
@@ -130,14 +141,14 @@ void CMCUDemoApp::BackupRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueName,
 		}
 		else
 		{
-			mcu::tlog << _T( "RegQueryValueEx 失败！" ) << endl;
+			mcu::log << _T( "RegQueryValueEx 失败！" ) << endl;
 		}
 		LocalFree ((HLOCAL)bData);
 		RegCloseKey(hkey);
 	}
 	else
 	{
-		mcu::tlog << _T( "BackupRegValue 打开注册表失败！" ) << endl;
+		mcu::log << _T( "BackupRegValue 打开注册表失败！" ) << endl;
 	}
 }
 /*
@@ -192,7 +203,7 @@ void CMCUDemoApp::RestoreRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueName
 	}
 	else
 	{
-		mcu::tlog << _T( "RestoreRegValue 打开注册表失败！" ) << endl;
+		mcu::log << _T( "RestoreRegValue 打开注册表失败！" ) << endl;
 	}
 }
 */
@@ -254,6 +265,11 @@ BOOL CMCUDemoApp::InitInstance()
 	if (FAILED(_AtlModule.RegisterClassObjects(CLSCTX_LOCAL_SERVER, REGCLS_MULTIPLEUSE)))
 		return FALSE;
 	#endif // !defined(_WIN32_WCE) || defined(_CE_DCOM)
+	#if !defined(_WIN32_WCE) || defined(_CE_DCOM)
+	// 通过 CoRegisterClassObject() 注册类工厂。
+	if (FAILED(_AtlModule.RegisterClassObjects(CLSCTX_LOCAL_SERVER, REGCLS_MULTIPLEUSE)))
+		return FALSE;
+	#endif // !defined(_WIN32_WCE) || defined(_CE_DCOM)
 	// 应用程序是用 /Embedding 或 /Automation 开关启动的。
 	// 将应用程序作为自动化服务器运行。
 	if (cmdInfo.m_bRunEmbedded || cmdInfo.m_bRunAutomated)
@@ -263,6 +279,8 @@ BOOL CMCUDemoApp::InitInstance()
 	}
 	//// 应用程序是用 /Unregserver 或 /Unregister 开关启动的。
 	//if (cmdInfo.m_nShellCommand == CCommandLineInfo::AppUnregister)
+		_AtlModule.UpdateRegistryAppId(FALSE);
+		_AtlModule.UnregisterServer(TRUE);
 	//{
 	//	_AtlModule.UpdateRegistryAppId(FALSE);
 	//	_AtlModule.UnregisterServer(TRUE);
@@ -293,7 +311,7 @@ BOOL CMCUDemoApp::InitInstance()
 	HRESULT hr = ::CoInitializeEx( NULL, COINIT_MULTITHREADED );
 	if ( FAILED( hr ) )
 	{
-		mcu::tlog << _T( "COM初始化失败！" ) << endl;
+		mcu::log << _T( "COM初始化失败！" ) << endl;
 	}
 
 	// 设置界面图片的默认目录.
@@ -404,6 +422,9 @@ int CMCUDemoApp::Run()
 
 BOOL CMCUDemoApp::ExitInstance(void)
 {
+#if !defined(_WIN32_WCE) || defined(_CE_DCOM)
+	_AtlModule.RevokeClassObjects();
+#endif
 #if !defined(_WIN32_WCE) || defined(_CE_DCOM)
 	_AtlModule.RevokeClassObjects();
 #endif

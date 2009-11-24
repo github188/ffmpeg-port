@@ -34,7 +34,7 @@
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="1"
-			UseOfATL="0"
+			UseOfATL="1"
 			CharacterSet="1"
 			>
 			<Tool
@@ -490,7 +490,7 @@
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="1"
-			UseOfATL="0"
+			UseOfATL="1"
 			CharacterSet="1"
 			>
 			<Tool
@@ -3273,7 +3273,7 @@
 			IntermediateDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="1"
-			UseOfATL="0"
+			UseOfATL="1"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -3745,7 +3745,7 @@
 			IntermediateDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="1"
-			UseOfATL="0"
+			UseOfATL="1"
 			CharacterSet="1"
 			>
 			<Tool
@@ -4287,8 +4287,8 @@
 						MkTypLibCompatible="false"
 						GenerateStublessProxies="true"
 						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="$(ProjectName)_i.h"
-						InterfaceIdentifierFileName="$(ProjectName)_i.c"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -4365,8 +4365,8 @@
 						MkTypLibCompatible="false"
 						GenerateStublessProxies="true"
 						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="$(ProjectName)_i.h"
-						InterfaceIdentifierFileName="$(ProjectName)_i.c"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -4417,8 +4417,8 @@
 						MkTypLibCompatible="false"
 						GenerateStublessProxies="true"
 						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="$(ProjectName)_i.h"
-						InterfaceIdentifierFileName="$(ProjectName)_i.c"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -4625,8 +4625,8 @@
 						MkTypLibCompatible="false"
 						GenerateStublessProxies="true"
 						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="$(ProjectName)_i.h"
-						InterfaceIdentifierFileName="$(ProjectName)_i.c"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -4677,8 +4677,8 @@
 						MkTypLibCompatible="false"
 						GenerateStublessProxies="true"
 						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="$(ProjectName)_i.h"
-						InterfaceIdentifierFileName="$(ProjectName)_i.c"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -5208,6 +5208,22 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+			<File
+				RelativePath=".\M_CU.rgs"
+				>
+			</File>
+			<File
+				RelativePath=".\res\m_cu1.bin"
+				>
+			</File>
+			<File
+				RelativePath=".\res\m_cu2.bin"
+				>
+			</File>
+			<File
+				RelativePath=".\res\m_cu3.bin"
+				>
+			</File>
 			<File
 				RelativePath=".\res\mcu.ico"
 				>

@@ -60,7 +60,7 @@ void CCheckButton::OnPaint()
 LRESULT CCheckButton::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 {
 	// TODO: 在此添加专用代码和/或调用基类
-//	mcu::tlog << _T( "message: " ) << (void*)message << _T( " w: " ) << wParam << _T( " l: " ) << lParam << endl;
+//	mcu::log << _T( "message: " ) << (void*)message << _T( " w: " ) << wParam << _T( " l: " ) << lParam << endl;
 
 	return CButton::WindowProc(message, wParam, lParam);
 }
@@ -156,7 +156,7 @@ void CCheckButton::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 		}
 		else
 		{
-			mcu::tlog << _T( "not supported check button state！" ) << endl;
+			mcu::log << _T( "not supported check button state！" ) << endl;
 			_ASSERT( FALSE );
 		}
 
@@ -167,7 +167,7 @@ void CCheckButton::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 		}
 		else
 		{
-			mcu::tlog << _T( "Can't get image show!" ) << endl;
+			mcu::log << _T( "Can't get image show!" ) << endl;
 			_ASSERT( FALSE );
 		}
 		CImageFactory::Instance()->ReleaseImage( strPic );

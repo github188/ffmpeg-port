@@ -238,7 +238,7 @@ void CUIButton::OnNMCustomdraw(NMHDR *pNMHDR, LRESULT *pResult)
 
 	if ( pNMCD )
 	{
-		mcu::tlog << _T( "custom draw: stage: " ) << (void*)pNMCD->dwDrawStage << _T( " spec: " ) << (void*)pNMCD->dwItemSpec << 
+		mcu::log << _T( "custom draw: stage: " ) << (void*)pNMCD->dwDrawStage << _T( " spec: " ) << (void*)pNMCD->dwItemSpec << 
 			_T( " state: " ) << (void*)pNMCD->uItemState << _T( " param: " ) << pNMCD->lItemlParam << endl;
 		switch( pNMCD->dwDrawStage )
 		{
@@ -252,7 +252,7 @@ void CUIButton::OnNMCustomdraw(NMHDR *pNMHDR, LRESULT *pResult)
 			}
 			else
 			{
-				mcu::tlog << _T( "背景DC没有初始化！！！" ) << endl;
+				mcu::log << _T( "背景DC没有初始化！！！" ) << endl;
 			}
 
 			dwResult = CDRF_NOTIFYITEMDRAW;
@@ -263,7 +263,7 @@ void CUIButton::OnNMCustomdraw(NMHDR *pNMHDR, LRESULT *pResult)
 				switch( pNMCD->dwItemSpec )
 				{
 				case TBCD_CHANNEL:
-					/*					mcu::tlog << _T( "Channel: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
+					/*					mcu::log << _T( "Channel: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
 					_T( " r" ) << pNMCD->rc.right << _T( " b: " ) << pNMCD->rc.bottom << endl;		*/			
 					{
 						//LPCTSTR PIC_SLIDER_CHANNEL = _T( "slider_chanel.jpg" );
@@ -284,13 +284,13 @@ void CUIButton::OnNMCustomdraw(NMHDR *pNMHDR, LRESULT *pResult)
 					dwResult = CDRF_SKIPDEFAULT;
 					break;
 				case TBCD_TICS:		
-					//mcu::tlog << _T( "tics: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
+					//mcu::log << _T( "tics: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
 					//	_T( " r" ) << pNMCD->rc.right << _T( " b: " ) << pNMCD->rc.bottom << endl;
 					// 不画刻度。
 					dwResult = CDRF_SKIPDEFAULT ;
 					break;
 				case TBCD_THUMB:
-					//mcu::tlog << _T( "Thumb: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
+					//mcu::log << _T( "Thumb: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
 					//	_T( " r" ) << pNMCD->rc.right << _T( " b: " ) << pNMCD->rc.bottom << endl;
 
 					{

@@ -50,7 +50,7 @@ BOOL CFFMpegRecorderImpl::Init( CBaseCodec::ECodecId eCodec, int nBandWidth, LPC
 	this->m_nBandWidth = nBandWidth;
 	this->m_strRecordFilePath = strFileName;
 
-	mcu::tlog << _T( "codec: " ) << eCodec << "bandwidth: " << nBandWidth << "file: " << strFileName << endl;
+	mcu::log << _T( "codec: " ) << eCodec << "bandwidth: " << nBandWidth << "file: " << strFileName << endl;
 
 	// ◊¢≤·Œƒº˛∂¡–¥–≠“È°£
 	if ( !s_bFileProtocolReg )
@@ -64,7 +64,7 @@ BOOL CFFMpegRecorderImpl::Init( CBaseCodec::ECodecId eCodec, int nBandWidth, LPC
 
 	if ( NULL == m_pavFormatContext )
 	{
-		mcu::tlog << "m_pavFormatContext = avformat_alloc_context()" << endl;
+		mcu::log << "m_pavFormatContext = avformat_alloc_context()" << endl;
 	}
 
 	bResult &= ( NULL != m_pavFormatContext );
@@ -89,7 +89,7 @@ BOOL CFFMpegRecorderImpl::Init( CBaseCodec::ECodecId eCodec, int nBandWidth, LPC
 
 		if ( !bResult )
 		{
-			mcu::tlog << "create record file fail! file:" << szFileName << endl;
+			mcu::log << "create record file fail! file:" << szFileName << endl;
 		}
 
 		m_pavStream = av_new_stream( m_pavFormatContext, 0 ); 
@@ -102,7 +102,7 @@ BOOL CFFMpegRecorderImpl::Init( CBaseCodec::ECodecId eCodec, int nBandWidth, LPC
 		}
 		else
 		{
-			mcu::tlog << "m_pavStream = av_new_stream( m_pavFormatContext, 0 ) fail!" << endl;
+			mcu::log << "m_pavStream = av_new_stream( m_pavFormatContext, 0 ) fail!" << endl;
 		}
 	}	
 
@@ -145,7 +145,7 @@ BOOL CFFMpegRecorderImpl::WriteFrame( mu_uint8 *buf, int len, const CBaseCodec::
 						pavCodec->extradata = mu_malloc( tMpeg4Cfg.l32ConfigLen );
 						if ( NULL == pavCodec->extradata )
 						{
-							mcu::tlog << _T( "pavCodec->extradata = mu_malloc …Í«Îƒ⁄¥Ê ß∞‹£°" ) << endl;
+							mcu::log << _T( "pavCodec->extradata = mu_malloc …Í«Îƒ⁄¥Ê ß∞‹£°" ) << endl;
 							return FALSE;
 						}
 						pavCodec->extradata_size = tMpeg4Cfg.l32ConfigLen;
@@ -153,7 +153,7 @@ BOOL CFFMpegRecorderImpl::WriteFrame( mu_uint8 *buf, int len, const CBaseCodec::
 					}
 					else
 					{
-						mcu::tlog << _T( "get mpeg4 config info fail!" ) << endl;
+						mcu::log << _T( "get mpeg4 config info fail!" ) << endl;
 						return FALSE;
 					}
 				}				
@@ -267,7 +267,7 @@ BOOL CFFMpegRecorderImpl::CloseFile()
 	{
 		// ¬ºœÒ ß∞‹,…æ≥˝Œƒº˛.
 		BOOL bDel = ::DelFile( m_strRecordFilePath.c_str() );
-		mcu::tlog << _T( "Record fail! file " ) << m_strRecordFilePath <<  _T( "del result " ) << bDel << endl;
+		mcu::log << _T( "Record fail! file " ) << m_strRecordFilePath <<  _T( "del result " ) << bDel << endl;
 	}
 #else
 	bResult = FALSE;

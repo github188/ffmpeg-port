@@ -1,11 +1,12 @@
 #pragma once
 #include "afxwin.h"
+#include "uidialog.h"
 // #include "ImageShow.h"
 
 class CImageShow;
 // CImageShowTest ¶Ô»°¿ò
 
-class CImageShowTest : public CDialog
+class CImageShowTest : public CUIDialog
 {
 	DECLARE_DYNAMIC(CImageShowTest)
 

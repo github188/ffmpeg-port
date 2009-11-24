@@ -36,7 +36,7 @@ CVirtualWebpageCtrl::EUrlType CVirtualWebpageCtrl::OnLoadPage( LPCTSTR strUrl )
 
 	if ( !strPtzAddr.empty() && !strPtzPort.empty() && !strStreamType.empty() && !strPuId.empty() )
 	{
-		mcu::tlog << _T( "Is url with Param! " ) << strUrl << endl;
+		mcu::log << _T( "Is url with Param! " ) << strUrl << endl;
 		CMCUSession::Instance()->CurVideoSession()->PtzIP( strPtzAddr );
 		CMCUSession::Instance()->CurVideoSession()->PtzPort( _ttoi( strPtzPort.c_str() ) );
 		CMCUSession::Instance()->CurVideoSession()->PuId( strPuId );
@@ -49,7 +49,7 @@ CVirtualWebpageCtrl::EUrlType CVirtualWebpageCtrl::OnLoadPage( LPCTSTR strUrl )
 	}	
 	else
 	{
-//		mcu::tlog << _T( "Not right url! " ) << strUrl << endl;
+//		mcu::log << _T( "Not right url! " ) << strUrl << endl;
 	}
 
 
@@ -59,7 +59,7 @@ CVirtualWebpageCtrl::EUrlType CVirtualWebpageCtrl::OnLoadPage( LPCTSTR strUrl )
 	if ( 0 == CompareNoCase( strRtspUrlToken, strRtspUrl.substr( 0, strRtspUrlToken.length() )) )
 	{
 		// ÊÇrtsp¡£
-		mcu::tlog << _T( "rtsp url: " ) << strUrl << endl;
+		mcu::log << _T( "rtsp url: " ) << strUrl << endl;
 
 		eType = UrlRtsp;
 

@@ -361,7 +361,7 @@ void CPlayerDialog::OnSize(UINT nType, int cx, int cy)
 	//ssMsg << _T( "(" ) << cx << _T( "," ) << cy << _T( ")" ) << endl;
 	//AfxMessageBox( ssMsg.str().c_str() );
 
-	//mcu::tlog << _T( "cy: " ) << cy << endl;
+	//mcu::log << _T( "cy: " ) << cy << endl;
 
 	if ( GetSafeHwnd() )
 	{
@@ -533,12 +533,12 @@ void CPlayerDialog::OnBnClickedButtonPause()
 	if ( bIsPause )
 	{
 		BOOL bResult = m_cVideoWnd.Resume();
-		mcu::tlog << _T( "Resume result " ) << bResult << endl;
+		mcu::log << _T( "Resume result " ) << bResult << endl;
 	}
 	else
 	{
 		BOOL bResult = m_cVideoWnd.Pause();
-		mcu::tlog << _T( "Pause result " ) << bResult << endl;
+		mcu::log << _T( "Pause result " ) << bResult << endl;
 	}
 
 	// ÇÐ»»°´Å¥×´Ì¬¡£
@@ -560,7 +560,7 @@ void CPlayerDialog::OnBnClickedButtonRecord()
 	if ( bRecording )
 	{
 		BOOL bResult = m_cVideoWnd.StopRecord();
-		mcu::tlog << _T( "stop record result: " ) << bResult << endl;
+		mcu::log << _T( "stop record result: " ) << bResult << endl;
 	}
 	else
 	{
@@ -595,7 +595,7 @@ void CPlayerDialog::OnBnClickedButtonRecord()
 			MessageBox(L"Â¼ÏñÊ§°Ü Çë¼ì²éÍ¼Æ¬¼°Â¼Ïñ±£´æÂ·¾¶£¡\n");
 		}
 
-		mcu::tlog << _T( "Start record " ) << strRec << _T( " result " ) << bResult << endl;
+		mcu::log << _T( "Start record " ) << strRec << _T( " result " ) << bResult << endl;
 	}
 
 	// ¸ù¾Ýµ±Ç°×´Ì¬ÉèÖÃÍ¼±ê¡£
@@ -649,7 +649,7 @@ void CPlayerDialog::OnBnClickedButtonCapture()
 	//È¡Ïûµ±Ç°½¹µã,°´Å¥µ¯Æð
 	this->SetFocus();
 
-	mcu::tlog << _T( "capture pic :" ) << strPic << _T( " result: " ) << bResult << endl;
+	mcu::log << _T( "capture pic :" ) << strPic << _T( " result: " ) << bResult << endl;
 }
 
 void CPlayerDialog::OnBnClickedButtonFullscreen()
@@ -735,7 +735,7 @@ void CPlayerDialog::OnUserClose()
 		if ( bRecording )
 		{
 			BOOL bResult = m_cVideoWnd.StopRecord();
-			mcu::tlog << _T( "stop record result: " ) << bResult << endl;
+			mcu::log << _T( "stop record result: " ) << bResult << endl;
 		}
 		this->OnMenuRestore();
 
@@ -751,7 +751,7 @@ void CPlayerDialog::OnRtspClose(int nErrorCode)
 	if ( bRecording )
 	{
 		BOOL bResult = m_cVideoWnd.StopRecord();
-		mcu::tlog << _T( "stop record result: " ) << bResult << endl;
+		mcu::log << _T( "stop record result: " ) << bResult << endl;
 	}
 
 	this->OnMenuRestore();
@@ -796,7 +796,7 @@ void CPlayerDialog::BackupRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueNam
 			&ftLastWriteTime); // Last write time.
 		if( retCode != ERROR_SUCCESS )
 		{
-			mcu::tlog << _T( "RegQueryInfoKey Ê§°Ü£¡" ) << endl;
+			mcu::log << _T( "RegQueryInfoKey Ê§°Ü£¡" ) << endl;
 		}
 
 
@@ -816,14 +816,14 @@ void CPlayerDialog::BackupRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueNam
 		}
 		else
 		{
-			mcu::tlog << _T( "RegQueryValueEx Ê§°Ü£¡" ) << endl;
+			mcu::log << _T( "RegQueryValueEx Ê§°Ü£¡" ) << endl;
 		}
 		LocalFree ((HLOCAL)bData);
 		RegCloseKey(hkey);
 	}
 	else
 	{
-		mcu::tlog << _T( "BackupRegValue ´ò¿ª×¢²á±íÊ§°Ü£¡" ) << endl;
+		mcu::log << _T( "BackupRegValue ´ò¿ª×¢²á±íÊ§°Ü£¡" ) << endl;
 	}
 }
 
@@ -878,7 +878,7 @@ void CPlayerDialog::RestoreRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueNa
 	}
 	else
 	{
-		mcu::tlog << _T( "RestoreRegValue ´ò¿ª×¢²á±íÊ§°Ü£¡" ) << endl;
+		mcu::log << _T( "RestoreRegValue ´ò¿ª×¢²á±íÊ§°Ü£¡" ) << endl;
 	}
 }
 

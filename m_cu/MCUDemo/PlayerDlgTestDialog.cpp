@@ -59,16 +59,16 @@ void CPlayerDlgTestDialog::OnBnClickedButtonPlay()
 		return;
 	}
 
-	mcu::tlog << _T( "OnBnClickedButtonPlay: " ) << LPCTSTR( m_strSelVideoPath ) << endl;
+	mcu::log << _T( "OnBnClickedButtonPlay: " ) << LPCTSTR( m_strSelVideoPath ) << endl;
 
 	// Ïú»Ù.
 	Reset();
 
-	mcu::tlog << _T( "before SDL_CreateThread" ) << endl;
+	mcu::log << _T( "before SDL_CreateThread" ) << endl;
 	m_bRunFlag = TRUE;
 	m_pDecodeThread = SDL_CreateThread( DecodeThread, this );
 
-	mcu::tlog << _T( "Create Thread: " ) << int( m_pDecodeThread ) << endl;
+	mcu::log << _T( "Create Thread: " ) << int( m_pDecodeThread ) << endl;
 
 	CPlayerDialog dlg;
 	dlg.DoModal();
@@ -90,7 +90,7 @@ void CPlayerDlgTestDialog::Reset()
 
 int CPlayerDlgTestDialog::DecodeThread( void * pvThis )
 {
-	mcu::tlog << _T( "DecodeThread run!!" ) << endl;
+	mcu::log << _T( "DecodeThread run!!" ) << endl;
 	CPlayerDlgTestDialog *pThis = (CPlayerDlgTestDialog*)pvThis;
 
 	CString strFilePath = pThis->m_strSelVideoPath;
@@ -155,7 +155,7 @@ int CPlayerDlgTestDialog::DecodeThread( void * pvThis )
 		}
 		
 
-	//	mcu::tlog << _T( "frame count: " ) << nFrameCount << endl;
+	//	mcu::log << _T( "frame count: " ) << nFrameCount << endl;
 	}
 
 	CTime cAfterDecode = CTime::GetCurrentTime();
@@ -167,7 +167,7 @@ int CPlayerDlgTestDialog::DecodeThread( void * pvThis )
 	tstringstream ssMsg;
 	ssMsg << _T( "total frame: " ) << nFrameCount << _T( " useTime(s): " ) 
 		<< nSeconds << _T( "FPS: " ) << fFramePS << endl;
-	mcu::tlog << ssMsg.str();
+	mcu::log << ssMsg.str();
 	AfxMessageBox( ssMsg.str().c_str() );
 
 	DestroyDecoder( decoderId );

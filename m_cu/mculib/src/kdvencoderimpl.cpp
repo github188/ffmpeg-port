@@ -33,7 +33,7 @@ BOOL CKDVEncoderImpl::Create( CBaseCodec::ECodecId eCodec )
 		break;
 
 	default:
-		mcu::tlog << _T( "unkown kdv encoder id, kdv encoder create fail!" ) << endl;
+		mcu::log << _T( "unkown kdv encoder id, kdv encoder create fail!" ) << endl;
 		_ASSERT( FALSE );
 		return FALSE;
 		break;
@@ -46,7 +46,7 @@ BOOL CKDVEncoderImpl::Create( CBaseCodec::ECodecId eCodec )
 
 	if( NULL == m_pEncParam )
 	{
-		mcu::tlog << "m_pEncParam = (TVideoUnitEncParam*)mu_mallocz ÉêÇëÄÚ´æÊ§°Ü£¡" << endl;
+		mcu::log << "m_pEncParam = (TVideoUnitEncParam*)mu_mallocz ÉêÇëÄÚ´æÊ§°Ü£¡" << endl;
 		return FALSE;
 	}
 

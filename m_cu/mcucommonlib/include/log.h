@@ -55,5 +55,5 @@ private:
 };
 
 /** 用于日志输出的全局对象。 */
-extern  MU_DECLSPEC mcu::CLog tlog;
+extern  MU_DECLSPEC mcu::CLog log;
 }

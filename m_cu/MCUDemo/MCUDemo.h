@@ -10,6 +10,7 @@
 #ifdef POCKETPC2003_UI_MODEL
 #include "resourceppc.h"
 #endif 
+#include "MCUDemo_i.h"
 //#include "m_cu_i.h"
 #ifdef SMARTPHONE2003_UI_MODEL
 #include "resourcesp.h"

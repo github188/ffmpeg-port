@@ -122,13 +122,13 @@ BOOL CMCUMessage::Init()
 
 	if ( this->m_pMessageHandleThread )
 	{
-		mcu::tlog << _T( "CMCUMessage::Init() already inited!" ) << endl;
+		mcu::log << _T( "CMCUMessage::Init() already inited!" ) << endl;
 		return TRUE;
 	}
 	else
 	{
 		m_bThreadSwitch = TRUE;
-		mcu::tlog << _T( "before CMCUMessage SDL_CreateThread" ) <<endl;
+		mcu::log << _T( "before CMCUMessage SDL_CreateThread" ) <<endl;
 		this->m_pMessageHandleThread = SDL_CreateThread( MessageHandleThread, this );
 
 		this->m_semaphoreSendMessage = SDL_CreateSemaphore( 0 );
@@ -163,7 +163,7 @@ BOOL CMCUMessage::Destroy()
 
 int CMCUMessage::MessageHandleThread( void *pCMessagePoint )
 {
-	mcu::tlog << _T( "MessageHandleThread run!" ) << endl;
+	mcu::log << _T( "MessageHandleThread run!" ) << endl;
 	CMCUMessage *pThis = ( CMCUMessage * )pCMessagePoint;
 	while ( pThis && pThis->m_bThreadSwitch )
 	{
@@ -217,7 +217,7 @@ mu_int32 CMCUMessage::HandleMessage( const TMsg& tMsg )
 			}
 			catch ( ... )
 			{
-				mcu::tlog << _T( "Call Message Callback Crash! message: " ) << tMsg.m_nMessage 
+				mcu::log << _T( "Call Message Callback Crash! message: " ) << tMsg.m_nMessage 
 					<< _T( " wparam: " ) << tMsg.m_wParam << _T( "lparam" ) << tMsg.m_lParam
 					<< _T( " callback: " ) 
 					<< (void*)tCb << _T( " target: " ) 
@@ -227,7 +227,7 @@ mu_int32 CMCUMessage::HandleMessage( const TMsg& tMsg )
 	}
 	else
 	{
-		mcu::tlog << _T( "HandleMessage can't find the target of the msg. target:" ) << tMsg.m_MessageTarget 
+		mcu::log << _T( "HandleMessage can't find the target of the msg. target:" ) << tMsg.m_MessageTarget 
 			<< _T( " msg: " ) << tMsg.m_nMessage << endl;
 	}
 
@@ -243,7 +243,7 @@ mu_int32 CMCUMessage::SendMsg( MessageTarget target, mu_int32 nMessage, WPARAM w
 	Uint32 nThreadId = SDL_ThreadID();
 	if ( nThreadId == SDL_GetThreadID( this->m_pMessageHandleThread ) )
 	{
-		mcu::tlog << _T( "CMCUMessage::SendMsg Called by the Message handle thread! Handle directly!" ) << endl;
+		mcu::log << _T( "CMCUMessage::SendMsg Called by the Message handle thread! Handle directly!" ) << endl;
 		TMsg tSentMsg;
 		tSentMsg.m_MessageTarget = target;
 		tSentMsg.m_nMessage = nMessage;
@@ -265,16 +265,16 @@ mu_int32 CMCUMessage::SendMsg( MessageTarget target, mu_int32 nMessage, WPARAM w
 			this->m_tSentMessage.m_lParam = lParam;
 		}
 
-		mcu::tlog << _T( "SendMsg Wait for Message handle! msg: " ) << nMessage << endl;
+		mcu::log << _T( "SendMsg Wait for Message handle! msg: " ) << nMessage << endl;
 		// 等待消息处理完成。
 		SDL_SemWait( this->m_semaphoreSendMessage );
 	}
 	else
 	{
-		mcu::tlog << _T( "SendMsg m_semaphoreSendMessage = NULL!!!" ) << endl;
+		mcu::log << _T( "SendMsg m_semaphoreSendMessage = NULL!!!" ) << endl;
 	}
 
-	mcu::tlog << _T( "SendMsg  return! msg: " ) << nMessage << endl;	
+	mcu::log << _T( "SendMsg  return! msg: " ) << nMessage << endl;	
 
 	return this->m_nSendMessageResult;
 }
@@ -285,7 +285,7 @@ BOOL CMCUMessage::CheckSentMessage()
 
 	if( NULL != m_tSentMessage.m_nMessage  )
 	{
-		mcu::tlog << _T( "CheckSentMessage find msg:" ) << m_tSentMessage.m_nMessage << endl;
+		mcu::log << _T( "CheckSentMessage find msg:" ) << m_tSentMessage.m_nMessage << endl;
 		
 		this->m_nSendMessageResult = this->HandleMessage( m_tSentMessage );
 
@@ -294,7 +294,7 @@ BOOL CMCUMessage::CheckSentMessage()
 		// 处理完，清空。
 		m_tSentMessage.m_nMessage = NULL;
 
-		mcu::tlog << _T( "CheckSentMessage SDL_SemPost msg:" ) << m_tSentMessage.m_nMessage << endl;
+		mcu::log << _T( "CheckSentMessage SDL_SemPost msg:" ) << m_tSentMessage.m_nMessage << endl;
 	}
 	return TRUE;
 }

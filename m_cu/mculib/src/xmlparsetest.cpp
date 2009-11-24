@@ -12,5 +12,5 @@ CXMLParseTest::~CXMLParseTest(void)
 
 void CXMLParseTest::TestXMLWriteRead()
 {
-    mcu::tlog << _T( "TestXMLWriteRead have no code!没有实现！" ) << endl;
+    mcu::log << _T( "TestXMLWriteRead have no code!没有实现！" ) << endl;
 }

@@ -114,12 +114,12 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 		// this code is processed when a user clicks on a hyperlink
 	case NM_HOTSPOT:
 		{
-			mcu::tlog << _T( "NM_HOTSPOT" ) << endl;
+			mcu::log << _T( "NM_HOTSPOT" ) << endl;
 			// read the target string
 
 			tstring strUrl = UTF8toUTF16( (const char *)pnmHTMLView->szTarget );
 
-			mcu::tlog << strUrl << endl;
+			mcu::log << strUrl << endl;
 
 			if( m_bWaittingNavigateComplete )
 			{
@@ -144,7 +144,7 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 					memset(DownloadFullUrl, 0, sizeof(DownloadFullUrl));
 					swprintf(DownloadFullUrl, L"%s%s", ServerFullUrl, strUrl.c_str());
 
-					mcu::tlog << L"Download Url:"<<DownloadFullUrl << endl;
+					mcu::log << L"Download Url:"<<DownloadFullUrl << endl;
 
 					//调用系统Shell下载
 					{
@@ -182,12 +182,12 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 					seInfo.lpParameters = DownloadFullUrl;
 					BOOL bResult = ::ShellExecuteEx( &seInfo );					
 
-					mcu::tlog << _T( "shell execute result: " ) << bResult << _T( " instapp: " ) << seInfo.hInstApp 
+					mcu::log << _T( "shell execute result: " ) << bResult << _T( " instapp: " ) << seInfo.hInstApp 
 						<< _T( " process: " ) << seInfo.hProcess << endl;
 				}
 				else
 				{
-					mcu::tlog << L"服务器地址不是合法的HTTP地址:"<< endl;
+					mcu::log << L"服务器地址不是合法的HTTP地址:"<< endl;
 				}
 
 				//停止控件继续操作
@@ -201,12 +201,12 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 		}
 	case NM_META:
 		{
-			mcu::tlog << _T( "NM_META" ) << endl;
+			mcu::log << _T( "NM_META" ) << endl;
 			tstring strHttpEquiv = UTF8toUTF16( (const char *)pnmHTMLView->szTarget );
 			tstring strData = UTF8toUTF16( ( const char * ) pnmHTMLView->szData );
 
-			mcu::tlog << _T( "meta httpequiv: " ) << strHttpEquiv << endl;
-			mcu::tlog << _T( "meta data: " ) << strData << endl;
+			mcu::log << _T( "meta httpequiv: " ) << strHttpEquiv << endl;
+			mcu::log << _T( "meta data: " ) << strData << endl;
 
 			//BOOL bResult = this->GetParent()->SendMessage( WM_HTML_WND_META, (WPARAM)strHttpEquiv.c_str(), (LPARAM)strData.c_str() );
 			//return bResult;
@@ -219,7 +219,7 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 
 			tstring strUrl = UTF8toUTF16( (const char *)pnmHTMLView->szTarget );
 
-			mcu::tlog << _T( "NM_BEFORENAVIGATE: " ) << strUrl << endl;
+			mcu::log << _T( "NM_BEFORENAVIGATE: " ) << strUrl << endl;
 
 			
 //			MessageBox( strUrl.c_str(), TEXT( "你打开的URL链接：" ) );
@@ -262,7 +262,7 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 			// Navigate 完成.
 			tstring strUrl = UTF8toUTF16( (const char *)pnmHTMLView->szTarget );
 			m_bWaittingNavigateComplete = FALSE;
-			mcu::tlog << _T( "NM_NAVIGATECOMPLETE url: " ) << strUrl << endl;
+			mcu::log << _T( "NM_NAVIGATECOMPLETE url: " ) << strUrl << endl;
 
 			// 更新历史记录。
 			if ( m_nCurUrlHistoryIndex != INVALID_INDEX )
@@ -276,9 +276,9 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 	case NM_DOCUMENTCOMPLETE:
 		if ( m_bWaittingNavigateComplete && m_bIsFaild == FALSE)
 		{
-			mcu::tlog << _T( "NM_DOCUMENTCOMPLETE not do NM_NAVIGATECOMPLETE" ) << endl;
+			mcu::log << _T( "NM_DOCUMENTCOMPLETE not do NM_NAVIGATECOMPLETE" ) << endl;
 			//tstring strUrl = UTF8toUTF16( (const char *)pnmHTMLView->szTarget );
-			//mcu::tlog << _T( "m_bWaittingNavigateComplete = false Url " )<< strUrl << endl;
+			//mcu::log << _T( "m_bWaittingNavigateComplete = false Url " )<< strUrl << endl;
 			tstring strModulePath = GetModulePath();
 			tstring strDir = ParsePath( strModulePath.c_str() ).m_strDirectory;
 			tstring strFailHtml = _T( "file://" ) + strDir + _T( "failhtml\\fail.htm" );
@@ -291,16 +291,16 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 			m_bWaittingNavigateComplete = FALSE;
 			m_bIsFaild = FALSE;
 		}
-		mcu::tlog << _T( "NM_DOCUMENTCOMPLETE" ) << endl;
+		mcu::log << _T( "NM_DOCUMENTCOMPLETE" ) << endl;
 		break;
 	case NM_TITLE:
-		mcu::tlog << _T( "NM_TITLE" ) <<endl;
+		mcu::log << _T( "NM_TITLE" ) <<endl;
 		break;
 	case NM_TITLECHANGE:
-		mcu::tlog << _T( "NM_TITLECHANGE" ) << endl;
+		mcu::log << _T( "NM_TITLECHANGE" ) << endl;
 		break;
 	case NM_INLINE_IMAGE:
-		mcu::tlog << _T( "NM_INLINE_IMAGE" ) << endl;
+		mcu::log << _T( "NM_INLINE_IMAGE" ) << endl;
 		break;
 	case NM_CONTEXTMENU:
 		{
@@ -313,7 +313,7 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 		}
 		break;
 	default:
-		mcu::tlog << _T( "html notify: pnmHTMLView->hdr.code = " ) << pnmHTMLView->hdr.code << endl;
+		mcu::log << _T( "html notify: pnmHTMLView->hdr.code = " ) << pnmHTMLView->hdr.code << endl;
 		break;
 	}		
 
@@ -324,7 +324,7 @@ BOOL CHtmlWnd::HistoryBack( int nStep /* = 1 */ )
 {
 	if ( INVALID_INDEX == m_nCurUrlHistoryIndex || m_nCurUrlHistoryIndex == m_nHistoryHeadIndex )
 	{
-		mcu::tlog << _T( "CHtmlWnd::HistoryBack : no history record!" ) << endl;
+		mcu::log << _T( "CHtmlWnd::HistoryBack : no history record!" ) << endl;
 		return FALSE;
 	}
 
@@ -333,7 +333,7 @@ BOOL CHtmlWnd::HistoryBack( int nStep /* = 1 */ )
 	{
 		if ( ( ( m_nCurUrlHistoryIndex - i ) % MAX_HISTORY ) == m_nHistoryHeadIndex )
 		{
-			mcu::tlog << _T( "CHtmlWnd::HistoryBack: History is shorter than back step!" ) << endl;
+			mcu::log << _T( "CHtmlWnd::HistoryBack: History is shorter than back step!" ) << endl;
 			return FALSE;
 		}
 	}
@@ -342,7 +342,7 @@ BOOL CHtmlWnd::HistoryBack( int nStep /* = 1 */ )
 	m_nCurUrlHistoryIndex %= MAX_HISTORY;
 
 	tstring strTargetUrl = m_tHistoryUrl[ m_nCurUrlHistoryIndex ];
-	mcu::tlog << _T( "Html window history Back " ) << nStep << _T( " step To : " ) << strTargetUrl << endl;
+	mcu::log << _T( "Html window history Back " ) << nStep << _T( " step To : " ) << strTargetUrl << endl;
 
 	return this->OpenUrl( strTargetUrl.c_str() );
 }
@@ -366,7 +366,7 @@ BOOL CHtmlWnd::HistoryForward( int nStep /* = 1 */ )
 	m_nCurUrlHistoryIndex %= MAX_HISTORY;
 
 	tstring strTargetUrl = m_tHistoryUrl[ m_nCurUrlHistoryIndex ];
-	mcu::tlog << _T( "Html window history Forward" ) << nStep << _T( " step To : " ) << strTargetUrl << endl;
+	mcu::log << _T( "Html window history Forward" ) << nStep << _T( " step To : " ) << strTargetUrl << endl;
 
 	return this->OpenUrl( strTargetUrl.c_str() );
 }
@@ -375,7 +375,7 @@ BOOL CHtmlWnd::IsCanBack(int nStep)
 {
 	if ( INVALID_INDEX == m_nCurUrlHistoryIndex || m_nCurUrlHistoryIndex == m_nHistoryHeadIndex )
 	{
-		mcu::tlog << _T( "CHtmlWnd::HistoryBack : no history record!" ) << endl;
+		mcu::log << _T( "CHtmlWnd::HistoryBack : no history record!" ) << endl;
 		return FALSE;
 	}
 
@@ -384,7 +384,7 @@ BOOL CHtmlWnd::IsCanBack(int nStep)
 	{
 		if ( ( ( m_nCurUrlHistoryIndex - i ) % MAX_HISTORY ) == m_nHistoryHeadIndex )
 		{
-			mcu::tlog << _T( "CHtmlWnd::HistoryBack: History is shorter than back step!" ) << endl;
+			mcu::log << _T( "CHtmlWnd::HistoryBack: History is shorter than back step!" ) << endl;
 			return FALSE;
 		}
 	}
@@ -430,7 +430,7 @@ BOOL CHtmlWnd::Clear()
 
 //LRESULT CHtmlWnd::HtmlProc( HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam )
 //{
-//	mcu::tlog << _T( "HtmlProc: wnd: " ) << hWnd << _T( " msg: " )<< wMsg << _T( " wp: " ) << wParam << _T( " lp: " ) << lParam << endl;
+//	mcu::log << _T( "HtmlProc: wnd: " ) << hWnd << _T( " msg: " )<< wMsg << _T( " wp: " ) << wParam << _T( " lp: " ) << lParam << endl;
 //	if ( s_lpOldHtmlProc )
 //	{
 //		return s_lpOldHtmlProc( hWnd, wMsg, wParam, lParam );

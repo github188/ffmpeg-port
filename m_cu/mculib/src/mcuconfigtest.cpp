@@ -15,11 +15,11 @@ CMcuConfigTest::~CMcuConfigTest(void)
 
 void CMcuConfigTest::TestMCUConfig()
 {
-	mcu::tlog << "Run mcu config test!" << endl;
+	mcu::log << "Run mcu config test!" << endl;
 
 	tstring strOldConfigFile = CConfig::Instance()->GetConfigFilePath();
 
-	mcu::tlog << "default config file path: " << strOldConfigFile << endl;
+	mcu::log << "default config file path: " << strOldConfigFile << endl;
 
 #ifdef _WIN32_WCE
 	// Set another config path,so we don't overwrite the old config.

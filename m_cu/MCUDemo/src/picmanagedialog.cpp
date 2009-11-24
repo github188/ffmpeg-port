@@ -597,7 +597,7 @@ void CPicManageDialog::OnLButtonDown(UINT nFlags, CPoint point)
 
 				BOOL bResult = ::ShellExecuteEx( &seInfo );
 
-				mcu::tlog << _T( "shell execute result: " ) << bResult << _T( " instapp: " ) << seInfo.hInstApp 
+				mcu::log << _T( "shell execute result: " ) << bResult << _T( " instapp: " ) << seInfo.hInstApp 
 					<< _T( " process: " ) << seInfo.hProcess << endl;
 				
 			}
@@ -658,7 +658,7 @@ BOOL CPicManageDialog::DelFile( int nFileIndex )
 		else
 		{
 			int nErrCode = GetLastError();
-			mcu::tlog << _T( "Del file: " ) << strPicPath << _T( " fail! error code: " ) << nErrCode << endl;
+			mcu::log << _T( "Del file: " ) << strPicPath << _T( " fail! error code: " ) << nErrCode << endl;
 		}
 		//else
 		//{

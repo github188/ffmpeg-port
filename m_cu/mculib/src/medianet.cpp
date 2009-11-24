@@ -737,10 +737,10 @@ BOOL CMediaNet::CloseRTSP()
 		m_runFlag = 1;
 		int nStatus;
 
-		mcu::tlog << _T( "before wait m_pMediaNetThread" ) << m_pMediaNetThread << endl;
+		mcu::log << _T( "before wait m_pMediaNetThread" ) << m_pMediaNetThread << endl;
 		SDL_WaitThread( m_pMediaNetThread, &nStatus );
 
-		mcu::tlog << _T( "after wait m_pMediaNetThread" ) << m_pMediaNetThread << endl;
+		mcu::log << _T( "after wait m_pMediaNetThread" ) << m_pMediaNetThread << endl;
 
 		m_pMediaNetThread = 0;
 		SetRtspStatus( RTSPStatus_Idle );
@@ -959,7 +959,7 @@ int CMediaNet::MediaNet_Thread( void * pThisVoid )
 			} 
 			else 
 			{
-				mcu::tlog << _T( "Use port£º " ) << (int)subsession->clientPortNum() << endl;
+				mcu::log << _T( "Use port£º " ) << (int)subsession->clientPortNum() << endl;
 				if (subsession->clientPortNum() == 0) 
 				{
 					*env << "No client port was specified for the \""
@@ -1082,7 +1082,7 @@ int CMediaNet::MediaNet_Thread( void * pThisVoid )
 
 	} while(0);
 
-//	mcu::tlog << _T( "MediaNet Thread exit!" ) << endl;
+//	mcu::log << _T( "MediaNet Thread exit!" ) << endl;
 
 	return 0;
 }

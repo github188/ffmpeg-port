@@ -4,6 +4,14 @@
 // 此文件将由 MIDL 工具处理以
 // 产生类型库(MCUDemo.tlb)和封送处理代码。
 
+import "ocidl.idl";
+import "oaidl.idl";
+import "ocidl.idl";
+import "oaidl.idl";
+import "ocidl.idl";
+import "oaidl.idl";
+import "ocidl.idl";
+import "oaidl.idl";
 import "oaidl.idl";
 import "ocidl.idl";
 
