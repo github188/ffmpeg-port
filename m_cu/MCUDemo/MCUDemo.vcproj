@@ -4817,10 +4817,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\PtzButton.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -5196,10 +5192,6 @@
 			</File>
 			<File
 				RelativePath=".\MediaPlayer.h"
-				>
-			</File>
-			<File
-				RelativePath=".\PtzButton.h"
 				>
 			</File>
 		</Filter>
@@ -5618,14 +5610,6 @@
 			</File>
 			<File
 				RelativePath=".\include\dirselectdialog.h"
-				>
-			</File>
-			<File
-				RelativePath=".\HtmlWnd.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\HtmlWnd.h"
 				>
 			</File>
 			<File
@@ -6516,10 +6500,6 @@
 				RelativePath=".\stdint.h"
 				>
 			</File>
-		</Filter>
-		<Filter
-			Name="rtsp"
-			>
 		</Filter>
 		<Filter
 			Name="UI"
@@ -7499,6 +7479,34 @@
 						Name="VCCustomBuildTool"
 					/>
 				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="¹¦ÄÜ¿Ø¼þ"
+			>
+			<File
+				RelativePath=".\src\browserctrl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\include\browserctrl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\HtmlWnd.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\HtmlWnd.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PtzButton.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PtzButton.h"
+				>
 			</File>
 		</Filter>
 		<File
