@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "MCUDemo.h"
+#include "mcu.h"
 #include "configdialog.h"
 #include "config.h"
 #include "mcucommon.h"

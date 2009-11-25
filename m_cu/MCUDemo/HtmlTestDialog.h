@@ -1,7 +1,8 @@
 #pragma once
 #include "afxwin.h"
 
-#include "HtmlWnd.h"
+//#include "HtmlWnd.h"
+#include "webpagedlg.h"
 
 // CHtmlTestDialog ¶Ô»°¿ò
 
@@ -26,7 +27,8 @@ public:
 
 private:
 	// html ´°¿Ú.
-	CHtmlWnd m_cHtmlWnd;
+//	CHtmlWnd m_cHtmlWnd;
+    CWebpageDlg m_webpageDlg;
 public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSize(UINT nType, int cx, int cy);

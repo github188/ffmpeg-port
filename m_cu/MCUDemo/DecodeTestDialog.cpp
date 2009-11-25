@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "MCUDemo.h"
+#include "mcu.h"
 #include "DecodeTestDialog.h"
 #include "decoder.h"
 #ifdef USE_FFMPEG

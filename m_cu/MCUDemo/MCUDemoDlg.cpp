@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "MCUDemo.h"
+#include "mcu.h"
 #include "MCUDemoDlg.h"
 #include "UDPTestDialog.h"
 #include "PlayerDialog.h"

@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "MCUDemo.h"
+#include "mcu.h"
 #include "picmanagedialog.h"
 #include "config.h"
 #include "imagefactory.h"

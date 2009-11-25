@@ -10,7 +10,7 @@ MCUDemo.vcproj
 这是使用应用程序向导生成的 VC++ 项目的主项目文件。 
 它包含生成该文件的 Visual C++ 的版本信息，以及有关使用应用程序向导选择的平台、配置和项目功能的信息。
 
-MCUDemo.h
+mcu.h
 这是应用程序的主要头文件。它包括其他项目特定的头文件并声明 CMCUDemoApp 应用程序类。
 
 MCUDemo.cpp

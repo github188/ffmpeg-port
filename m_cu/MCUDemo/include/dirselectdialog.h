@@ -1,7 +1,7 @@
 #pragma once
 
 // CDirSelectDialog ¶Ô»°¿ò
-#include "MCUDemo.h"
+#include "mcu.h"
 #include "uidialog.h"
 #include "afxwin.h"
 #include "afxcmn.h"

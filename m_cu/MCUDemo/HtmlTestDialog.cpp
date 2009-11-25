@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "MCUDemo.h"
+#include "mcu.h"
 #include "HtmlTestDialog.h"
 
 
@@ -42,7 +42,14 @@ void CHtmlTestDialog::OnBnClickedButtonOpenUrl()
 	CString strUrl;
 	this->m_cmbUrlList.GetWindowText( strUrl );
 
-	m_cHtmlWnd.OpenUrl( strUrl );
+
+    if( ! m_webpageDlg.GetSafeHwnd() )
+    {
+        m_webpageDlg.Create( CWebpageDlg::IDD, this );
+    }    
+    m_webpageDlg.ShowWindow( SW_SHOW );
+
+    m_webpageDlg.OpenUrl( strUrl );
 
 }
 
@@ -51,8 +58,8 @@ BOOL CHtmlTestDialog::OnInitDialog()
 	CDialog::OnInitDialog();
 
 	// TODO:  在此添加额外的初始化
-	m_cHtmlWnd.Create( CHtmlWnd::IDD, this );
-	m_cHtmlWnd.ShowWindow( SW_SHOW );
+//	m_cHtmlWnd.Create( CHtmlWnd::IDD, this );
+//	m_cHtmlWnd.ShowWindow( SW_SHOW );
 
 	this->m_cmbUrlList.AddString( _T( "http://www.google.com" ) );
 	this->m_cmbUrlList.AddString( _T( "http://www.taobao.com" ) );
@@ -71,14 +78,14 @@ void CHtmlTestDialog::OnSize(UINT nType, int cx, int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
 
-	if ( m_cHtmlWnd.GetSafeHwnd() )
-	{
-		CRect rcCmb;
-		m_cmbUrlList.GetWindowRect( rcCmb );
+	//if ( m_cHtmlWnd.GetSafeHwnd() )
+	//{
+	//	CRect rcCmb;
+	//	m_cmbUrlList.GetWindowRect( rcCmb );
 
-		CRect rcHtml( 0, rcCmb.Height() + 3, cx, cy );
-		m_cHtmlWnd.MoveWindow( rcHtml );
-	}
+	//	CRect rcHtml( 0, rcCmb.Height() + 3, cx, cy );
+	//	m_cHtmlWnd.MoveWindow( rcHtml );
+	//}
 
 	// TODO: 在此处添加消息处理程序代码
 }

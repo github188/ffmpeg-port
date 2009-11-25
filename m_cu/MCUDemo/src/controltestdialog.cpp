@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "MCUDemo.h"
+#include "mcu.h"
 #include "controltestdialog.h"
 #include "mcucommon.h"
 #include "pictruestatic.h"

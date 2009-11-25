@@ -13,6 +13,7 @@
 #define IDR_M_CU1                       108
 #define IDR_M_CU2                       110
 #define IDR_M_CU3                       112
+#define IDR_HTML_WEBPAGEDLG             113
 #define IDR_MAINFRAME                   128
 #define IDD_DIALOG_LOGIN                129
 #define IDR_MENU_LEFT                   130
@@ -53,6 +54,9 @@
 #define IDR_MENU_OKCANCEL               151
 #define IDD_DIALOG_DIR_SELECT           152
 #define IDR_HTMLPOPMENU                 152
+#define IDD_MCUDEMO_DIALOG2             153
+#define IDD_DIALOG_WEBPAGE              153
+#define IDD_DIALOG_WEBPAGE3             153
 #define IDC_STATIC_1                    200
 #define IDC_BUTTON_LOGIN                1000
 #define IDC_BUTTON_TEST                 1001
@@ -255,6 +259,6 @@
 #define _APS_NEXT_RESOURCE_VALUE        153
 #define _APS_NEXT_COMMAND_VALUE         32838
 #define _APS_NEXT_CONTROL_VALUE         1081
-#define _APS_NEXT_SYMED_VALUE           113
+#define _APS_NEXT_SYMED_VALUE           114
 #endif
 #endif
