@@ -11,6 +11,8 @@
 #include "mculib.h"
 #include <set>
 
+#include "windowfactory.h"
+
 class CUIDialog :
 	public CDialog
 {
@@ -57,6 +59,17 @@ public:
 	/** 设置销毁时是否自动恢复窗口. */
 	void SetAutoResume( BOOL bAutoResume );
 
+    /** 设置窗口id。 */
+    void SetWindowId( EWindowId eWndId );
+    /** 获取窗口id。*/
+    EWindowId GetWindowId() const;
+
+    /** 设置本窗口关闭后要打开的后续窗口。 */
+    void SetWndAfterClose( EWindowId eWndId );
+    /** 获取后续窗口。 */
+    EWindowId GetWndAfterClose( ) const;
+
+
 public:
 	CUIDialog(void);
 	~CUIDialog(void);
@@ -64,8 +77,11 @@ public:
 //	explicit CDialog(LPCTSTR lpszTemplateName, CWnd* pParentWnd = NULL);
 	explicit CUIDialog(UINT nIDTemplate, CWnd* pParentWnd = NULL);
 
-	DECLARE_MESSAGE_MAP()
-	afx_msg void OnPaint();
+public:
+    BOOL ShowWindow(int nCmdShow );
+
+    // termination
+    void EndDialog(int nResult);
 
 protected:
 	/** 创建一个延时事件。 */
@@ -80,6 +96,9 @@ protected:
 	/** 用户按了右边功能键。 */
 	virtual void OnClickRightFunKey();
 
+    /** 通知子类，ShowWindow被调用了。 */
+    virtual void OnShowWindowCmd( int nSWCmd );
+
 
 	/** 隐藏输入面板 */
 	BOOL LowerSip();
@@ -88,6 +107,7 @@ protected:
 	BOOL RaiseSip( void );
 
 	BOOL IsSipRaise();
+
 
 private:
 	/** 延时事件id集合。 */
@@ -146,13 +166,31 @@ private:
 	DWORD m_dwOriginalScreenMode;
 	/** 是否改变了屏幕的方向. */
 	BOOL m_bChangeScreenMode;
+
+    /** 窗口id。 */
+    EWindowId m_eWndId;
+    /** 本窗口关闭后显示的窗口。 */
+    EWindowId m_eWndAfterClose;
+
 protected:
 	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 
 	// for translating Windows messages in main message pump
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
-public:
+
+    virtual void OnOK();
+    virtual void OnCancel();
+
+protected:
+    DECLARE_MESSAGE_MAP()
+
+
+    afx_msg void OnPaint();
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
 	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
+    afx_msg void OnSettingChange(UINT uFlags, LPCTSTR lpszSection);
+    
+public:
+    afx_msg void OnClose();
 };

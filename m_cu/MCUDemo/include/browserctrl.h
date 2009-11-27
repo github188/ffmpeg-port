@@ -81,6 +81,10 @@ private:
 
     // cached copy of hosted control's IWebBrowser2 interface pointer
     CComPtr<IWebBrowser2> m_spIWebBrowser2;
+
+    /** Url */
+    tstring m_strUrl;
+
 public:
     
     

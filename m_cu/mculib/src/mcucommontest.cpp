@@ -163,3 +163,24 @@ void CMCUCommonTest::TestTimeStr()
 
     CPPUNIT_ASSERT_EQUAL( TestTime, tTime );
 }
+
+void CMCUCommonTest::TestStringToUrl()
+{
+    LPCTSTR str1 = _T( "#%&+ end" );
+    tstring strUrl = StringToUrl( str1 );
+
+    LPCTSTR strTar = _T( "%23%25%26%2b%20end" );
+    CPPUNIT_ASSERT_EQUAL( tstring( strTar ), strUrl );
+
+    str1 = _T( "http://abc# d13=Œ“ «…Ò#%&+ end\n" );
+
+    strUrl = StringToUrl( str1 );
+
+    // 00000002h: 11 62 2F 66 5E 79                               ; .b/f^y
+    
+    strTar = _T( "http://abc%23%20d13=%11%62%2f%66%5e%79%23%25%26%2b%20end" );
+    CPPUNIT_ASSERT_EQUAL( tstring( strTar ), strUrl );
+}
+
+
+

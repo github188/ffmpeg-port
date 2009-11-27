@@ -23,12 +23,20 @@ CWebpageDlg::~CWebpageDlg()
 void CWebpageDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CUIDialog::DoDataExchange(pDX);
+
+    DDX_Control(pDX, IDC_BUTTON_PIC, m_btnPic);
+    DDX_Control(pDX, IDC_BUTTON_CONFIG, m_btnConfig);
+    DDX_Control(pDX, IDC_STATIC_BOTTOM_BG, m_stBottomBg);
+    DDX_Control(pDX, IDC_BUTTON_SIP_BUTTON, m_btnSip);
 }
 
 
 BEGIN_MESSAGE_MAP(CWebpageDlg, CUIDialog)
     ON_WM_CLOSE()
     ON_WM_SIZE()
+    ON_BN_CLICKED(IDC_BUTTON_PIC, &CWebpageDlg::OnBnClickedButtonPic)
+    ON_BN_CLICKED(IDC_BUTTON_CONFIG, &CWebpageDlg::OnBnClickedButtonConfig)
+    ON_BN_CLICKED(IDC_BUTTON_SIP_BUTTON, &CWebpageDlg::OnBnClickedButtonSipButton)
 END_MESSAGE_MAP()
 
 
@@ -40,6 +48,27 @@ BOOL CWebpageDlg::OnInitDialog()
 
     // TODO:  在此添加额外的初始化
     BOOL bResult = CreateBrowserCtrl();
+
+    // logo
+    m_logoDlg.Create( CLogoDialog::IDD, this );
+    m_logoDlg.ShowWindow( SW_SHOW );
+
+    // 底部菜单条及按钮。
+    this->m_stBottomBg.SetBkTransparent( FALSE, FALSE );
+    this->m_stBottomBg.SetPicPath( _T( "bottombg.JPG" ) );
+
+    this->m_btnPic.SetBkTransparent( FALSE, FALSE );
+    this->m_btnPic.SetImage( _T( "btn_pic_normal.jpg" ), _T( "btn_pic_focus.jpg" ), _T( "btn_pic_disable.jpg.jpg" ), FALSE );
+
+    this->m_btnConfig.SetBkTransparent( FALSE, FALSE );
+    this->m_btnConfig.SetImage( _T( "btn_config_normal.jpg" ), _T( "btn_config_focus.jpg" ), _T( "btn_config_normal.jpg" ), FALSE );
+
+    // 输入法控制按钮。
+    this->m_btnSip.SetBkTransparent( FALSE, FALSE );
+    this->m_btnSip.SetImage( _T( "btn_sip_normal.jpg" ), _T( "btn_sip_focus.jpg" ), _T( "btn_sip_disable.jpg" ), FALSE );
+
+
+    this->UpdateLayout();
 
     return TRUE;  // return TRUE unless you set the focus to a control
     // 异常: OCX 属性页应返回 FALSE
@@ -73,10 +102,22 @@ BOOL CWebpageDlg::OpenPlayer( CVideoSession *pVideoSession )
 void CWebpageDlg::OnOK()
 {
     // TODO: 在此添加专用代码和/或调用基类
-
- //   __super::OnOK();
-
-    this->ShowWindow( SW_HIDE );
+    if( IDOK ==  MessageBox( _T( "你是否退出登录？" ), _T( "提示" ), MB_OKCANCEL ) )
+    {
+        //EWindowId eLoginAfter = WndInvalid;
+        //CUIDialog *pLoginDlg = CWindowFactory::Instance()->GetWnd( WndLogin );
+        //if ( pLoginDlg )
+        //{
+        //    eLoginAfter = pLoginDlg->GetWndAfterClose();
+        //}
+//        CWindowFactory::Instance()->ShowWindow( WndLogin, eLoginAfter ); 
+         __super::OnOK();                
+//        this->ShowWindow( SW_HIDE );
+    }
+    else
+    {
+        return;
+    }   
 }
 
 void CWebpageDlg::OnClose()
@@ -113,9 +154,138 @@ void CWebpageDlg::UpdateLayout( CRect *prcClient /* = NULL */ )
         GetClientRect( rcClient ); 
     }
 
+
+
+    // 剩余的空间。
+    CRect rcLeftSpace = rcClient;
+
+    // 屏幕大小。	
+    int nScreenLong = ::GetScreenLong();
+
+    // logo.
+    if ( m_logoDlg.GetSafeHwnd() )
+    {
+        int nLogoHeight = m_logoDlg.GetHeight();
+        CRect rcLogoDlg = rcClient;;
+        rcLogoDlg.bottom = nLogoHeight;
+        this->m_logoDlg.MoveWindow( rcLogoDlg );
+
+        // 在剩余空间中去除logo占用的空间。
+        rcLeftSpace.top += nLogoHeight;
+    }
+
+    // 下边菜单条。
+    // 调整菜单条的位置。
+    if ( m_stBottomBg.GetSafeHwnd() && m_btnPic.GetSafeHwnd() && m_btnConfig.GetSafeHwnd() )
+    {
+        // 底部按钮条（替代以前的菜单）的高度	
+        const float conFMenubarHeight = 0.082;
+        int nMenubarHeight = int( conFMenubarHeight * nScreenLong );
+
+        CRect rcBottomBg = rcClient;
+        rcBottomBg.top = rcBottomBg.bottom - nMenubarHeight;
+        //m_stBottomBg.MoveWindow( rcBottomBg );
+        this->m_stBottomBg.SetWindowPos( &CWnd::wndTop, rcBottomBg.left, rcBottomBg.top, rcBottomBg.Width(), rcBottomBg.Height(), NULL );
+
+        CRect rcBtnDelete;
+        BOOL bResult = this->m_btnPic.GetImageSize( rcBtnDelete );
+        if ( bResult )
+        {
+            int nNewWidth = nMenubarHeight * rcBtnDelete.Width() / rcBtnDelete.Height();
+            rcBtnDelete = rcBottomBg;
+            rcBtnDelete.right = rcBtnDelete.left + nNewWidth;
+            this->m_btnPic.SetWindowPos( &CWnd::wndTop, rcBtnDelete.left, rcBtnDelete.top, rcBtnDelete.Width(), rcBtnDelete.Height(), NULL );
+        }
+
+        CRect rcBtnReturn;
+        bResult = this->m_btnConfig.GetImageSize( rcBtnReturn );
+        if ( bResult )
+        {
+            int nNewWidth = nMenubarHeight * rcBtnReturn.Width() / rcBtnReturn.Height();
+            rcBtnReturn = rcBottomBg;
+            rcBtnReturn.left = rcBtnReturn.right - nNewWidth;
+            this->m_btnConfig.SetWindowPos( &CWnd::wndTop, rcBtnReturn.left, rcBtnReturn.top, rcBtnReturn.Width(), rcBtnReturn.Height(), NULL );
+        }
+
+        CRect rcBtnSip;
+        bResult = this->m_btnSip.GetImageSize( rcBtnSip );
+        if ( bResult )
+        {
+            int nNewWidth = nMenubarHeight * rcBtnSip.Width() / rcBtnSip.Height();
+            rcBtnSip = rcBottomBg;
+            rcBtnSip.left = rcBottomBg.left + ( rcBottomBg.Width() - nNewWidth ) / 2;
+            rcBtnSip.right = rcBtnSip.left + nNewWidth;
+            this->m_btnSip.SetWindowPos( &CWnd::wndTop, rcBtnSip.left, rcBtnSip.top, rcBtnSip.Width(), rcBtnSip.Height(), NULL );
+        }
+
+        // 在剩余空间中去除菜单条占用的空间。
+        rcLeftSpace.bottom -= nMenubarHeight;
+    }
+
+
     if ( m_browserCtrl.IsWindow() )
     {
-        m_browserCtrl.MoveWindow( rcClient );
+        CRect rcHtml = rcLeftSpace;
+        //		rcHtml.top += nLogoHeight;
+
+        m_browserCtrl.MoveWindow( rcHtml );
+    }	
+}
+
+void CWebpageDlg::OnBnClickedButtonPic()
+{
+    // TODO: 在此添加控件通知处理程序代码
+    CWindowFactory::Instance()->ShowWindow( WndPicManage, this->GetWindowId() );
+}
+
+void CWebpageDlg::OnBnClickedButtonConfig()
+{
+    // TODO: 在此添加控件通知处理程序代码
+    CWindowFactory::Instance()->ShowWindow( WndConfig, this->GetWindowId() );
+}
+
+void CWebpageDlg::OnBnClickedButtonSipButton()
+{
+    // TODO: 在此添加控件通知处理程序代码
+    if ( this->IsSipRaise() )
+    {
+        this->LowerSip();
+    }
+    else
+    {
+        this->RaiseSip();
     }
 }
+
+void CWebpageDlg::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
+{
+    // 当输入法弹出时，不调整对话框大小。
+    if (SPI_SETSIPINFO == uFlags){
+        SHACTIVATEINFO sai;
+        memset(&sai, 0, sizeof(SHACTIVATEINFO));
+        SHHandleWMSettingChange( GetSafeHwnd(), uFlags, (LPARAM)lpszSection, &sai);
+
+        return;
+    }
+
+    CUIDialog::OnSettingChange(uFlags, lpszSection);
+
+    // TODO: 在此处添加消息处理程序代码
+}
+
+void CWebpageDlg::OnShowWindowCmd( int nSWCmd )
+{
+    // 总是有莫名其妙的问题。
+    return;
+    if ( SW_HIDE == nSWCmd )
+    {
+        LPCTSTR strWaitPage = _T( "htmldoc\\wait.htm" );//_T( "wait.htm" );
+        tstring strModulePath = GetModulePath();
+        tstring strDir = ParsePath( strModulePath.c_str() ).m_strDirectory;
+        tstring strFailHtml = _T( "file://" ) + strDir + strWaitPage;
+        this->OpenUrl( strFailHtml.c_str() );
+    }
+}
+
+
 

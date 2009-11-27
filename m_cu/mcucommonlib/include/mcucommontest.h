@@ -14,12 +14,12 @@ inline CPPUNIT_NS::OStream &operator <<( CPPUNIT_NS::OStream &os, const wstring 
 {
 	mcu::log << value;
 
-	std::wstringstream sswMsg;
-	sswMsg << _T( "output wstring addr=" ) <<  (void *)value.c_str() << _T( " < value=\"" ) << value << _T( "\" >" ) <<endl;
-	tcout << sswMsg.str();
+//	std::wstringstream sswMsg;
+//	sswMsg << _T( "output wstring addr=" ) <<  (void *)value.c_str() << _T( " < value=\"" ) << value << _T( "\" >" ) <<endl;
+//	tcout << sswMsg.str();
 
-	os << "cpp unit don't surpport wstring !" << endl;
-	return os << "wstring < value has show above!! please search \"addr=" << value.c_str() << "\" >";
+    return	os << "cpp unit don't surpport wstring !output to mcu::log!" << endl;
+//	return os << "wstring < value has show above!! please search \"addr=" << value.c_str() << "\" >";
 }
 
 inline CPPUNIT_NS::OStream &operator <<( CPPUNIT_NS::OStream &os, const TFileNameInfo &value )

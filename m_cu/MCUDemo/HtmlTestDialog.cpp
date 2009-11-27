@@ -8,10 +8,10 @@
 
 // CHtmlTestDialog 对话框
 
-IMPLEMENT_DYNAMIC(CHtmlTestDialog, CDialog)
+IMPLEMENT_DYNAMIC(CHtmlTestDialog, CUIDialog)
 
 CHtmlTestDialog::CHtmlTestDialog(CWnd* pParent /*=NULL*/)
-	: CDialog(CHtmlTestDialog::IDD, pParent)
+	: CUIDialog(CHtmlTestDialog::IDD, pParent)
 {
 
 }
@@ -22,12 +22,12 @@ CHtmlTestDialog::~CHtmlTestDialog()
 
 void CHtmlTestDialog::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
+	CUIDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_COMBO_URL, m_cmbUrlList);
 }
 
 
-BEGIN_MESSAGE_MAP(CHtmlTestDialog, CDialog)
+BEGIN_MESSAGE_MAP(CHtmlTestDialog, CUIDialog)
 	ON_BN_CLICKED(IDC_BUTTON_OPEN_URL, &CHtmlTestDialog::OnBnClickedButtonOpenUrl)
 	ON_WM_SIZE()
 	ON_BN_CLICKED(IDC_BUTTON_TEST, &CHtmlTestDialog::OnBnClickedButtonTest)
@@ -39,28 +39,46 @@ END_MESSAGE_MAP()
 void CHtmlTestDialog::OnBnClickedButtonOpenUrl()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CString strUrl;
-	this->m_cmbUrlList.GetWindowText( strUrl );
+    CString strUrl;
+    this->m_cmbUrlList.GetWindowText( strUrl );
+
+    CWebpageDlg dlg;
+    dlg.OpenUrl( strUrl );
+    dlg.DoModal();
 
 
-    if( ! m_webpageDlg.GetSafeHwnd() )
+
+
+    CWindowFactory::Instance()->ShowWindow( WndWebpage, this->GetWindowId() );
+    CWebpageDlg *pWebDlg = dynamic_cast< CWebpageDlg * >( CWindowFactory::Instance()->GetWnd( WndWebpage ) );
+    if ( pWebDlg )
     {
-        m_webpageDlg.Create( CWebpageDlg::IDD, this );
-    }    
-    m_webpageDlg.ShowWindow( SW_SHOW );
+        pWebDlg->OpenUrl( strUrl );
+    }
 
-    m_webpageDlg.OpenUrl( strUrl );
+
+
+    //if( ! m_webpageDlg.GetSafeHwnd() )
+    //{
+    //    m_webpageDlg.Create( CWebpageDlg::IDD, this );
+    //}    
+    //m_webpageDlg.ShowWindow( SW_SHOW );
+
+    //m_webpageDlg.OpenUrl( strUrl );
 
 }
 
 BOOL CHtmlTestDialog::OnInitDialog()
 {
-	CDialog::OnInitDialog();
+	CUIDialog::OnInitDialog();
 
 	// TODO:  在此添加额外的初始化
 //	m_cHtmlWnd.Create( CHtmlWnd::IDD, this );
 //	m_cHtmlWnd.ShowWindow( SW_SHOW );
 
+    this->m_cmbUrlList.AddString( _T( "http://172.16.161.125/msp/index.php" ) );
+    this->m_cmbUrlList.AddString( _T( "file://\\Program Files\\M_CU\\htmldoc\\mcufail.htm" ) );
+    this->m_cmbUrlList.AddString( _T( "file://\\Program%20Files\\M_CU\\htmldoc\\mcufail.htm" ) );
 	this->m_cmbUrlList.AddString( _T( "http://www.google.com" ) );
 	this->m_cmbUrlList.AddString( _T( "http://www.taobao.com" ) );
 	this->m_cmbUrlList.AddString( _T( "http://218.242.128.205/msp/login.html" ) );
@@ -76,7 +94,7 @@ BOOL CHtmlTestDialog::OnInitDialog()
 
 void CHtmlTestDialog::OnSize(UINT nType, int cx, int cy)
 {
-	CDialog::OnSize(nType, cx, cy);
+	CUIDialog::OnSize(nType, cx, cy);
 
 	//if ( m_cHtmlWnd.GetSafeHwnd() )
 	//{

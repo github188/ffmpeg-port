@@ -16,7 +16,7 @@
 #endif
 
 #include "Config.h"
-#include "PPCLoginDialog.h"
+#include "logindialog.h"
 #include "MCUSession.h"
 
 #include "UrlParse.h"
@@ -482,9 +482,9 @@ void CMCUDemoDlg::Login()
 	CConfig::Instance()->GetLoginInterface( bHasInterface );
 	if ( bHasInterface )
 	{
-		CPPCLoginDialog loginDlg;
+		CLoginDialog loginDlg;
 		int nloginType = loginDlg.DoModal();
-		if ( CPPCLoginDialog::LOGIN_CANCEL == nloginType )
+		if ( CLoginDialog::LOGIN_CANCEL == nloginType )
 		{
 			// ÍË³ö³ÌÐò¡£
 			EndDialog(0);

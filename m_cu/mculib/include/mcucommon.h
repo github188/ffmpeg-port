@@ -86,5 +86,7 @@ MU_DECLSPEC TFileList EnumAllFile( LPCTSTR strFolder );
 /** 将一个文件夹变成标准的形式。 */
 MU_DECLSPEC void NormalizeDir( tstring& strFolder );
 
+/** 将一个字符串转换成URL标准格式。 */
+MU_DECLSPEC tstring StringToUrl( LPCTSTR strStr );
 
 

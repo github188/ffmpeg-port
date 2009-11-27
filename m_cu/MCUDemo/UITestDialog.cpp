@@ -6,7 +6,7 @@
 #include "UITestDialog.h"
 
 #include "PlayerDialog.h"
-#include "PPCLoginDialog.h"
+#include "logindialog.h"
 #include "MCUDemoDlg.h"
 
 #include "MainDialog.h"
@@ -15,6 +15,7 @@
 #include "MCUSession.h"
 #include "configdialog.h"
 #include "dirselectdialog.h"
+#include "windowfactory.h"
 
 // CUITestDialog 对话框
 
@@ -49,6 +50,8 @@ BEGIN_MESSAGE_MAP(CUITestDialog, CUIDialog)
 	ON_BN_CLICKED(IDC_BUTTON_CONTROL_TEST, &CUITestDialog::OnBnClickedButtonControlTest)
 	ON_BN_CLICKED(IDC_BUTTON_PLAYER_DLG_NO_PTZ, &CUITestDialog::OnBnClickedButtonPlayerDlgNoPtz)
 	ON_BN_CLICKED(IDC_BUTTON_DIR_SEL_TEST, &CUITestDialog::OnBnClickedButtonDirSelTest)
+    ON_WM_SHOWWINDOW()
+    ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -65,26 +68,21 @@ void CUITestDialog::OnBnClickedButtonPlayerDlgTest()
 void CUITestDialog::OnBnClickedButtonLoginDialogTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CPPCLoginDialog dlg;
-	dlg.DoModal();
+    CWindowFactory::Instance()->ShowWindow( WndLogin, this->GetWindowId() );
+    return ;
+
 }
 
 void CUITestDialog::OnBnClickedButtonHtmlDialogTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CMCUDemoDlg dlg;
-	dlg.DoModal();
+    CWindowFactory::Instance()->ShowWindow( WndWebpage, this->GetWindowId() );
+
 }
 
 void CUITestDialog::OnBnClickedButtonConfigDialogTest()
 {
-	CConfigDialog dlg;
-	dlg.DoModal();
-	// TODO: 在此添加控件通知处理程序代码
-	//CSysCfgPage sysPage;
-	//CConfigPropertySheet sheet( _T( "unit test" ) );
-	//sheet.AddPage( &sysPage );
-	//sheet.DoModal();
+    CWindowFactory::Instance()->ShowWindow( WndConfig, this->GetWindowId() );
 }
 
 void CUITestDialog::OnBnClickedButtonMainDialogTest()
@@ -111,7 +109,7 @@ void CUITestDialog::OnBnClickedButtonMainDialogTest()
 void CUITestDialog::OnBnClickedOk()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	OnOK();
+    this->OnOK();
 }
 
 BOOL CUITestDialog::OnInitDialog()
@@ -119,12 +117,6 @@ BOOL CUITestDialog::OnInitDialog()
 	CUIDialog::OnInitDialog();
 
 	// TODO:  在此添加额外的初始化
-//	this->m_btnOk.SetIma
-// c_l_cancel.JPG
-//	this->m_btnImage.SetImage( _T( "\\Storage Card\\picres\\c_o_back.JPG" ) );
-
-	this->FullScreen( FS_HideMenuBar | FS_HideSipButton );
-
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
@@ -132,8 +124,8 @@ BOOL CUITestDialog::OnInitDialog()
 void CUITestDialog::OnBnClickedButtonImage()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CPicManageDialog dlg;
-	dlg.DoModal();
+    CWindowFactory::Instance()->ShowWindow( WndPicManage, this->GetWindowId() );
+
 }
 
 void CUITestDialog::OnBnClickedButtonControlTest()
@@ -146,9 +138,11 @@ void CUITestDialog::OnBnClickedButtonControlTest()
 void CUITestDialog::OnBnClickedButtonPlayerDlgNoPtz()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CPlayerDialog dlg;
+//	CPlayerDialog dlg;
 	CMCUSession::Instance()->CurVideoSession()->PtzControl( FALSE );
-	dlg.DoModal();
+//	dlg.DoModal();
+
+    CWindowFactory::Instance()->ShowWindow( WndPlayer, this->GetWindowId() );
 }
 
 void CUITestDialog::OnBnClickedButtonDirSelTest()
@@ -166,4 +160,31 @@ void CUITestDialog::OnBnClickedButtonDirSelTest()
 	{
 		MessageBox(  strDir + _T( "\n" ) + _T("用户点击取消！" ) );
 	}
+}
+
+
+
+
+void CUITestDialog::OnShowWindow(BOOL bShow, UINT nStatus)
+{
+   
+    CUIDialog::OnShowWindow(bShow, nStatus);
+
+    // TODO: 在此处添加消息处理程序代码
+}
+
+void CUITestDialog::OnShowWindowCmd( int nSWCmd )
+{
+    if ( SW_SHOW == nSWCmd )
+    {
+        this->FullScreen( FS_HideMenuBar | FS_HideSipButton );
+    }
+}
+
+
+void CUITestDialog::OnDestroy()
+{
+    CUIDialog::OnDestroy();
+
+    // TODO: 在此处添加消息处理程序代码
 }

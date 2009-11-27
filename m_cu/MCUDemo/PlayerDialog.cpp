@@ -81,6 +81,7 @@ ON_BN_CLICKED(IDC_BUTTON_FULLSCREEN, &CPlayerDialog::OnBnClickedButtonFullscreen
 ON_BN_CLICKED(IDC_BUTTON_CLOSE, &CPlayerDialog::OnBnClickedButtonClose)
 ON_BN_CLICKED(IDC_BUTTON_PTZ, &CPlayerDialog::OnBnClickedButtonPtz)
 ON_WM_ACTIVATE()
+ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -184,26 +185,7 @@ void CPlayerDialog::PlayFullScreen( BOOL bFullScreen )
 
 }
 
-BOOL CPlayerDialog::DestroyWindow()
-{
-	// TODO: 在此添加专用代码和/或调用基类
 
-	// 首先回复窗口.
-	this->OnMenuRestore();
-
-	// 销毁子窗口.
-	if ( m_cVideoWnd.GetSafeHwnd() && ::IsWindow( m_cVideoWnd.GetSafeHwnd() ) )
-	{
-		m_cVideoWnd.DestroyWindow();
-	}
-
-	if ( m_cPtzDlg.GetSafeHwnd() && ::IsWindow( m_cPtzDlg.GetSafeHwnd() ) )
-	{
-		m_cPtzDlg.DestroyWindow();
-	}
-
-	return CUIDialog::DestroyWindow();
-}
 
 BOOL CPlayerDialog::HasPtz()const
 {
@@ -739,7 +721,9 @@ void CPlayerDialog::OnUserClose()
 		}
 		this->OnMenuRestore();
 
-		this->EndDialog( 0 );
+//		this->EndDialog( 0 );
+
+        __super::OnOK();
 	}	
 }
 
@@ -756,7 +740,19 @@ void CPlayerDialog::OnRtspClose(int nErrorCode)
 
 	this->OnMenuRestore();
 
-	this->EndDialog( nErrorCode );
+    if ( nErrorCode == E_DlgEndRetry )
+    {
+        // this->m_cVideoWnd.SetRstpUrl( m)
+        // 暂时关闭。
+        mcu::log << _T( "应该重新连接服务器。" ) << endl;
+        __super::OnOK();
+    }
+    else
+    {
+        __super::OnOK();
+    }
+
+	
 }
 
 void CPlayerDialog::BackupRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueName, PWCHAR szBakValueName)
@@ -937,4 +933,23 @@ void CPlayerDialog::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized)
 	}
 
 	// TODO: 在此处添加消息处理程序代码
+}
+
+void CPlayerDialog::OnDestroy()
+{
+    // 首先回复窗口.
+    this->OnMenuRestore();
+
+    // 销毁子窗口.
+    if ( m_cVideoWnd.GetSafeHwnd() && ::IsWindow( m_cVideoWnd.GetSafeHwnd() ) )
+    {
+        m_cVideoWnd.DestroyWindow();
+    }
+
+    if ( m_cPtzDlg.GetSafeHwnd() && ::IsWindow( m_cPtzDlg.GetSafeHwnd() ) )
+    {
+        m_cPtzDlg.DestroyWindow();
+    }
+
+    __super::OnDestroy();
 }

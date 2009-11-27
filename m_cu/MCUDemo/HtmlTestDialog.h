@@ -6,7 +6,7 @@
 
 // CHtmlTestDialog ¶Ô»°¿ò
 
-class CHtmlTestDialog : public CDialog
+class CHtmlTestDialog : public CUIDialog
 {
 	DECLARE_DYNAMIC(CHtmlTestDialog)
 
@@ -28,7 +28,7 @@ public:
 private:
 	// html ´°¿Ú.
 //	CHtmlWnd m_cHtmlWnd;
-    CWebpageDlg m_webpageDlg;
+//    CWebpageDlg m_webpageDlg;
 public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSize(UINT nType, int cx, int cy);

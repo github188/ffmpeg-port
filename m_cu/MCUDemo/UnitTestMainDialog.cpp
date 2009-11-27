@@ -11,12 +11,14 @@
 #include "PlayerDlgTestDialog.h"
 #include "HtmlTestDialog.h"
 #include "ImageShowTest.h"
+
+#include "windowfactory.h"
 // CUnitTestMainDialog 对话框
 
-IMPLEMENT_DYNAMIC(CUnitTestMainDialog, CDialog)
+IMPLEMENT_DYNAMIC(CUnitTestMainDialog, CUIDialog)
 
 CUnitTestMainDialog::CUnitTestMainDialog(CWnd* pParent /*=NULL*/)
-	: CDialog(CUnitTestMainDialog::IDD, pParent)
+	: CUIDialog(CUnitTestMainDialog::IDD, pParent)
 {
 
 }
@@ -27,11 +29,11 @@ CUnitTestMainDialog::~CUnitTestMainDialog()
 
 void CUnitTestMainDialog::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
+	CUIDialog::DoDataExchange(pDX);
 }
 
 
-BEGIN_MESSAGE_MAP(CUnitTestMainDialog, CDialog)
+BEGIN_MESSAGE_MAP(CUnitTestMainDialog, CUIDialog)
 	ON_BN_CLICKED(IDC_BUTTON_DECODE_TEST, &CUnitTestMainDialog::OnBnClickedButtonDecodeTest)
 	ON_BN_CLICKED(IDC_BUTTON_UDP_TEST, &CUnitTestMainDialog::OnBnClickedButtonUdpTest)
 	ON_BN_CLICKED(IDC_BUTTON_RTSP_TEST, &CUnitTestMainDialog::OnBnClickedButtonRtspTest)
@@ -68,8 +70,9 @@ void CUnitTestMainDialog::OnBnClickedButtonRtspTest()
 void CUnitTestMainDialog::OnBnClickedButtonUiTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CUITestDialog dlg;
-	dlg.DoModal();
+    CWindowFactory::Instance()->ShowWindow( WndUnittestUI, this->GetWindowId() );
+    return;
+
 }
 
 void CUnitTestMainDialog::OnBnClickedButtonPlayerDialogTest()
@@ -82,8 +85,7 @@ void CUnitTestMainDialog::OnBnClickedButtonPlayerDialogTest()
 void CUnitTestMainDialog::OnBnClickedButtonHtmlTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CHtmlTestDialog dlg;
-	dlg.DoModal();
+    CWindowFactory::Instance()->ShowWindow( WndUnittestWebpage, this->GetWindowId() );
 }
 
 void CUnitTestMainDialog::OnBnClickedButtonImageTest()
@@ -91,4 +93,11 @@ void CUnitTestMainDialog::OnBnClickedButtonImageTest()
 	// TODO: 在此添加控件通知处理程序代码
 	CImageShowTest dlg;
 	dlg.DoModal();
+}
+
+void CUnitTestMainDialog::OnOK()
+{
+    // TODO: 在此添加专用代码和/或调用基类
+
+    CUIDialog::OnOK();
 }

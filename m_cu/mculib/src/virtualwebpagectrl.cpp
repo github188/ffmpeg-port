@@ -34,7 +34,7 @@ CVirtualWebpageCtrl::EUrlType CVirtualWebpageCtrl::OnLoadPage( LPCTSTR strUrl )
 	urlParser.ParamValue( _T( "PuName" ), strPuName );
 
 
-	if ( !strPtzAddr.empty() && !strPtzPort.empty() && !strStreamType.empty() && !strPuId.empty() )
+	if ( !strPtzAddr.empty() && !strPtzPort.empty() && !strPuId.empty() )
 	{
 		mcu::log << _T( "Is url with Param! " ) << strUrl << endl;
 		CMCUSession::Instance()->CurVideoSession()->PtzIP( strPtzAddr );

@@ -76,12 +76,23 @@ LRESULT CBrowserCtrl::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
     CHR(hr);
 
     // set initial properties for the control
-    m_spIWebBrowser2->put_AddressBar(VARIANT_FALSE);
+    m_spIWebBrowser2->put_AddressBar(VARIANT_TRUE);
+
+//    m_spIWebBrowser2->get_
+
+ //   m_spIWebBrowser2->put_MenuBar( VARIANT_FALSE );
 
 
     ASSERT(SUCCEEDED(hr));
+
+    
 Error:
-    return SUCCEEDED(hr) ? 0 : -1;
+    LRESULT hResult = SUCCEEDED(hr) ? 0 : -1;
+    if ( 0 == hResult && !m_strUrl.empty() )
+    {
+        this->OpenUrl( m_strUrl.c_str() );
+    }
+    return hResult;
 }
 
 LRESULT CBrowserCtrl::OnSize(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
@@ -97,13 +108,17 @@ LRESULT CBrowserCtrl::OnSize(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& 
 
 BOOL CBrowserCtrl::OpenUrl( LPCTSTR lpstrUrl )
 {
+    m_strUrl = lpstrUrl;
+
     if ( NULL == m_spIWebBrowser2 )
     {
         return FALSE;
     }
 
-    TCHAR szTmp[1000];
-    _tcscpy( szTmp, lpstrUrl );
+    tstring strUrl = StringToUrl( lpstrUrl );
+
+    TCHAR szTmp[1000] = {0};
+    _tcscpy( szTmp, strUrl.c_str() );
     HRESULT hr = m_spIWebBrowser2->Navigate( szTmp, NULL, NULL, NULL, NULL );
     return SUCCEEDED( hr );
 }
@@ -135,14 +150,19 @@ void CBrowserCtrl::UpdateLayout( CRect *prcClient /* = NULL */ )
 LRESULT CBrowserCtrl::OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
     // TODO: 在此添加消息处理程序代码和/或调用默认值
+    // Tear down connection points while controls are still alive.
+    VERIFY(SUCCEEDED(AtlAdviseSinkMap(this, false)));
 
+    m_spIWebBrowser2 = NULL;
+    m_browser = NULL;
     return 0;
 }
 
-LRESULT CBrowserCtrl::OnActivate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+LRESULT CBrowserCtrl::OnActivate(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
 {
     // TODO: 在此添加消息处理程序代码和/或调用默认值
-
+    // Notify shell of our WM_ACTIVATE message
+ //   SHHandleWMActivate(m_hWnd, wParam, lParam, &m_sai, 0);
     return 0;
 }
 
@@ -165,14 +185,14 @@ void __stdcall CBrowserCtrl::OnBeforeNavigate2(IDispatch* pDisp, VARIANT * pvtUR
                                               VARIANT_BOOL * /*pvbCancel*/)
 {
     USES_CONVERSION;
-    TCHAR szOutput[128];
+    TCHAR szOutput[512] = { 0 };
 
     StringCchPrintf(szOutput, ARRAYSIZE(szOutput), 
-        TEXT("0x%08p %s %s"), pDisp, OLE2CT(V_BSTR(pvtURL)),
+        TEXT("OnBeforeNavigate2 0x%08p %s %s\n"), pDisp, OLE2CT(V_BSTR(pvtURL)),
         VT_ERROR != V_VT(pvtTargetFrameName) ? OLE2CT(V_BSTR(pvtTargetFrameName)) : TEXT("(error)"));
     OutputDebugString(szOutput);
 
-    SetWindowText(TEXT("Untitled")); 
+   SetWindowText(TEXT("Untitled")); 
 
 }
 
@@ -182,7 +202,7 @@ void __stdcall CBrowserCtrl::OnBrowserTitleChange(BSTR bstrTitleText)
     TCHAR szOutput[128];
 
     StringCchPrintf(szOutput, ARRAYSIZE(szOutput), 
-        TEXT("%s"), OLE2CT(bstrTitleText));
+        TEXT("OnBrowserTitleChange %s\n"), OLE2CT(bstrTitleText));
     OutputDebugString(szOutput);
 
     SetWindowText(OLE2CT(bstrTitleText)); 
@@ -194,7 +214,7 @@ void __stdcall CBrowserCtrl::OnNavigateComplete2(IDispatch* pDisp, VARIANT * pvt
     TCHAR szOutput[128];
 
     StringCchPrintf(szOutput, ARRAYSIZE(szOutput), 
-        TEXT("0x%08p %s"), pDisp, OLE2CT(V_BSTR(pvtURL)));
+        TEXT("OnNavigateComplete2 0x%08p %s\n"), pDisp, OLE2CT(V_BSTR(pvtURL)));
     OutputDebugString(szOutput);
 }
 
@@ -204,7 +224,7 @@ void __stdcall CBrowserCtrl::OnDocumentComplete(IDispatch* pDisp, VARIANT * pvtU
     TCHAR szOutput[128];
 
     StringCchPrintf(szOutput, ARRAYSIZE(szOutput), 
-        TEXT("0x%08p %s"), pDisp, OLE2CT(V_BSTR(pvtURL)));
+        TEXT("OnDocumentComplete 0x%08p %s\n"), pDisp, OLE2CT(V_BSTR(pvtURL)));
     OutputDebugString(szOutput);
 
 //    VERIFY(SetEnabledState(IDM_STOP, FALSE));

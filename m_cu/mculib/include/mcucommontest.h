@@ -21,6 +21,7 @@ private:
 	CPPUNIT_TEST( TestDelFile );
     CPPUNIT_TEST( TestNormalizeDir );
     CPPUNIT_TEST( TestTimeStr );
+    CPPUNIT_TEST( TestStringToUrl );
 
 //	CPPUNIT_TEST_EXCEPTION( testAddThrow, IncompatibleMoneyError );
 	CPPUNIT_TEST_SUITE_END();
@@ -51,4 +52,7 @@ public:
 
     /** 测试时间/字符串转换。 */
     void TestTimeStr();
+
+    /** 测试字符串到URL的转换。 */
+    void TestStringToUrl();
 };

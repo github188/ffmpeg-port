@@ -757,7 +757,7 @@ void CPicManageDialog::OnDelete()
 
 void CPicManageDialog::OnReturn()
 {
-	this->EndDialog( 0 );
+    this->OnOK();
 }
 
 void CPicManageDialog::OnClickLeftFunKey()

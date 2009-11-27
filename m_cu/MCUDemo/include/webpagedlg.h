@@ -3,6 +3,8 @@
 #include "browserctrl.h"
 #include "uidialog.h"
 #include "mculib.h"
+#include "logodialog.h"
+#include "uibutton.h"
 // CWebpageDlg 对话框
 
 class CWebpageDlg : public CUIDialog, public CVirtualWebpageCtrl
@@ -25,6 +27,7 @@ public:
 
     /** 载入页面，需要子类实现。*/
     virtual BOOL OpenUrl( LPCTSTR strUrl );
+
 protected:
     /** 打开播放器。 */
     virtual BOOL OpenPlayer( CVideoSession *pVideoSession ) ;
@@ -32,16 +35,39 @@ protected:
     /** 历史。 */
     virtual BOOL HistoryBack( int nStep );
 
+    /** 隐藏窗口消息。 */
+    virtual void OnShowWindowCmd( int nSWCmd );
+
     // 更新布局。
     void UpdateLayout( CRect *prcClient = NULL );
 private:
     /** 创建浏览器控件。 */
     BOOL CreateBrowserCtrl();
 
+
+   
+    afx_msg void OnBnClickedButtonPic();
+    afx_msg void OnBnClickedButtonConfig();
+    afx_msg void OnBnClickedButtonSipButton();
+    
+    afx_msg void OnSettingChange(UINT uFlags, LPCTSTR lpszSection);
+
 private:
+    /** 浏览器控件。 */
     CBrowserCtrl m_browserCtrl;
+
+    /** logo 对话框。*/
+    CLogoDialog m_logoDlg;
+
+    CUIButton m_btnPic;
+    CUIButton m_btnConfig;
+    CPictureStatic m_stBottomBg;
+    // 输入法控制按钮
+    CUIButton m_btnSip;
+
 protected:
     virtual void OnOK();
+
 public:
     afx_msg void OnClose();
     afx_msg void OnSize(UINT nType, int cx, int cy);

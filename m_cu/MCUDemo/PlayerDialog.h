@@ -28,6 +28,26 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 
+    
+    afx_msg void OnSize(UINT nType, int cx, int cy);
+
+
+    afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+    afx_msg void OnMenuRestore();
+    afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
+    afx_msg void OnUpdateMenuPtz(CCmdUI *pCmdUI);
+    afx_msg void OnUpdateMenuDigitalPtz(CCmdUI *pCmdUI);
+    afx_msg void OnMenuPtz();
+    afx_msg void OnMenuDigitalPtz();
+    afx_msg void OnBnClickedButtonPause();
+    afx_msg void OnBnClickedButtonRecord();
+    afx_msg void OnBnClickedButtonCapture();
+    afx_msg void OnBnClickedButtonFullscreen();
+    afx_msg void OnBnClickedButtonClose();
+    afx_msg void OnBnClickedButtonPtz();
+    afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
+    afx_msg void OnDestroy();
+
 public:
 	enum EMenuItem
 	{
@@ -123,25 +143,12 @@ public:
 	//判断是否正常退出浏览
 	BOOL IsAppNormalExit();
 
-	virtual BOOL DestroyWindow();
-	afx_msg void OnSize(UINT nType, int cx, int cy);
 	
-//	afx_msg void OnMenuFullScreen();
-//	afx_msg void OnMenuClose();
-	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
-	afx_msg void OnMenuRestore();
 	
 protected:
 	virtual void PostNcDestroy();
 public:
-//	afx_msg void OnMenuCapture();
-	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
-	afx_msg void OnUpdateMenuPtz(CCmdUI *pCmdUI);
-	afx_msg void OnUpdateMenuDigitalPtz(CCmdUI *pCmdUI);
-	afx_msg void OnMenuPtz();
-	afx_msg void OnMenuDigitalPtz();
-//	afx_msg void OnMenuRecoder();
-//	afx_msg void OnMenuPause();
+	
 	CPictureStatic m_stBottomBg;
 	CUIButton m_btnPause;
 	CUIButton m_btnRecord;
@@ -149,14 +156,9 @@ public:
 	CUIButton m_btnPtz;
 	CUIButton m_btnFullscreen;
 	CUIButton m_btnReturn;
-	afx_msg void OnBnClickedButtonPause();
-	afx_msg void OnBnClickedButtonRecord();
-	afx_msg void OnBnClickedButtonCapture();
-	afx_msg void OnBnClickedButtonFullscreen();
-	afx_msg void OnBnClickedButtonClose();
-	afx_msg void OnBnClickedButtonPtz();
+	
 protected:
 	virtual void OnOK();
 public:
-	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
+	
 };

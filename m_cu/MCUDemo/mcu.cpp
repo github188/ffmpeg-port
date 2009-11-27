@@ -14,6 +14,8 @@
 
 #include "ImageFactory.h"
 
+#include "windowfactory.h"
+
 /** 单元测试头文件*/
 #ifdef UNIT_TEST
 
@@ -26,6 +28,7 @@
 //#include <locale>
 #ifdef UNIT_TEST
 #include "UnitTestMainDialog.h"
+#include "webpagedlg.h"
 #include "MCUDemo_i.c"
 #else
 #ifdef _DEBUG
@@ -310,25 +313,13 @@ BOOL CMCUApp::InitInstance()
 	tstring strPicPath = ::GetAppDir() + UI_PIC_DIR ;
 	CImageFactory::Instance()->SetDefaultPicDir( strPicPath.c_str() );
 
+    // 初始化窗口工厂。
+ //   CWindowFactory::Instance()->CreateAllWnd();
 
 	//CMainDialog mainDlg;
 	//m_pMainWnd = &mainDlg;
 	//mainDlg.DoModal();
-#ifdef UNIT_TEST
 
-	this->UnitTest();
-
-	CUnitTestMainDialog utDlg;
-	utDlg.DoModal();
-
-#else
-
-#ifdef _DEBUG
-	CUnitTestMainDialog utDlg;
-	utDlg.DoModal();
-#endif
-
-#endif
 
 	// 判断程序是否是单实例运行.
 	m_hSingletonAppMutex = ::CreateMutex( 0, TRUE, _T( "mcu-kedacom" ) );
@@ -365,21 +356,52 @@ BOOL CMCUApp::InitInstance()
 	//记录进程正常退出状态
 	WriteProfileInt(L"AppStatus",L"Status",APP_RUNNING);
 
+#ifdef UNIT_TEST
 
-	CMCUDemoDlg dlg;
-	m_pMainWnd = &dlg;
-	INT_PTR nResponse = dlg.DoModal();
-	if (nResponse == IDOK)
-	{
-		// TODO: 在此放置处理何时用
-		//  “确定”来关闭对话框的代码
-	}
+    this->UnitTest();
+
+    CWebpageDlg dlg;
+    dlg.DoModal();
+
+    CWindowFactory::Instance()->ShowWindow( WndUnittestMain, WndLogin );
+
+    m_pMainWnd = CWindowFactory::Instance()->GetWnd( WndUnittestMain );
+    return TRUE;
+ //   CUnitTestMainDialog utDlg;
+ //   utDlg.DoModal();
+
+#else
+
+#ifdef _DEBUG
+    CUnitTestMainDialog utDlg;
+    utDlg.DoModal();
+#endif
+
+ 
+
+#endif
+
+    CWindowFactory::Instance()->ShowWindow( WndLogin, WndInvalid );
+
+    m_pMainWnd = CWindowFactory::Instance()->GetWnd( WndLogin );
+
+    // 改为为非模态对话框，所以需要消息泵程序才能运行。
+    return TRUE;
+
+    //CMCUDemoDlg dlg;
+    //m_pMainWnd = &dlg;
+    //INT_PTR nResponse = dlg.DoModal();
+    //if (nResponse == IDOK)
+    //{
+    //    // TODO: 在此放置处理何时用
+    //    //  “确定”来关闭对话框的代码
+    //}
 
 	
 
 	// 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，
 	//  而不是启动应用程序的消息泵。
-	return FALSE;
+//	return FALSE;
 }
 
 BOOL CMCUApp::PreTranslateMessage(MSG* pMsg)
@@ -422,6 +444,7 @@ BOOL CMCUApp::ExitInstance(void)
 #endif
 
 	// 释放单件类。
+    CWindowFactory::Release();
 	CImageFactory::Release();
 	CConfig::Release();
 	CMCUSession::Release();

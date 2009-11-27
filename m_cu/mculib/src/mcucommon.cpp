@@ -480,4 +480,64 @@ void NormalizeDir( tstring& strFolder )
 
 }
 
+tstring StringToUrl( LPCTSTR strStr )
+{
+    tstringstream ssRet;
+    if ( NULL == strStr )
+    {
+        return ssRet.str();
+    }
+
+    while( *strStr )
+    {
+        TCHAR nChar = /*ntohs*/( *strStr );
+        if ( (mu_uint16)nChar > 127 )
+        {
+            // 中文。
+ //           ssRet << nChar;
+            
+            mu_uint8 cHigh = 0xff & ( nChar >> 8 );
+            mu_uint8 cLow = 0xff & nChar;
+
+            ssRet << _T( "%" ) << setbase( 16 ) << unsigned int(cLow) ;
+            ssRet << _T( "%" ) << setbase( 16 ) << unsigned int(cHigh);
+
+        }
+        else
+        {
+            // 英文特殊符号。
+            switch( nChar )
+            {
+                case _T( '#' ):
+                    ssRet << _T( "%23" );
+            	break;
+                case _T( '%' ):
+                    ssRet << _T( "%25" );
+                break;
+                case _T( '&' ):
+                    ssRet << _T( "%26" );
+                break;
+                case _T( '+' ):
+                    ssRet << _T( "%2b" );
+                break;
+                case _T( ' ' ):
+                    ssRet << _T( "%20" );
+                break;
+                case _T( '\n' ):
+                    ssRet << _T( "\0a" );
+                break;
+                
+            default:
+                ssRet << nChar;
+                break;
+            }
+
+
+        }
+
+        ++strStr;
+    }
+
+    return ssRet.str();
+}
 

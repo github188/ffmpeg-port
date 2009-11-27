@@ -80,11 +80,14 @@ void CConfigDialog::OnOk()
 {
 	// TODO: 在此添加命令处理程序代码
 	this->SaveConfig();
+
+    __super::OnOK();
 }
 
 void CConfigDialog::OnCancel()
 {
 	// TODO: 在此添加命令处理程序代码
+    __super::OnCancel();
 }
 
 BOOL CConfigDialog::SaveConfig()
@@ -427,13 +430,14 @@ void CConfigDialog::OnBnClickedButtonSave()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	this->SaveConfig();
-	this->EndDialog( 0 );
+//	this->EndDialog( 0 );
+    this->OnOk();
 }
 
 void CConfigDialog::OnBnClickedButtonReturn()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	this->EndDialog( 0 );
+    this->OnCancel();
 }
 
 void CConfigDialog::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)

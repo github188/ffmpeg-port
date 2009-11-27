@@ -62,6 +62,7 @@
 				PreprocessorDefinitions="UNIT_TEST;_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
+				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				ProgramDataBaseFileName="$(TargetDir)/$(TargetName).pdb"
 				WarningLevel="3"
@@ -122,7 +123,7 @@
 				ForceDirty="-1"
 				RemoteDirectory=""
 				RegisterOutput="0"
-				AdditionalFiles="msvcr90d.dll|$(BINDIR)\armv4i|%CSIDL_PROGRAM_FILES%\m_cu|0;wincecodec.dll|$(SolutionDir)kdvdecode\lib|%CSIDL_PROGRAM_FILES%\m_cu|0;titlelogo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;titlebg.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_normal.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_focus.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_disable.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;main_bg.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;st_user_logo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;st_password_logo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_pre_page_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_pre_page_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_next_page_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_next_page_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_in_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_in_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_out_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_out_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_left_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_left_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_right_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_right_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_up_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_up_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_down_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_down_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomin_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomin_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomout_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomout_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_light_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_light_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_dark_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_dark_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;capture.wav|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_return_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_return_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;bottombg.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_sip_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_sip_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_play_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_play_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_fullscreen_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_fullscreen_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_return_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_return_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0"
+				AdditionalFiles="msvcr90d.dll|$(BINDIR)\armv4i|%CSIDL_PROGRAM_FILES%\m_cu|0;wincecodec.dll|$(SolutionDir)kdvdecode\lib|%CSIDL_PROGRAM_FILES%\m_cu|0;mcufail.htm|$(SolutionDir)htmldoc|%CSIDL_PROGRAM_FILES%\m_cu\htmldoc|0;wait.htm|$(SolutionDir)htmldoc|%CSIDL_PROGRAM_FILES%\m_cu\htmldoc|0;titlelogo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;titlebg.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_normal.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_focus.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_disable.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;main_bg.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;st_user_logo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;st_password_logo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_pre_page_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_pre_page_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_next_page_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_next_page_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_in_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_in_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_out_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_out_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_left_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_left_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_right_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_right_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_up_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_up_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_down_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_down_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomin_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomin_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomout_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomout_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_light_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_light_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_dark_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_dark_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;capture.wav|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_return_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_return_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;bottombg.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_sip_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_sip_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_play_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_play_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_fullscreen_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_fullscreen_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_return_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_return_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0"
 			/>
 			<DebuggerTool
 			/>
@@ -520,6 +521,7 @@
 				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
+				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -982,6 +984,7 @@
 				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
+				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -1439,6 +1442,7 @@
 				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
+				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -1907,6 +1911,7 @@
 				PreprocessorDefinitions="UNIT_TEST;NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
+				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -2377,6 +2382,7 @@
 				PreprocessorDefinitions="UNIT_TEST;NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
+				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -2846,6 +2852,7 @@
 				PreprocessorDefinitions="UNIT_TEST;_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
+				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -3305,6 +3312,7 @@
 				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
+				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -3776,6 +3784,7 @@
 				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
+				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -5180,6 +5189,10 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath=".\src\windowactory.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Í·ÎÄ¼þ"
@@ -5192,6 +5205,10 @@
 			</File>
 			<File
 				RelativePath=".\MediaPlayer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\windowfactory.h"
 				>
 			</File>
 		</Filter>
@@ -5613,6 +5630,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\logindialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\include\logindialog.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\logodialog.cpp"
 				>
 			</File>
@@ -5631,10 +5656,74 @@
 			<File
 				RelativePath=".\MCUDemoDlg.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\MCUDemoDlg.h"
 				>
+				<FileConfiguration
+					Name="Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\src\picmanagedialog.cpp"
@@ -5658,14 +5747,6 @@
 			</File>
 			<File
 				RelativePath=".\PlayerDialog.h"
-				>
-			</File>
-			<File
-				RelativePath=".\PPCLoginDialog.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\PPCLoginDialog.h"
 				>
 			</File>
 			<File
@@ -7503,10 +7584,26 @@
 			<File
 				RelativePath=".\HtmlWnd.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\HtmlWnd.h"
 				>
+				<FileConfiguration
+					Name="Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\PtzButton.cpp"

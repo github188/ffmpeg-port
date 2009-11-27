@@ -1,9 +1,9 @@
 #pragma once
 
-
+#include "uidialog.h"
 // CUnitTestMainDialog ¶Ô»°¿ò
 
-class CUnitTestMainDialog : public CDialog
+class CUnitTestMainDialog : public CUIDialog
 {
 	DECLARE_DYNAMIC(CUnitTestMainDialog)
 
@@ -26,4 +26,6 @@ public:
 	afx_msg void OnBnClickedButtonPlayerDialogTest();
 	afx_msg void OnBnClickedButtonHtmlTest();
 	afx_msg void OnBnClickedButtonImageTest();
+protected:
+    virtual void OnOK();
 };

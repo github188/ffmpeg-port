@@ -4,6 +4,8 @@
 #include "ImageShow.h"
 #include "mcucommon.h"
 
+#include "windowfactory.h"
+
 IMPLEMENT_DYNAMIC(CUIDialog, CDialog)
 
 CUIDialog::CUIDialog(void)
@@ -29,6 +31,9 @@ void CUIDialog::Init()
 	m_bAutoResume = TRUE;
 	m_dwOriginalScreenMode = -1;
 	m_bChangeScreenMode = FALSE;
+
+    m_eWndAfterClose = WndInvalid;
+    m_eWndId = WndInvalid;
 }
 
 
@@ -41,6 +46,8 @@ BEGIN_MESSAGE_MAP(CUIDialog, CDialog)
 	ON_WM_TIMER()
 	ON_WM_KEYUP()
 	ON_WM_ACTIVATE()
+    ON_WM_CLOSE()
+    ON_WM_SETTINGCHANGE()
 END_MESSAGE_MAP()
 
 void CUIDialog::OnPaint()
@@ -68,6 +75,7 @@ void CUIDialog::OnPaint()
 		CDialog::OnPaint();
 		return;
 	}	
+
 }
 
 BOOL CUIDialog::SetImage( LPCTSTR strImagePath, BOOL bRePaint /* = TRUE */ )
@@ -326,6 +334,7 @@ LRESULT CUIDialog::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 	// TODO: 在此添加专用代码和/或调用基类
 
 //	mcu::log << _T( "uidialog message: 10: " ) << message << _T( " 16: " ) << (void*)message << endl;
+
 	return CDialog::WindowProc(message, wParam, lParam);
 }
 
@@ -427,6 +436,11 @@ void CUIDialog::OnClickLeftFunKey()
 
 }
 
+void CUIDialog::OnShowWindowCmd( int )
+{
+
+}
+
 //隐藏输入面板
 
 BOOL CUIDialog::LowerSip()
@@ -489,3 +503,94 @@ void CUIDialog::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized)
 		this->FullScreen( FS_HideMenuBar | FS_HideSipButton );
 	}
 }
+
+void CUIDialog::SetWindowId( EWindowId eWndId )
+{
+    m_eWndId = eWndId;
+}
+
+EWindowId CUIDialog::GetWindowId() const
+{
+    return m_eWndId;
+}
+
+void CUIDialog::SetWndAfterClose( EWindowId eWndId )
+{
+    m_eWndAfterClose = eWndId;
+}
+
+EWindowId CUIDialog::GetWndAfterClose() const
+{
+    return m_eWndAfterClose;
+}
+
+
+
+void CUIDialog::OnOK()
+{
+    // TODO: 在此添加专用代码和/或调用基类
+    if ( WndInvalid == this->m_eWndAfterClose )
+    {
+        // 退出程序。
+        PostQuitMessage( 0 );
+    }
+    else
+    {
+        // 显示下一个。
+        EWindowId eWndAfterAferId = WndInvalid;
+        CUIDialog *pDlgAfterClose = CWindowFactory::Instance()->GetWnd( m_eWndAfterClose );
+        if ( pDlgAfterClose )
+        {
+            eWndAfterAferId = pDlgAfterClose->GetWndAfterClose();
+        }
+
+        CWindowFactory::Instance()->ShowWindow( m_eWndAfterClose, eWndAfterAferId );
+    }
+
+//    CDialog::OnOK();
+}
+
+void CUIDialog::OnCancel()
+{
+    this->OnOK();
+}
+
+BOOL CUIDialog::ShowWindow(int nCmdShow )
+{
+    this->OnShowWindowCmd( nCmdShow );
+    BOOL bResult = __super::ShowWindow( nCmdShow );
+  
+
+    return bResult;
+}
+
+
+void CUIDialog::OnClose()
+{
+    // TODO: 在此添加消息处理程序代码和/或调用默认值
+
+    CDialog::OnClose();
+}
+
+void CUIDialog::EndDialog(int nResult)
+{
+    mcu::log << _T( "CUIDialog::EndDialog called!" ) << endl;
+    return __super::EndDialog( nResult );
+}
+
+void CUIDialog::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
+{
+    // 当输入法弹出时，不调整对话框大小。
+    if (SPI_SETSIPINFO == uFlags){
+        SHACTIVATEINFO sai;
+        memset(&sai, 0, sizeof(SHACTIVATEINFO));
+        SHHandleWMSettingChange( GetSafeHwnd(), uFlags, (LPARAM)lpszSection, &sai);
+
+        return;
+    }
+
+    __super::OnSettingChange(uFlags, lpszSection);
+
+    // TODO: 在此处添加消息处理程序代码
+}
+
