@@ -43,6 +43,7 @@ enum WM_MCU_MESSAGE
 	WM_HTML_CLICK,						// 用户的点击.wparam: LPCTSTR 的字符串.
 	WM_HTML_PRE_LOAD,					// 响应在页面载入之前. wparam:  LPCTSTR的字符串.
 	WM_HTML_META,						// Meta标签.	wparam: LPCTSTR 当前url, lparam: LPCTSTR meta中的内容
+    WM_HTML_CREATE_CMD,                 // 创建网页控件命令。
 
 	WM_VIDEO_PLAY_STATUS,				// 视频播放状态.
 	WM_VIDEO_OPEN_FAIL,					// 打开视频失败.WParam: EMCU_ErrorCode，错误码。

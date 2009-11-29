@@ -37,6 +37,8 @@ BEGIN_MESSAGE_MAP(CWebpageDlg, CUIDialog)
     ON_BN_CLICKED(IDC_BUTTON_PIC, &CWebpageDlg::OnBnClickedButtonPic)
     ON_BN_CLICKED(IDC_BUTTON_CONFIG, &CWebpageDlg::OnBnClickedButtonConfig)
     ON_BN_CLICKED(IDC_BUTTON_SIP_BUTTON, &CWebpageDlg::OnBnClickedButtonSipButton)
+    ON_MESSAGE( WM_HTML_CREATE_CMD, &CWebpageDlg::OnCreateBrowserCtrlCmd )
+    ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -76,11 +78,29 @@ BOOL CWebpageDlg::OnInitDialog()
 
 BOOL CWebpageDlg::CreateBrowserCtrl()
 {
-    HWND hWnd = m_browserCtrl.Create( this->GetSafeHwnd(), 
+    return this->PostMessage( WM_HTML_CREATE_CMD );
+}
+
+LRESULT CWebpageDlg::OnCreateBrowserCtrlCmd( WPARAM, LPARAM )
+{
+    HWND hWnd = m_browserCtrl.Create( NULL, /*this->GetSafeHwnd(),*/ 
         CWindow::rcDefault, 
         _T( "MCU Browser" ) );   
 
-    return ( NULL != hWnd );
+    BOOL bResult = ( hWnd != NULL );
+    if ( bResult )
+    {
+        m_browserCtrl.ShowWindow( SW_SHOW );
+        this->UpdateLayout();
+    }
+    else
+    {
+        int err = ::GetLastError();
+        mcu::log << _T( "Create web browser ctrl fail! errcode: " ) << err << endl;
+    }
+    
+
+    return bResult;
 }
 
 BOOL CWebpageDlg::OpenUrl( LPCTSTR strUrl )
@@ -223,12 +243,24 @@ void CWebpageDlg::UpdateLayout( CRect *prcClient /* = NULL */ )
     }
 
 
-    if ( m_browserCtrl.IsWindow() )
+    if ( m_browserCtrl.m_hWnd && m_browserCtrl.IsWindow() )
     {
         CRect rcHtml = rcLeftSpace;
-        //		rcHtml.top += nLogoHeight;
-
-        m_browserCtrl.MoveWindow( rcHtml );
+        HWND hParent = ::GetParent( m_browserCtrl.m_hWnd );
+        if ( hParent == this->GetSafeHwnd() )
+        {
+            m_browserCtrl.MoveWindow( rcHtml );
+        }
+        else
+        {            
+            this->ClientToScreen( rcHtml );
+            CPoint ptHtmlLeftTop = rcHtml.TopLeft();
+            if ( hParent )
+            {
+                ::ScreenToClient( hParent, &ptHtmlLeftTop );
+            }
+            m_browserCtrl.MoveWindow( ptHtmlLeftTop.x, ptHtmlLeftTop.y, rcHtml.Width(), rcHtml.Height() );
+        }        
     }	
 }
 
@@ -275,7 +307,12 @@ void CWebpageDlg::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 
 void CWebpageDlg::OnShowWindowCmd( int nSWCmd )
 {
-    // 总是有莫名其妙的问题。
+    if ( m_browserCtrl.m_hWnd  )
+    {
+        this->m_browserCtrl.ShowWindow( nSWCmd );
+    }
+    
+    // 总是有莫名其妙的问题。    
     return;
     if ( SW_HIDE == nSWCmd )
     {
@@ -289,3 +326,12 @@ void CWebpageDlg::OnShowWindowCmd( int nSWCmd )
 
 
 
+
+void CWebpageDlg::OnDestroy()
+{
+    this->m_browserCtrl.DestroyWindow();
+
+    __super::OnDestroy();
+
+    // TODO: 在此处添加消息处理程序代码
+}

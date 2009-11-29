@@ -360,8 +360,8 @@ BOOL CMCUApp::InitInstance()
 
     this->UnitTest();
 
-    CWebpageDlg dlg;
-    dlg.DoModal();
+ /*   CWebpageDlg dlg;
+    dlg.DoModal();*/
 
     CWindowFactory::Instance()->ShowWindow( WndUnittestMain, WndLogin );
 

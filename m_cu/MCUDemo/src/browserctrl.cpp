@@ -28,6 +28,7 @@
 CBrowserCtrl::CBrowserCtrl()
 {
     m_spIWebBrowser2 = NULL;
+    this->m_hWebpageParentWnd = NULL;
 
 }
 
@@ -51,6 +52,10 @@ CBrowserCtrl::~CBrowserCtrl()
 //    return FALSE;
 //}
 //
+void CBrowserCtrl::SetWebpageParentWnd( HWND hWnd )
+{
+    this->m_hWebpageParentWnd = hWnd;
+}
 
 
 LRESULT CBrowserCtrl::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
@@ -166,10 +171,24 @@ LRESULT CBrowserCtrl::OnActivate(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
     return 0;
 }
 
-LRESULT CBrowserCtrl::OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+LRESULT CBrowserCtrl::OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
     // TODO: 在此添加消息处理程序代码和/或调用默认值
+    bHandled = TRUE;
 
+    return 0;
+}
+
+LRESULT CBrowserCtrl::OnCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+{
+    WORD wNotifyCode = HIWORD(wParam); 
+    WORD wID = LOWORD(wParam); 
+    HWND hwndCtl = (HWND) lParam;
+
+    if( wID == IDOK )
+    {
+        int dfw = 323;
+    }
     return 0;
 }
 
@@ -240,4 +259,27 @@ void __stdcall CBrowserCtrl::OnCommandStateChange(long lCommand, BOOL bEnable)
     {
  //       VERIFY(SetEnabledState(IDM_FORWARD, bEnable));
     }
+}
+LRESULT CBrowserCtrl::OnOk(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
+{
+    // TODO: 在此添加命令处理程序代码
+  /*  if(uMsg == WM_COMMAND && id == LOWORD(wParam)) \
+    { \
+    bHandled = TRUE; \
+    lResult = func(HIWORD(wParam), LOWORD(wParam), (HWND)lParam, bHandled); \
+    if(bHandled) \
+        return TRUE; \
+    }*/
+
+    if ( this->m_hWebpageParentWnd )
+    {
+        bHandled = TRUE;
+
+        WPARAM wParam = MAKELONG( wID, wNotifyCode );
+        LPARAM lParam = (LPARAM)hWndCtl;
+
+        ::PostMessage( m_hWebpageParentWnd, WM_COMMAND, wParam, lParam );
+    }
+
+    return 0;
 }

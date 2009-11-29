@@ -5,17 +5,21 @@
 #include "mculib.h"
 #include <piedocvw.h>
 #include <pvdispid.h>
+#include "mcu.h"
 
 static const UINT ID_BROWSER = 1984;
 
 class CBrowserCtrl :
-    public CWindowImpl< CBrowserCtrl >,
+    public CWindowImpl< CBrowserCtrl, CWindow, CWinTraits<WS_CLIPCHILDREN | WS_CLIPSIBLINGS>  >,
     public IDispEventImpl< ID_BROWSER, CBrowserCtrl >//,
  //   public CVirtualWebpageCtrl
 {
 public:
     BOOL OpenUrl( LPCTSTR strUrl );
     BOOL HistoryBack( int nStep );
+
+    /** 设置控件的模拟父窗口。 */
+    void SetWebpageParentWnd( HWND hWnd );
 
 public:
     CBrowserCtrl();
@@ -29,6 +33,7 @@ public:
         MESSAGE_HANDLER(WM_ACTIVATE, OnActivate)
         //MESSAGE_HANDLER(WM_SETTINGCHANGE, OnSettingChange)
         MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+        MESSAGE_HANDLER( WM_COMMAND, OnCommand )
         //COMMAND_ID_HANDLER(IDM_SK1_EXIT, OnExitCommand)
         //COMMAND_ID_HANDLER(IDM_BACK, OnBackCommand)
         //COMMAND_ID_HANDLER(IDM_FORWARD, OnForwardCommand)
@@ -38,6 +43,7 @@ public:
         //COMMAND_ID_HANDLER(IDM_STOP, OnStopCommand)
 
         MESSAGE_HANDLER(WM_CLOSE, OnClose)
+        COMMAND_ID_HANDLER(ID_OK, OnOk)
     END_MSG_MAP()
 
 public:
@@ -57,6 +63,7 @@ public:
     LRESULT OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
     LRESULT OnActivate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
     LRESULT OnClose(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+    LRESULT OnCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 
     // event handlers
     void __stdcall OnBeforeNavigate2(IDispatch* pDisp, VARIANT * pvtURL, 
@@ -85,8 +92,14 @@ private:
     /** Url */
     tstring m_strUrl;
 
+    /** 父窗口。 
+    *   因为未知原因，这个窗口作为一个对话框的子窗口时会出现错误，所以现在以一个独立窗口模拟子窗口。
+    */
+    HWND m_hWebpageParentWnd;
+
 public:
     
     
     
+    LRESULT OnOk(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 };

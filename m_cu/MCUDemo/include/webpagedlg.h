@@ -44,6 +44,7 @@ private:
     /** 创建浏览器控件。 */
     BOOL CreateBrowserCtrl();
 
+    
 
    
     afx_msg void OnBnClickedButtonPic();
@@ -51,6 +52,11 @@ private:
     afx_msg void OnBnClickedButtonSipButton();
     
     afx_msg void OnSettingChange(UINT uFlags, LPCTSTR lpszSection);
+   
+    /** 响应创建webbrowser控件的命令消息。 
+    *   在窗口的初始化时直接创建会失败！（不知道Why）所以通过发送消息的方式创建。这里就是对消息的响应。
+    */
+    afx_msg LRESULT OnCreateBrowserCtrlCmd( WPARAM, LPARAM );
 
 private:
     /** 浏览器控件。 */
@@ -71,4 +77,5 @@ protected:
 public:
     afx_msg void OnClose();
     afx_msg void OnSize(UINT nType, int cx, int cy);
+    afx_msg void OnDestroy();
 };
