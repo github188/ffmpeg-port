@@ -100,7 +100,7 @@ Error:
     return hResult;
 }
 
-LRESULT CBrowserCtrl::OnSize(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
+LRESULT CBrowserCtrl::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
 {
     // TODO: 在此添加消息处理程序代码和/或调用默认值
     int fwSizeType = wParam; 
@@ -108,6 +108,32 @@ LRESULT CBrowserCtrl::OnSize(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& 
     int nHeight = HIWORD(lParam);
     CRect rcClient( 0,0,nWidth, nHeight );
     this->UpdateLayout( &rcClient );
+
+    if ( SIZE_MINIMIZED == fwSizeType )
+    {
+        mcu::log << _T( "web browser control is minimized!" ) << endl;
+
+        if ( this->m_hWebpageParentWnd )
+        {
+//            bHandled = TRUE;
+
+            //WPARAM wParam = MAKELONG( wID, wNotifyCode );
+            //LPARAM lParam = (LPARAM)hWndCtl;
+            UINT uMessage = WM_WINDOW_CLOSE_CMD;
+
+            mcu::log << _T( "Post to WM_WINDOW_CLOSE_CMD parent! msg: " ) 
+                << uMessage << _T( " wp: " ) << 0 << _T( " lp: " ) << 0 << endl;
+
+            ::PostMessage( m_hWebpageParentWnd, uMessage, 0, 0 );
+ //           mcu::log << _T( "Minimize the web browser,hide parent wnd! " ) << m_hWebpageParentWnd << endl;
+ //           ::ShowWindow( m_hWebpageParentWnd, SW_HIDE );
+        }
+        else
+        {
+            mcu::log << _T( "The webpage parent wnd is NULL! When minimize the web browser!" ) << endl;
+        }
+    }
+
     return 0;
 }
 
@@ -271,15 +297,6 @@ LRESULT CBrowserCtrl::OnOk(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHand
         return TRUE; \
     }*/
 
-    if ( this->m_hWebpageParentWnd )
-    {
-        bHandled = TRUE;
-
-        WPARAM wParam = MAKELONG( wID, wNotifyCode );
-        LPARAM lParam = (LPARAM)hWndCtl;
-
-        ::PostMessage( m_hWebpageParentWnd, WM_COMMAND, wParam, lParam );
-    }
 
     return 0;
 }

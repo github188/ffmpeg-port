@@ -40,6 +40,8 @@ enum WM_MCU_MESSAGE
 	WM_PTZ_BUTTON_DOWN = WM_USER + 100, // ptz按钮按下,wparam:控件id.
 	WM_PTZ_BUTTON_UP,					// ptz按钮抬起,wparam:控件id.
 
+    WM_WINDOW_CLOSE_CMD,                // 关闭当前窗口。
+
 	WM_HTML_CLICK,						// 用户的点击.wparam: LPCTSTR 的字符串.
 	WM_HTML_PRE_LOAD,					// 响应在页面载入之前. wparam:  LPCTSTR的字符串.
 	WM_HTML_META,						// Meta标签.	wparam: LPCTSTR 当前url, lparam: LPCTSTR meta中的内容

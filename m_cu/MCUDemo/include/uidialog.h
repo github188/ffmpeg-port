@@ -190,6 +190,8 @@ protected:
 	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
 	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
     afx_msg void OnSettingChange(UINT uFlags, LPCTSTR lpszSection);
+
+    afx_msg LRESULT OnCloseWindowCmd( WPARAM, LPARAM );
     
 public:
     afx_msg void OnClose();

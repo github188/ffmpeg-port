@@ -48,6 +48,7 @@ BEGIN_MESSAGE_MAP(CUIDialog, CDialog)
 	ON_WM_ACTIVATE()
     ON_WM_CLOSE()
     ON_WM_SETTINGCHANGE()
+    ON_MESSAGE( WM_WINDOW_CLOSE_CMD, &CUIDialog::OnCloseWindowCmd )
 END_MESSAGE_MAP()
 
 void CUIDialog::OnPaint()
@@ -594,3 +595,8 @@ void CUIDialog::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
     // TODO: 在此处添加消息处理程序代码
 }
 
+LRESULT CUIDialog::OnCloseWindowCmd( WPARAM, LPARAM )
+{
+    this->OnOK();
+    return S_OK;
+}

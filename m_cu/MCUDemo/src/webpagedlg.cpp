@@ -48,8 +48,12 @@ BOOL CWebpageDlg::OnInitDialog()
 {
     CUIDialog::OnInitDialog();
 
+    
+    BOOL bResult = SHDoneButton( FALSE );
+    mcu::log << _T( "SHDoneButton result: " ) << bResult << endl;
+
     // TODO:  在此添加额外的初始化
-    BOOL bResult = CreateBrowserCtrl();
+    bResult = CreateBrowserCtrl();
 
     // logo
     m_logoDlg.Create( CLogoDialog::IDD, this );
@@ -90,6 +94,7 @@ LRESULT CWebpageDlg::OnCreateBrowserCtrlCmd( WPARAM, LPARAM )
     BOOL bResult = ( hWnd != NULL );
     if ( bResult )
     {
+        m_browserCtrl.SetWebpageParentWnd( GetSafeHwnd() );
         m_browserCtrl.ShowWindow( SW_SHOW );
         this->UpdateLayout();
     }
