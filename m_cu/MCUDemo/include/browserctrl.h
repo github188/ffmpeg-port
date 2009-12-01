@@ -53,6 +53,8 @@ public:
         SINK_ENTRY(ID_BROWSER, DISPID_NAVIGATECOMPLETE2, &CBrowserCtrl::OnNavigateComplete2)
         SINK_ENTRY(ID_BROWSER, DISPID_DOCUMENTCOMPLETE, &CBrowserCtrl::OnDocumentComplete)
         SINK_ENTRY(ID_BROWSER, DISPID_COMMANDSTATECHANGE, &CBrowserCtrl::OnCommandStateChange)
+
+        SINK_ENTRY(ID_BROWSER, DISPID_BEFORENAVIGATE, &CBrowserCtrl::OnBeforeNavigate )
     END_SINK_MAP()
 
 public:
@@ -74,6 +76,15 @@ public:
     void __stdcall OnNavigateComplete2(IDispatch* pDisp, VARIANT * pvtURL);
     void __stdcall OnDocumentComplete(IDispatch* pDisp, VARIANT * pvtURL);
     void __stdcall OnCommandStateChange(long lCommand, BOOL bEnable);
+    void OnBeforeNavigate(      
+        IDispatch *pDisp,
+        VARIANT *url,
+        VARIANT *Flags,
+        VARIANT *TargetFrameName,
+        VARIANT *PostData,
+        VARIANT *Headers,
+        VARIANT_BOOL *Cancel
+        );
 
 protected:
     // 更新布局。

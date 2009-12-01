@@ -557,11 +557,9 @@ void CUIDialog::OnCancel()
 }
 
 BOOL CUIDialog::ShowWindow(int nCmdShow )
-{
-    this->OnShowWindowCmd( nCmdShow );
+{    
     BOOL bResult = __super::ShowWindow( nCmdShow );
-  
-
+    this->OnShowWindowCmd( nCmdShow );
     return bResult;
 }
 

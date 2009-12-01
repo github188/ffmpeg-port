@@ -44,7 +44,8 @@ private:
     /** 创建浏览器控件。 */
     BOOL CreateBrowserCtrl();
 
-    
+    /** 关闭窗口，带提示。 */
+    BOOL CloseWindowWithWarnning();
 
    
     afx_msg void OnBnClickedButtonPic();
@@ -57,6 +58,12 @@ private:
     *   在窗口的初始化时直接创建会失败！（不知道Why）所以通过发送消息的方式创建。这里就是对消息的响应。
     */
     afx_msg LRESULT OnCreateBrowserCtrlCmd( WPARAM, LPARAM );
+
+    /** 响应关闭窗口的命令消息。 */
+    afx_msg LRESULT OnCloseWindowCmd( WPARAM, LPARAM );
+
+    /** 响应html控件的url载入。 */
+    afx_msg LRESULT OnHtmlPreLoad( WPARAM wParam, LPARAM );
 
 private:
     /** 浏览器控件。 */

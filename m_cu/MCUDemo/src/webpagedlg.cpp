@@ -38,6 +38,8 @@ BEGIN_MESSAGE_MAP(CWebpageDlg, CUIDialog)
     ON_BN_CLICKED(IDC_BUTTON_CONFIG, &CWebpageDlg::OnBnClickedButtonConfig)
     ON_BN_CLICKED(IDC_BUTTON_SIP_BUTTON, &CWebpageDlg::OnBnClickedButtonSipButton)
     ON_MESSAGE( WM_HTML_CREATE_CMD, &CWebpageDlg::OnCreateBrowserCtrlCmd )
+    ON_MESSAGE( WM_WINDOW_CLOSE_CMD, &CWebpageDlg::OnCloseWindowCmd )
+    ON_MESSAGE( WM_HTML_PRE_LOAD, &CWebpageDlg::OnHtmlPreLoad )
     ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
@@ -53,7 +55,7 @@ BOOL CWebpageDlg::OnInitDialog()
     mcu::log << _T( "SHDoneButton result: " ) << bResult << endl;
 
     // TODO:  在此添加额外的初始化
-    bResult = CreateBrowserCtrl();
+    
 
     // logo
     m_logoDlg.Create( CLogoDialog::IDD, this );
@@ -73,6 +75,13 @@ BOOL CWebpageDlg::OnInitDialog()
     this->m_btnSip.SetBkTransparent( FALSE, FALSE );
     this->m_btnSip.SetImage( _T( "btn_sip_normal.jpg" ), _T( "btn_sip_focus.jpg" ), _T( "btn_sip_disable.jpg" ), FALSE );
 
+    bResult = CreateBrowserCtrl();
+    mcu::log << _T( "Create Browser Control ret: " ) << bResult << endl;
+
+    tstring strAppTitle;
+    CConfig::Instance()->GetAppTitle( strAppTitle );
+    this->SetWindowText( strAppTitle.c_str() );
+    
 
     this->UpdateLayout();
 
@@ -87,14 +96,27 @@ BOOL CWebpageDlg::CreateBrowserCtrl()
 
 LRESULT CWebpageDlg::OnCreateBrowserCtrlCmd( WPARAM, LPARAM )
 {
-    HWND hWnd = m_browserCtrl.Create( NULL, /*this->GetSafeHwnd(),*/ 
-        CWindow::rcDefault, 
-        _T( "MCU Browser" ) );   
+    BOOL bResult = TRUE;
+    if ( !m_browserCtrl.m_hWnd )
+    {
+        HWND hWnd = m_browserCtrl.Create( NULL, /*this->GetSafeHwnd(),*/ 
+            CWindow::rcDefault, 
+            _T( "MCU Browser" ) );   
 
-    BOOL bResult = ( hWnd != NULL );
+        mcu::log << _T( "Create web browser. wnd; " ) << hWnd << endl;
+
+        bResult = ( hWnd != NULL );
+        
+    }
+    
     if ( bResult )
     {
         m_browserCtrl.SetWebpageParentWnd( GetSafeHwnd() );
+
+        tstring strAppTitle;
+        CConfig::Instance()->GetAppTitle( strAppTitle );
+        m_browserCtrl.SetWindowText( strAppTitle.c_str() );
+
         m_browserCtrl.ShowWindow( SW_SHOW );
         this->UpdateLayout();
     }
@@ -103,28 +125,16 @@ LRESULT CWebpageDlg::OnCreateBrowserCtrlCmd( WPARAM, LPARAM )
         int err = ::GetLastError();
         mcu::log << _T( "Create web browser ctrl fail! errcode: " ) << err << endl;
     }
-    
 
     return bResult;
 }
 
-BOOL CWebpageDlg::OpenUrl( LPCTSTR strUrl )
+LRESULT CWebpageDlg::OnCloseWindowCmd( WPARAM, LPARAM )
 {
-
-    return m_browserCtrl.OpenUrl( strUrl );
+    return this->CloseWindowWithWarnning();
 }
 
-BOOL CWebpageDlg::HistoryBack( int nStep )
-{
-    return FALSE;
-}
-
-BOOL CWebpageDlg::OpenPlayer( CVideoSession *pVideoSession )
-{
-    return FALSE;
-}
-
-void CWebpageDlg::OnOK()
+BOOL CWebpageDlg::CloseWindowWithWarnning()
 {
     // TODO: 在此添加专用代码和/或调用基类
     if( IDOK ==  MessageBox( _T( "你是否退出登录？" ), _T( "提示" ), MB_OKCANCEL ) )
@@ -135,14 +145,38 @@ void CWebpageDlg::OnOK()
         //{
         //    eLoginAfter = pLoginDlg->GetWndAfterClose();
         //}
-//        CWindowFactory::Instance()->ShowWindow( WndLogin, eLoginAfter ); 
-         __super::OnOK();                
-//        this->ShowWindow( SW_HIDE );
+        //        CWindowFactory::Instance()->ShowWindow( WndLogin, eLoginAfter ); 
+        __super::OnOK();   
+        return TRUE;
+        //        this->ShowWindow( SW_HIDE );
     }
     else
     {
-        return;
+        return FALSE;
     }   
+}
+
+BOOL CWebpageDlg::OpenUrl( LPCTSTR strUrl )
+{
+
+    return m_browserCtrl.OpenUrl( strUrl );
+}
+
+BOOL CWebpageDlg::HistoryBack( int nStep )
+{
+    mcu::log << _T( "CWebpageDlg::HistoryBack!!!step: " ) << nStep << endl;
+    return TRUE;
+}
+
+BOOL CWebpageDlg::OpenPlayer( CVideoSession *pVideoSession )
+{
+    mcu::log << _T( "CWebpageDlg::OpenPlayer called!!!" ) << pVideoSession->RtspUrl() << endl;
+    return TRUE;
+}
+
+void CWebpageDlg::OnOK()
+{
+    this->CloseWindowWithWarnning();
 }
 
 void CWebpageDlg::OnClose()
@@ -278,6 +312,7 @@ void CWebpageDlg::OnBnClickedButtonPic()
 void CWebpageDlg::OnBnClickedButtonConfig()
 {
     // TODO: 在此添加控件通知处理程序代码
+
     CWindowFactory::Instance()->ShowWindow( WndConfig, this->GetWindowId() );
 }
 
@@ -314,19 +349,39 @@ void CWebpageDlg::OnShowWindowCmd( int nSWCmd )
 {
     if ( m_browserCtrl.m_hWnd  )
     {
-        this->m_browserCtrl.ShowWindow( nSWCmd );
+        if ( SW_HIDE == nSWCmd && m_browserCtrl.IsWindowVisible() )
+        {
+            LPCTSTR strWaitPage = _T( "htmldoc\\wait.htm" );//_T( "wait.htm" );
+            tstring strModulePath = GetModulePath();
+            tstring strDir = ParsePath( strModulePath.c_str() ).m_strDirectory;
+            tstring strFailHtml = _T( "file://" ) + strDir + strWaitPage;
+            this->OpenUrl( strFailHtml.c_str() );
+        }
+
+        BOOL bResult = FALSE;
+
+        if ( nSWCmd == SW_SHOW )
+        {
+ //           bResult &= this->m_browserCtrl.SetWindowPos( wndTop, 0,0,0,0, SWP_NOMOVE | SWP_NOSIZE );
+            bResult = CreateBrowserCtrl();
+        }
+        else
+        {
+            bResult = this->m_browserCtrl.ShowWindow( nSWCmd );
+        }
+        
+        if ( !bResult )
+        {
+            mcu::log << _T( "web browser control show window failed!!!" ) << endl;
+        }
+//        
+
+        this->UpdateLayout();
     }
     
     // 总是有莫名其妙的问题。    
     return;
-    if ( SW_HIDE == nSWCmd )
-    {
-        LPCTSTR strWaitPage = _T( "htmldoc\\wait.htm" );//_T( "wait.htm" );
-        tstring strModulePath = GetModulePath();
-        tstring strDir = ParsePath( strModulePath.c_str() ).m_strDirectory;
-        tstring strFailHtml = _T( "file://" ) + strDir + strWaitPage;
-        this->OpenUrl( strFailHtml.c_str() );
-    }
+
 }
 
 
@@ -340,3 +395,13 @@ void CWebpageDlg::OnDestroy()
 
     // TODO: 在此处添加消息处理程序代码
 }
+
+LRESULT CWebpageDlg::OnHtmlPreLoad( WPARAM wParam, LPARAM )
+{
+    LPCTSTR strUrl = (LPCTSTR)wParam;
+    mcu::log << _T( "CWebpageDlg::OnHtmlPreLoad" ) << strUrl << endl;
+
+    EUrlType eUT = this->OnLoadPage( strUrl );
+    return ( UrlRtsp == eUT );
+}
+

@@ -100,7 +100,7 @@ Error:
     return hResult;
 }
 
-LRESULT CBrowserCtrl::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& /*bHandled*/)
+LRESULT CBrowserCtrl::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
     // TODO: 在此添加消息处理程序代码和/或调用默认值
     int fwSizeType = wParam; 
@@ -108,6 +108,10 @@ LRESULT CBrowserCtrl::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& /*bH
     int nHeight = HIWORD(lParam);
     CRect rcClient( 0,0,nWidth, nHeight );
     this->UpdateLayout( &rcClient );
+
+    mcu::log << _T( "CBrowserCtrl::OnSize. type: " ) << fwSizeType << 
+        _T( " w: ") << nWidth << _T( " h: " ) << nHeight << endl;
+
 
     if ( SIZE_MINIMIZED == fwSizeType )
     {
@@ -121,10 +125,24 @@ LRESULT CBrowserCtrl::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& /*bH
             //LPARAM lParam = (LPARAM)hWndCtl;
             UINT uMessage = WM_WINDOW_CLOSE_CMD;
 
-            mcu::log << _T( "Post to WM_WINDOW_CLOSE_CMD parent! msg: " ) 
-                << uMessage << _T( " wp: " ) << 0 << _T( " lp: " ) << 0 << endl;
+            BOOL bClose = ::SendMessage( m_hWebpageParentWnd, WM_WINDOW_CLOSE_CMD, 0, 0 );
 
-            ::PostMessage( m_hWebpageParentWnd, uMessage, 0, 0 );
+            mcu::log << _T( "Send WM_WINDOW_CLOSE_CMD parent! msg: " ) 
+                << uMessage << _T( " wp: " ) << 0 << _T( " lp: " ) << 0 << _T( " ret: " ) << bClose << endl;
+
+            if ( !bClose )
+            {
+                bHandled = TRUE;
+ //               this->ShowWindow( SW_HIDE );
+                this->ShowWindow( SW_SHOW );
+            }
+            else
+            {
+                bHandled = TRUE;
+                this->ShowWindow( SW_HIDE );
+            }
+
+ //           ::PostMessage( m_hWebpageParentWnd, uMessage, 0, 0 );
  //           mcu::log << _T( "Minimize the web browser,hide parent wnd! " ) << m_hWebpageParentWnd << endl;
  //           ::ShowWindow( m_hWebpageParentWnd, SW_HIDE );
         }
@@ -143,14 +161,19 @@ BOOL CBrowserCtrl::OpenUrl( LPCTSTR lpstrUrl )
 
     if ( NULL == m_spIWebBrowser2 )
     {
+        mcu::log << _T( "CBrowserCtrl::OpenUrl m_spIWebBrowser2 is NULL!" ) << endl;
         return FALSE;
     }
 
     tstring strUrl = StringToUrl( lpstrUrl );
 
+   
+
     TCHAR szTmp[1000] = {0};
     _tcscpy( szTmp, strUrl.c_str() );
     HRESULT hr = m_spIWebBrowser2->Navigate( szTmp, NULL, NULL, NULL, NULL );
+
+    mcu::log << _T( "Open Url: " ) << lpstrUrl << _T( " ret: " ) << hr << endl;
     return SUCCEEDED( hr );
 }
 
@@ -194,6 +217,7 @@ LRESULT CBrowserCtrl::OnActivate(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
     // TODO: 在此添加消息处理程序代码和/或调用默认值
     // Notify shell of our WM_ACTIVATE message
  //   SHHandleWMActivate(m_hWnd, wParam, lParam, &m_sai, 0);
+    mcu::log << _T( "CBrowserCtrl::OnActivate" ) << endl;
     return 0;
 }
 
@@ -224,20 +248,72 @@ LRESULT CBrowserCtrl::OnCommand(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& b
 //
 // **************************************************************************
 
+void CBrowserCtrl::OnBeforeNavigate(IDispatch* pDisp, 
+                                     VARIANT * pvtURL, VARIANT * , VARIANT * pvtTargetFrameName, 
+                                     VARIANT * , VARIANT * , VARIANT_BOOL * pvbCancel )
+{   
+    tstring strUrl =  OLE2CT(V_BSTR(pvtURL));
+
+mcu::log << _T( "CBrowserCtrl::OnBeforeNavigate url: " ) << strUrl << endl;
+
+
+if ( m_hWebpageParentWnd )
+{
+    BOOL bHandled = ::SendMessage( m_hWebpageParentWnd, WM_HTML_PRE_LOAD, (WPARAM)strUrl.c_str(), NULL );
+
+ //   this->m_spIWebBrowser2->Stop();
+    *pvbCancel = -1;
+}
+else
+{
+    mcu::log << _T( "CBrowserCtrl::OnBeforeNavigate2 when webpage parent wnd is NULL!" ) << endl;
+}
+
+}
+
 void __stdcall CBrowserCtrl::OnBeforeNavigate2(IDispatch* pDisp, VARIANT * pvtURL, 
                                               VARIANT * /*pvtFlags*/, VARIANT * pvtTargetFrameName,
                                               VARIANT * /*pvtPostData*/, VARIANT * /*pvtHeaders*/, 
-                                              VARIANT_BOOL * /*pvbCancel*/)
+                                              VARIANT_BOOL * pvbCancel)
 {
-    USES_CONVERSION;
-    TCHAR szOutput[512] = { 0 };
+    //USES_CONVERSION;
+    //TCHAR szOutput[512] = { 0 };
 
-    StringCchPrintf(szOutput, ARRAYSIZE(szOutput), 
-        TEXT("OnBeforeNavigate2 0x%08p %s %s\n"), pDisp, OLE2CT(V_BSTR(pvtURL)),
-        VT_ERROR != V_VT(pvtTargetFrameName) ? OLE2CT(V_BSTR(pvtTargetFrameName)) : TEXT("(error)"));
-    OutputDebugString(szOutput);
+    //StringCchPrintf(szOutput, ARRAYSIZE(szOutput), 
+    //    TEXT("OnBeforeNavigate2 0x%08p %s %s\n"), pDisp, OLE2CT(V_BSTR(pvtURL)),
+    //    VT_ERROR != V_VT(pvtTargetFrameName) ? OLE2CT(V_BSTR(pvtTargetFrameName)) : TEXT("(error)"));
+    //OutputDebugString(szOutput);
+    tstring strUrl =  OLE2CT(V_BSTR(pvtURL));
 
-   SetWindowText(TEXT("Untitled")); 
+    mcu::log << _T( "CBrowserCtrl::OnBeforeNavigate2 url: " ) << strUrl << endl;
+
+    CComPtr<IWebBrowser2> spIWebBrowser2 = NULL;
+    pDisp->QueryInterface( &spIWebBrowser2 );
+
+    if ( m_hWebpageParentWnd  )
+    {
+        BOOL bHandled = ::SendMessage( m_hWebpageParentWnd, WM_HTML_PRE_LOAD, (WPARAM)strUrl.c_str(), NULL );
+
+        if ( bHandled )
+        {
+            //if ( spIWebBrowser2 )
+            //{
+            //    spIWebBrowser2->Stop();
+            //}
+            //this->m_spIWebBrowser2->Stop();
+//            static const CComBSTR newURL = L"http://www.g.cn";
+//            this->m_spIWebBrowser2->Navigate(newURL, NULL, NULL, NULL, NULL);
+            //       this->m_spIWebBrowser2->Stop();
+            *pvbCancel = VARIANT_TRUE;
+        }
+        
+    }
+    else
+    {
+        mcu::log << _T( "CBrowserCtrl::OnBeforeNavigate2 when webpage parent wnd is NULL!" ) << endl;
+    }
+
+//   SetWindowText(TEXT("Untitled")); 
 
 }
 
@@ -250,7 +326,7 @@ void __stdcall CBrowserCtrl::OnBrowserTitleChange(BSTR bstrTitleText)
         TEXT("OnBrowserTitleChange %s\n"), OLE2CT(bstrTitleText));
     OutputDebugString(szOutput);
 
-    SetWindowText(OLE2CT(bstrTitleText)); 
+//    SetWindowText(OLE2CT(bstrTitleText)); 
 }
 
 void __stdcall CBrowserCtrl::OnNavigateComplete2(IDispatch* pDisp, VARIANT * pvtURL)
