@@ -6,6 +6,8 @@
 #include "HtmlWnd.h"
 #include "mculib.h"
 
+#include <webvw.h>
+
 // CHtmlWnd 对话框
 
 IMPLEMENT_DYNAMIC(CHtmlWnd, CDialog)
@@ -59,8 +61,18 @@ BOOL CHtmlWnd::OnInitDialog()
 		::UpdateWindow( m_hHtmlCtrlWnd );
 		::SendMessage(m_hHtmlCtrlWnd, DTM_ENABLECONTEXTMENU, 0, TRUE);
 
-		// 劫持消息.
-//		s_lpOldHtmlProc = (WNDPROC)::SetWindowLong( m_hHtmlCtrlWnd, DWL_DLGPROC, (LONG)HtmlProc );
+        //CComPtr< IPIEHTMLDocument > spBrowser;
+        //CComPtr< IDispatch > spDisp;
+        //::SendMessage( m_hHtmlCtrlWnd, DTM_DOCUMENTDISPATCH, 0, (LPARAM) &spDisp);
+        //if ( spDisp )
+        //{
+        //    spDisp->QueryInterface( &spBrowser) ;
+        //}
+       
+        //spBrowser->
+
+
+
 	}
 	else
 	{
@@ -83,14 +95,17 @@ void CHtmlWnd::OnSize(UINT nType, int cx, int cy)
 	// TODO: 在此处添加消息处理程序代码
 }
 
-BOOL CHtmlWnd::OpenUrl( LPCTSTR strUrl )
+BOOL CHtmlWnd::OpenUrl( LPCTSTR lpstrUrl )
 {
-	if( NULL == strUrl || *strUrl == 0 )
+	if( NULL == lpstrUrl || *lpstrUrl == 0 )
 	{
+        mcu::log << _T( "CHtmlWnd::OpenUrl url is null!" ) << endl;
 		return FALSE;
 	}
 	else
 	{
+        tstring strUrl = StringToUrl( lpstrUrl );
+
 		// 先清空页面.
 		this->Clear();
 
@@ -98,7 +113,7 @@ BOOL CHtmlWnd::OpenUrl( LPCTSTR strUrl )
 		//strUrl = L"file://\\Program Files\\M_CU\\failhtml\\fail.htm";
 		//strUrl = L"file://\\Program Files\\MEGA EYES\\htmlfail\\fail.htm";
 		//LRESULT lr = ::SendMessage( m_hHtmlCtrlWnd, DTM_NAVIGATE, NAVIGATEFLAG_REFRESH, (LPARAM)strUrl );
-		LRESULT lr = ::SendMessage( m_hHtmlCtrlWnd, DTM_NAVIGATE, NAVIGATEFLAG_REFRESH, (LPARAM)strUrl );
+		LRESULT lr = ::SendMessage( m_hHtmlCtrlWnd, DTM_NAVIGATE, NAVIGATEFLAG_REFRESH, (LPARAM)strUrl.c_str() );
 		return lr;
 	}
 }

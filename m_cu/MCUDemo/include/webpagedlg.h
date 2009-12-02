@@ -5,6 +5,7 @@
 #include "mculib.h"
 #include "logodialog.h"
 #include "uibutton.h"
+#include "HtmlWnd.h"
 // CWebpageDlg 对话框
 
 class CWebpageDlg : public CUIDialog, public CVirtualWebpageCtrl
@@ -57,7 +58,7 @@ private:
     /** 响应创建webbrowser控件的命令消息。 
     *   在窗口的初始化时直接创建会失败！（不知道Why）所以通过发送消息的方式创建。这里就是对消息的响应。
     */
-    afx_msg LRESULT OnCreateBrowserCtrlCmd( WPARAM, LPARAM );
+//    afx_msg LRESULT OnCreateBrowserCtrlCmd( WPARAM, LPARAM );
 
     /** 响应关闭窗口的命令消息。 */
     afx_msg LRESULT OnCloseWindowCmd( WPARAM, LPARAM );
@@ -67,7 +68,8 @@ private:
 
 private:
     /** 浏览器控件。 */
-    CBrowserCtrl m_browserCtrl;
+//    CBrowserCtrl m_browserCtrl;
+    CHtmlWnd m_htmlWnd;
 
     /** logo 对话框。*/
     CLogoDialog m_logoDlg;

@@ -42,12 +42,6 @@ void CHtmlTestDialog::OnBnClickedButtonOpenUrl()
     CString strUrl;
     this->m_cmbUrlList.GetWindowText( strUrl );
 
-    CWebpageDlg dlg;
-    dlg.OpenUrl( strUrl );
-    dlg.DoModal();
-
-
-
 
     CWindowFactory::Instance()->ShowWindow( WndWebpage, this->GetWindowId() );
     CWebpageDlg *pWebDlg = dynamic_cast< CWebpageDlg * >( CWindowFactory::Instance()->GetWnd( WndWebpage ) );

@@ -179,7 +179,7 @@ BOOL CWindowFactory::ShowWindow( EWindowId eShowWndId, EWindowId eShowAfter )
         pWnd->SetWndAfterClose( eShowAfter );
         pWnd->ShowWindow( SW_SHOW );   
   //      pWnd->SetForegroundWindow();
-        SetForegroundWindow((HWND)((ULONG) pWnd->GetSafeHwnd() | 0x00000001));
+  //      SetForegroundWindow((HWND)((ULONG) pWnd->GetSafeHwnd() | 0x00000001));
     }
     else
     {

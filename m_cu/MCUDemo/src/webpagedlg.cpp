@@ -37,7 +37,7 @@ BEGIN_MESSAGE_MAP(CWebpageDlg, CUIDialog)
     ON_BN_CLICKED(IDC_BUTTON_PIC, &CWebpageDlg::OnBnClickedButtonPic)
     ON_BN_CLICKED(IDC_BUTTON_CONFIG, &CWebpageDlg::OnBnClickedButtonConfig)
     ON_BN_CLICKED(IDC_BUTTON_SIP_BUTTON, &CWebpageDlg::OnBnClickedButtonSipButton)
-    ON_MESSAGE( WM_HTML_CREATE_CMD, &CWebpageDlg::OnCreateBrowserCtrlCmd )
+//    ON_MESSAGE( WM_HTML_CREATE_CMD, &CWebpageDlg::OnCreateBrowserCtrlCmd )
     ON_MESSAGE( WM_WINDOW_CLOSE_CMD, &CWebpageDlg::OnCloseWindowCmd )
     ON_MESSAGE( WM_HTML_PRE_LOAD, &CWebpageDlg::OnHtmlPreLoad )
     ON_WM_DESTROY()
@@ -51,8 +51,8 @@ BOOL CWebpageDlg::OnInitDialog()
     CUIDialog::OnInitDialog();
 
     
-    BOOL bResult = SHDoneButton( FALSE );
-    mcu::log << _T( "SHDoneButton result: " ) << bResult << endl;
+    BOOL bResult;// = SHDoneButton( FALSE );
+    //mcu::log << _T( "SHDoneButton result: " ) << bResult << endl;
 
     // TODO:  在此添加额外的初始化
     
@@ -91,9 +91,21 @@ BOOL CWebpageDlg::OnInitDialog()
 
 BOOL CWebpageDlg::CreateBrowserCtrl()
 {
-    return this->PostMessage( WM_HTML_CREATE_CMD );
+//    return this->PostMessage( WM_HTML_CREATE_CMD );
+    if ( NULL == m_htmlWnd.GetSafeHwnd() )
+    {
+        m_htmlWnd.Create( CHtmlWnd::IDD, this );
+    }
+    else
+    {
+        m_htmlWnd.ShowWindow( SW_SHOW );
+    }
+
+
+    return ( this->m_htmlWnd.GetSafeHwnd() != NULL );
 }
 
+#if 0
 LRESULT CWebpageDlg::OnCreateBrowserCtrlCmd( WPARAM, LPARAM )
 {
     BOOL bResult = TRUE;
@@ -128,6 +140,7 @@ LRESULT CWebpageDlg::OnCreateBrowserCtrlCmd( WPARAM, LPARAM )
 
     return bResult;
 }
+#endif
 
 LRESULT CWebpageDlg::OnCloseWindowCmd( WPARAM, LPARAM )
 {
@@ -159,7 +172,13 @@ BOOL CWebpageDlg::CloseWindowWithWarnning()
 BOOL CWebpageDlg::OpenUrl( LPCTSTR strUrl )
 {
 
-    return m_browserCtrl.OpenUrl( strUrl );
+//    return m_browserCtrl.OpenUrl( strUrl );
+    BOOL bResult = this->m_htmlWnd.OpenUrl( strUrl );
+    if ( !bResult )
+    {
+        mcu::log << _T( "CWebpageDlg OpenUrl fail! url: " ) << strUrl << endl;
+    }
+    return bResult;
 }
 
 BOOL CWebpageDlg::HistoryBack( int nStep )
@@ -281,26 +300,32 @@ void CWebpageDlg::UpdateLayout( CRect *prcClient /* = NULL */ )
         rcLeftSpace.bottom -= nMenubarHeight;
     }
 
-
-    if ( m_browserCtrl.m_hWnd && m_browserCtrl.IsWindow() )
+    if ( m_htmlWnd.GetSafeHwnd() )
     {
         CRect rcHtml = rcLeftSpace;
-        HWND hParent = ::GetParent( m_browserCtrl.m_hWnd );
-        if ( hParent == this->GetSafeHwnd() )
-        {
-            m_browserCtrl.MoveWindow( rcHtml );
-        }
-        else
-        {            
-            this->ClientToScreen( rcHtml );
-            CPoint ptHtmlLeftTop = rcHtml.TopLeft();
-            if ( hParent )
-            {
-                ::ScreenToClient( hParent, &ptHtmlLeftTop );
-            }
-            m_browserCtrl.MoveWindow( ptHtmlLeftTop.x, ptHtmlLeftTop.y, rcHtml.Width(), rcHtml.Height() );
-        }        
-    }	
+        m_htmlWnd.MoveWindow( rcHtml );
+
+    }
+
+    //if ( m_browserCtrl.m_hWnd && m_browserCtrl.IsWindow() )
+    //{
+    //    CRect rcHtml = rcLeftSpace;
+    //    HWND hParent = ::GetParent( m_browserCtrl.m_hWnd );
+    //    if ( hParent == this->GetSafeHwnd() )
+    //    {
+    //        m_browserCtrl.MoveWindow( rcHtml );
+    //    }
+    //    else
+    //    {            
+    //        this->ClientToScreen( rcHtml );
+    //        CPoint ptHtmlLeftTop = rcHtml.TopLeft();
+    //        if ( hParent )
+    //        {
+    //            ::ScreenToClient( hParent, &ptHtmlLeftTop );
+    //        }
+    //        m_browserCtrl.MoveWindow( ptHtmlLeftTop.x, ptHtmlLeftTop.y, rcHtml.Width(), rcHtml.Height() );
+    //    }        
+    //}	
 }
 
 void CWebpageDlg::OnBnClickedButtonPic()
@@ -347,16 +372,16 @@ void CWebpageDlg::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 
 void CWebpageDlg::OnShowWindowCmd( int nSWCmd )
 {
-    if ( m_browserCtrl.m_hWnd  )
+//    if ( m_browserCtrl.m_hWnd  )
     {
-        if ( SW_HIDE == nSWCmd && m_browserCtrl.IsWindowVisible() )
-        {
-            LPCTSTR strWaitPage = _T( "htmldoc\\wait.htm" );//_T( "wait.htm" );
-            tstring strModulePath = GetModulePath();
-            tstring strDir = ParsePath( strModulePath.c_str() ).m_strDirectory;
-            tstring strFailHtml = _T( "file://" ) + strDir + strWaitPage;
-            this->OpenUrl( strFailHtml.c_str() );
-        }
+        //if ( SW_HIDE == nSWCmd && m_browserCtrl.IsWindowVisible() )
+        //{
+        //    LPCTSTR strWaitPage = _T( "htmldoc\\wait.htm" );//_T( "wait.htm" );
+        //    tstring strModulePath = GetModulePath();
+        //    tstring strDir = ParsePath( strModulePath.c_str() ).m_strDirectory;
+        //    tstring strFailHtml = _T( "file://" ) + strDir + strWaitPage;
+        //    this->OpenUrl( strFailHtml.c_str() );
+        //}
 
         BOOL bResult = FALSE;
 
@@ -367,7 +392,7 @@ void CWebpageDlg::OnShowWindowCmd( int nSWCmd )
         }
         else
         {
-            bResult = this->m_browserCtrl.ShowWindow( nSWCmd );
+ //           bResult = this->m_browserCtrl.ShowWindow( nSWCmd );
         }
         
         if ( !bResult )
@@ -389,7 +414,7 @@ void CWebpageDlg::OnShowWindowCmd( int nSWCmd )
 
 void CWebpageDlg::OnDestroy()
 {
-    this->m_browserCtrl.DestroyWindow();
+//    this->m_browserCtrl.DestroyWindow();
 
     __super::OnDestroy();
 
