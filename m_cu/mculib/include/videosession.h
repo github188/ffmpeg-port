@@ -31,7 +31,7 @@ public:
 
 	/** Ç°¶ËÃû¡£ */
 	tstring PuName() const { return m_strPuName; }
-	void PuName(tstring val) 
+	void PuName( LPCTSTR val) 
 	{ 
 		m_strPuName = val; 
 	}

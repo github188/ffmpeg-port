@@ -570,6 +570,13 @@ static int mov_write_avcc_tag(ByteIOContext *pb, MOVTrack *track)
     put_tag(pb, "avcC");
 //    ff_isom_write_avcc(pb, track->vosData, track->vosLen);
 
+    if ( track->vosData == NULL || track->vosLen <= 0 )
+    {
+        av_log( 0, AV_LOG_ERROR, "mov_write_avcc_tag can't get the config!!!!!!!!\n" );
+        return 0;
+    }
+    
+
 	// 将PPS和SPS信息填入 
 	// 传入的数据结构： pps长度（32bit ）pps数据 sps长度（32bit）sps数据。
 	

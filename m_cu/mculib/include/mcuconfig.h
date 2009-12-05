@@ -86,6 +86,9 @@ public:
 	BOOL GetWebpageHistoryBackStep( int& nStep );
 	BOOL SetWebpageHistoryBackStep( const int nStep );
 
+    /** ÊÇ·ñ·¢ËÍNAT´©Í¸°ü¡£ */
+    BOOL GetIsSendNatPacket( BOOL& bSendnat );
+
 private:
 
 

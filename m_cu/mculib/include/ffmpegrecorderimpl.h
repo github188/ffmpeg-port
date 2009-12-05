@@ -65,6 +65,9 @@ private:
 	/** 录像文件. */
 	tstring m_strRecordFilePath;
 
+    /** 线程同步锁。*/
+    CMCUMutex m_threadSafeLock;
+
 	/** 文件协议是否注册过。*/
 	static BOOL s_bFileProtocolReg;
 

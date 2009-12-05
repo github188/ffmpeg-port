@@ -25,6 +25,12 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #include <GroupsockHelper.hh>
 #include "our_md5.h"
 
+#include <iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
 
 #ifdef SUPPORT_REAL_RTSP
 #include "../RealRTSP/include/RealRTSP.hh"
@@ -2092,15 +2098,20 @@ void RTSPClient::checkForAuthenticationFailure(unsigned responseCode,
 
 Boolean RTSPClient::sendRequest(char const* requestString, char const* tag,
 				Boolean base64EncodeIfOverHTTP) {
-  if (fVerbosityLevel >= 1) {
-    envir() << "Sending request: " << requestString << "\n";
+  if (fVerbosityLevel >= 1) 
+  {
+      stringstream ssMsg;
+      ssMsg << "Sending request: " << requestString << "\n";
+      envir() << ssMsg.str().c_str();
   }
 
   char* newRequestString = NULL;
   if (fTunnelOverHTTPPortNum != 0 && base64EncodeIfOverHTTP) {
     requestString = newRequestString = base64Encode(requestString, strlen(requestString));
     if (fVerbosityLevel >= 1) {
-      envir() << "\tThe request was base-64 encoded to: " << requestString << "\n\n";
+        stringstream ssMsg;
+        ssMsg << "\tThe request was base-64 encoded to: " << requestString << "\n\n";
+        envir() << ssMsg.str().c_str();
     }
   }
 

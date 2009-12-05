@@ -18,6 +18,8 @@ CLog::~CLog(void)
 
 void CLog::SetLogFileDir( LPCTSTR strLogDir, LPCTSTR strPrefix )
 {
+    SCOPE_LOCK( m_threadSafeLock );
+
     if ( m_strLogDir != strLogDir )
     {
         m_strLogDir = strLogDir;
@@ -43,6 +45,7 @@ void CLog::SetLogFileDir( LPCTSTR strLogDir, LPCTSTR strPrefix )
 
 CLog& CLog::operator <<( const wchar_t * strMsg)
 {
+    SCOPE_LOCK( m_threadSafeLock );
 
 #ifdef _WIN32_WCE
     OutputDebugString( strMsg );
@@ -65,6 +68,8 @@ CLog& CLog::operator <<( const wchar_t * strMsg)
 
 CLog& CLog::operator <<( const char * strMsg )
 {
+    SCOPE_LOCK( m_threadSafeLock );
+
     cout << strMsg;
 
     if ( this->m_fLog )

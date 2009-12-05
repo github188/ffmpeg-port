@@ -393,8 +393,9 @@ tstring TimeToStr( __time64_t nTime )
 	{
 		tstringstream ssTime;
 		ssTime << setfill( _T( '0' ) ) << setw(4) << ( localTime.tm_year + 1900 );
-		ssTime << setw(2) << localTime.tm_mon + 1 << setw(2) << localTime.tm_mday;
-		ssTime << setw(2) << localTime.tm_hour << setw(2) << localTime.tm_min << setw(2) << localTime.tm_sec;
+		ssTime << setfill( _T( '0' ) ) << setw(2) << localTime.tm_mon + 1 <<setfill( _T( '0' ) ) <<  setw(2) << localTime.tm_mday;
+		ssTime << setfill( _T( '0' ) ) << setw(2) << localTime.tm_hour << setfill( _T( '0' ) ) <<  setw(2) << localTime.tm_min 
+            << setfill( _T( '0' ) ) << setw(2) << localTime.tm_sec;
 		strTimeResult = ssTime.str();
 	}
 	return strTimeResult;
@@ -539,5 +540,21 @@ tstring StringToUrl( LPCTSTR strStr )
     }
 
     return ssRet.str();
+}
+
+mu_uint64 GetDirFreeSpace( LPCTSTR strDirPath )
+{
+    ULARGE_INTEGER nFreeSpaceToCaller, nTotalSpace, nFreeSpace;
+
+    BOOL bResult = ::GetDiskFreeSpaceEx( strDirPath, &nFreeSpaceToCaller, &nTotalSpace, &nFreeSpace );
+    if ( bResult )
+    {
+        return nFreeSpaceToCaller.QuadPart;
+    }
+    else
+    {
+        mcu::log << _T( "GetDiskFreeSpaceEx Fail! " ) << endl;
+    }
+
 }
 

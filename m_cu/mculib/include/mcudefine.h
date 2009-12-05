@@ -110,6 +110,7 @@ enum ERTSPStatus
 	RTSPStatus_Setup,		// 等待Setup.
 	RTSPStatus_Play,		// 等待播放.
 	RTSPStatus_Running,		// 正常运行中.
+    RTSPStatus_WaitingPacket,   // 等待码流。
 
 	RTSPStatus_Error_Unknown,		// 未知错误。
 	RTSPStatus_Error_Server_Full,	// 服务器达到了最大能力
@@ -120,6 +121,7 @@ enum ERTSPStatus
 	RTSPStatus_Error_Play,			
 	RTSPStatus_Error_SDP,			// 解析sdp信息出错。
 	RTSPStatus_Error_Create_Rcv,	// 码流接收创建失败。
+    RTSPStatus_Error_WaitPacket,    // 等待码流失败（超时）
 
 };
 

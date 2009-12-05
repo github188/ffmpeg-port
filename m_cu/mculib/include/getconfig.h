@@ -89,7 +89,7 @@ l32 GetMpeg4Config(u8 *pu8Stream, u32 u32BsLen, TMpeg4ConfigInfo *ptMpeg4ConfigI
           ptH264ConfigInfo  输出SPS、PPS信息指针[out]
 返 回 值: 返回VIDEO_SUCCESS表示成功，否则失败（参照返回错误码）
 =============================================================================*/
-//l32 GetH264Config(u8 *pu8Stream, u32 u32BsLen, TH264ConfigInfo *ptH264ConfigInfo);
+l32 GetH264Config(u8 *pu8Stream, u32 u32BsLen, TH264ConfigInfo *ptH264ConfigInfo);
 
 
 #endif

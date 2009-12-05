@@ -18,6 +18,9 @@ public:
 	/** 打开RTSP链接。 */
 	BOOL StartPlay( CVideoSession *pVideoSession, EMCU_ErrorCode& eErrorCode );
 
+    /** 重新连接。 */
+    BOOL RestartPlay();
+
 	BOOL PausePlay( BOOL bPause );
 	BOOL IsPause() const;
 
@@ -25,12 +28,17 @@ public:
 	BOOL StopPlay();
 
 	/** 抓拍。 */
-	BOOL Capture( EMCU_ErrorCode& eErrorCode );
+	BOOL Capture( tstring& strPicPath, EMCU_ErrorCode& eErrorCode );
 	BOOL Capture( LPCTSTR strPicPath, EMCU_ErrorCode& eErrorCode );
 
 	/** 录像。 */
+
+    /** 录像接口1，内部确定文件名，并将文件名返回。。 */
+    BOOL StartRecord( tstring& strRecPath, EMCU_ErrorCode& eErrorCode );
+    /** 录像接口2，调用者确定文件名。 */
 	BOOL StartRecord( LPCTSTR strRecPath, EMCU_ErrorCode& eErrorCode );
 	BOOL StopRecord( EMCU_ErrorCode& pErrorCode );
+    BOOL IsRecording() const;
 
 	/** Ptz控制。 */
 	BOOL SendPtzCmd( EPTZCmdId eCmd );
@@ -45,9 +53,15 @@ protected:
 	/** 播放 状态,事件。回调。 */
 	virtual void OnRtspStatus( const ERTSPStatus eRtspStatus, const EMCU_ErrorCode eErrorCode ) = 0;
 
+    /** 录像状态回调。 */
+    virtual void OnRecordStatus( BOOL bSuccess, EMCU_ErrorCode er ) = 0;
+
 private:
 	/** 检测线程调用。 */
 	void CheckStatsu();	
+
+    /** 检测磁盘情况。 */
+    void CheckDiskSpace();
 
 	/** 开始与结束检测线程。*/
 	void StartCheckThread();
@@ -66,6 +80,9 @@ private:
 	/** 消息回调。 */
 	static mu_int32 OnMessage( const mcu::TMsg& tMsg );
 
+    /** 获取抓拍/录像的文件名。 */
+    tstring GetFileName( LPCTSTR strExtName );
+
 private:
 	CMediaNet m_MediaNet;
 
@@ -83,11 +100,14 @@ private:
 	/** 是否检测状态。 */
 	volatile BOOL m_bCheckStatus;
 
+    /** 是否检测磁盘满。*/
+    volatile BOOL m_bCheckDiskSpace;
+
 	/** 最近一次的rtsp状态。 */
 	ERTSPStatus m_eLastRtspStatus;
 
 	/** 最近一次图像回调时间。 */
-	time_t m_timeLastPic;
+	__time64_t m_timeLastPic;
 
 	/** 线程同步锁。 */
 	mutable CMCUMutex m_threadSafeLock;

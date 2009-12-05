@@ -129,12 +129,12 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 		// this code is processed when a user clicks on a hyperlink
 	case NM_HOTSPOT:
 		{
-			mcu::log << _T( "NM_HOTSPOT" ) << endl;
+			
 			// read the target string
 
 			tstring strUrl = UTF8toUTF16( (const char *)pnmHTMLView->szTarget );
 
-			mcu::log << strUrl << endl;
+            mcu::log << _T( "NM_HOTSPOT url: " ) <<  strUrl << endl;
 
 			if( m_bWaittingNavigateComplete )
 			{
@@ -236,6 +236,14 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 
 			mcu::log << _T( "NM_BEFORENAVIGATE: " ) << strUrl << endl;
 
+            // 对于页面载入失败的页面，不再检测是否失败。
+            if ( strUrl == this->GetFailHtmlUrl() )
+            {
+                mcu::log << _T( "Open the Fail page shold not check fail load! m_bWaittingNavigateComplete = FALSE。fail page: " ) 
+                    << strUrl << endl;
+                m_bWaittingNavigateComplete = FALSE;
+            }
+
 			
 //			MessageBox( strUrl.c_str(), TEXT( "你打开的URL链接：" ) );
 
@@ -294,9 +302,7 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 			mcu::log << _T( "NM_DOCUMENTCOMPLETE not do NM_NAVIGATECOMPLETE" ) << endl;
 			//tstring strUrl = UTF8toUTF16( (const char *)pnmHTMLView->szTarget );
 			//mcu::log << _T( "m_bWaittingNavigateComplete = false Url " )<< strUrl << endl;
-			tstring strModulePath = GetModulePath();
-			tstring strDir = ParsePath( strModulePath.c_str() ).m_strDirectory;
-			tstring strFailHtml = _T( "file://" ) + strDir + _T( "failhtml\\fail.htm" );
+			tstring strFailHtml = this->GetFailHtmlUrl();
 			m_bWaittingNavigateComplete = FALSE;
 			this->OpenUrl( strFailHtml.c_str() );
 			m_bIsFaild = TRUE;
@@ -521,4 +527,19 @@ BOOL CHtmlWnd::OnCommand(WPARAM wParam, LPARAM lParam)
 	{
 		return CDialog::OnCommand(wParam, lParam);
 	}
+}
+
+tstring CHtmlWnd::GetFailHtmlUrl() const
+{
+    //tstring strModulePath = GetModulePath();
+    //tstring strDir = ParsePath( strModulePath.c_str() ).m_strDirectory;
+    //tstring strFailHtml = _T( "file://" ) + strDir + _T( "failhtml\\fail.htm" );
+
+    LPCTSTR lpFailpage = _T( "htmldoc\\mcufail.htm" );//_T( "wait.htm" );
+    tstring strModulePath = GetModulePath();
+    tstring strDir = ParsePath( strModulePath.c_str() ).m_strDirectory;
+    tstring strFailHtml = _T( "file://" ) + strDir + lpFailpage;
+
+
+    return strFailHtml;
 }

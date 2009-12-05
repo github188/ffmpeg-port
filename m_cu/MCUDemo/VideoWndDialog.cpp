@@ -27,14 +27,14 @@ CVideoWndDialog::CVideoWndDialog(  CWnd* pParent /*=NULL*/)
 	m_pSDLThread( NULL ),
 	m_bFullScreenMode( FALSE )
 {
-	m_dwStatusUpdateTimerId = 0;
-	m_nTimeoutRTSPFail = TIMEOUT_RTSP_FAIL;
-	m_bCheckRtspTimeout = FALSE;
-	m_bCheckRtspError = FALSE;
-	m_nTimeoutNoPacket = TIMEOUT_NO_PACKET;
-	m_bCheckNoPacketTimeout = FALSE;
+	//m_dwStatusUpdateTimerId = 0;
+	//m_nTimeoutRTSPFail = TIMEOUT_RTSP_FAIL;
+	//m_bCheckRtspTimeout = FALSE;
+	//m_bCheckRtspError = FALSE;
+	//m_nTimeoutNoPacket = TIMEOUT_NO_PACKET;
+	//m_bCheckNoPacketTimeout = FALSE;
 	m_timeLastMouseClick =0;
-	m_bPause = FALSE;
+//	m_bPause = FALSE;
 }
 
 CVideoWndDialog::~CVideoWndDialog()
@@ -69,12 +69,12 @@ BOOL CVideoWndDialog::OnInitDialog()
 
 	BOOL bResult;
 	// TODO:  在此添加额外的初始化
-	if ( !m_strRtspUrl.IsEmpty() )
-	{
-		m_bCheckRtspTimeout = TRUE;
-		m_bCheckRtspError = TRUE;
-		m_MediaNet.OpenRTSP( m_strRtspUrl );
-	}
+	//if ( !m_strRtspUrl.IsEmpty() )
+	//{
+	//	m_bCheckRtspTimeout = TRUE;
+	//	m_bCheckRtspError = TRUE;
+	//	m_MediaNet.OpenRTSP( m_strRtspUrl );
+	//}
 
 
 		
@@ -91,20 +91,20 @@ BOOL CVideoWndDialog::OnInitDialog()
 
 
 	// 设置解码回调。
-	CDecoder::SetPictueCallback( &CVideoWndDialog::YUVCallbackS, this );
+//	CDecoder::SetPictueCallback( &CVideoWndDialog::YUVCallbackS, this );
 
 	// 开启定时器.
-	m_dwStatusUpdateTimerId = this->SetTimer( 1, 500, NULL );
+//	m_dwStatusUpdateTimerId = this->SetTimer( 1, 500, NULL );
 
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
 
-void CVideoWndDialog::SetRstpUrl( LPCTSTR strRtspUrl )
-{
-	m_strRtspUrl = strRtspUrl;
-}
+//void CVideoWndDialog::SetRstpUrl( LPCTSTR strRtspUrl )
+//{
+//	m_strRtspUrl = strRtspUrl;
+//}
 
 void CVideoWndDialog::SetFullScreen( BOOL bFullScreen )
 {
@@ -126,18 +126,18 @@ void CVideoWndDialog::SetFullScreen( BOOL bFullScreen )
 	
 }
 
-BOOL CVideoWndDialog::PicCapture( LPCTSTR strPicPath )
-{
-	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
-	if( pDec )
-	{	
-		return pDec->CapturePic( strPicPath );
-	}
-	else
-	{
-		return FALSE;
-	}
-}
+//BOOL CVideoWndDialog::PicCapture( LPCTSTR strPicPath )
+//{
+//	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
+//	if( pDec )
+//	{	
+//		return pDec->CapturePic( strPicPath );
+//	}
+//	else
+//	{
+//		return FALSE;
+//	}
+//}
 
 void CVideoWndDialog::PostNcDestroy()
 {
@@ -376,18 +376,19 @@ BOOL CVideoWndDialog::DestroyWindow()
 
 	DestroySDL();
 
-	m_MediaNet.CloseRTSP();
+//	m_MediaNet.CloseRTSP();
 
 	if ( m_pSDLOverlay )
 	{
 		SDL_FreeYUVOverlay( m_pSDLOverlay );
+        m_pSDLOverlay = NULL;
 	}	
 
-	if ( m_dwStatusUpdateTimerId )
-	{
-		KillTimer( m_dwStatusUpdateTimerId );
-		m_dwStatusUpdateTimerId = 0;
-	}
+	//if ( m_dwStatusUpdateTimerId )
+	//{
+	//	KillTimer( m_dwStatusUpdateTimerId );
+	//	m_dwStatusUpdateTimerId = 0;
+	//}
 
 	return CDialog::DestroyWindow();
 }
@@ -399,35 +400,489 @@ void CVideoWndDialog::OnDestroy()
 	// TODO: 在此处添加消息处理程序代码
 }
 
-BOOL CVideoWndDialog::YUVCallbackS( const CDecoder::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo* pFrameInfo, void *param )
+//BOOL CVideoWndDialog::YUVCallbackS( const CDecoder::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo* pFrameInfo, void *param )
+//{
+//	if ( param )
+//	{
+//		CVideoWndDialog *pThis = (CVideoWndDialog*)param;
+//		pThis->YUVCallback( pic, pFrameInfo );
+//	}
+//	return TRUE;
+//}
+
+//void CVideoWndDialog::YUVCallback( const CDecoder::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo* pFrameInfo )
+//{
+//	SCOPE_LOCK( m_threadSafeLock );
+//
+//	int nPicWidth = pic->picWidth;
+//	int nPicHeight = pic->picHeight;
+//
+//	// 更新最后一次绘制图形的时间.
+//	m_timeLastDrawVideo = CTime::GetCurrentTime();
+//
+//	// SDL还没有正常初始化.
+//	if ( !m_pSDLSurface )
+//	{
+//		return;
+//	}
+//
+//	// 检查是否被暂停了.
+//	if ( m_bPause )
+//	{
+//		return;
+//	}
+//
+//	// 检查是否要创建 YUV Overlay。
+//	if ( !m_pSDLOverlay 
+//		|| m_pSDLOverlay->w != nPicWidth
+//		|| m_pSDLOverlay->h != nPicHeight )
+//	{
+//		if ( m_pSDLOverlay )
+//		{
+//			SDL_FreeYUVOverlay( m_pSDLOverlay );
+//		}
+//
+////		SDL_Surface *screen = SDL_SetVideoMode( nWidth, nHeight, 0, SDL_HWSURFACE|SDL_RESIZABLE|SDL_ASYNCBLIT|SDL_HWACCEL );
+//
+//		m_pSDLOverlay = SDL_CreateYUVOverlay( nPicWidth, nPicHeight, SDL_IYUV_OVERLAY, m_pSDLSurface );
+//
+//	}
+//
+//	// copy图像。
+//	/* get a pointer on the bitmap */
+////	AVPicture pict;
+//
+//	SDL_LockYUVOverlay ( m_pSDLOverlay );
+//
+////	int dst_pix_fmt = PIX_FMT_YUV420P;
+//	//pict.data[0] = m_pSDLOverlay->pixels[0];
+//	//pict.data[1] = m_pSDLOverlay->pixels[1];
+//	//pict.data[2] = m_pSDLOverlay->pixels[2];
+//
+//	//pict.linesize[0] = m_pSDLOverlay->pitches[0];
+//	//pict.linesize[1] = m_pSDLOverlay->pitches[1];
+//	//pict.linesize[2] = m_pSDLOverlay->pitches[2];
+//
+//	//av_picture_copy(&pict, (const AVPicture *)avFrame, 
+//	//	dst_pix_fmt, nWidth, nHeight );
+//	for( int i=0; i<3; ++i )
+//	{
+//		memcpy( m_pSDLOverlay->pixels[i], pic->data[i], pic->linesize[i] );
+//		m_pSDLOverlay->pitches[i] = (mu_uint16)pic->linesize[i];
+//	}
+//	
+//
+//	/* update the bitmap content */
+//	SDL_UnlockYUVOverlay( m_pSDLOverlay );
+//
+//	// 显示。
+//	int nWidth = pFrameInfo->frameWidth;
+//	int nHeight = pFrameInfo->frameHeight;
+//	const int conBlackBorderOffset = -2;
+//	SDL_Rect rect;
+//
+//	if ( nWidth * m_pSDLSurface->h > nHeight * m_rcVideoShow.w )
+//	{
+//		// 图像宽高比大于显示区域宽高比,说明要按照宽度调整.
+//		rect.h = nHeight * m_rcVideoShow.w / nWidth ;
+//		rect.w = m_pSDLSurface->w;
+//	}
+//	else
+//	{
+//		// 按照高度调整.
+//		rect.w = nWidth * m_pSDLSurface->h / nHeight;
+//		rect.h = m_pSDLSurface->h;
+//	}
+//
+//	rect.x = conBlackBorderOffset + ( m_pSDLSurface->w - rect.w ) /2 ;
+//	rect.y = conBlackBorderOffset + ( m_pSDLSurface->h - rect.h ) /2 ;
+//
+//	if ( m_bFullScreenMode )
+//	{
+////		rect.x = rect.y = 0;
+//		
+//	}
+////	rect = m_rcVideoShow;
+//	SDL_DisplayYUVOverlay( m_pSDLOverlay, &rect );
+//
+//	// 判断是否需要重新创建绘图表面。
+//	//if ( 0 == g_videoPic[ decoderId ]->bmp 
+//	//	|| g_videoPic[ decoderId ]->width != g_avCodecContext[ decoderId ]->width
+//	//	|| g_videoPic[ decoderId ]->height != g_avCodecContext[ decoderId ]->height )
+//	//{
+//	//	g_videoPic[ decoderId ]->pts = PIX_FMT_YUV420P;
+//	//	g_videoPic[ decoderId ]->width = g_avCodecContext[ decoderId ]->width;
+//	//	g_videoPic[ decoderId ]->height = g_avCodecContext[ decoderId ]->height;
+//	//	g_videoPic[ decoderId ]->bmp = 0;
+//	//	g_videoPic[ decoderId ]->allocated = 0;
+//
+//
+//	//	// 创建 overlay。
+//	//	/* the allocation must be done in the main thread to avoid	locking problems */
+//	//	sdlevent.type = FF_ALLOC_SDL_OVERLAY;
+//	//	sdlevent.user.data1 = g_videoPic[ decoderId ];
+//	//	SDL_PushEvent( &sdlevent );
+//
+//	//	/* wait until the picture is allocated */
+//	//	SDL_LockMutex( g_pictq_mutex );
+//	//	while (!vp->allocated ) 
+//	//	{
+//	//		SDL_CondWait( g_pictq_cond, g_pictq_mutex);
+//	//	}
+//	//	SDL_UnlockMutex( g_pictq_mutex );
+//	//}
+//
+//	//// 将数据拷入overlay。
+//
+//	///* get a pointer on the bitmap */
+//	//SDL_LockYUVOverlay (vp->bmp);
+//
+//	//dst_pix_fmt = PIX_FMT_YUV420P;
+//	//pict.data[0] = vp->bmp->pixels[0];
+//	//pict.data[1] = vp->bmp->pixels[2];
+//	//pict.data[2] = vp->bmp->pixels[1];
+//
+//	//pict.linesize[0] = vp->bmp->pitches[0];
+//	//pict.linesize[1] = vp->bmp->pitches[2];
+//	//pict.linesize[2] = vp->bmp->pitches[1];
+//
+//	//av_picture_copy(&pict, (const AVPicture *)g_avFrame[ decoderId ], 
+//	//	dst_pix_fmt, vp->width, vp->height );
+//
+//	///* update the bitmap content */
+//	//SDL_UnlockYUVOverlay(vp->bmp);
+//
+//	//rect.x = 0;
+//	//rect.y = 0;
+//	//rect.w = vp->width ;
+//	//rect.h = vp->height;
+//	//SDL_DisplayYUVOverlay( vp->bmp, &rect );
+//}
+void CVideoWndDialog::OnSize(UINT nType, int cx, int cy)
 {
-	if ( param )
+	SCOPE_LOCK( m_threadSafeLock );
+
+	CDialog::OnSize(nType, cx, cy);
+
+	// TODO: 在此处添加消息处理程序代码
+	m_rcVideoShow.x = 0;
+	m_rcVideoShow.y = 0;
+	m_rcVideoShow.w = cx;
+	m_rcVideoShow.h = cy;
+
+
+	SDL_Event sdlEvent;
+	sdlEvent.resize.type = SDL_VIDEORESIZE;
+	//if ( m_bFullScreenMode )
+	//{
+	//	sdlEvent.resize.w = max( cx,cy );
+	//	sdlEvent.resize.h = min( cx,cy );
+	//}
+	//else
 	{
-		CVideoWndDialog *pThis = (CVideoWndDialog*)param;
-		pThis->YUVCallback( pic, pFrameInfo );
+		sdlEvent.resize.w = cx;
+		sdlEvent.resize.h = cy;
 	}
-	return TRUE;
+	
+	SDL_PushEvent( &sdlEvent );
+
+	// 状态显示在最底下.
+	CRect rcVideoStatus;
+	if ( this->m_staticVideoStatus.GetSafeHwnd() )
+	{
+		m_staticVideoStatus.GetWindowRect( rcVideoStatus );
+		int nHeight = rcVideoStatus.Height();
+		rcVideoStatus.left = 0;
+		rcVideoStatus.right = cx;
+		rcVideoStatus.OffsetRect( 0, cy - rcVideoStatus.bottom );
+
+		m_staticVideoStatus.MoveWindow( rcVideoStatus );
+	}
 }
 
-void CVideoWndDialog::YUVCallback( const CDecoder::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo* pFrameInfo )
+void CVideoWndDialog::OnTimer(UINT_PTR nIDEvent)
 {
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	
+	//if( nIDEvent == m_dwStatusUpdateTimerId )
+	//{
+	//	// 刷新和轮巡.
+	//	this->StatusCheck();
+
+	//	// 检查空间。
+	//	this->StorageSpaceCheck();
+	//}
+
+
+	CDialog::OnTimer(nIDEvent);
+}
+
+//void CVideoWndDialog::StorageSpaceCheck()
+//{
+//	if ( this->IsRecoding() )
+//	{
+//		// 检测磁盘空间。
+//		ULARGE_INTEGER nFreeSpaceToCaller, nTotalSpace, nFreeSpace;
+//		tstring strRecDir;
+//		CConfig::Instance()->GetCaptureDir( strRecDir );
+//		BOOL bResult = ::GetDiskFreeSpaceEx( strRecDir.c_str(), &nFreeSpaceToCaller, &nTotalSpace, &nFreeSpace );
+//		int nMinSpace = MIN_STORAGE_SPACE;
+//		CConfig::Instance()->GetMinStorageSpace( nMinSpace ) ;
+//		if ( nFreeSpaceToCaller.QuadPart < nMinSpace )
+//		{
+//			bResult = this->StopRecord();
+//
+//			this->GetParent()->SendMessage( WM_VIDEO_WND_RECORD_FAIL, MCU_Error_Storage_Full, 0 );
+//		}
+//	}
+//	
+//}
+//
+//void CVideoWndDialog::StatusCheck()
+//{
+//	ERTSPStatus eRtspStat = this->m_MediaNet.GetRtspStatus();
+//
+//	
+//	// 检测RTSP是否正常工作.
+//
+//	// 检查是否达到了服务器的最大路数。
+//	if ( RTSPStatus_Error_Server_Full == eRtspStat && m_bCheckRtspError )
+//	{
+//		// 服务器拒绝了客户端的请求，直接返回失败。
+//		m_bCheckRtspError = FALSE;
+//		this->GetParent()->SendMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Server_Full, 0 );
+//		return;
+//	}
+//
+//	if ( m_bCheckRtspError )
+//	{
+//        switch( eRtspStat )
+//        {
+//        case RTSPStatus_Error_Unknown:		// 未知错误。	
+//        case RTSPStatus_Error_Init_Fail:	// 初始化失败。
+//        case RTSPStatus_Error_Opition:		// Opition 命令失败。
+//        case RTSPStatus_Error_Description:
+//        case RTSPStatus_Error_Setup:
+//        case RTSPStatus_Error_Play:		
+//        case RTSPStatus_Error_SDP:			// 解析sdp信息出错。
+//        case RTSPStatus_Error_Create_Rcv:	// 码流接收创建失败
+//            // 服务器拒绝了客户端的请求，直接返回失败。
+//            m_bCheckRtspError = FALSE;
+//            this->GetParent()->SendMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Unknow, 0 );
+//            return;
+//        default:
+//            break;
+//        }
+//		
+//	}
+//
+//	if ( RTSPStatus_Idle != eRtspStat )	
+//	{
+//		m_timeLastWork = CTime::GetCurrentTime();		
+//		m_bCheckRtspTimeout = TRUE;
+//	}
+//	else if( m_bCheckRtspTimeout )
+//	{
+//		// rtsp 没有工作,考虑要关闭对话框.
+//		CTime now = CTime::GetCurrentTime();
+//		CTimeSpan tIdleTime = now - m_timeLastWork;
+//		if ( tIdleTime.GetTotalSeconds() > m_nTimeoutRTSPFail )
+//		{
+//			m_bCheckRtspTimeout = FALSE;
+//			this->GetParent()->SendMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Unknow, 0 );
+//		}
+//	}
+//
+//	// 检测码流是否正常接收(通过检测是否绘制图形.).
+//	if ( m_bCheckNoPacketTimeout && RTSPStatus_Running == eRtspStat )
+//	{
+//		CTime now = CTime::GetCurrentTime();
+//		CTimeSpan noPacketTime = now - m_timeLastDrawVideo;
+//		if ( noPacketTime.GetTotalSeconds() > m_nTimeoutNoPacket )
+//		{
+//			m_bCheckNoPacketTimeout = FALSE;
+//			this->GetParent()->SendMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Unknow, 0 );
+//		}
+//	}
+//	else
+//	{
+//		m_timeLastDrawVideo = CTime::GetCurrentTime();
+//	}
+//
+//	if ( eRtspStat != m_eRtspStatus && eRtspStat == RTSPStatus_Running )
+//	{
+//		m_bCheckNoPacketTimeout = TRUE;
+//	}
+//
+//	// 更新状态条显示.
+//	// 只有非正常工作状态时才需要显示状态条.
+//	BOOL bWorkBad = ( RTSPStatus_Running != eRtspStat );	// RTSP没有在工作时需要显示.
+//	BOOL bNoPacket = FALSE;
+//	if( !bWorkBad )
+//	{
+//		CTime now = CTime::GetCurrentTime();
+//		CTimeSpan noPacketTime = now - m_timeLastDrawVideo;
+//		bNoPacket |= noPacketTime.GetTotalSeconds() > 5;	// 一段时间没有等到码流.
+//	}
+//	bWorkBad |= bNoPacket;
+//	
+//	m_staticVideoStatus.ShowWindow( bWorkBad ? SW_SHOW : SW_HIDE );	// 如果工作状态不好,显示状态条.
+//
+//	if( bWorkBad )
+//	{
+//		tstring strShowVideoStatus;
+//		switch( eRtspStat )
+//		{
+//		case RTSPStatus_Idle:
+//			strShowVideoStatus = _T( "播放停止" );
+//			break;
+//		case RTSPStatus_Init:
+//			strShowVideoStatus = _T( "播放器初始化..." );
+//			break;
+//		case RTSPStatus_Opition:
+//		case RTSPStatus_Description:
+//			strShowVideoStatus = _T( "连接视频服务器..." );
+//			break;
+//		case RTSPStatus_Setup:
+//		case RTSPStatus_Play:
+//			strShowVideoStatus = _T( "正在请求视频..." );
+//			break;
+//		case RTSPStatus_Running:
+//			if ( bNoPacket )
+//			{
+//				strShowVideoStatus = _T( "等待码流..." );
+//			}
+//			else
+//			{
+//				strShowVideoStatus = _T( "正在播放" );
+//			}		
+//			break;
+//		default:
+//			break;
+//		}
+//		CString strStateShow;
+//		m_staticVideoStatus.GetWindowText( strStateShow );
+//		if ( strStateShow != strShowVideoStatus.c_str() )
+//		{
+//			m_staticVideoStatus.SetWindowText( strShowVideoStatus.c_str() );
+//		}		
+//	}
+//
+//	if ( eRtspStat == m_eRtspStatus )
+//	{
+//		return;
+//	}
+//
+//
+//	// 调试信息.
+//	tstring strStatus;
+//	switch( eRtspStat )
+//	{
+//	case RTSPStatus_Idle:
+//		{
+//			strStatus = _T( "Idle" );
+//		}
+//		break;
+//	case RTSPStatus_Init:
+//		strStatus = _T( "Init" );
+//		break;
+//	case RTSPStatus_Opition:
+//		strStatus = _T( "Opition" );
+//	    break;
+//	case RTSPStatus_Description:
+//		strStatus = _T( "Description" );
+//	    break;
+//	case RTSPStatus_Setup:
+//		strStatus = _T( "Setup" );
+//		break;
+//	case RTSPStatus_Play:
+//		strStatus = _T( "Play" );
+//		break;
+//	case RTSPStatus_Running:
+//		strStatus = _T( "Running" );
+//		
+//		break;
+//	default:
+//	    break;
+//	}
+//	mcu::log << _T( "rtsp status: " ) << strStatus << endl;
+//
+//	// 更新保存的RTSP状态.
+//	this->m_eRtspStatus = eRtspStat;
+//}
+
+void CVideoWndDialog::OnLButtonDblClk(UINT nFlags, CPoint point)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+
+	CDialog::OnLButtonDblClk(nFlags, point);
+}
+
+//BOOL CVideoWndDialog::Pause()
+//{ 
+//	m_bPause = TRUE;
+//	return TRUE;
+//}
+//
+//BOOL CVideoWndDialog::Resume()
+//{
+//	m_bPause = FALSE;
+//	return TRUE;
+//}
+//
+//BOOL CVideoWndDialog::IsPause()
+//{
+//	return m_bPause;
+//}
+
+//BOOL CVideoWndDialog::StartRecord( LPCTSTR strRecordPath )
+//{
+//	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
+//	if( pDec )
+//	{
+//		return pDec->StartRecord( strRecordPath );
+//	}
+//	else
+//	{
+//		return FALSE;
+//	}	
+//}
+//
+//BOOL CVideoWndDialog::StopRecord()
+//{
+//	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
+//	if( pDec )
+//	{
+//		return pDec->StopRecord();
+//	}
+//	else
+//	{
+//		return FALSE;
+//	}
+//}
+
+//BOOL CVideoWndDialog::IsRecoding()
+//{
+//	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
+//	if( pDec )
+//	{
+//		return pDec->IsRecording();
+//	}
+//	return FALSE;
+//}
+
+void CVideoWndDialog::OnVideoPicture( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo )
+{
+ //   mcu::log << _T( "CVideoWndDialog Video pic callback!" ) << endl;
 	SCOPE_LOCK( m_threadSafeLock );
 
 	int nPicWidth = pic->picWidth;
 	int nPicHeight = pic->picHeight;
 
-	// 更新最后一次绘制图形的时间.
-	m_timeLastDrawVideo = CTime::GetCurrentTime();
-
 	// SDL还没有正常初始化.
 	if ( !m_pSDLSurface )
 	{
-		return;
-	}
-
-	// 检查是否被暂停了.
-	if ( m_bPause )
-	{
+        mcu::log << _T( "SDL Surface not init when pic callback!" ) << endl;
 		return;
 	}
 
@@ -439,11 +894,13 @@ void CVideoWndDialog::YUVCallback( const CDecoder::TVideoPicture *pic, const CBa
 		if ( m_pSDLOverlay )
 		{
 			SDL_FreeYUVOverlay( m_pSDLOverlay );
+            m_pSDLOverlay = NULL;
 		}
 
 //		SDL_Surface *screen = SDL_SetVideoMode( nWidth, nHeight, 0, SDL_HWSURFACE|SDL_RESIZABLE|SDL_ASYNCBLIT|SDL_HWACCEL );
-
 		m_pSDLOverlay = SDL_CreateYUVOverlay( nPicWidth, nPicHeight, SDL_IYUV_OVERLAY, m_pSDLSurface );
+
+        mcu::log << _T( "Create YUV overlay! w: " ) << nPicWidth << _T( " h: " ) << nPicHeight << _T( " ret: " ) << m_pSDLOverlay << endl;
 
 	}
 
@@ -496,375 +953,133 @@ void CVideoWndDialog::YUVCallback( const CDecoder::TVideoPicture *pic, const CBa
 	rect.x = conBlackBorderOffset + ( m_pSDLSurface->w - rect.w ) /2 ;
 	rect.y = conBlackBorderOffset + ( m_pSDLSurface->h - rect.h ) /2 ;
 
-	if ( m_bFullScreenMode )
-	{
-//		rect.x = rect.y = 0;
-		
-	}
-//	rect = m_rcVideoShow;
 	SDL_DisplayYUVOverlay( m_pSDLOverlay, &rect );
-
-	// 判断是否需要重新创建绘图表面。
-	//if ( 0 == g_videoPic[ decoderId ]->bmp 
-	//	|| g_videoPic[ decoderId ]->width != g_avCodecContext[ decoderId ]->width
-	//	|| g_videoPic[ decoderId ]->height != g_avCodecContext[ decoderId ]->height )
-	//{
-	//	g_videoPic[ decoderId ]->pts = PIX_FMT_YUV420P;
-	//	g_videoPic[ decoderId ]->width = g_avCodecContext[ decoderId ]->width;
-	//	g_videoPic[ decoderId ]->height = g_avCodecContext[ decoderId ]->height;
-	//	g_videoPic[ decoderId ]->bmp = 0;
-	//	g_videoPic[ decoderId ]->allocated = 0;
-
-
-	//	// 创建 overlay。
-	//	/* the allocation must be done in the main thread to avoid	locking problems */
-	//	sdlevent.type = FF_ALLOC_SDL_OVERLAY;
-	//	sdlevent.user.data1 = g_videoPic[ decoderId ];
-	//	SDL_PushEvent( &sdlevent );
-
-	//	/* wait until the picture is allocated */
-	//	SDL_LockMutex( g_pictq_mutex );
-	//	while (!vp->allocated ) 
-	//	{
-	//		SDL_CondWait( g_pictq_cond, g_pictq_mutex);
-	//	}
-	//	SDL_UnlockMutex( g_pictq_mutex );
-	//}
-
-	//// 将数据拷入overlay。
-
-	///* get a pointer on the bitmap */
-	//SDL_LockYUVOverlay (vp->bmp);
-
-	//dst_pix_fmt = PIX_FMT_YUV420P;
-	//pict.data[0] = vp->bmp->pixels[0];
-	//pict.data[1] = vp->bmp->pixels[2];
-	//pict.data[2] = vp->bmp->pixels[1];
-
-	//pict.linesize[0] = vp->bmp->pitches[0];
-	//pict.linesize[1] = vp->bmp->pitches[2];
-	//pict.linesize[2] = vp->bmp->pitches[1];
-
-	//av_picture_copy(&pict, (const AVPicture *)g_avFrame[ decoderId ], 
-	//	dst_pix_fmt, vp->width, vp->height );
-
-	///* update the bitmap content */
-	//SDL_UnlockYUVOverlay(vp->bmp);
-
-	//rect.x = 0;
-	//rect.y = 0;
-	//rect.w = vp->width ;
-	//rect.h = vp->height;
-	//SDL_DisplayYUVOverlay( vp->bmp, &rect );
 }
-void CVideoWndDialog::OnSize(UINT nType, int cx, int cy)
+
+void CVideoWndDialog::OnRtspStatus( const ERTSPStatus eRtspStatus, const EMCU_ErrorCode eErrorCode )
 {
-	SCOPE_LOCK( m_threadSafeLock );
+    
 
-	CDialog::OnSize(nType, cx, cy);
+    BOOL bShowRtspStatus = TRUE;
+    tstring strShowVideoStatus;
+    switch( eRtspStatus )
+    {
+    case RTSPStatus_Idle:
+        strShowVideoStatus = _T( "播放停止" );
+    	break;
+    case RTSPStatus_Init:
+        strShowVideoStatus = _T( "播放器初始化..." );
+    	break;
+    case RTSPStatus_Opition:
+        strShowVideoStatus = _T( "连接视频服务器..." );
+        break;
+    case RTSPStatus_Description:
+        strShowVideoStatus = _T( "连接视频服务器..." );
+        break;
+    case RTSPStatus_Setup:
+        strShowVideoStatus = _T( "正在请求视频..." );
+    	break;
+    case RTSPStatus_Play:
+        strShowVideoStatus = _T( "正在请求播放..." );
+    	break;
+    case RTSPStatus_Running:
+        strShowVideoStatus = _T( "正在播放" );
+        bShowRtspStatus = FALSE;                    // 正常播放的时候不显示提示。
+        break;
+    case RTSPStatus_WaitingPacket:
+        strShowVideoStatus = _T( "等待码流..." );
+        break;
+    case RTSPStatus_Error_Server_Full:
+        strShowVideoStatus = _T( "服务器的转码能力不足" );
+        this->GetParent()->PostMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Server_Full, 0 );
+        break;
+    case RTSPStatus_Error_Unknown:    
+    case RTSPStatus_Error_Init_Fail:
+    case RTSPStatus_Error_Opition:
+    case RTSPStatus_Error_Description:
+    case RTSPStatus_Error_Setup:
+    case RTSPStatus_Error_Play:
+    case RTSPStatus_Error_SDP:
+    case RTSPStatus_Error_Create_Rcv:
+    case RTSPStatus_Error_WaitPacket:
+        this->GetParent()->PostMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Fail, 0 );
+        strShowVideoStatus = _T( "播放错误" );
+        break;
+    default:
+        break;
+    }
 
-	// TODO: 在此处添加消息处理程序代码
-	m_rcVideoShow.x = 0;
-	m_rcVideoShow.y = 0;
-	m_rcVideoShow.w = cx;
-	m_rcVideoShow.h = cy;
-
-
-	SDL_Event sdlEvent;
-	sdlEvent.resize.type = SDL_VIDEORESIZE;
-	//if ( m_bFullScreenMode )
-	//{
-	//	sdlEvent.resize.w = max( cx,cy );
-	//	sdlEvent.resize.h = min( cx,cy );
-	//}
-	//else
-	{
-		sdlEvent.resize.w = cx;
-		sdlEvent.resize.h = cy;
-	}
-	
-	SDL_PushEvent( &sdlEvent );
-
-	// 状态显示在最底下.
-	CRect rcVideoStatus;
-	if ( this->m_staticVideoStatus.GetSafeHwnd() )
-	{
-		m_staticVideoStatus.GetWindowRect( rcVideoStatus );
-		int nHeight = rcVideoStatus.Height();
-		rcVideoStatus.left = 0;
-		rcVideoStatus.right = cx;
-		rcVideoStatus.OffsetRect( 0, cy - rcVideoStatus.bottom );
-
-		m_staticVideoStatus.MoveWindow( rcVideoStatus );
-	}
+    if ( bShowRtspStatus )
+    {
+        m_staticVideoStatus.SetWindowText( strShowVideoStatus.c_str() );
+    }
+    m_staticVideoStatus.ShowWindow( bShowRtspStatus ? SW_SHOW : SW_HIDE );	// 如果工作状态不好,显示状态条.
+  
+    tstringstream tmp;
+    tmp << _T( "CVideoWndDialog Rtso status notify status: " ) << eRtspStatus << _T( " er: " ) << eErrorCode 
+        << _T( " show status: " ) << strShowVideoStatus << endl;
+    mcu::log << tmp.str();
 }
 
-void CVideoWndDialog::OnTimer(UINT_PTR nIDEvent)
+BOOL CVideoWndDialog::ClearScreen()
 {
-	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	
-	if( nIDEvent == m_dwStatusUpdateTimerId )
-	{
-		// 刷新和轮巡.
-		this->StatusCheck();
+    mcu::log << _T( "Clear the Video screen." ) << endl;
 
-		// 检查空间。
-		this->StorageSpaceCheck();
-	}
+    if ( m_pSDLOverlay )
+    {
+        SDL_LockYUVOverlay ( m_pSDLOverlay );
+
+        int nSize = m_pSDLOverlay->w * m_pSDLOverlay->h;
+        memset( m_pSDLOverlay->pixels[0], 0, nSize );
+        m_pSDLOverlay->pitches[0] = nSize;
+
+        memset( m_pSDLOverlay->pixels[1], 128, nSize >> 2 );
+        m_pSDLOverlay->pitches[1] = nSize >> 2;
+
+        memset( m_pSDLOverlay->pixels[2], 128, nSize >> 2 );
+        m_pSDLOverlay->pitches[2] = nSize >> 2;
+
+        SDL_UnlockYUVOverlay( m_pSDLOverlay );
+
+        SDL_Rect rect;
+        rect.x = 0;
+        rect.y = 0;
+        rect.w = m_pSDLOverlay->w;
+        rect.h = m_pSDLOverlay->h;
+        SDL_DisplayYUVOverlay( m_pSDLOverlay, &rect );
+    }
+    //SDL_LockYUVOverlay ( m_pSDLOverlay );
+
+    ////	int dst_pix_fmt = PIX_FMT_YUV420P;
+    ////pict.data[0] = m_pSDLOverlay->pixels[0];
+    ////pict.data[1] = m_pSDLOverlay->pixels[1];
+    ////pict.data[2] = m_pSDLOverlay->pixels[2];
+
+    ////pict.linesize[0] = m_pSDLOverlay->pitches[0];
+    ////pict.linesize[1] = m_pSDLOverlay->pitches[1];
+    ////pict.linesize[2] = m_pSDLOverlay->pitches[2];
+
+    ////av_picture_copy(&pict, (const AVPicture *)avFrame, 
+    ////	dst_pix_fmt, nWidth, nHeight );
+    //for( int i=0; i<3; ++i )
+    //{
+    //    memcpy( m_pSDLOverlay->pixels[i], pic->data[i], pic->linesize[i] );
+    //    m_pSDLOverlay->pitches[i] = (mu_uint16)pic->linesize[i];
+    //}
 
 
-	CDialog::OnTimer(nIDEvent);
+    ///* update the bitmap content */
+    //SDL_UnlockYUVOverlay( m_pSDLOverlay );
+
+    return TRUE;
 }
 
-void CVideoWndDialog::StorageSpaceCheck()
+void CVideoWndDialog::OnRecordStatus( BOOL bSuccess, EMCU_ErrorCode er )
 {
-	if ( this->IsRecoding() )
-	{
-		// 检测磁盘空间。
-		ULARGE_INTEGER nFreeSpaceToCaller, nTotalSpace, nFreeSpace;
-		tstring strRecDir;
-		CConfig::Instance()->GetCaptureDir( strRecDir );
-		BOOL bResult = ::GetDiskFreeSpaceEx( strRecDir.c_str(), &nFreeSpaceToCaller, &nTotalSpace, &nFreeSpace );
-		int nMinSpace = MIN_STORAGE_SPACE;
-		CConfig::Instance()->GetMinStorageSpace( nMinSpace ) ;
-		if ( nFreeSpaceToCaller.QuadPart < nMinSpace )
-		{
-			bResult = this->StopRecord();
-
-			this->GetParent()->SendMessage( WM_VIDEO_WND_RECORD_FAIL, MCU_Error_Storage_Full, 0 );
-		}
-	}
-	
+    if ( !bSuccess )
+    {
+        this->GetParent()->PostMessage( WM_RECORD_FAIL, er );
+    }
 }
 
-void CVideoWndDialog::StatusCheck()
-{
-	ERTSPStatus eRtspStat = this->m_MediaNet.GetRtspStatus();
 
-	
-	// 检测RTSP是否正常工作.
-
-	// 检查是否达到了服务器的最大路数。
-	if ( RTSPStatus_Error_Server_Full == eRtspStat && m_bCheckRtspError )
-	{
-		// 服务器拒绝了客户端的请求，直接返回失败。
-		m_bCheckRtspError = FALSE;
-		this->GetParent()->SendMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Server_Full, 0 );
-		return;
-	}
-
-	if ( m_bCheckRtspError )
-	{
-        switch( eRtspStat )
-        {
-        case RTSPStatus_Error_Unknown:		// 未知错误。	
-        case RTSPStatus_Error_Init_Fail:	// 初始化失败。
-        case RTSPStatus_Error_Opition:		// Opition 命令失败。
-        case RTSPStatus_Error_Description:
-        case RTSPStatus_Error_Setup:
-        case RTSPStatus_Error_Play:		
-        case RTSPStatus_Error_SDP:			// 解析sdp信息出错。
-        case RTSPStatus_Error_Create_Rcv:	// 码流接收创建失败
-            // 服务器拒绝了客户端的请求，直接返回失败。
-            m_bCheckRtspError = FALSE;
-            this->GetParent()->SendMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Unknow, 0 );
-            return;
-        default:
-            break;
-        }
-		
-	}
-
-	if ( RTSPStatus_Idle != eRtspStat )	
-	{
-		m_timeLastWork = CTime::GetCurrentTime();		
-		m_bCheckRtspTimeout = TRUE;
-	}
-	else if( m_bCheckRtspTimeout )
-	{
-		// rtsp 没有工作,考虑要关闭对话框.
-		CTime now = CTime::GetCurrentTime();
-		CTimeSpan tIdleTime = now - m_timeLastWork;
-		if ( tIdleTime.GetTotalSeconds() > m_nTimeoutRTSPFail )
-		{
-			m_bCheckRtspTimeout = FALSE;
-			this->GetParent()->SendMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Unknow, 0 );
-		}
-	}
-
-	// 检测码流是否正常接收(通过检测是否绘制图形.).
-	if ( m_bCheckNoPacketTimeout && RTSPStatus_Running == eRtspStat )
-	{
-		CTime now = CTime::GetCurrentTime();
-		CTimeSpan noPacketTime = now - m_timeLastDrawVideo;
-		if ( noPacketTime.GetTotalSeconds() > m_nTimeoutNoPacket )
-		{
-			m_bCheckNoPacketTimeout = FALSE;
-			this->GetParent()->SendMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Unknow, 0 );
-		}
-	}
-	else
-	{
-		m_timeLastDrawVideo = CTime::GetCurrentTime();
-	}
-
-	if ( eRtspStat != m_eRtspStatus && eRtspStat == RTSPStatus_Running )
-	{
-		m_bCheckNoPacketTimeout = TRUE;
-	}
-
-	// 更新状态条显示.
-	// 只有非正常工作状态时才需要显示状态条.
-	BOOL bWorkBad = ( RTSPStatus_Running != eRtspStat );	// RTSP没有在工作时需要显示.
-	BOOL bNoPacket = FALSE;
-	if( !bWorkBad )
-	{
-		CTime now = CTime::GetCurrentTime();
-		CTimeSpan noPacketTime = now - m_timeLastDrawVideo;
-		bNoPacket |= noPacketTime.GetTotalSeconds() > 5;	// 一段时间没有等到码流.
-	}
-	bWorkBad |= bNoPacket;
-	
-	m_staticVideoStatus.ShowWindow( bWorkBad ? SW_SHOW : SW_HIDE );	// 如果工作状态不好,显示状态条.
-
-	if( bWorkBad )
-	{
-		tstring strShowVideoStatus;
-		switch( eRtspStat )
-		{
-		case RTSPStatus_Idle:
-			strShowVideoStatus = _T( "播放停止" );
-			break;
-		case RTSPStatus_Init:
-			strShowVideoStatus = _T( "播放器初始化..." );
-			break;
-		case RTSPStatus_Opition:
-		case RTSPStatus_Description:
-			strShowVideoStatus = _T( "连接视频服务器..." );
-			break;
-		case RTSPStatus_Setup:
-		case RTSPStatus_Play:
-			strShowVideoStatus = _T( "正在请求视频..." );
-			break;
-		case RTSPStatus_Running:
-			if ( bNoPacket )
-			{
-				strShowVideoStatus = _T( "等待码流..." );
-			}
-			else
-			{
-				strShowVideoStatus = _T( "正在播放" );
-			}		
-			break;
-		default:
-			break;
-		}
-		CString strStateShow;
-		m_staticVideoStatus.GetWindowText( strStateShow );
-		if ( strStateShow != strShowVideoStatus.c_str() )
-		{
-			m_staticVideoStatus.SetWindowText( strShowVideoStatus.c_str() );
-		}		
-	}
-
-	if ( eRtspStat == m_eRtspStatus )
-	{
-		return;
-	}
-
-
-	// 调试信息.
-	tstring strStatus;
-	switch( eRtspStat )
-	{
-	case RTSPStatus_Idle:
-		{
-			strStatus = _T( "Idle" );
-		}
-		break;
-	case RTSPStatus_Init:
-		strStatus = _T( "Init" );
-		break;
-	case RTSPStatus_Opition:
-		strStatus = _T( "Opition" );
-	    break;
-	case RTSPStatus_Description:
-		strStatus = _T( "Description" );
-	    break;
-	case RTSPStatus_Setup:
-		strStatus = _T( "Setup" );
-		break;
-	case RTSPStatus_Play:
-		strStatus = _T( "Play" );
-		break;
-	case RTSPStatus_Running:
-		strStatus = _T( "Running" );
-		
-		break;
-	default:
-	    break;
-	}
-	mcu::log << _T( "rtsp status: " ) << strStatus << endl;
-
-	// 更新保存的RTSP状态.
-	this->m_eRtspStatus = eRtspStat;
-}
-void CVideoWndDialog::OnLButtonDblClk(UINT nFlags, CPoint point)
-{
-	// TODO: 在此添加消息处理程序代码和/或调用默认值
-
-	CDialog::OnLButtonDblClk(nFlags, point);
-}
-
-BOOL CVideoWndDialog::Pause()
-{ 
-	m_bPause = TRUE;
-	return TRUE;
-}
-
-BOOL CVideoWndDialog::Resume()
-{
-	m_bPause = FALSE;
-	return TRUE;
-}
-
-BOOL CVideoWndDialog::IsPause()
-{
-	return m_bPause;
-}
-
-BOOL CVideoWndDialog::StartRecord( LPCTSTR strRecordPath )
-{
-	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
-	if( pDec )
-	{
-		return pDec->StartRecord( strRecordPath );
-	}
-	else
-	{
-		return FALSE;
-	}	
-}
-
-BOOL CVideoWndDialog::StopRecord()
-{
-	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
-	if( pDec )
-	{
-		return pDec->StopRecord();
-	}
-	else
-	{
-		return FALSE;
-	}
-}
-
-BOOL CVideoWndDialog::IsRecoding()
-{
-	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
-	if( pDec )
-	{
-		return pDec->IsRecording();
-	}
-	return FALSE;
-}

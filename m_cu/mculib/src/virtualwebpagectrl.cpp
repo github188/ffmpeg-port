@@ -41,7 +41,7 @@ CVirtualWebpageCtrl::EUrlType CVirtualWebpageCtrl::OnLoadPage( LPCTSTR strUrl )
 		CMCUSession::Instance()->CurVideoSession()->PtzPort( _ttoi( strPtzPort.c_str() ) );
 		CMCUSession::Instance()->CurVideoSession()->PuId( strPuId );
 		CMCUSession::Instance()->CurVideoSession()->StreamType( (EStreamType)_ttoi( strStreamType.c_str() ) );
-		CMCUSession::Instance()->CurVideoSession()->PuName( strPuName );
+		CMCUSession::Instance()->CurVideoSession()->PuName( strPuName.c_str() );
 
 		CMCUSession::Instance()->CurVideoSession()->PtzControl( bPtzControl );
 

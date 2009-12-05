@@ -63,8 +63,9 @@ void CUnitTestMainDialog::OnBnClickedButtonUdpTest()
 void CUnitTestMainDialog::OnBnClickedButtonRtspTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CRTSPTestDialog dlg;
-	dlg.DoModal();
+//	CRTSPTestDialog dlg;
+//	dlg.DoModal();
+    CWindowFactory::Instance()->ShowWindow( WndUnittestRtsp, this->GetWindowId() );
 }
 
 void CUnitTestMainDialog::OnBnClickedButtonUiTest()

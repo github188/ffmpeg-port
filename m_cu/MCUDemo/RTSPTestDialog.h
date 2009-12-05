@@ -1,10 +1,11 @@
 #pragma once
 #include "afxwin.h"
 
+#include "uidialog.h"
 
 // CRTSPTestDialog ¶Ô»°¿ò
 
-class CRTSPTestDialog : public CDialog
+class CRTSPTestDialog : public CUIDialog
 {
 	DECLARE_DYNAMIC(CRTSPTestDialog)
 

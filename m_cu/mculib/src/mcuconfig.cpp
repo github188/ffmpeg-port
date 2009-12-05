@@ -29,6 +29,7 @@ static LPCTSTR CONFIG_ENTRY_APP_TITLE = _T( "apptitle" );
 static LPCTSTR CONFIG_ENTRY_MIN_SPACE = _T( "minspace" );
 static LPCTSTR CONFIG_ENTRY_WEBPAGE_ZOOM_LEVEL = _T( "webpagezoom" );
 static LPCTSTR CONFIG_ENTRY_WEBPAGE_HISTORY_BACK = _T( "webpagehistoryback" );
+static LPCTSTR CONFIG_ENTRY_SEND_NAT_PACKET = _T( "sendnatpacket" );
 
 
 static LPCTSTR CONFIG_DEFAULT_SERVER = _T( "" );
@@ -39,6 +40,7 @@ static const int CONFIG_DEFAULT_PTZ_SPEED = 5;
 static const int CONFIG_DEFAULT_LEN_SPEED = 5;
 static const int CONFIG_DEFAULT_WEBPAGE_ZOOM_LEVEL = 100;
 static const int CONFIG_DEFAULT_WEBPAGE_HISTORY_BACK = 2;
+static const BOOL CONFIG_DEFAULT_SEND_NAT_PACKET = TRUE;
 
 #ifdef _WIN32_WCE
 static LPCTSTR CONFIG_DEFAULT_CAPTURE_DIR_RAM = _T( "\\My Documents\\M_CU\\" );
@@ -484,6 +486,12 @@ BOOL CConfig::GetWebpageHistoryBackStep( int& nStep )
 	return TRUE;
 }
 
+BOOL CConfig::GetIsSendNatPacket( BOOL& bSendnat )
+{
+    bSendnat = this->ReadConfig( CONFIG_ENTRY_SEND_NAT_PACKET, CONFIG_DEFAULT_SEND_NAT_PACKET );
+    return TRUE;
+}
+
 
 int CConfig::ReadConfig( LPCTSTR strCfgEntryName, int nDefault )
 {
@@ -544,5 +552,4 @@ BOOL CConfig::WriteConfig( LPCTSTR strCfgEntryName, LPCTSTR strValue )
 	return bResult;
 
 }
-
 

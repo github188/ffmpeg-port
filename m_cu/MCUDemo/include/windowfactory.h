@@ -16,6 +16,7 @@ enum EWindowId
     WndUnittestMain,
     WndUnittestUI,
     WndUnittestWebpage,
+    WndUnittestRtsp,
 
     WndAllNum,      // 所有窗口数目。
 

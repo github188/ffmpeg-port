@@ -89,4 +89,6 @@ MU_DECLSPEC void NormalizeDir( tstring& strFolder );
 /** 将一个字符串转换成URL标准格式。 */
 MU_DECLSPEC tstring StringToUrl( LPCTSTR strStr );
 
+/** 获取一个文件夹的剩余空间（磁盘的） */
+MU_DECLSPEC mu_uint64 GetDirFreeSpace( LPCTSTR strDirPath );
 

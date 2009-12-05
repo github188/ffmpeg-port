@@ -12,6 +12,7 @@ CVirtualPlayerWnd::CVirtualPlayerWnd(void)
 	m_eLastRtspStatus = RTSPStatus_Idle;
 	m_timeLastPic = 0;
 	m_bCheckStatus = FALSE;
+    m_bCheckDiskSpace = FALSE;
 
 	mcu::RegisterMessageCallback( this, OnMessage );
 }
@@ -96,6 +97,10 @@ BOOL CVirtualPlayerWnd::StopPlay()
 
 	mcu::log << _T( "CVirtualPlayerWnd::StopPlay" ) << endl;
 	return this->m_MediaNet.CloseRTSP();
+
+    this->StopCheckThread();
+    mcu::log << _T( "Stop Check status.!" ) << endl;
+    
 }
 
 
@@ -105,6 +110,25 @@ BOOL CVirtualPlayerWnd::YUVCallbackS( const CBaseCodec::TVideoPicture *pic, cons
 	CVirtualPlayerWnd *pThis = ( CVirtualPlayerWnd * )param;
 	if ( pThis )
 	{
+        // 单元测试。测试获取不到图像时候的表现。
+#define UNIT_TEST_STATUS_CHECK 0
+#if     UNIT_TEST_STATUS_CHECK
+        static int s_count = 0;
+        if( s_count > 199 )
+        {
+            s_count = 0;
+        }
+        if ( s_count > 100 )
+        {
+            return FALSE;
+        }
+        s_count ++;
+
+#endif
+
+        // 记录最近一次的图像回调时间。
+        pThis->m_timeLastPic = ::GetCurTime();
+
 		pThis->OnVideoPicture( pic, pFrameInfo );
 	}
 	return TRUE;
@@ -117,7 +141,7 @@ BOOL CVirtualPlayerWnd::SendPtzCmd( EPTZCmdId eCmd )
 	BOOL bHasPtzPower =	CMCUSession::Instance()->CurVideoSession()->PtzControl();
 	if ( !bHasPtzPower )
 	{
-		mcu::log << _T( "用户没有PTZ权限！" ) << endl;
+		mcu::log << _T( "Have no ptz right. can't control ptz." ) << endl;
 		return FALSE;
 	}
 
@@ -185,53 +209,16 @@ BOOL CVirtualPlayerWnd::SetDigitalPtz( BOOL bDigital )
 }
 
 
-BOOL CVirtualPlayerWnd::Capture( EMCU_ErrorCode& eErrorCode )
+BOOL CVirtualPlayerWnd::Capture( tstring& strPicPath, EMCU_ErrorCode& eErrorCode )
 {
 	SCOPE_LOCK( m_threadSafeLock );
 
-	time_t now = GetCurTime();
-	tstring strTime = TimeToStr( now );
+    strPicPath = this->GetFileName( _T( "jpg" ) );
 
-    // 时间只保留 月 日 小时 分钟。
-    strTime = strTime.substr( 4, 8 );
+	BOOL bResult = this->Capture( strPicPath.c_str(), eErrorCode );    
 
-	tstring strDir;
-	CConfig::Instance()->GetCaptureDir( strDir );
 
-	tstring strPuName;
-	CMCUSession::Instance()->CurVideoSession()->PuName( strPuName );
-
-    // 前端名只保留5个字。需要区别unicode和非unicode下的中文，英文。
-    if ( !strPuName.empty() )
-    {
-        strPuName = strPuName.substr( 0, 10 / sizeof( strPuName[0] )  );
-    }
-    
-
-	tstringstream ssFileName;
-
-	// 文件名最后要加3位随机数。
-	int nRadom = (int)GetTick();
-	nRadom &= 0x03FF;		// 取后10位。最大是1023
-	if ( nRadom > 999 )
-	{
-		nRadom -= 24;		// 不允许超出3位数。
-	}
-	tstringstream ssRadom;
-	ssRadom << setw( 3 ) << nRadom;
-	tstring strRadom = ssRadom.str();
-
-	// 如果图片所在目录不存在，创建。
-	if ( !IsFileExist( strDir.c_str() ) )
-	{
-		MakeDir( strDir.c_str() );
-	}	
-
-	//strPicDir + strPuName + _T( "_" ) + (LPCTSTR)strTime + strRadom + _T( ".jpg" );
-	ssFileName << strDir << strPuName << _T( "_" ) << strTime << strRadom << _T( "." ) << _T( "jpg" );
-
-	BOOL bResult = this->Capture( ssFileName.str().c_str(), eErrorCode );
-	mcu::log << _T( "Capture file: " ) << ssFileName.str() << "result" << bResult  << endl;
+	mcu::log << _T( "Capture file: " ) << strPicPath << "result" << bResult  << endl;
 	return bResult;
 }
 
@@ -290,7 +277,9 @@ int CVirtualPlayerWnd::CheckThread( void * pParam )
 		{
 			pThis->CheckStatsu();
 
-			SDL_Delay( 5 );
+            pThis->CheckDiskSpace();
+
+			SDL_Delay( 200 );
 		}	
 		
 	}
@@ -315,6 +304,7 @@ void CVirtualPlayerWnd::CheckStatsu()
 		return;
 	}
 
+    EMCU_ErrorCode eErrorCode = MCU_Sucess;
 	ERTSPStatus eStatus = m_MediaNet.GetRtspStatus();
 	switch( eStatus )
 	{
@@ -326,24 +316,67 @@ void CVirtualPlayerWnd::CheckStatsu()
 	case RTSPStatus_Error_Play:		
 	case RTSPStatus_Error_SDP:			// 解析sdp信息出错。
 	case RTSPStatus_Error_Create_Rcv:	// 码流接收创建失败
-		mcu::PostMsg( this, WM_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Fail, eStatus );
+//		mcu::PostMsg( this, WM_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Fail, eStatus );
+        eErrorCode = MCU_Error_Rtsp_Fail;
 		m_bCheckStatus = FALSE;
 		break;
 
 	case RTSPStatus_Error_Server_Full:	// 服务器达到了最大能力
-		mcu::PostMsg( this, WM_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Server_Full, eStatus );
+//		mcu::PostMsg( this, WM_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Server_Full, eStatus );
+        eErrorCode = MCU_Error_Rtsp_Server_Full;
 		m_bCheckStatus = FALSE;
 		break;
 
+    case RTSPStatus_Running:
+        if ( this->m_eLastRtspStatus != eStatus 
+            && this->m_eLastRtspStatus != RTSPStatus_WaitingPacket )
+        {
+            // 如果当前状态变为正常时，记录时间，以便开始计时。
+            mcu::log << _T( "The media stream detecter reset the net timeout timer." ) << endl;
+            this->m_timeLastPic = ::GetCurTime();
+        }
+        break;
 	default:
-		if ( m_eLastRtspStatus != eStatus )
-		{
-			m_eLastRtspStatus = eStatus;
-			mcu::PostMsg( this, WM_VIDEO_PLAY_STATUS, 0, eStatus );
-		}
+        
 	    break;
 	}
-	m_eLastRtspStatus = eStatus;
+	
+    // 对码流时间进行检测
+    if( RTSPStatus_Running == this->m_eLastRtspStatus || RTSPStatus_WaitingPacket == this->m_eLastRtspStatus )
+    {
+        __time64_t tNow = ::GetCurTime();
+        const __time64_t timeoutNoPacket = 20;  // 超过这个时间就判定码流不来。
+        const __time64_t timeoutWaitPacket = 10;// 超过这个时间就判定开始等待码流。
+        __time64_t timeSpan = tNow - this->m_timeLastPic;
+
+        if ( timeSpan > timeoutNoPacket && RTSPStatus_WaitingPacket == this->m_eLastRtspStatus )
+        {
+            mcu::log << _T( "Time out for waiting packet. stop the play!" ) << endl;
+            eStatus = RTSPStatus_Error_WaitPacket;
+            //           mcu::PostMsg( this, WM_VIDEO_PLAY_STATUS, MCU_Error_Rtsp_Fail, eStatus );
+            eErrorCode = MCU_Error_Rtsp_Fail;
+            // 停止。
+            this->m_bCheckStatus = FALSE;
+        }
+        else if( timeSpan > timeoutWaitPacket  )
+        {
+            mcu::log << _T( "Time out for packet .start to wait packet." ) << endl;
+            eStatus = RTSPStatus_WaitingPacket;
+            
+ //           mcu::PostMsg( this, WM_VIDEO_PLAY_STATUS, 0, eStatus );
+
+        }
+        
+    }
+
+    if ( this->m_eLastRtspStatus != eStatus )
+    {
+        // 通知。
+        mcu::PostMsg( this, WM_VIDEO_PLAY_STATUS, eErrorCode, eStatus );
+
+    }
+    
+    m_eLastRtspStatus = eStatus;
 }
 
 mu_int32 CVirtualPlayerWnd::OnMessage( const mcu::TMsg& tMsg )
@@ -357,7 +390,8 @@ mu_int32 CVirtualPlayerWnd::OnMessage( const mcu::TMsg& tMsg )
 		case WM_VIDEO_PLAY_STATUS:
 			pThis->OnRtspStatus( (ERTSPStatus)tMsg.m_lParam, (EMCU_ErrorCode)tMsg.m_wParam );
 			break;	
-
+        case WM_RECORD_FAIL:
+            pThis->OnRecordStatus( FALSE, (EMCU_ErrorCode)tMsg.m_wParam );
 		
 		default:
 		    break;
@@ -367,4 +401,166 @@ mu_int32 CVirtualPlayerWnd::OnMessage( const mcu::TMsg& tMsg )
 	return 0;
 }
 
+BOOL CVirtualPlayerWnd::StartRecord( LPCTSTR strRecPath, EMCU_ErrorCode& eErrorCode )
+{
+ //   mcu::log << _T( "Start Record Has no code" ) << endl;
+    if ( this->IsRecording() )
+    {
+        mcu::log << _T( "StartRecord called twice!!!!" ) << endl;
+        return TRUE;
+    }
+
+	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
+	if( pDec )
+	{
+		BOOL bResult = pDec->StartRecord( strRecPath );
+
+        // 是否开始检测磁盘情况。
+        m_bCheckDiskSpace = bResult;
+
+        return bResult;
+
+	}
+	else
+	{
+		return FALSE;
+	}	
+
+//    mcu::log << _T( "start record " ) << strRecPath << _T( " er: " ) << eErrorCode << endl;
+}
+
+BOOL CVirtualPlayerWnd::StartRecord( tstring& strRecPath, EMCU_ErrorCode& eErrorCode )
+{
+//    mcu::log << _T( "Start Record Has no code" ) << endl;
+    strRecPath = this->GetFileName( _T( "3gp" ) );
+
+    return this->StartRecord( strRecPath.c_str(), eErrorCode );
+
+}
+
+BOOL CVirtualPlayerWnd::IsRecording() const
+{
+//    mcu::log << _T( "Is Recording Has no code" ) << endl;
+	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
+	if( pDec )
+	{
+		return pDec->IsRecording();
+	}
+	return FALSE;
+}
+
+BOOL CVirtualPlayerWnd::RestartPlay()
+{
+    mcu::log << _T( "Restart play Has no code" ) << endl;
+
+    BOOL bResult;
+    bResult = this->StopPlay();
+    if( !bResult )
+    {
+        mcu::log << _T( "Restart play can't StopPlay " ) << endl;
+    }
+    EMCU_ErrorCode er;
+    bResult = this->StartPlay( CMCUSession::Instance()->CurVideoSession(),er );
+    if ( !bResult )
+    {
+        mcu::log << _T( "Restart play can't Start Play! er: " ) << er << endl;
+    }
+    return bResult;
+}
+
+BOOL CVirtualPlayerWnd::StopRecord( EMCU_ErrorCode& pErrorCode )
+{
+    // 停止磁盘空间检测。
+    this->m_bCheckDiskSpace = FALSE;
+
+	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
+	if( pDec )
+	{
+		return pDec->StopRecord();
+	}
+	else
+	{
+		return FALSE;
+	}
+ //   mcu::log << _T( " CVirtualPlayerWnd::StopRecord has no code!" ) << endl;
+    return FALSE;
+}
+
+tstring CVirtualPlayerWnd::GetFileName( LPCTSTR strExtName )
+{
+    time_t now = GetCurTime();
+    tstring strTime = TimeToStr( now );
+
+    // 时间只保留 月 日 小时 分钟。
+    strTime = strTime.substr( 4, 8 );
+
+    tstring strDir;
+    CConfig::Instance()->GetCaptureDir( strDir );
+
+    tstring strPuName = CMCUSession::Instance()->CurVideoSession()->PuName( );
+
+    // 前端名只保留5个字。需要区别unicode和非unicode下的中文，英文。
+    if ( !strPuName.empty() )
+    {
+        strPuName = strPuName.substr( 0, 10 / sizeof( strPuName[0] )  );
+    }
+
+
+    tstringstream ssFileName;
+
+    // 文件名最后要加3位随机数。
+    int nRadom = (int)GetTick();
+    nRadom &= 0x03FF;		// 取后10位。最大是1023
+    if ( nRadom > 999 )
+    {
+        nRadom -= 24;		// 不允许超出3位数。
+    }
+    tstringstream ssRadom;
+    ssRadom << setw( 3 ) << nRadom;
+    tstring strRadom = ssRadom.str();
+
+    // 如果图片所在目录不存在，创建。
+    if ( !IsFileExist( strDir.c_str() ) )
+    {
+        MakeDir( strDir.c_str() );
+    }	
+
+    //strPicDir + strPuName + _T( "_" ) + (LPCTSTR)strTime + strRadom + _T( ".jpg" );
+    ssFileName << strDir << strPuName << _T( "_" ) << strTime << strRadom << _T( "." ) << strExtName;
+
+    tstring strPicPath = ssFileName.str();
+
+    return strPicPath;
+}
+
+void CVirtualPlayerWnd::CheckDiskSpace()
+{
+    if ( this->m_bCheckDiskSpace && this->IsRecording() )
+    {
+        // 检查。
+		// 检测磁盘空间。
+        tstring strRecDir;
+        CConfig::Instance()->GetCaptureDir( strRecDir );
+
+        mu_uint64 nFreeSpace = ::GetDirFreeSpace( strRecDir.c_str() );
+        
+		int nMinSpace = MIN_STORAGE_SPACE;
+		CConfig::Instance()->GetMinStorageSpace( nMinSpace ) ;
+		if ( nFreeSpace < nMinSpace )
+		{
+            mcu::log << _T( "CheckDiskSpace dir " ) << strRecDir << _T( " don't have enough space to rec! left: " )
+                << nFreeSpace << _T( " min: " ) << nMinSpace << endl;
+
+            EMCU_ErrorCode er;
+			BOOL bResult = this->StopRecord( er );
+
+
+            // 不再检测磁盘空间。
+			this->m_bCheckDiskSpace = FALSE;
+
+            // 通知。
+            mcu::PostMsg( this, WM_RECORD_FAIL, MCU_Error_Storage_Full, 0 );
+		}
+    }
+}
 

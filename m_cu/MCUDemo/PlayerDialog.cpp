@@ -156,10 +156,10 @@ BOOL CPlayerDialog::OnInitDialog()
 	// 异常: OCX 属性页应返回 FALSE
 }
 
-void CPlayerDialog::SetRtspUrl( LPCTSTR strRtspUrl )
-{
-	this->m_cVideoWnd.SetRstpUrl( strRtspUrl );
-}
+// void CPlayerDialog::SetRtspUrl( LPCTSTR strRtspUrl )
+// {
+// 	this->m_cVideoWnd.SetRstpUrl( strRtspUrl );
+// }
 
 void CPlayerDialog::PlayFullScreen( BOOL bFullScreen )
 {
@@ -183,6 +183,20 @@ void CPlayerDialog::PlayFullScreen( BOOL bFullScreen )
 
 	this->FullScreen( bFullScreen ? FS_HideTaskBar | FS_HorizontalScreen : FS_ShowTaskBar | FS_ResumeScreen );
 
+}
+
+BOOL CPlayerDialog::Play( CVideoSession *pVs )
+{
+    if( pVs )
+    {
+        EMCU_ErrorCode er;
+        return this->m_cVideoWnd.StartPlay( pVs, er );
+    }
+    else
+    {
+        mcu::log << _T( "CPlayerDialog::Play video session is NULL" ) << endl;
+        return FALSE;
+    }
 }
 
 
@@ -512,16 +526,19 @@ void CPlayerDialog::OnBnClickedButtonPause()
 	// TODO: 在此添加控件通知处理程序代码
 	BOOL bIsPause = m_cVideoWnd.IsPause();
 
-	if ( bIsPause )
-	{
-		BOOL bResult = m_cVideoWnd.Resume();
-		mcu::log << _T( "Resume result " ) << bResult << endl;
-	}
-	else
-	{
-		BOOL bResult = m_cVideoWnd.Pause();
-		mcu::log << _T( "Pause result " ) << bResult << endl;
-	}
+// 	if ( bIsPause )
+// 	{
+// 		BOOL bResult = m_cVideoWnd.Resume();
+// 		mcu::log << _T( "Resume result " ) << bResult << endl;
+// 	}
+// 	else
+// 	{
+// 		BOOL bResult = m_cVideoWnd.Pause();
+// 		mcu::log << _T( "Pause result " ) << bResult << endl;
+// 	}
+
+    BOOL bResult =this->m_cVideoWnd.PausePlay( !bIsPause );
+    mcu::log << _T( "pause cmd: ") << !bIsPause << _T(" result " ) << bResult << endl;
 
 	// 切换按钮状态。
 	bIsPause = m_cVideoWnd.IsPause();
@@ -538,11 +555,12 @@ void CPlayerDialog::OnBnClickedButtonPause()
 void CPlayerDialog::OnBnClickedButtonRecord()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	BOOL bRecording = this->m_cVideoWnd.IsRecoding();
+	BOOL bRecording = this->m_cVideoWnd.IsRecording();
 	if ( bRecording )
 	{
-		BOOL bResult = m_cVideoWnd.StopRecord();
-		mcu::log << _T( "stop record result: " ) << bResult << endl;
+        EMCU_ErrorCode er;
+		BOOL bResult = m_cVideoWnd.StopRecord( er );
+        mcu::log << _T( "stop record result: " ) << bResult << _T( " er: " ) << er << endl;
 	}
 	else
 	{
@@ -563,11 +581,15 @@ void CPlayerDialog::OnBnClickedButtonRecord()
 			return;
 		}
 
-		tstring strPuName = CMCUSession::Instance()->CurVideoSession()->PuName();
+        tstring strRecPath;
+        EMCU_ErrorCode er;
+        bResult = this->m_cVideoWnd.StartRecord( strRecPath, er );
 
-		tstring strRec = this->GetFileName( strPicDir.c_str(), strPuName.c_str(), _T( "3gp" ) );
+		//tstring strPuName = CMCUSession::Instance()->CurVideoSession()->PuName();
 
-		bResult = this->m_cVideoWnd.StartRecord( strRec.c_str() );
+		//tstring strRec = this->GetFileName( strPicDir.c_str(), strPuName.c_str(), _T( "3gp" ) );
+
+		//bResult = this->m_cVideoWnd.StartRecord( strRec.c_str() );
 		if(bResult)
 		{
 			;//MessageBox(L"录像成功！\n");
@@ -577,7 +599,7 @@ void CPlayerDialog::OnBnClickedButtonRecord()
 			MessageBox(L"录像失败 请检查图片及录像保存路径！\n");
 		}
 
-		mcu::log << _T( "Start record " ) << strRec << _T( " result " ) << bResult << endl;
+		mcu::log << _T( "Start record " ) << strRecPath << _T( " result " ) << bResult << endl;
 	}
 
 	// 根据当前状态设置图标。
@@ -606,15 +628,19 @@ void CPlayerDialog::OnBnClickedButtonCapture()
 		return;
 	}
 
-	tstring strPuName = CMCUSession::Instance()->CurVideoSession()->PuName();
+    EMCU_ErrorCode er;
+    tstring strPicPath;
+    bResult = this->m_cVideoWnd.Capture( strPicPath, er );
 
-	tstring strPic = this->GetFileName( strPicDir.c_str(), strPuName.c_str(), _T( "jpg" ) ); 
-	bResult = this->m_cVideoWnd.PicCapture( strPic.c_str() );
+	//tstring strPuName = CMCUSession::Instance()->CurVideoSession()->PuName();
 
-	if (!bResult)
-	{
-		MessageBox(_T("抓拍失败"), _T("图像抓拍"), MB_OK);
-	}
+	//tstring strPic = this->GetFileName( strPicDir.c_str(), strPuName.c_str(), _T( "jpg" ) ); 
+	//bResult = this->m_cVideoWnd.PicCapture( strPic.c_str() );
+
+	//if (!bResult)
+	//{
+	//	MessageBox(_T("抓拍失败"), _T("图像抓拍"), MB_OK);
+	//}
 
 	if ( bResult )
 	{
@@ -628,10 +654,11 @@ void CPlayerDialog::OnBnClickedButtonCapture()
 	{
 
 	}
+
 	//取消当前焦点,按钮弹起
 	this->SetFocus();
 
-	mcu::log << _T( "capture pic :" ) << strPic << _T( " result: " ) << bResult << endl;
+	mcu::log << _T( "capture pic :" ) << strPicPath << _T( " result: " ) << bResult << endl;
 }
 
 void CPlayerDialog::OnBnClickedButtonFullscreen()
@@ -661,7 +688,7 @@ void CPlayerDialog::OnBnClickedButtonPtz()
 
 void CPlayerDialog::UpdateRecordButton()
 {
-	BOOL bRecording = this->m_cVideoWnd.IsRecoding();
+	BOOL bRecording = this->m_cVideoWnd.IsRecording();
 	if ( bRecording )
 	{
 		this->m_btnRecord.SetImage( _T( "btn_player_recording_normal.jpg" ), _T( "btn_player_recording_focus.jpg" ), _T( "btn_player_recording_disable.jpg" ), TRUE );
@@ -672,35 +699,35 @@ void CPlayerDialog::UpdateRecordButton()
 	}
 }
 
-tstring CPlayerDialog::GetFileName( LPCTSTR strDir, LPCTSTR lpPuName, LPCTSTR strFileExt )
-{
-	tstringstream ssFileName;
-
-    while( ssFileName.str().empty() || IsFileExist( ssFileName.str().c_str() ) )
-    {
-        tstring strTime;
-        strTime = ::TimeToStr( ::GetCurTime() ).c_str();
-
-        // 时间只保留月日小时分钟。
-        strTime = strTime.substr( 4, 8 );
-
-        // 前端名只保留5位，限制长度。
-        tstring strPuName = lpPuName;
-        strPuName = strPuName.substr( 0, 5 );
-
-        // 文件名最后要加3位随机数。
-        int nRadom = GetTickCount();
-        CString strRadom;
-        strRadom.Format( _T( "%03d" ), nRadom ) ;
-        strRadom = strRadom.Right( 3 );
-
-        //strPicDir + strPuName + _T( "_" ) + (LPCTSTR)strTime + strRadom + _T( ".jpg" );
-        ssFileName << strDir << strPuName << _T( "_" ) << strTime << (LPCTSTR)strRadom << _T( "." ) << strFileExt;
-    }
-
-	
-	return ssFileName.str();
-}
+//tstring CPlayerDialog::GetFileName( LPCTSTR strDir, LPCTSTR lpPuName, LPCTSTR strFileExt )
+//{
+//	tstringstream ssFileName;
+//
+//    while( ssFileName.str().empty() || IsFileExist( ssFileName.str().c_str() ) )
+//    {
+//        tstring strTime;
+//        strTime = ::TimeToStr( ::GetCurTime() ).c_str();
+//
+//        // 时间只保留月日小时分钟。
+//        strTime = strTime.substr( 4, 8 );
+//
+//        // 前端名只保留5位，限制长度。
+//        tstring strPuName = lpPuName;
+//        strPuName = strPuName.substr( 0, 5 );
+//
+//        // 文件名最后要加3位随机数。
+//        int nRadom = GetTickCount();
+//        CString strRadom;
+//        strRadom.Format( _T( "%03d" ), nRadom ) ;
+//        strRadom = strRadom.Right( 3 );
+//
+//        //strPicDir + strPuName + _T( "_" ) + (LPCTSTR)strTime + strRadom + _T( ".jpg" );
+//        ssFileName << strDir << strPuName << _T( "_" ) << strTime << (LPCTSTR)strRadom << _T( "." ) << strFileExt;
+//    }
+//
+//	
+//	return ssFileName.str();
+//}
 void CPlayerDialog::OnOK()
 {
 	// TODO: 在此添加专用代码和/或调用基类
@@ -712,16 +739,23 @@ void CPlayerDialog::OnUserClose()
 	if( IDYES == MessageBox( _T( "是否要退出？" ), _T( "退出确定" ), MB_YESNO ) )
 	{
 		//如果正在录像 停止当前录像录像
-		BOOL bRecording = this->m_cVideoWnd.IsRecoding();
+		BOOL bRecording = this->m_cVideoWnd.IsRecording();
 		m_bIsEnding = TRUE;
 		if ( bRecording )
 		{
-			BOOL bResult = m_cVideoWnd.StopRecord();
+            EMCU_ErrorCode er;
+			BOOL bResult = m_cVideoWnd.StopRecord( er );
 			mcu::log << _T( "stop record result: " ) << bResult << endl;
 		}
+
+        BOOL bStopRet = this->m_cVideoWnd.StopPlay();
+        mcu::log << _T( "stop video play ret: " ) << bStopRet << endl;
+
 		this->OnMenuRestore();
 
 //		this->EndDialog( 0 );
+        // 清理屏幕。
+        this->m_cVideoWnd.ClearScreen();
 
         __super::OnOK();
 	}	
@@ -731,21 +765,28 @@ void CPlayerDialog::OnUserClose()
 void CPlayerDialog::OnRtspClose(int nErrorCode)
 {
 	//如果正在录像 停止当前录像录像
-	BOOL bRecording = this->m_cVideoWnd.IsRecoding();
+	BOOL bRecording = this->m_cVideoWnd.IsRecording();
 	if ( bRecording )
 	{
-		BOOL bResult = m_cVideoWnd.StopRecord();
+        EMCU_ErrorCode er;
+		BOOL bResult = m_cVideoWnd.StopRecord( er );
 		mcu::log << _T( "stop record result: " ) << bResult << endl;
 	}
 
 	this->OnMenuRestore();
 
+    // 清理屏幕。
+    this->m_cVideoWnd.ClearScreen();
+
     if ( nErrorCode == E_DlgEndRetry )
     {
         // this->m_cVideoWnd.SetRstpUrl( m)
         // 暂时关闭。
-        mcu::log << _T( "应该重新连接服务器。" ) << endl;
-        __super::OnOK();
+//        mcu::log << _T( "应该重新连接服务器。" ) << endl;
+//        __super::OnOK();
+
+        BOOL bResult = this->m_cVideoWnd.RestartPlay();
+        mcu::log << _T( "Restart video play. ret: " ) << bResult << endl;
     }
     else
     {

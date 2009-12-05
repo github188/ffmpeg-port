@@ -76,6 +76,10 @@ private:
 
 	/** 原本的html 控件消息处理函数. */
 //	static WNDPROC s_lpOldHtmlProc;
+
+    /** 获取失败的html网页链接。 */
+    tstring GetFailHtmlUrl() const;
+
 public :
 	BOOL m_bWaittingNavigateComplete;
 	BOOL m_bIsFaild;

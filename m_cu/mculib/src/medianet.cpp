@@ -9,6 +9,7 @@
 #include "mpeg4streamdecodesink.h"
 #include "mcudefine.h"
 #include "log.h"
+#include "mcuconfig.h"
 
 #ifdef _WIN32_WCE
 #include "SDL.h"
@@ -1056,12 +1057,22 @@ int CMediaNet::MediaNet_Thread( void * pThisVoid )
 					}
 
 					// 发送NAT探测包。防止丢包，发3次。
-					unsigned char temp[112] = {0};
-					temp[0] = 0x80;
-					for ( int i=0; i<3; ++i )
-					{
-						subsession->rtpSource()->RTPgs()->output( *env, 0,temp, 112 );
-					}
+                    BOOL bSendNatPacket;
+                    CConfig::Instance()->GetIsSendNatPacket( bSendNatPacket );
+                    if( bSendNatPacket )
+                    {
+					    unsigned char temp[112] = {0};
+					    temp[0] = 0x80;
+					    for ( int i=0; i<3; ++i )
+					    {
+						    subsession->rtpSource()->RTPgs()->output( *env, 0,temp, 112 );
+					    }
+                        mcu::log << _T( "Send Nat packet!" ) << endl;
+                    }
+                    else
+                    {
+                        mcu::log << _T( "Not send nat packet!" ) << endl;
+                    }
 					
 
 					madeProgress = True;

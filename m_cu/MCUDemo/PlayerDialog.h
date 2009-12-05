@@ -71,10 +71,13 @@ public:
 
 public:
 	/** 设置要播放的rtsp链接. */
-	void SetRtspUrl( LPCTSTR strRtspUrl );
+//	void SetRtspUrl( LPCTSTR strRtspUrl );
 
 	/** 全屏. */
 	void PlayFullScreen( BOOL bFullScreen );
+
+    /** 打开播放rtsp链接。 */
+    BOOL Play( CVideoSession *pVs );
 
 private:
 	/** 视频显示窗口. */

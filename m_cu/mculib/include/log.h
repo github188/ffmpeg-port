@@ -1,6 +1,7 @@
 #pragma once
 
 #include "portabledefine.h"
+#include "scopelock.h"
 
 /** 日志输出。 */
 namespace mcu
@@ -60,7 +61,7 @@ namespace mcu
 
     private:
         /** 多线程同步锁。 */
-        //	SDL_LockMutex
+        CMCUMutex m_threadSafeLock;
 
         /** 是否写文件。 */
         BOOL m_bWriteFile;

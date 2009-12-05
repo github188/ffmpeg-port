@@ -5,14 +5,19 @@
 #include "uidialog.h"
 
 #include "logindialog.h"
-#include "UnitTestMainDialog.h"
-#include "UITestDialog.h"
 #include "picmanagedialog.h"
 #include "picviewdialog.h"
 #include "configdialog.h"
 #include "PlayerDialog.h"
 #include "webpagedlg.h"
+
+#ifdef UNIT_TEST
 #include "HtmlTestDialog.h"
+#include "RTSPTestDialog.h"
+#include "UnitTestMainDialog.h"
+#include "UITestDialog.h"
+
+#endif
 
 CWindowFactory * CWindowFactory::s_instance = NULL;
 
@@ -125,6 +130,14 @@ CUIDialog *CWindowFactory::CreateWnd( EWindowId eWndId )
             {
                 pDlg->Create( CHtmlTestDialog::IDD );
             }
+            break;
+        case WndUnittestRtsp:
+            pDlg = new CRTSPTestDialog();
+            if( pDlg )
+            {
+                pDlg->Create( CRTSPTestDialog::IDD );
+            }
+            break;
 #endif
         default:
             break;

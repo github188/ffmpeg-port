@@ -16,6 +16,8 @@ extern "C"
 	extern URLProtocol file_protocol;
 
 	extern AVInputFormat mov_demuxer;
+
+	void av_freep(void *ptr);
 };
 
 // 默认没有注册过。
@@ -23,11 +25,8 @@ BOOL CFFMpegRecorderImpl::s_bFileProtocolReg = FALSE;
 
 CFFMpegRecorderImpl::CFFMpegRecorderImpl(void)
 {
-#ifdef _WIN32_WCE
-
 	m_pavFormatContext = NULL;
 	m_pavStream = NULL;
-#endif
 
 	this->m_timeBegin = 0;
 	this->m_timeEnd = 0;
@@ -43,8 +42,10 @@ CFFMpegRecorderImpl::~CFFMpegRecorderImpl(void)
 
 BOOL CFFMpegRecorderImpl::Init( CBaseCodec::ECodecId eCodec, int nBandWidth, LPCTSTR strFileName )
 {
+	SCOPE_LOCK( this->m_threadSafeLock );
+
 	BOOL bResult = TRUE;
-#ifdef _WIN32_WCE
+
 
 
 	this->m_nBandWidth = nBandWidth;
@@ -107,54 +108,136 @@ BOOL CFFMpegRecorderImpl::Init( CBaseCodec::ECodecId eCodec, int nBandWidth, LPC
 	}	
 
 	bResult &= ( NULL != m_pavStream );
-#else
-	bResult = FALSE;
-#endif
+
 	return bResult;
 }
 
 BOOL CFFMpegRecorderImpl::WriteFrame( mu_uint8 *buf, int len, const CBaseCodec::TVideoFrameInfo& tFrameInfo )
 {
-#ifdef _WIN32_WCE
+	SCOPE_LOCK( this->m_threadSafeLock );
+
 
 	if ( !( m_pavStream && m_pavFormatContext ) )
 	{
 		return FALSE;
 	}
 	AVCodecContext *pavCodec = m_pavStream->codec;
-	if ( pavCodec->extradata == NULL )
+	if ( !pavCodec )
 	{
-		if ( tFrameInfo.frameType == CBaseCodec::FRAME_I )
+		mcu::log << _T( "WriteFrame AVCodecContext is NULL!" ) << endl;
+		return FALSE;
+	}
+
+	try
+	{
+		if ( pavCodec->extradata == NULL )
 		{
-			switch( pavCodec->codec_id )
+			if ( tFrameInfo.frameType == CBaseCodec::FRAME_I )
 			{
-			case CODEC_ID_H264:
-
-				// H264编码的话编码附加信息要传入整个I帧。
-				pavCodec->extradata = mu_malloc( len );
-				pavCodec->extradata_size = len;
-				memcpy( pavCodec->extradata, buf, len );
-
-				break;
-			case CODEC_ID_MPEG4:
+				switch( pavCodec->codec_id )
 				{
-					// MPEG4 要先获取Config信息。
-					TMpeg4ConfigInfo tMpeg4Cfg;
-					if( VIDEO_SUCCESS == GetMpeg4Config( buf, len, &tMpeg4Cfg ) )
+				case CODEC_ID_H264:
 					{
-						pavCodec->extradata = mu_malloc( tMpeg4Cfg.l32ConfigLen );
-						if ( NULL == pavCodec->extradata )
+						// H264编码的话编码附加信息要传入整个I帧。
+						//pavCodec->extradata = mu_malloc( len );
+						//if ( pavCodec->extradata == NULL )
+						//{
+						//	mcu::log << _T( "pavCodec->extradata = mu_malloc 申请内存失败！" ) << endl;
+						//	return FALSE;
+						//}
+						//pavCodec->extradata_size = len;
+						//memcpy( pavCodec->extradata, buf, len );
+
+						TH264ConfigInfo tH264Cfg;
+						l32 lResult = GetH264Config( buf, len, &tH264Cfg );
+						if( VIDEO_SUCCESS == lResult )
 						{
-							mcu::log << _T( "pavCodec->extradata = mu_malloc 申请内存失败！" ) << endl;
+							for ( int i=0; i< tH264Cfg.l32PpsNum; ++i )
+							{
+								mcu::log << _T( "pps: " ) ;
+								for ( int k=0; k<tH264Cfg.l32PpsLen[i]; k++ )
+								{
+									mcu::log << (void*)(unsigned char)tH264Cfg.pu8Pps[i][k] << _T( " " );
+								}
+							}
+							mcu::log << endl;
+
+							for ( int i=0; i< tH264Cfg.l32SpsNum; ++i )
+							{
+								mcu::log << _T( "sps: " ) ;
+								for ( int k=0; k<tH264Cfg.l32SpsLen[i]; k++ )
+								{
+									mcu::log << (void*)(unsigned char)tH264Cfg.pu8Sps[i][k] << _T( " " );
+								}
+							}
+                            mcu::log << endl;
+
+							// 应该有且只有一个pps，sps。
+							if ( tH264Cfg.l32PpsNum != 1 || tH264Cfg.l32SpsNum != 1 )
+							{
+								mcu::log << _T( "Get H264 PPS or SPS num != 1 !" ) << endl;
+								return FALSE;
+							}
+							else
+							{
+								// 将PPS和SPS信息填入 pavCodec->extradata
+								// 数据结构： pps长度（32bit ）pps数据 sps长度（32bit）sps数据。
+								int nBuffLen = 4 + tH264Cfg.l32PpsLen[0] + 4 + tH264Cfg.l32SpsLen[0];
+								pavCodec->extradata = mu_malloc( nBuffLen );
+								if ( !pavCodec->extradata )
+								{
+									mcu::log << _T( "pavCodec->extradata = mu_malloc 申请内存失败！" ) << endl;
+									return FALSE;
+								}
+
+								((char*)(pavCodec->extradata))[ nBuffLen -1 ] = 0;
+
+								pavCodec->extradata_size = nBuffLen;
+								int nWriteCursor = 0;
+
+								int nPPSLen = tH264Cfg.l32PpsLen[0];
+								memcpy( (char*)pavCodec->extradata + nWriteCursor, &nPPSLen, sizeof( int ) );
+								nWriteCursor += 4;
+								
+								memcpy( (char*)pavCodec->extradata + nWriteCursor, tH264Cfg.pu8Pps[0], nPPSLen );
+								nWriteCursor += nPPSLen;
+								
+								int nSpsLen = tH264Cfg.l32SpsLen[0];
+								memcpy( (char*)pavCodec->extradata + nWriteCursor, &nSpsLen, sizeof( int ) );
+								nWriteCursor += 4;
+
+								memcpy( (char*)pavCodec->extradata + nWriteCursor, tH264Cfg.pu8Sps[0], nSpsLen );
+								nWriteCursor += nSpsLen;
+
+							}
+
+						}
+						else
+						{
+							mcu::log << _T( "Get H264 Config fail! return: " ) << lResult << endl;
 							return FALSE;
 						}
-						pavCodec->extradata_size = tMpeg4Cfg.l32ConfigLen;
-						memcpy( pavCodec->extradata, tMpeg4Cfg.pu8Config, tMpeg4Cfg.l32ConfigLen );
 					}
-					else
+					break;
+				case CODEC_ID_MPEG4:
 					{
-						mcu::log << _T( "get mpeg4 config info fail!" ) << endl;
-						return FALSE;
+						// MPEG4 要先获取Config信息。
+						TMpeg4ConfigInfo tMpeg4Cfg;
+						if( VIDEO_SUCCESS == GetMpeg4Config( buf, len, &tMpeg4Cfg ) )
+						{
+							pavCodec->extradata = mu_malloc( tMpeg4Cfg.l32ConfigLen );
+							if ( NULL == pavCodec->extradata )
+							{
+								mcu::log << _T( "pavCodec->extradata = mu_malloc 申请内存失败！" ) << endl;
+								return FALSE;
+							}
+							pavCodec->extradata_size = tMpeg4Cfg.l32ConfigLen;
+							memcpy( pavCodec->extradata, tMpeg4Cfg.pu8Config, tMpeg4Cfg.l32ConfigLen );
+						}
+						else
+						{
+							mcu::log << _T( "get mpeg4 config info fail!" ) << endl;
+							return FALSE;
 					}
 				}				
 			    break;
@@ -188,7 +271,11 @@ BOOL CFFMpegRecorderImpl::WriteFrame( mu_uint8 *buf, int len, const CBaseCodec::
 				cout << "av set paramenters error!" << endl;
 				return FALSE;
 			}
-
+				if ( NULL == m_pavFormatContext->priv_data )
+				{
+					mcu::log << _T( "priv_data is null after set param!" ) << endl;
+					return FALSE;
+				}
 			if( av_write_header( m_pavFormatContext ) != 0 )
 			{
 				cout << "av write header error !" << endl;
@@ -217,10 +304,14 @@ BOOL CFFMpegRecorderImpl::WriteFrame( mu_uint8 *buf, int len, const CBaseCodec::
 		{
 			avPkt.flags |= PKT_FLAG_KEY;;
 		}
-
+			if( m_pavFormatContext->streams == NULL || m_pavFormatContext->streams[ avPkt.stream_index ] == NULL )
+			{
+				mcu::log << "write frame fail! streams is null! " << endl;
+				return FALSE;
+			}
 		if( 0 != av_write_frame( m_pavFormatContext, &avPkt ) )
 		{
-			cout << "write frame fail!" << endl;
+				mcu::log << "write frame fail!" << endl;
 			return FALSE;
 		}
 
@@ -229,38 +320,69 @@ BOOL CFFMpegRecorderImpl::WriteFrame( mu_uint8 *buf, int len, const CBaseCodec::
 		this->m_nDataSize += len;
 		this->m_nFrameCount ++;
 	}
+	}
+	catch ( ... ) 
+	{
+		mcu::log << _T( "Wirte frame crash!" ) << endl;
+		return FALSE;
+	}
 
+//	OutputDebugString( _T( "WriteFrame 2\n" ) );
+	
 	return TRUE;
-#else
-	return FALSE;
-#endif
 }
 
 BOOL CFFMpegRecorderImpl::CloseFile()
 {
-	BOOL bResult = FALSE;
-#ifdef _WIN32_WCE
-	if ( !( m_pavStream && m_pavFormatContext ) )
+	SCOPE_LOCK( this->m_threadSafeLock );
+
+//	OutputDebugString( _T( "close file 1 \n" ) );
+
+	BOOL bResult = TRUE;
+
+	if (  !( m_pavFormatContext && m_pavFormatContext->priv_data ) )
 	{
-		return FALSE;
-	}
-	
-	
-	// 如果没有写入码流数据,则认为录像失败.
-	if ( 0 == m_nFrameCount || 0 == m_nDataSize )
-	{
+		mcu::log << _T( "Close file data invalid!" ) << endl;
 		bResult = FALSE;
 	}
-	else
-	{
-		// 计算码率。
-//		mu_uint64 nTimeSpan = this->m_timeEnd - this->m_timeBegin;
-//		this->m_pavStream->codec->bit_rate = (int)( this->m_nDataSize * 1000 / nTimeSpan );
 
-		bResult = ( 0 == av_write_trailer( m_pavFormatContext ) );
-		
+	if ( !( m_pavStream && m_pavStream->codec && m_pavStream->codec->extradata ) )
+	{
+		mcu::log << _T( "Close file stream data invalid!" ) << endl;
+		bResult = FALSE;
 	}
 
+	if ( !( m_pavFormatContext && m_pavFormatContext->pb && m_pavFormatContext->pb->buffer ) )
+	{
+		mcu::log << _T( "Close file buffer data invalid!" ) << endl;
+		bResult = FALSE;
+	}
+	
+	if ( bResult )
+	{
+		try
+		{		
+			// 如果没有写入码流数据,则认为录像失败.
+			if ( 0 == m_nFrameCount || 0 == m_nDataSize )
+			{
+				bResult = FALSE;
+			}
+			else
+			{
+//				OutputDebugString( _T( "close file 2 \n" ) );
+                mcu::log << _T( "av_write_trailer call!" ) << endl;
+				bResult = ( 0 == av_write_trailer( m_pavFormatContext ) );		
+                mcu::log << _T( "av_write_trailer return!" ) << endl;
+			}
+						
+		}
+		catch ( ... )
+		{
+			mcu::log << _T( "Close file Crash!" ) << endl;
+		}
+	}	
+
+//	OutputDebugString( _T( "close file 3 \n" ) );
 	this->Release();
 
 	if ( !bResult )
@@ -269,32 +391,36 @@ BOOL CFFMpegRecorderImpl::CloseFile()
 		BOOL bDel = ::DelFile( m_strRecordFilePath.c_str() );
 		mcu::log << _T( "Record fail! file " ) << m_strRecordFilePath <<  _T( "del result " ) << bDel << endl;
 	}
-#else
-	bResult = FALSE;
-#endif
+
+//	OutputDebugString( _T( "close file 4 \n" ) );
+
 	return bResult;
 }
 
 BOOL CFFMpegRecorderImpl::Release()
 {
-#ifdef _WIN32_WCE
+	SCOPE_LOCK( this->m_threadSafeLock );
+
 	if ( m_pavFormatContext && m_pavFormatContext->pb )
 	{
 		url_fclose( m_pavFormatContext->pb );
 	}	
 
-	if ( m_pavStream && m_pavStream->codec )
+	if ( m_pavFormatContext && m_pavFormatContext->priv_data )
 	{
-		mu_freep( &( m_pavStream->codec->extradata ) );
+		av_freep( &m_pavFormatContext->priv_data );
 	}
 
-	mu_freep( &m_pavFormatContext );
-	mu_freep( &m_pavStream );
-#endif
+
+	av_freep( &m_pavFormatContext );
+	av_freep( &m_pavStream );
+
 	this->m_timeBegin = 0;
 	this->m_timeEnd = 0;
 	this->m_nDataSize = 0;
 	this->m_nFrameCount = 0;
+
+    mcu::log << _T( "CFFMpegRecorderImpl::Release call over!" ) << endl;
 
 	return TRUE;
 }

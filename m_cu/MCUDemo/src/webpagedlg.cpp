@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "mcu.h"
 #include "webpagedlg.h"
-
+#include "PlayerDialog.h"
 
 // CWebpageDlg ¶Ô»°¿ò
 
@@ -184,12 +184,25 @@ BOOL CWebpageDlg::OpenUrl( LPCTSTR strUrl )
 BOOL CWebpageDlg::HistoryBack( int nStep )
 {
     mcu::log << _T( "CWebpageDlg::HistoryBack!!!step: " ) << nStep << endl;
+    this->m_htmlWnd.HistoryBack( nStep );
     return TRUE;
 }
 
 BOOL CWebpageDlg::OpenPlayer( CVideoSession *pVideoSession )
 {
     mcu::log << _T( "CWebpageDlg::OpenPlayer called!!!" ) << pVideoSession->RtspUrl() << endl;
+
+    CWindowFactory::Instance()->ShowWindow( WndPlayer, this->GetWindowId() );
+    CPlayerDialog *pPlayer = dynamic_cast< CPlayerDialog * >( CWindowFactory::Instance()->GetWnd( WndPlayer ) );
+    if ( pPlayer )
+    {
+        
+    }
+    else
+    {
+        mcu::log << _T( "OpenPlayer Can't get the player wnd!" ) << endl;
+    }
+
     return TRUE;
 }
 
