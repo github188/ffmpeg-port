@@ -98,6 +98,8 @@ void CLoginDialog::OnBnClickedButtonLogin()
 
     this->LoginIn( LOGIN_NORMAL );
 
+    // Çå³ý½¹µã¡£
+//    this->m_edUserId.SetFocus();
 
  /*   if ( this->CheckAndAlert( LOGIN_NORMAL ) )
     {

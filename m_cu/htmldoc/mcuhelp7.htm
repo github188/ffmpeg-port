@@ -1,0 +1,667 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="mcuhelp7.files/filelist.xml">
+<link rel=Edit-Time-Data href="mcuhelp7.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title> 摄像机控制.9854</title>
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:宋体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:SimSun;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 135135232 16 0 262145 0;}
+@font-face
+	{font-family:黑体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:SimHei;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:1 135135232 16 0 262144 0;}
+@font-face
+	{font-family:"\@宋体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:auto;
+	mso-font-signature:0 0 0 0 0 0;}
+@font-face
+	{font-family:"\@黑体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:auto;
+	mso-font-signature:0 0 0 0 0 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	layout-grid-mode:char;
+	font-size:12.0pt;
+	font-family:Arial;}
+h2
+	{margin-top:13.0pt;
+	margin-right:0cm;
+	margin-bottom:13.0pt;
+	margin-left:42.95pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-48.2pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;}
+h3
+	{margin-top:13.0pt;
+	margin-right:0cm;
+	margin-bottom:13.0pt;
+	margin-left:36.85pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-36.85pt;
+	line-height:171%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+h4
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:39.95pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-39.95pt;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;}
+h5
+	{margin-top:14.0pt;
+	margin-right:0cm;
+	margin-bottom:14.5pt;
+	margin-left:47.35pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-47.35pt;
+	line-height:155%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	font-size:14.0pt;
+	font-family:"Times New Roman";}
+h6
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.2pt;
+	margin-left:26.1pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-57.6pt;
+	line-height:131%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:6;
+	font-size:12.0pt;
+	font-family:Arial;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.2pt;
+	margin-left:33.3pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-64.8pt;
+	line-height:131%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:7;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	font-weight:bold;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.2pt;
+	margin-left:40.5pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-72.0pt;
+	line-height:131%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:8;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:宋体;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.2pt;
+	margin-left:47.7pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-79.2pt;
+	line-height:131%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:9;
+	font-size:9.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:宋体;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:21.0pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:42.0pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	text-align:center;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	layout-grid-mode:char;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	layout-grid-mode:char;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:宋体;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	background:navy;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+	{margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.a, li.a, div.a
+	{mso-style-name:a;
+	margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:0cm;
+	text-align:center;
+	mso-line-height-alt:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:16.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	font-weight:bold;}
+p.a0, li.a0, div.a0
+	{mso-style-name:a0;
+	margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	text-align:center;
+	mso-line-height-alt:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:16.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	font-weight:bold;}
+p.a1, li.a1, div.a1
+	{mso-style-name:a1;
+	margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:宋体;
+	mso-bidi-font-family:宋体;
+	font-weight:bold;}
+p.a2, li.a2, div.a2
+	{mso-style-name:a2;
+	margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:黑体;
+	mso-hansi-font-family:宋体;
+	mso-bidi-font-family:宋体;
+	font-weight:bold;}
+p.a3, li.a3, div.a3
+	{mso-style-name:a3;
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:2.0pt;
+	margin-left:2.85pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.a4, li.a4, div.a4
+	{mso-style-name:a4;
+	margin-top:1.5pt;
+	margin-right:0cm;
+	margin-bottom:1.5pt;
+	margin-left:5.65pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	background:#D9D9D9;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.a5, li.a5, div.a5
+	{mso-style-name:a5;
+	margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	color:#3366FF;}
+p.a6, li.a6, div.a6
+	{mso-style-name:a6;
+	margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:2.0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-19.85pt;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	font-weight:bold;}
+p.a7, li.a7, div.a7
+	{mso-style-name:a7;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:5.65pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-line-height-alt:5.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.1, li.1, div.1
+	{mso-style-name:1;
+	margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:25.5pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-11.3pt;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.a8, li.a8, div.a8
+	{mso-style-name:a8;
+	margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	text-align:center;
+	mso-line-height-alt:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:36.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+p.ab, li.ab, div.ab
+	{mso-style-name:ab;
+	margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:5.65pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;}
+span.char
+	{mso-style-name:char;
+	font-family:宋体;
+	mso-ascii-font-family:宋体;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:宋体;
+	font-weight:bold;}
+span.a9
+	{mso-style-name:a9;
+	color:blue;}
+span.aa
+	{mso-style-name:aa;
+	color:red;}
+p.ac, li.ac, div.ac
+	{mso-style-name:一级标题;
+	mso-style-parent:"标题 1";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	layout-grid-mode:char;
+	font-size:14.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:黑体;
+	mso-hansi-font-family:黑体;
+	mso-bidi-font-family:Arial;
+	mso-font-kerning:18.0pt;
+	font-weight:bold;}
+p.ad, li.ad, div.ad
+	{mso-style-name:二级标题;
+	mso-style-parent:a1;
+	mso-style-link:"二级标题 Char";
+	margin-top:7.0pt;
+	margin-right:0cm;
+	margin-bottom:7.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:宋体;
+	mso-bidi-font-family:宋体;
+	font-weight:bold;}
+span.Char0
+	{mso-style-name:"二级标题 Char";
+	mso-style-locked:yes;
+	mso-style-link:二级标题;
+	mso-ansi-font-size:12.0pt;
+	font-family:宋体;
+	mso-ascii-font-family:宋体;
+	mso-fareast-font-family:宋体;
+	mso-hansi-font-family:宋体;
+	mso-bidi-font-family:宋体;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:ZH-CN;
+	mso-bidi-language:AR-SA;
+	font-weight:bold;}
+p.ae, li.ae, div.ae
+	{mso-style-name:第一行;
+	mso-style-parent:"";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:9.0pt;
+	font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=ZH-CN link=blue vlink=purple style='tab-interval:21.0pt;text-justify-trim:
+punctuation'>
+
+<div class=Section1>
+
+<p class=ac><a name="_Toc245029433"></a><span class=GramE><span
+style='mso-bookmark:_Toc245029433'>云镜控制</span></span><span style='mso-bookmark:
+_Toc245029433'></span></p>
+
+<p class=ae>云镜控制分两种模式，如下所示：</p>
+
+<p class=ae><span lang=EN-US style='font-family:Wingdings;color:#3366FF'>§</span><span
+lang=EN-US style='font-size:7.0pt;color:#3366FF'>&nbsp;&nbsp;&nbsp;&nbsp; </span>普通云镜：需摄像机支持，实际的转动云台，改变摄像机的视角。</p>
+
+<p class=ae><span lang=EN-US style='font-family:Wingdings;color:#3366FF'>§</span><span
+lang=EN-US style='font-size:7.0pt;color:#3366FF'>&nbsp;&nbsp;&nbsp;&nbsp; </span>数字云镜：在控制时并未实际的转动云台，仅是对视频图像的编码范围进行调整，以达到控制摄像机的效果。</p>
+
+<p class=ae><span class=GramE>数字云镜可以</span>在<span class=GramE>普通云镜不能</span>再拉近视频图像的情况下，再对视频图像进行拉近的操作。</p>
+
+<p class=ae>在视频浏览界面，选择<span lang=EN-US><img width=26 height=22 id="_x0000_i1025"
+src="image001.jpg" border=0></span>，切换摄像机控制模式。</p>
+
+<p class=ae>确定模式后，可通过点击该界面左右侧的一系列按钮对摄像机进行相关的控制（数字<span class=GramE>云镜需</span>先对视频图像进行放大操作后才可进行其他的摄像机操作），按钮的介绍如下所示：</p>
+
+<p class=ae><span lang=EN-US><img width=37 height=23 id="_x0000_i1026"
+src="image002.jpg" border=0>&nbsp;<img width=39 height=23
+id="_x0000_i1027" src="image003.jpg" border=0>&nbsp;<img width=37
+height=23 id="_x0000_i1028" src="image004.jpg" border=0>&nbsp;<img
+width=37 height=23 id="_x0000_i1029" src="image005.jpg" border=0></span>：摄像机向上、向下、向左、向右转动</p>
+
+<p class=ae><span lang=EN-US><img width=37 height=23 id="_x0000_i1030"
+src="image006.jpg" border=0>&nbsp;<img width=37 height=23
+id="_x0000_i1031" src="image007.jpg" border=0></span>：光线变亮、光线变暗</p>
+
+<p class=ae><span lang=EN-US><img width=37 height=23 id="_x0000_i1032"
+src="image008.jpg" border=0>&nbsp;<img width=37 height=23
+id="_x0000_i1033" src="image009.jpg" border=0></span>：图像放大、图像缩小</p>
+
+<p class=MsoNormal style='line-height:normal'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

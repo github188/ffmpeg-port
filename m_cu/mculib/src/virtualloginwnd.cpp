@@ -1,6 +1,7 @@
 #include "virtualloginwnd.h"
 #include "mcuconfig.h"
 #include "mcusession.h"
+#include "mcucommon.h"
 
 CVirtualLoginWnd::CVirtualLoginWnd( )
 {
@@ -27,8 +28,13 @@ BOOL CVirtualLoginWnd::Login( const TLoginInfo& tLoginInfo, ELoginType eLoginTyp
 
 	tstring strRegionId;
 	CConfig::Instance()->GetRegionId( strRegionId );
+
+    strRegionId = ::StringToUrl( strRegionId.c_str() );
+    tstring strUserId = ::StringToUrl( tLoginInfo.m_strUserId.c_str() );
+
+
 	tstringstream ssAccount;
-	ssAccount << tLoginInfo.m_strUserId << _T( "@" ) << strRegionId;
+	ssAccount << strUserId << _T( "@" ) << strRegionId;
 
 	ssServerFullUrl << _T( "?" );
 	ssServerFullUrl << _T( "Account=" ) << ssAccount.str() << _T( "&" );

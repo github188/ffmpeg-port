@@ -35,7 +35,7 @@ CPlayerDialog::CPlayerDialog(CWnd* pParent /*=NULL*/)
 	m_bFullScreenMode = FALSE;
 //	m_hSoftKeyBar = NULL;
 	m_nOrigRotation = 0;
-	m_pSubPtzMenu = NULL;
+//	m_pSubPtzMenu = NULL;
 	m_bIsEnding = FALSE;
 }
 
@@ -105,6 +105,8 @@ BOOL CPlayerDialog::OnInitDialog()
 	/** 创建ptz窗口. */
 	m_cPtzDlg.Create( CPTZDialog::IDD, this );
 
+    m_cPtzDlg.SetPtzSender( &m_cVideoWnd );
+
 	/** 调整窗口布局. */
 	this->UpdateLayout();
 
@@ -118,11 +120,15 @@ BOOL CPlayerDialog::OnInitDialog()
 	// ptz 菜单。
 	BOOL bResult = m_menuPtz.LoadMenu( IDR_MENU_PTZ );
 	_ASSERT( bResult );
-	m_pSubPtzMenu = m_menuPtz.GetSubMenu( 0 );
-	_ASSERT( m_pSubPtzMenu );
+	//m_pSubPtzMenu = m_menuPtz.GetSubMenu( 0 );
+	//_ASSERT( m_pSubPtzMenu );
+    if ( NULL == m_menuPtz.m_hMenu )
+    {
+        mcu::log << _T( "Ptz Menu Load Fail!" ) << endl;
+    }
 
 	BOOL bHasPtz = this->HasPtz();
-	this->m_btnPtz.EnableWindow( bHasPtz );
+	
 
 	// 底部菜单条及按钮。
 	this->m_stBottomBg.SetBkTransparent( FALSE, FALSE );
@@ -190,7 +196,13 @@ BOOL CPlayerDialog::Play( CVideoSession *pVs )
     if( pVs )
     {
         EMCU_ErrorCode er;
-        return this->m_cVideoWnd.StartPlay( pVs, er );
+        BOOL bResult = this->m_cVideoWnd.StartPlay( pVs, er );
+
+        // 将数字ptz归位。
+        this->m_cVideoWnd.SetDigitalPtz( FALSE );
+
+
+        return bResult;
     }
     else
     {
@@ -244,6 +256,13 @@ void CPlayerDialog::UpdateLayout( LPRECT lprcClient /* =/* = NULL */ )
 		// 在剩余空间中去除logo占用的空间。
 		rcLeftSpace.top += nLogoHeight;
 	}
+
+    // ptz 按钮。
+    if ( this->m_btnPtz.GetSafeHwnd() )
+    {
+        this->m_btnPtz.EnableWindow( this->HasPtz() );
+    }
+
 
 	// 下边菜单条。
 	// 调整菜单条的位置。
@@ -320,7 +339,12 @@ void CPlayerDialog::UpdateLayout( LPRECT lprcClient /* =/* = NULL */ )
 	// 无ptz控制权限的时候隐藏ptz界面。
 	bShowPtzDlg &= this->HasPtz();
 
+    if ( m_cPtzDlg.GetSafeHwnd() )
+    {
+        m_cPtzDlg.ShowWindow( bShowPtzDlg ? SW_SHOW : SW_HIDE );
+    }
 	
+  
 	if( m_cPtzDlg.GetSafeHwnd() && bShowPtzDlg )
 	{
 		const float conFPtzDlgHeight = 0.082;
@@ -482,7 +506,7 @@ void CPlayerDialog::OnUpdateMenuPtz(CCmdUI *pCmdUI)
 	// TODO: 在此添加命令更新用户界面处理程序代码
 	BOOL bHasPtz = CMCUSession::Instance()->CurVideoSession()->PtzControl();
 	pCmdUI->Enable( bHasPtz );
-	pCmdUI->SetCheck( !this->m_cPtzDlg.IsDigitalPtz() );
+	pCmdUI->SetCheck( !this->m_cVideoWnd.IsDigitalPtz() );
 
 }
 
@@ -491,34 +515,36 @@ void CPlayerDialog::OnUpdateMenuDigitalPtz(CCmdUI *pCmdUI)
 	// TODO: 在此添加命令更新用户界面处理程序代码
 	BOOL bHasPtz = CMCUSession::Instance()->CurVideoSession()->PtzControl();
 	pCmdUI->Enable( bHasPtz );
-	pCmdUI->SetCheck( this->m_cPtzDlg.IsDigitalPtz() );
+	pCmdUI->SetCheck( this->m_cVideoWnd.IsDigitalPtz() );
 }
 
 void CPlayerDialog::OnMenuPtz()
 {
 	// TODO: 在此添加命令处理程序代码
-	this->m_cPtzDlg.SetDigitPtz( FALSE );
+	this->m_cVideoWnd.SetDigitalPtz( FALSE );
 
-	this->UpdateMenu();
+//	this->UpdateMenu();
 }
 
 void CPlayerDialog::OnMenuDigitalPtz()
 {
 	// TODO: 在此添加命令处理程序代码
-	this->m_cPtzDlg.SetDigitPtz( TRUE );
+	this->m_cVideoWnd.SetDigitalPtz( TRUE );
 
-	this->UpdateMenu();	
+//	this->UpdateMenu();	
 }
 
-void CPlayerDialog::UpdateMenu()
-{
-	if ( m_pSubPtzMenu )
-	{
-		BOOL bDigitalPtz = m_cPtzDlg.IsDigitalPtz();
-		m_pSubPtzMenu->CheckMenuItem( ID_MENU_PTZ, MF_BYCOMMAND | ( bDigitalPtz ? MF_UNCHECKED : MF_CHECKED ) );
-		m_pSubPtzMenu->CheckMenuItem( ID_MENU_DIGITAL_PTZ, MF_BYCOMMAND | ( bDigitalPtz ? MF_CHECKED : MF_UNCHECKED ) );
-	}	
-}
+//void CPlayerDialog::UpdateMenu()
+//{
+//    CMenu *pSubM = m_menuPtz.GetSubMenu( 0 );
+//
+//	if ( pSubM && pSubM->m_hMenu )
+//	{
+//		BOOL bDigitalPtz = m_cVideoWnd.IsDigitalPtz();
+//		pSubM->CheckMenuItem( ID_MENU_PTZ, MF_BYCOMMAND | ( bDigitalPtz ? MF_UNCHECKED : MF_CHECKED ) );
+//		pSubM->CheckMenuItem( ID_MENU_DIGITAL_PTZ, MF_BYCOMMAND | ( bDigitalPtz ? MF_CHECKED : MF_UNCHECKED ) );
+//	}	
+//}
 
 
 void CPlayerDialog::OnBnClickedButtonPause()
@@ -676,13 +702,26 @@ void CPlayerDialog::OnBnClickedButtonClose()
 void CPlayerDialog::OnBnClickedButtonPtz()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	if ( m_pSubPtzMenu )
+    CMenu *pSubM = this->m_menuPtz.GetSubMenu( 0 );
+
+
+
+	if ( pSubM && pSubM->m_hMenu )
 	{
 		CRect rcBtnPtz;
 		this->m_btnPtz.GetWindowRect( rcBtnPtz );
 		CPoint ptCenterPtn = rcBtnPtz.CenterPoint();
-		m_pSubPtzMenu->TrackPopupMenu( TPM_CENTERALIGN, ptCenterPtn.x, ptCenterPtn.y, this );
+
+		BOOL bDigitalPtz = m_cVideoWnd.IsDigitalPtz();
+		pSubM->CheckMenuItem( ID_MENU_PTZ, MF_BYCOMMAND | ( bDigitalPtz ? MF_UNCHECKED : MF_CHECKED ) );
+		pSubM->CheckMenuItem( ID_MENU_DIGITAL_PTZ, MF_BYCOMMAND | ( bDigitalPtz ? MF_CHECKED : MF_UNCHECKED ) );
+
+		pSubM->TrackPopupMenu( TPM_CENTERALIGN, ptCenterPtn.x, ptCenterPtn.y, this );
 	}
+    else
+    {
+        mcu::log << _T( "Ptz Menu is NULL!!" ) << endl;
+    }
 
 }
 
@@ -994,3 +1033,12 @@ void CPlayerDialog::OnDestroy()
 
     __super::OnDestroy();
 }
+
+void CPlayerDialog::OnShowWindowCmd( int nSWCmd )
+{
+    if ( SW_SHOW == nSWCmd )
+    {
+        this->UpdateLayout();
+    }
+}
+

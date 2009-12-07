@@ -44,6 +44,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_19895688AE6840D19CA6F00C40092325"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_19BFAAEBE5B041C0BDDBD8477390BCAB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -63,6 +69,12 @@
         "Entry"
         {
         "MsmKey" = "8:_1CE72DB0DF124DEB8A31E135E9E7A9D5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1D3C29570F454764AA2BA3D61422E5F3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -122,6 +134,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_297E372BADE84907BDD23259F2B0D933"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2C20A51C378E4F3B9EF3871D217D9E53"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -129,6 +147,12 @@
         "Entry"
         {
         "MsmKey" = "8:_2FEEB24248E24B89BF00740D5EF82197"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_32F86C2BC75443CE9F85A7B877CCA748"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -182,6 +206,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4681734B29A74E77AFCCF435C4B03A75"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_471E81A921BE4458BA977A2B8A9B18FA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -207,6 +237,12 @@
         "Entry"
         {
         "MsmKey" = "8:_552BAC538BCD458EAF36A8DAE263F794"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_592184F0BE1F473FB94485CDFE3A4600"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -248,6 +284,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6D4C3047BBE845D19E9BB9B677801992"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6E2BF9ACAD914FADB672E215A1D17787"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -261,6 +303,12 @@
         "Entry"
         {
         "MsmKey" = "8:_71899C0D9D6B4B5B9763E8038DA52DDB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7656D5AF1A064BE282F5D30995EF3AA0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -356,6 +404,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A63BA5B8F3E442038546B7206983ADC8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A77D82A54A4342FABFAB8B93D1C6F355"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A83A70F57BA04C5CBAB401AA204234B7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -416,6 +476,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B57372958D9B43E5872DFC67AC0927A1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B699222276D4471C83B0F500F9ABA35D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -429,6 +495,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B9A77CF75532481A80D86BB1471A9114"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C2A4EF2F70C44A1988C2290A59CF1D76"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -464,6 +536,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C7F7555B6F41486F8A6258C853BCF178"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CB762C478BBE41CABA3D2CB497CEFFB3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -476,6 +554,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_CC134584342342E6A0CE6A1FCE965C5A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CFF2144991394BECAAD131CF092289D0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D00D1AE27B6149E79B07E905A59E0DEE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -483,6 +573,18 @@
         "Entry"
         {
         "MsmKey" = "8:_D0AA2970C9684ADDBD99092B8BBD9B12"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D41A1CA4CC37429285A20217562B0137"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D435BD529E2D48C195954D1548FA199D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -566,6 +668,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E6876FB2B0AA49A9A73E2B83134DF1B3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E7D98BBF94EA4D03B33D42E3E2D80180"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -597,6 +705,12 @@
         "Entry"
         {
         "MsmKey" = "8:_FB24DF3995B8412F8B1D6EAE3BA83DB5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FC55DEB36EEC4B849C5D6A9265DCBCE5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -758,6 +872,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_19895688AE6840D19CA6F00C40092325"
+            {
+            "SourcePath" = "8:..\\htmldoc\\mcuhelp0.htm"
+            "TargetName" = "8:mcuhelp0.htm"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_19BFAAEBE5B041C0BDDBD8477390BCAB"
             {
             "SourcePath" = "8:..\\res\\chs\\unicom\\c_rp_lenzoom.png"
@@ -818,6 +950,24 @@
             "TargetName" = "8:btn_ptz_down_normal.jpg"
             "Tag" = "8:"
             "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_1D3C29570F454764AA2BA3D61422E5F3"
+            {
+            "SourcePath" = "8:..\\htmldoc\\mcuhelp4.htm"
+            "TargetName" = "8:mcuhelp4.htm"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -992,6 +1142,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_297E372BADE84907BDD23259F2B0D933"
+            {
+            "SourcePath" = "8:..\\htmldoc\\image005.jpg"
+            "TargetName" = "8:image005.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_2C20A51C378E4F3B9EF3871D217D9E53"
             {
             "SourcePath" = "8:..\\res\\chs\\unicom\\c_rp_lenzoomf.png"
@@ -1016,6 +1184,24 @@
             "TargetName" = "8:btn_ptz_up_normal.jpg"
             "Tag" = "8:"
             "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_32F86C2BC75443CE9F85A7B877CCA748"
+            {
+            "SourcePath" = "8:..\\htmldoc\\image009.jpg"
+            "TargetName" = "8:image009.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -1172,6 +1358,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_4681734B29A74E77AFCCF435C4B03A75"
+            {
+            "SourcePath" = "8:..\\htmldoc\\image003.jpg"
+            "TargetName" = "8:image003.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_471E81A921BE4458BA977A2B8A9B18FA"
             {
             "SourcePath" = "8:..\\htmlfail\\fail.htm"
@@ -1250,6 +1454,24 @@
             "TargetName" = "8:btn_pic_pre_page_normal.jpg"
             "Tag" = "8:"
             "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_592184F0BE1F473FB94485CDFE3A4600"
+            {
+            "SourcePath" = "8:..\\htmldoc\\mcuhelp5.htm"
+            "TargetName" = "8:mcuhelp5.htm"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -1370,6 +1592,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_6D4C3047BBE845D19E9BB9B677801992"
+            {
+            "SourcePath" = "8:..\\htmldoc\\mcuhelp2.htm"
+            "TargetName" = "8:mcuhelp2.htm"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_6E2BF9ACAD914FADB672E215A1D17787"
             {
             "SourcePath" = "8:..\\res\\chs\\unicom\\c_rp_lenzoomoutf.png"
@@ -1412,6 +1652,24 @@
             "TargetName" = "8:wincecodec.dll"
             "Tag" = "8:"
             "Folder" = "8:_498EA9CD317241238C891AD1282795B1"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_7656D5AF1A064BE282F5D30995EF3AA0"
+            {
+            "SourcePath" = "8:..\\htmldoc\\mcuhelp3.htm"
+            "TargetName" = "8:mcuhelp3.htm"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -1694,6 +1952,42 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_A63BA5B8F3E442038546B7206983ADC8"
+            {
+            "SourcePath" = "8:..\\htmldoc\\image007.jpg"
+            "TargetName" = "8:image007.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_A77D82A54A4342FABFAB8B93D1C6F355"
+            {
+            "SourcePath" = "8:..\\htmldoc\\image006.jpg"
+            "TargetName" = "8:image006.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_A83A70F57BA04C5CBAB401AA204234B7"
             {
             "SourcePath" = "8:..\\res\\chs\\unicom\\btn_ptz_zoomin_focus.jpg"
@@ -1874,6 +2168,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_B57372958D9B43E5872DFC67AC0927A1"
+            {
+            "SourcePath" = "8:..\\htmldoc\\image008.jpg"
+            "TargetName" = "8:image008.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_B699222276D4471C83B0F500F9ABA35D"
             {
             "SourcePath" = "8:..\\res\\chs\\unicom\\btn_player_capture_focus.jpg"
@@ -1916,6 +2228,24 @@
             "TargetName" = "8:title bar_left.jpg"
             "Tag" = "8:"
             "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_C2A4EF2F70C44A1988C2290A59CF1D76"
+            {
+            "SourcePath" = "8:..\\htmldoc\\mcuhelp1.htm"
+            "TargetName" = "8:mcuhelp1.htm"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -2018,6 +2348,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_C7F7555B6F41486F8A6258C853BCF178"
+            {
+            "SourcePath" = "8:..\\htmldoc\\image001.jpg"
+            "TargetName" = "8:image001.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_CB762C478BBE41CABA3D2CB497CEFFB3"
             {
             "SourcePath" = "8:..\\res\\chs\\unicom\\btn_login_normal.jpg"
@@ -2054,6 +2402,42 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_CC134584342342E6A0CE6A1FCE965C5A"
+            {
+            "SourcePath" = "8:..\\htmldoc\\mcuhelp7.htm"
+            "TargetName" = "8:mcuhelp7.htm"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_CFF2144991394BECAAD131CF092289D0"
+            {
+            "SourcePath" = "8:..\\htmldoc\\mcuhelp6.htm"
+            "TargetName" = "8:mcuhelp6.htm"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_D00D1AE27B6149E79B07E905A59E0DEE"
             {
             "SourcePath" = "8:..\\res\\chs\\unicom\\btn_zoom_out_normal.jpg"
@@ -2078,6 +2462,42 @@
             "TargetName" = "8:btn_ptz_left_normal.jpg"
             "Tag" = "8:"
             "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_D41A1CA4CC37429285A20217562B0137"
+            {
+            "SourcePath" = "8:..\\htmldoc\\image002.jpg"
+            "TargetName" = "8:image002.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_D435BD529E2D48C195954D1548FA199D"
+            {
+            "SourcePath" = "8:..\\htmldoc\\mcufail.htm"
+            "TargetName" = "8:mcufail.htm"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -2288,6 +2708,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_E6876FB2B0AA49A9A73E2B83134DF1B3"
+            {
+            "SourcePath" = "8:..\\htmldoc\\image004.jpg"
+            "TargetName" = "8:image004.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_E7D98BBF94EA4D03B33D42E3E2D80180"
             {
             "SourcePath" = "8:..\\res\\chs\\unicom\\btn_delete_focus.jpg"
@@ -2396,6 +2834,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_FC55DEB36EEC4B849C5D6A9265DCBCE5"
+            {
+            "SourcePath" = "8:..\\htmldoc\\wait.htm"
+            "TargetName" = "8:wait.htm"
+            "Tag" = "8:"
+            "Folder" = "8:_85CB9227DE33459DBBF1D6168E597B91"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "Folder"
         {
@@ -2441,6 +2897,15 @@
                                 {
                                 }
                             }
+                        }
+                    }
+                    "{5943FCFD-5B64-4EE4-96C9-4618EC95352A}:_85CB9227DE33459DBBF1D6168E597B91"
+                    {
+                    "Name" = "8:htmldoc"
+                    "Condition" = "8:"
+                    "Property" = "8:_CCF33F00101D44A99B26E2A34F16B493"
+                        "Folders"
+                        {
                         }
                     }
                 }

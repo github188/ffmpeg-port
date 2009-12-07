@@ -15,7 +15,7 @@ IMPLEMENT_DYNAMIC(CPTZDialog, CUIDialog)
 CPTZDialog::CPTZDialog(CWnd* pParent /*=NULL*/)
 	: CUIDialog(CPTZDialog::IDD, pParent)
 {
-
+    this->m_pPtzSender = FALSE;
 }
 
 CPTZDialog::~CPTZDialog()
@@ -143,56 +143,71 @@ LRESULT CPTZDialog::OnPtzButtonDown( WPARAM btnId, LPARAM )
 		return S_FALSE;
 	}
 
+    if ( m_pPtzSender )
+    {
+        m_pPtzSender->SendPtzCmd( ptzOp );
+    }
+    else
+    {
+        mcu::log << _T( "Send Ptz Cmd Fail! ptz sender is NULL!" ) << endl;
+    }
+    return S_OK;
+
 	
-	sockaddr_in ptzServerAddr;
-	memset( &ptzServerAddr, 0, sizeof( ptzServerAddr ) );
+	//sockaddr_in ptzServerAddr;
+	//memset( &ptzServerAddr, 0, sizeof( ptzServerAddr ) );
 
 
-	int nAddrLen = sizeof( ptzServerAddr );
-	int nResult = WSAStringToAddress( const_cast<LPWSTR>( CMCUSession::Instance()->CurVideoSession()->PtzIP().c_str() ), 
-		AF_INET, NULL, (sockaddr*)&ptzServerAddr, &nAddrLen );
-	if( SOCKET_ERROR == nResult )
-	{
-		int nErrorCode = WSAGetLastError();
-		_ASSERT( FALSE );
-	}
+	//int nAddrLen = sizeof( ptzServerAddr );
+	//int nResult = WSAStringToAddress( const_cast<LPWSTR>( CMCUSession::Instance()->CurVideoSession()->PtzIP().c_str() ), 
+	//	AF_INET, NULL, (sockaddr*)&ptzServerAddr, &nAddrLen );
+	//if( SOCKET_ERROR == nResult )
+	//{
+	//	int nErrorCode = WSAGetLastError();
+	//	_ASSERT( FALSE );
+	//}
 
-	//serverAddr.sin_family = AF_INET;
-	////	serverAddr.sin_addr.s_addr = inet_addr( strIp );
-	//serverAddr.sin_port = htons( _ttoi( strPort ) );
-	SetPTZAddr( ntohl( ptzServerAddr.sin_addr.s_addr ), 
-		CMCUSession::Instance()->CurVideoSession()->PtzPort() );
-    this->SetPtzCmdId( ptzOp );
+	////serverAddr.sin_family = AF_INET;
+	//////	serverAddr.sin_addr.s_addr = inet_addr( strIp );
+	////serverAddr.sin_port = htons( _ttoi( strPort ) );
+	//SetPTZAddr( ntohl( ptzServerAddr.sin_addr.s_addr ), 
+	//	CMCUSession::Instance()->CurVideoSession()->PtzPort() );
+ //   this->SetPtzCmdId( ptzOp );
 
-	int nSpeed;
-	if ( bPtz )
-	{
-		CConfig::Instance()->GetPtzSpeed( nSpeed );
-	}
-	else
-	{
-		CConfig::Instance()->GetLenSpeed( nSpeed );
-	}
+	//int nSpeed;
+	//if ( bPtz )
+	//{
+	//	CConfig::Instance()->GetPtzSpeed( nSpeed );
+	//}
+	//else
+	//{
+	//	CConfig::Instance()->GetLenSpeed( nSpeed );
+	//}
 
-	nSpeed = (nSpeed<3) ? 3:nSpeed;
-	SetParam( nSpeed, CMCUSession::Instance()->CurVideoSession()->StreamType() );
-	SetPuId( CMCUSession::Instance()->CurVideoSession()->PuId() );
-	SetUserId( CMCUSession::Instance()->UserId() );
+	//nSpeed = (nSpeed<3) ? 3:nSpeed;
+	//SetParam( nSpeed, CMCUSession::Instance()->CurVideoSession()->StreamType() );
+	//SetPuId( CMCUSession::Instance()->CurVideoSession()->PuId() );
+	//SetUserId( CMCUSession::Instance()->UserId() );
 
-	SendPTZCmd();
+	//SendPTZCmd();
 
-	return S_OK;
+	//return S_OK;
 }
 
 LRESULT CPTZDialog::OnPtzButtonUp( WPARAM btnId, LPARAM )
 {
 	// ·¢ËÍÍ£Ö¹ÃüÁî.
 	// ²»ÊÇÊý×ÖÔÆÌ¨,·¢ËÍÍ£Ö¹ÃüÁî.
-	if ( !this->IsDigitalPtz() )
-	{
-        this->SetPtzCmdId( PTZ_STOP );
-		this->SendPTZCmd();
-	}
+    if ( m_pPtzSender && !this->m_pPtzSender->IsDigitalPtz() )
+    {
+        m_pPtzSender->SendPtzCmd( PTZ_STOP );
+    }
+
+	//if ( !this->IsDigitalPtz() )
+	//{
+ //       this->SetPtzCmdId( PTZ_STOP );
+	//	this->SendPTZCmd();
+	//}
 
 	return S_OK;
 }
@@ -369,5 +384,10 @@ void CPTZDialog::UpdateLayout( LPCRECT prcClient /* = NULL */ )
 	}
 
 
+}
+
+void CPTZDialog::SetPtzSender( CVirtualPlayerWnd *pSender )
+{
+    this->m_pPtzSender = pSender;
 }
 

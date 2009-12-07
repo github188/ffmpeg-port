@@ -104,7 +104,7 @@ BOOL CHtmlWnd::OpenUrl( LPCTSTR lpstrUrl )
 	}
 	else
 	{
-        tstring strUrl = StringToUrl( lpstrUrl );
+//        tstring strUrl = StringToUrl( lpstrUrl );
 
 		// 先清空页面.
 		this->Clear();
@@ -112,9 +112,9 @@ BOOL CHtmlWnd::OpenUrl( LPCTSTR lpstrUrl )
 		// load the start page into the browser window
 		//strUrl = L"file://\\Program Files\\M_CU\\failhtml\\fail.htm";
 		//strUrl = L"file://\\Program Files\\MEGA EYES\\htmlfail\\fail.htm";
-		//LRESULT lr = ::SendMessage( m_hHtmlCtrlWnd, DTM_NAVIGATE, NAVIGATEFLAG_REFRESH, (LPARAM)strUrl );
-		LRESULT lr = ::SendMessage( m_hHtmlCtrlWnd, DTM_NAVIGATE, NAVIGATEFLAG_REFRESH, (LPARAM)strUrl.c_str() );
-		return lr;
+		LRESULT lr = ::SendMessage( m_hHtmlCtrlWnd, DTM_NAVIGATE, NAVIGATEFLAG_REFRESH, (LPARAM)lpstrUrl );
+		//LRESULT lr = ::SendMessage( m_hHtmlCtrlWnd, DTM_NAVIGATE, NAVIGATEFLAG_REFRESH, (LPARAM)strUrl.c_str() );
+		return (S_OK == lr );
 	}
 }
 BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
@@ -538,8 +538,14 @@ tstring CHtmlWnd::GetFailHtmlUrl() const
     LPCTSTR lpFailpage = _T( "htmldoc\\mcufail.htm" );//_T( "wait.htm" );
     tstring strModulePath = GetModulePath();
     tstring strDir = ParsePath( strModulePath.c_str() ).m_strDirectory;
-    tstring strFailHtml = _T( "file://" ) + strDir + lpFailpage;
 
+    // 做转换。
+    strDir = ::StringToUrl( strDir.c_str() );
+    tstring strFailPage = ::StringToUrl( lpFailpage );
+
+    tstring strFailHtml = _T( "file://" ) + strDir + strFailPage;
+
+    mcu::log << _T( "Fail html webpage: " ) << strFailHtml << endl;
 
     return strFailHtml;
 }

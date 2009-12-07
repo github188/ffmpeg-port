@@ -1,13 +1,14 @@
 #pragma once
 #include "afxwin.h"
 
-#include "PtzControl.h"
+//#include "PtzControl.h"
 #include "PtzButton.h"
 #include "uidialog.h"
+#include "mculib.h"
 
 // CPTZDialog 对话框
 
-class CPTZDialog : public CUIDialog, public CPtzControl
+class CPTZDialog : public CUIDialog/*, public CPtzControl*/
 {
 	DECLARE_DYNAMIC(CPTZDialog)
 
@@ -25,12 +26,18 @@ protected:
 
 public:
 	
-
+    /** 设置用于发送PTZ命令的指针。 */
+    void SetPtzSender( CVirtualPlayerWnd *pSender );
 
 private:
 
 	/** 布局控件。 */
 	void UpdateLayout( LPCRECT prcClient = NULL );
+
+private:
+
+    /** 用于发送PTZ。 */
+    CVirtualPlayerWnd *m_pPtzSender;
 
 public:
 //	afx_msg void OnBnClickedButtonPtzBright();

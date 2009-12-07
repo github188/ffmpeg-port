@@ -196,7 +196,7 @@ BOOL CWebpageDlg::OpenPlayer( CVideoSession *pVideoSession )
     CPlayerDialog *pPlayer = dynamic_cast< CPlayerDialog * >( CWindowFactory::Instance()->GetWnd( WndPlayer ) );
     if ( pPlayer )
     {
-        
+        pPlayer->Play( pVideoSession );
     }
     else
     {

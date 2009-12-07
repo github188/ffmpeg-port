@@ -60,9 +60,12 @@ END_MESSAGE_MAP()
 void CUITestDialog::OnBnClickedButtonPlayerDlgTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CPlayerDialog dlg;
+//	CPlayerDialog dlg;
 	CMCUSession::Instance()->CurVideoSession()->PtzControl( TRUE );
-	dlg.DoModal();
+//	dlg.DoModal();
+
+    CWindowFactory::Instance()->ShowWindow( WndPlayer, WndUnittestUI );
+
 }
 
 void CUITestDialog::OnBnClickedButtonLoginDialogTest()

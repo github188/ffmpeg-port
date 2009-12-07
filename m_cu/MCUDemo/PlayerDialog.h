@@ -79,6 +79,9 @@ public:
     /** 打开播放rtsp链接。 */
     BOOL Play( CVideoSession *pVs );
 
+    /** 通知子类，ShowWindow被调用了。 */
+    virtual void OnShowWindowCmd( int nSWCmd );
+
 private:
 	/** 视频显示窗口. */
 	CVideoWndDialog m_cVideoWnd;
@@ -102,9 +105,6 @@ private:
 	/** ptz菜单。 */
 	CMenu m_menuPtz;
 
-	/** ptz 子菜单。 */
-	CMenu *m_pSubPtzMenu;
-
 private:
 
 	/** 调整窗口布局. */
@@ -114,7 +114,7 @@ private:
 	BOOL HasPtz() const;
 
 	/** 调整菜单状态。*/
-	void UpdateMenu();
+//	void UpdateMenu();
 
 	/** 窗口遍历回调.在回调中处理掉menu_worker窗口. */
 	static BOOL CALLBACK  WindowsEnumCBForFulscreen( HWND hWnd, LPARAM param );
