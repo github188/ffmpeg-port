@@ -372,7 +372,7 @@ BOOL CConfig::SetIsSave( BOOL bIsSave )
 BOOL CConfig::GetRegionId( tstring& strRegionId )
 {
 	strRegionId = this->ReadConfig( CONFIG_ENTRY_REGION, CONFIG_DEFAULT_REGION );	//AfxGetApp()->GetProfileString( CONFIG_SECTION_CONFIG_NAME, CONFIG_ENTRY_REGION, CONFIG_DEFAULT_REGION );
-	return ( strRegionId.empty() );
+	return ( !strRegionId.empty() );
 }
 
 BOOL CConfig::SetReginId( LPCTSTR strRegionId )
@@ -453,7 +453,7 @@ BOOL CConfig::GetAppTitle( tstring& strAppTitle )
 {
 	tstring strAppName = ::GetAppName();
 	strAppTitle = this->ReadConfig( CONFIG_ENTRY_APP_TITLE, strAppName.c_str() );
-	return strAppTitle.empty();
+	return ( !strAppTitle.empty() );
 }
 
 BOOL CConfig::GetMinStorageSpace( int& nMinSpace )

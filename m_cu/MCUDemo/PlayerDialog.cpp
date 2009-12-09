@@ -201,6 +201,8 @@ BOOL CPlayerDialog::Play( CVideoSession *pVs )
         // ½«Êý×Öptz¹éÎ»¡£
         this->m_cVideoWnd.SetDigitalPtz( FALSE );
 
+        this->UpdateCtrlStatus();
+
 
         return bResult;
     }
@@ -216,6 +218,31 @@ BOOL CPlayerDialog::Play( CVideoSession *pVs )
 BOOL CPlayerDialog::HasPtz()const
 {
 	return CMCUSession::Instance()->CurVideoSession()->PtzControl();
+}
+
+void CPlayerDialog::UpdateCtrlStatus()
+{
+    this->UpdateRecordButton();
+
+    // ptz °´Å¥¡£
+    if ( this->m_btnPtz.GetSafeHwnd() )
+    {
+        this->m_btnPtz.EnableWindow( this->HasPtz() );
+    }
+
+    if( m_btnPause.GetSafeHwnd() )
+    {
+        BOOL bIsPause = m_cVideoWnd.IsPause();
+        if ( bIsPause )
+        {
+            this->m_btnPause.SetImage( _T( "btn_player_play_normal.jpg" ), _T( "btn_player_play_focus.jpg" ), _T( "btn_player_play_disable.jpg" ), TRUE );
+        }
+        else
+        {
+            this->m_btnPause.SetImage( _T( "btn_player_pause_normal.jpg" ), _T( "btn_player_pause_focus.jpg" ), _T( "btn_player_pause_disable.jpg" ), TRUE );
+        }
+    }   
+
 }
 
 void CPlayerDialog::UpdateLayout( LPRECT lprcClient /* =/* = NULL */ )
@@ -257,11 +284,7 @@ void CPlayerDialog::UpdateLayout( LPRECT lprcClient /* =/* = NULL */ )
 		rcLeftSpace.top += nLogoHeight;
 	}
 
-    // ptz °´Å¥¡£
-    if ( this->m_btnPtz.GetSafeHwnd() )
-    {
-        this->m_btnPtz.EnableWindow( this->HasPtz() );
-    }
+    this->UpdateCtrlStatus();
 
 
 	// ÏÂ±ß²Ëµ¥Ìõ¡£
@@ -445,13 +468,24 @@ LRESULT CPlayerDialog::OnVideoFail( WPARAM eErrorCode, LPARAM )
 	return S_OK;
 }
 
-LRESULT CPlayerDialog::OnRecordFail( WPARAM errorCode, LPARAM )
+LRESULT CPlayerDialog::OnRecordFail( WPARAM wpErrorCode, LPARAM )
 {
-	EMCU_ErrorCode eErrorCode = EMCU_ErrorCode( errorCode );
+	EMCU_ErrorCode eErrorCode = EMCU_ErrorCode( wpErrorCode );
 
 	this->UpdateRecordButton();
 
-	MessageBox( _T( "´æ´¢¿Õ¼ä²»×ã£¬Â¼ÏñÍ£Ö¹£¡" ) );
+    switch( eErrorCode )
+    {
+    case MCU_Error_Storage_Full:
+        MessageBox( _T( "´æ´¢¿Õ¼ä²»×ã£¬Â¼ÏñÍ£Ö¹£¡" ) );
+    	break;
+    case MCU_Error_PlayStop:
+    default:
+        mcu::log << _T( "Player wnd receive Reord error MCU_Error_PlayStop message." ) << endl;
+        break;
+    }
+
+	
 	return S_OK;
 }
 
@@ -567,15 +601,7 @@ void CPlayerDialog::OnBnClickedButtonPause()
     mcu::log << _T( "pause cmd: ") << !bIsPause << _T(" result " ) << bResult << endl;
 
 	// ÇÐ»»°´Å¥×´Ì¬¡£
-	bIsPause = m_cVideoWnd.IsPause();
-	if ( bIsPause )
-	{
-		this->m_btnPause.SetImage( _T( "btn_player_play_normal.jpg" ), _T( "btn_player_play_focus.jpg" ), _T( "btn_player_play_disable.jpg" ), TRUE );
-	}
-	else
-	{
-		this->m_btnPause.SetImage( _T( "btn_player_pause_normal.jpg" ), _T( "btn_player_pause_focus.jpg" ), _T( "btn_player_pause_disable.jpg" ), TRUE );
-	}
+    this->UpdateCtrlStatus();
 }
 
 void CPlayerDialog::OnBnClickedButtonRecord()
@@ -727,15 +753,18 @@ void CPlayerDialog::OnBnClickedButtonPtz()
 
 void CPlayerDialog::UpdateRecordButton()
 {
-	BOOL bRecording = this->m_cVideoWnd.IsRecording();
-	if ( bRecording )
-	{
-		this->m_btnRecord.SetImage( _T( "btn_player_recording_normal.jpg" ), _T( "btn_player_recording_focus.jpg" ), _T( "btn_player_recording_disable.jpg" ), TRUE );
-	}
-	else
-	{
-		this->m_btnRecord.SetImage( _T( "btn_player_record_normal.jpg" ), _T( "btn_player_record_focus.jpg" ), _T( "btn_player_record_disable.jpg" ), TRUE );
-	}
+    if ( this->m_btnRecord.GetSafeHwnd() )
+    {
+        BOOL bRecording = this->m_cVideoWnd.IsRecording();
+        if ( bRecording )
+        {
+            this->m_btnRecord.SetImage( _T( "btn_player_recording_normal.jpg" ), _T( "btn_player_recording_focus.jpg" ), _T( "btn_player_recording_disable.jpg" ), TRUE );
+        }
+        else
+        {
+            this->m_btnRecord.SetImage( _T( "btn_player_record_normal.jpg" ), _T( "btn_player_record_focus.jpg" ), _T( "btn_player_record_disable.jpg" ), TRUE );
+        }
+    }	
 }
 
 //tstring CPlayerDialog::GetFileName( LPCTSTR strDir, LPCTSTR lpPuName, LPCTSTR strFileExt )

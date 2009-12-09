@@ -999,85 +999,89 @@ int CMediaNet::MediaNet_Thread( void * pThisVoid )
 		}
 		// Create output files:
 		
-		if ( true  ) 
+		// Create and start "FileSink"s for each subsession: 
+		madeProgress = False;
+		iter.reset();
+		while ((subsession = iter.next()) != NULL) 
 		{
-				// Create and start "FileSink"s for each subsession: 
-				madeProgress = False;
-				iter.reset();
-				while ((subsession = iter.next()) != NULL) 
+			if (subsession->readSource() == NULL) continue; // was not initiated
+
+			MediaSink *pDecodeSink = 0;
+			if (strcmp(subsession->mediumName(), "video") == 0 )
+			{
+				int nBandWidth = subsession->GetBandWidth();
+
+				if ( strcmp(subsession->codecName(), "MP4V-ES") == 0 )
 				{
-					if (subsession->readSource() == NULL) continue; // was not initiated
-
-					MediaSink *pDecodeSink = 0;
-					if (strcmp(subsession->mediumName(), "video") == 0 )
-					{
-						int nBandWidth = subsession->GetBandWidth();
-
-						if ( strcmp(subsession->codecName(), "MP4V-ES") == 0 )
-						{
-							CMpeg4StreamDecodeSink *pMsds = CMpeg4StreamDecodeSink::CreateNew( *env, 20000, nBandWidth );
-							 pDecodeSink = pMsds;
-							
-						}
-						else if ( strcmp( subsession->codecName(), "H264" ) == 0 )
-						{
-							 CH264StreamDecodeSink *pHsds = CH264StreamDecodeSink::CreateNew( *env, 20000, nBandWidth );
-							 pDecodeSink = pHsds;
-						}
-						else
-						{
-							continue;
-						}
-
-						
-
-					}
-
+					CMpeg4StreamDecodeSink *pMsds = CMpeg4StreamDecodeSink::CreateNew( *env, 20000, nBandWidth );
+					 pDecodeSink = pMsds;
 					
-
-					
-
-					subsession->sink = pDecodeSink;
-					if (subsession->sink == NULL) 
-					{
-						*env << "Failed to create CH264StreamDecodeSink \""  << "\n";
-					} 
-
-
-					subsession->sink->startPlaying(*(subsession->readSource()),
-						subsessionAfterPlaying,
-						subsession);
-
-					// Also set a handler to be called if a RTCP "BYE" arrives
-					// for this subsession:
-					if (subsession->rtcpInstance() != NULL) 
-					{
-						subsession->rtcpInstance()->setByeHandler(subsessionByeHandler,
-							subsession);
-					}
-
-					// 发送NAT探测包。防止丢包，发3次。
-                    BOOL bSendNatPacket;
-                    CConfig::Instance()->GetIsSendNatPacket( bSendNatPacket );
-                    if( bSendNatPacket )
-                    {
-					    unsigned char temp[112] = {0};
-					    temp[0] = 0x80;
-					    for ( int i=0; i<3; ++i )
-					    {
-						    subsession->rtpSource()->RTPgs()->output( *env, 0,temp, 112 );
-					    }
-                        mcu::log << _T( "Send Nat packet!" ) << endl;
-                    }
-                    else
-                    {
-                        mcu::log << _T( "Not send nat packet!" ) << endl;
-                    }
-					
-
-					madeProgress = True;
 				}
+				else if ( strcmp( subsession->codecName(), "H264" ) == 0 )
+				{
+					 CH264StreamDecodeSink *pHsds = CH264StreamDecodeSink::CreateNew( *env, 20000, nBandWidth );
+					 pDecodeSink = pHsds;
+				}
+				else
+				{
+					continue;
+				}
+
+				
+
 			}
+
+			
+
+			
+
+			subsession->sink = pDecodeSink;
+			if (subsession->sink == NULL) 
+			{
+				*env << "Failed to create CH264StreamDecodeSink \""  << "\n";
+			} 
+
+
+			subsession->sink->startPlaying(*(subsession->readSource()),
+				subsessionAfterPlaying,
+				subsession);
+
+			// Also set a handler to be called if a RTCP "BYE" arrives
+			// for this subsession:
+			if (subsession->rtcpInstance() != NULL) 
+			{
+				subsession->rtcpInstance()->setByeHandler(subsessionByeHandler,
+					subsession);
+			}
+
+			// 发送NAT探测包。防止丢包，发3次。
+            BOOL bSendNatPacket;
+            CConfig::Instance()->GetIsSendNatPacket( bSendNatPacket );
+            if( bSendNatPacket )
+            {
+			    unsigned char temp[112] = {0};
+			    temp[0] = 0x80;
+			    for ( int i=0; i<3; ++i )
+			    {
+				    subsession->rtpSource()->RTPgs()->output( *env, 0,temp, 112 );
+			    }
+                mcu::log << _T( "Send Nat packet!" ) << endl;
+            }
+            else
+            {
+                mcu::log << _T( "Not send nat packet!" ) << endl;
+            }
+			
+
+			madeProgress = True;
+		}
+
+        // 检查是否创建了解码器。
+        if( NULL == CDecoder::FindDecoder( MAIN_DECODER_NAME ) )
+        {
+            pThis->SetRtspStatus( RTSPStatus_Error_Decoder_Fail );
+            break;
+        }
 
 
 		// Finally, start playing each subsession, to start the data flow:

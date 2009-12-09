@@ -27,14 +27,9 @@ CVideoWndDialog::CVideoWndDialog(  CWnd* pParent /*=NULL*/)
 	m_pSDLThread( NULL ),
 	m_bFullScreenMode( FALSE )
 {
-	//m_dwStatusUpdateTimerId = 0;
-	//m_nTimeoutRTSPFail = TIMEOUT_RTSP_FAIL;
-	//m_bCheckRtspTimeout = FALSE;
-	//m_bCheckRtspError = FALSE;
-	//m_nTimeoutNoPacket = TIMEOUT_NO_PACKET;
-	//m_bCheckNoPacketTimeout = FALSE;
 	m_timeLastMouseClick =0;
-//	m_bPause = FALSE;
+    m_prcVideoShow = NULL;
+    m_prcVideoShow = new SDL_Rect();
 }
 
 CVideoWndDialog::~CVideoWndDialog()
@@ -83,11 +78,15 @@ BOOL CVideoWndDialog::OnInitDialog()
 	bResult = this->InitSDL();
 	if ( !bResult )
 	{
-		mcu::log << _T( "Only one video window is permit at one time！！！" ) << endl;
-		_ASSERT( FALSE );
-		EndDialog( 0 );
-		return FALSE;
+		mcu::log << _T( "Init SDL fail! Maybe Only one video window is permit at one time！！！" ) << endl;
 	}
+
+    bResult = m_frameBuffer.Init( 10 );
+    if ( !bResult )
+    {
+        mcu::log << _T( "Init frame buffer fail!!!!" ) << endl;
+    }
+    m_frameBuffer.SetFrameCallback( OnBufferdVideoFrameShowS, this );
 
 
 	// 设置解码回调。
@@ -214,7 +213,7 @@ int CVideoWndDialog::SDL_ThreadFunc( void *param )
 	SDL_WM_SetCaption("M_CUDemo", "mcu" );
 
 
-	SDL_Rect rcClient = pThis->m_rcVideoShow;
+	SDL_Rect rcClient = *( pThis->m_prcVideoShow );
 
 	int videoFlags = SDL_HWSURFACE|SDL_ASYNCBLIT|SDL_HWACCEL;
 //	int w,h;
@@ -565,10 +564,10 @@ void CVideoWndDialog::OnSize(UINT nType, int cx, int cy)
 	CDialog::OnSize(nType, cx, cy);
 
 	// TODO: 在此处添加消息处理程序代码
-	m_rcVideoShow.x = 0;
-	m_rcVideoShow.y = 0;
-	m_rcVideoShow.w = cx;
-	m_rcVideoShow.h = cy;
+	m_prcVideoShow->x = 0;
+	m_prcVideoShow->y = 0;
+	m_prcVideoShow->w = cx;
+	m_prcVideoShow->h = cy;
 
 
 	SDL_Event sdlEvent;
@@ -873,6 +872,26 @@ void CVideoWndDialog::OnLButtonDblClk(UINT nFlags, CPoint point)
 
 void CVideoWndDialog::OnVideoPicture( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo )
 {
+    SCOPE_LOCK( m_threadSafeLock );
+
+    this->m_frameBuffer.InputFrame( *pic, *pFrameInfo );
+}
+
+void CVideoWndDialog::OnBufferdVideoFrameShowS( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo, void *userData )
+{
+    CVideoWndDialog *pThis = ( CVideoWndDialog *)userData;
+    if ( pThis )
+    {
+        pThis->OnBufferdVideoFrameShow( pic, pFrameInfo );
+    }
+    else
+    {
+        mcu::log << _T( "Video wnd buffer video frame show S this is NULL!" ) << endl;
+    }
+}
+
+void CVideoWndDialog::OnBufferdVideoFrameShow( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo )
+{
  //   mcu::log << _T( "CVideoWndDialog Video pic callback!" ) << endl;
 	SCOPE_LOCK( m_threadSafeLock );
 
@@ -937,10 +956,10 @@ void CVideoWndDialog::OnVideoPicture( const CBaseCodec::TVideoPicture *pic, cons
 	const int conBlackBorderOffset = -2;
 	SDL_Rect rect;
 
-	if ( nWidth * m_pSDLSurface->h > nHeight * m_rcVideoShow.w )
+	if ( nWidth * m_pSDLSurface->h > nHeight * m_prcVideoShow->w )
 	{
 		// 图像宽高比大于显示区域宽高比,说明要按照宽度调整.
-		rect.h = nHeight * m_rcVideoShow.w / nWidth ;
+		rect.h = nHeight * m_prcVideoShow->w / nWidth ;
 		rect.w = m_pSDLSurface->w;
 	}
 	else
@@ -991,7 +1010,7 @@ void CVideoWndDialog::OnRtspStatus( const ERTSPStatus eRtspStatus, const EMCU_Er
         break;
     case RTSPStatus_Error_Server_Full:
         strShowVideoStatus = _T( "服务器的转码能力不足" );
-        this->GetParent()->PostMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Server_Full, 0 );
+        this->GetParent()->PostMessage( WM_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Server_Full, 0 );
         break;
     case RTSPStatus_Error_Unknown:    
     case RTSPStatus_Error_Init_Fail:
@@ -1002,8 +1021,12 @@ void CVideoWndDialog::OnRtspStatus( const ERTSPStatus eRtspStatus, const EMCU_Er
     case RTSPStatus_Error_SDP:
     case RTSPStatus_Error_Create_Rcv:
     case RTSPStatus_Error_WaitPacket:
-        this->GetParent()->PostMessage( WM_VIDEO_WND_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Fail, 0 );
+        this->GetParent()->PostMessage( WM_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Fail, 0 );
         strShowVideoStatus = _T( "播放错误" );
+        break;
+    case RTSPStatus_Error_Decoder_Fail:
+        this->GetParent()->PostMessage( WM_VIDEO_OPEN_FAIL, MCU_Error_Decoder_Null, 0 );
+        strShowVideoStatus = _T( "解码器创建失败" );
         break;
     default:
         break;

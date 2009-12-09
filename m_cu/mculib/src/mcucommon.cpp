@@ -554,6 +554,7 @@ mu_uint64 GetDirFreeSpace( LPCTSTR strDirPath )
     else
     {
         mcu::log << _T( "GetDiskFreeSpaceEx Fail! " ) << endl;
+        return 0;
     }
 
 }

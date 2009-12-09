@@ -21,6 +21,7 @@
 #include "virtualpicmanagewnd.h"
 
 #include "videoshow.h"
+#include "framebuffer.h"
 
 #include "ptzcontrol.h"
 

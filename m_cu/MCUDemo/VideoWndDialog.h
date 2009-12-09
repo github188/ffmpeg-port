@@ -1,19 +1,14 @@
 #pragma once
 
-#include "MediaNet.h"
-#include "SDL.h"
-#include "decoder.h"
+
 #include "staticex.h"
-
-#ifdef USE_FFMPEG
-#include "ffplay.h"
-#endif
-
 #include "PTZDialog.h"
-#include "ScopeLock.h"
-#include "afxwin.h"
+//#include "afxwin.h"
 
 #include "mculib.h"
+
+struct SDL_Rect;
+
 // CVideoWndDialog 对话框
 
 class CVideoWndDialog : public CDialog, public CVirtualPlayerWnd
@@ -80,24 +75,29 @@ protected:
     /** 录像状态回调。 */
     virtual void OnRecordStatus( BOOL bSuccess, EMCU_ErrorCode er );
 
+    /** 图像帧数据回调。经过缓存。 */
+    static void OnBufferdVideoFrameShowS( const CBaseCodec::TVideoPicture *pic, 
+        const CBaseCodec::TVideoFrameInfo *pFrameInfo,
+        void *userData );
+
+    /** 图像帧数据回调。经过缓存。 */
+    void OnBufferdVideoFrameShow( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo );
+
 private:
 
 	enum SDL_MCU_Event
 	{
-		SDL_WM_FULLSCREEN = SDL_USEREVENT + 1,	// 全屏控制. data1: 全屏
+//		SDL_WM_FULLSCREEN = SDL_USEREVENT + 1,	// 全屏控制. data1: 全屏
 	
-	};
-
-	enum WM_MCU_VIDEO_WND_MESSAGE
-	{
-		WM_VIDEO_WND_VIDEO_OPEN_FAIL = WM_VIDEO_OPEN_FAIL,	// 视频浏览失败。WParam: EVideoPlayErrorCode，错误码。
-		WM_VIDEO_WND_RECORD_FAIL = WM_RECORD_FAIL,			// 录像失败。
 	};
 
 
 private:
 //	CMediaNet m_MediaNet;
 //	CString m_strRtspUrl;
+
+    /** 帧缓存。 */
+    CFrameBuffer m_frameBuffer;
 
 	/** SDL 线程句柄。 */
 	SDL_Thread *m_pSDLThread;
@@ -106,7 +106,7 @@ private:
 	SDL_Overlay *m_pSDLOverlay;
 
 	/** 显示区域大小. */
-	SDL_Rect m_rcVideoShow; 
+	SDL_Rect* m_prcVideoShow; 
 
 	/** SDL surface */
 	SDL_Surface *m_pSDLSurface;

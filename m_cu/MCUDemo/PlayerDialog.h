@@ -109,6 +109,9 @@ private:
 
 	/** 调整窗口布局. */
 	void UpdateLayout( LPRECT lprcClient = NULL );
+    
+    /** 调整窗口控件状态。 */
+    void UpdateCtrlStatus();
 
 	/** 是否有ptz权限。 */
 	BOOL HasPtz() const;

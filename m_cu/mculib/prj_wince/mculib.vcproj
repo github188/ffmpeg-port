@@ -602,6 +602,14 @@
 			</File>
 		</Filter>
 		<File
+			RelativePath="..\src\framebuffer.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\include\framebuffer.h"
+			>
+		</File>
+		<File
 			RelativePath="..\..\htmldoc\mcufail.htm"
 			DeploymentContent="true"
 			>

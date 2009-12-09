@@ -19,7 +19,8 @@ CVirtualPlayerWnd::CVirtualPlayerWnd(void)
 
 CVirtualPlayerWnd::~CVirtualPlayerWnd(void)
 {
-	SCOPE_LOCK( m_threadSafeLock );
+    // 不能加锁，否则等待退出线程时会死锁。
+//	SCOPE_LOCK( m_threadSafeLock );
 
 	// 停止监测。
 	this->StopCheckThread();
@@ -33,6 +34,9 @@ BOOL CVirtualPlayerWnd::StartPlay( CVideoSession *pVideoSession, EMCU_ErrorCode&
 
 	// 不管如何，开始监测状态。反正不会重复开始。
 	this->StartCheckThread();
+
+    // 暂停改成False。
+    this->m_bPause = FALSE;
 
 	BOOL bResult = FALSE;
 	if( pVideoSession )
@@ -94,6 +98,16 @@ BOOL CVirtualPlayerWnd::IsPause() const
 BOOL CVirtualPlayerWnd::StopPlay()
 {
 	SCOPE_LOCK( m_threadSafeLock );
+
+    if ( this->IsRecording() )
+    {
+        EMCU_ErrorCode er;
+        BOOL bResult = this->StopRecord( er );
+
+        mcu::PostMsg( this, WM_RECORD_FAIL, MCU_Error_PlayStop, 0 );
+
+        mcu::log << _T( "Stop play when recording post WM_RECORD_FAIL msg.. stop record ret:" ) << bResult << _T( " er: " ) << er << endl;
+    }
 
 	mcu::log << _T( "CVirtualPlayerWnd::StopPlay" ) << endl;
 	return this->m_MediaNet.CloseRTSP();
@@ -253,7 +267,8 @@ void CVirtualPlayerWnd::StartCheckThread()
 
 void CVirtualPlayerWnd::StopCheckThread()
 {
-	SCOPE_LOCK( m_threadSafeLock );
+    // 这里不能加锁，否则会造成锁死！！！
+//	SCOPE_LOCK( m_threadSafeLock );
 
 	if ( m_pStatusCheckThread )
 	{
@@ -316,6 +331,7 @@ void CVirtualPlayerWnd::CheckStatsu()
 	case RTSPStatus_Error_Play:		
 	case RTSPStatus_Error_SDP:			// 解析sdp信息出错。
 	case RTSPStatus_Error_Create_Rcv:	// 码流接收创建失败
+    case RTSPStatus_Error_Decoder_Fail:
 //		mcu::PostMsg( this, WM_VIDEO_OPEN_FAIL, MCU_Error_Rtsp_Fail, eStatus );
         eErrorCode = MCU_Error_Rtsp_Fail;
 		m_bCheckStatus = FALSE;

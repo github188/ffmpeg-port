@@ -235,25 +235,31 @@ LRESULT CUIDialog::OnScreenOrientation( WPARAM, LPARAM )
 		{
 		case DMDO_0:
 			settings.dmDisplayOrientation = DMDO_90;
+            // 设置标志,下面翻转.
+            bNeedChange = TRUE;		
 			break;
 		case DMDO_90:
 			settings.dmDisplayOrientation = DMDO_180;
+            // 设置标志,下面翻转.
+            bNeedChange = FALSE;		
 			break;
 		case DMDO_180:
 			settings.dmDisplayOrientation = DMDO_270;
+            // 设置标志,下面翻转.
+            bNeedChange = TRUE;		
 			break;
 		case DMDO_270:
 			settings.dmDisplayOrientation = DMDO_0;
+            // 设置标志,下面翻转.
+            bNeedChange = FALSE;		
 			break;
 		default:
 			_ASSERT( FALSE );
 			break;
 		}
 		// 需要销毁时自动恢复.
-		this->m_bChangeScreenMode = TRUE;
-
-		// 设置标志,下面翻转.
-		bNeedChange = TRUE;		
+		this->m_bChangeScreenMode = bNeedChange;
+		
 	}
 	else if( this->HasCmd( FS_ResumeScreen ) )
 	{

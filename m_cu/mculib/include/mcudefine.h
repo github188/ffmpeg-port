@@ -73,6 +73,7 @@ enum EMCU_ErrorCode
 	MCU_Error_Rtsp_Server_Full,		// 服务器达到了最大转码能力。
 	MCU_Error_Decoder_Null,			// 解码库没有初始化。
 	MCU_Error_Rtsp_Fail,			// RTSP交互失败。
+    MCU_Error_PlayStop,             // 录像等遇到停止播放。
 };
 
 //M_CU发给VAU的摄像头控制命令
@@ -122,6 +123,7 @@ enum ERTSPStatus
 	RTSPStatus_Error_SDP,			// 解析sdp信息出错。
 	RTSPStatus_Error_Create_Rcv,	// 码流接收创建失败。
     RTSPStatus_Error_WaitPacket,    // 等待码流失败（超时）
+    RTSPStatus_Error_Decoder_Fail,  // 解码器错误。
 
 };
 

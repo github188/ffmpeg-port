@@ -96,6 +96,8 @@ void CLoginDialog::OnBnClickedButtonLogin()
     UpdateData();
     SaveConfig();
 
+    this->m_edUserId.SetFocus();
+
     this->LoginIn( LOGIN_NORMAL );
 
     // 清除焦点。
@@ -200,24 +202,16 @@ BOOL CLoginDialog::OnInitDialog()
     this->m_btnSip.SetBkTransparent( FALSE, FALSE );
     this->m_btnSip.SetImage( _T( "btn_sip_normal.jpg" ), _T( "btn_sip_focus.jpg" ), _T( "btn_sip_disable.jpg" ), FALSE );
 
-    //
-    //SHMENUBARINFO shmbi;
 
-    //// Create our softkey bar
-    //// 如果不是最后创建可能就显示不出来了.
-    //ZeroMemory(&shmbi, sizeof(shmbi));
-    //shmbi.cbSize = sizeof(shmbi);
-    //shmbi.hwndParent = GetSafeHwnd();
-    //shmbi.dwFlags = SHCMBF_HMENU;
-    //shmbi.nToolBarId = IDR_MENU_LOGIN;
-    //shmbi.hInstRes = AfxGetInstanceHandle();
-    //if (!SHCreateMenuBar(&shmbi))
-    //{
-    //	// Failed!!
-    //	MessageBox( TEXT( "创建菜单失败！！" ) );
-    //	return FALSE;
-    //}
-    //m_hSoftKeyBar = shmbi.hwndMB;
+    // 设置标题。
+    tstring strTitle;
+    BOOL bResult = CConfig::Instance()->GetAppTitle( strTitle );
+    if ( !bResult )
+    {
+        mcu::log << _T( "Get App title fail!" ) << endl;
+        strTitle = _T( "MCU" ) ;
+    }
+    this->SetWindowText( strTitle.c_str() );
 
     this->FullScreen( FS_HideMenuBar | FS_HideSipButton );
 
@@ -522,9 +516,10 @@ void CLoginDialog::UpdateLayout( LPCRECT prcClient /* = NULL */ )
         m_btnLoginThisPhone.MoveWindow( rcNewLoginDir );
     }
 
-    CWnd* pAcountName = GetDlgItem( IDC_EDIT_UERID);
-    pAcountName->SetFocus();
-
+    if ( this->IsWindowVisible() )
+    {
+//        this->m_edUserId.SetFocus();
+    }
 }
 void CLoginDialog::OnMenuPic()
 {
@@ -645,6 +640,7 @@ BOOL CLoginDialog::CheckAndAlert( ELoginType eLoginType )
 void CLoginDialog::OnEnSetfocusEditUerid()
 {
     // TODO: 在此添加控件通知处理程序代码
+
     BOOL bRaise = this->IsSipRaise();
     if ( !bRaise )
     {
@@ -655,6 +651,7 @@ void CLoginDialog::OnEnSetfocusEditUerid()
 void CLoginDialog::OnEnSetfocusEditPassword()
 {
     // TODO: 在此添加控件通知处理程序代码
+
     BOOL bRaise = this->IsSipRaise();
     if ( !bRaise )
     {
