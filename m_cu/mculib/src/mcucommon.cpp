@@ -305,8 +305,8 @@ BOOL IsFileExist( LPCTSTR strPath )
 #ifdef _WIN32
 	DWORD dwFA = ::GetFileAttributes( strPath );
 	return dwFA != -1;
-#else
-	BOOL bExist = ( _taccess( strPath, 0 ) == 0 ); 
+#else	
+	BOOL bExist = ( _taccess( strPath, 0 ) == 0 ); 	
 	return bExist;
 #endif
 }
@@ -327,7 +327,7 @@ BOOL DelFile( LPCTSTR strFile )
 #ifdef _WIN32_WCE
 	return ::DeleteFile( strFile );
 #else
-	int nResult = unlink( strFile );
+	int nResult = _tunlink( strFile );
 	return ( 0 == nResult );
 #endif
 }
@@ -421,7 +421,7 @@ TFileList EnumAllFile( LPCTSTR strFolder )
 {
 	TFileList tFiles;
 #ifdef _WIN32
-#else
+#elif !defined( __SYMBIAN32__ )
 	DIR * pDir = opendir( strFolder );
 	if( NULL != pDir )
 	{
@@ -500,8 +500,8 @@ tstring StringToUrl( LPCTSTR strStr )
             mu_uint8 cHigh = 0xff & ( nChar >> 8 );
             mu_uint8 cLow = 0xff & nChar;
 
-            ssRet << _T( "%" ) << setbase( 16 ) << unsigned int(cLow) ;
-            ssRet << _T( "%" ) << setbase( 16 ) << unsigned int(cHigh);
+            ssRet << _T( "%" ) << setbase( 16 ) << (unsigned int)(cLow) ;
+            ssRet << _T( "%" ) << setbase( 16 ) << (unsigned int)(cHigh);
 
         }
         else
@@ -544,6 +544,7 @@ tstring StringToUrl( LPCTSTR strStr )
 
 mu_uint64 GetDirFreeSpace( LPCTSTR strDirPath )
 {
+#if defined( _WIN32_WCE )
     ULARGE_INTEGER nFreeSpaceToCaller, nTotalSpace, nFreeSpace;
 
     BOOL bResult = ::GetDiskFreeSpaceEx( strDirPath, &nFreeSpaceToCaller, &nTotalSpace, &nFreeSpace );
@@ -556,6 +557,6 @@ mu_uint64 GetDirFreeSpace( LPCTSTR strDirPath )
         mcu::log << _T( "GetDiskFreeSpaceEx Fail! " ) << endl;
         return 0;
     }
-
+#endif
 }
 
