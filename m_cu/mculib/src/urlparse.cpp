@@ -12,6 +12,9 @@ CUrlParse::~CUrlParse(void)
 BOOL CUrlParse::Parse( LPCTSTR strUrl )
 {
 	m_strUrl = strUrl;
+    this->m_strProtocol.clear();
+    this->m_strServerName.clear();
+    this->m_tParamTable.clear();
 
 	tstring::const_iterator iter = m_strUrl.begin();
 
@@ -25,7 +28,17 @@ BOOL CUrlParse::Parse( LPCTSTR strUrl )
 			ssParamName.str(_T(""));
 			break;
 		case ':':	// 协议结束.
-			m_strProtocol = ssProtocol.str();
+			if( m_strProtocol.empty() )
+			{
+				m_strProtocol = ssProtocol.str();
+			}	
+            else
+            {
+                // 协议已经解析出来了，剩下的不是协议，是其它数据。
+                ssProtocol << *iter;
+                ssParamName << *iter;
+                ssParamValue << *iter;
+            }
 			break;
 		case '=':
 			strParamName = ssParamName.str();	// 取参数名.
@@ -101,3 +114,14 @@ BOOL CUrlParse::ParamValue( LPCTSTR strParamName, int & iParamValue ) const
 	}
 	return bResult;
 }
+
+tstring CUrlParse::Protocol() const
+{
+    return m_strProtocol;
+}
+
+//tstring CUrlParse::Server() const
+//{
+//    return m_strServerName;
+//}
+

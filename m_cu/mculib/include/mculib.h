@@ -11,6 +11,7 @@
 #include "basecodec.h"
 #include "message.h"
 #include "mcuconfig.h"
+#include "urlparse.h"
 
 #include "unittestmain.h"
 

@@ -872,8 +872,10 @@ void CVideoWndDialog::OnLButtonDblClk(UINT nFlags, CPoint point)
 
 void CVideoWndDialog::OnVideoPicture( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo )
 {
-    SCOPE_LOCK( m_threadSafeLock );
-
+    // 不需要加锁！因为frameBuffer里面会做多线程同步处理。
+    // 加锁后反而会造成frameBuffer回调时死锁！
+//    SCOPE_LOCK( m_threadSafeLock );
+    
     this->m_frameBuffer.InputFrame( *pic, *pFrameInfo );
 }
 

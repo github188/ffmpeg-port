@@ -457,6 +457,7 @@ LRESULT CPlayerDialog::OnVideoFail( WPARAM eErrorCode, LPARAM )
 	else if( IDYES == MessageBox( _T( "连接视频服务器失败！是否重试？" ), _T( "" ), MB_YESNO ) )
 	{
 		//this->EndDialog( E_DlgEndRetry );
+        mcu::log << _T( "OnRtspClose E_DlgEndRetry call! " ) << endl;
 		OnRtspClose(E_DlgEndRetry);
 	}
 	else
@@ -833,7 +834,10 @@ void CPlayerDialog::OnUserClose()
 void CPlayerDialog::OnRtspClose(int nErrorCode)
 {
 	//如果正在录像 停止当前录像录像
+//    mcu::log << _T( "CPlayerDialog::OnRtspClose begin! " ) << endl;
 	BOOL bRecording = this->m_cVideoWnd.IsRecording();
+
+    mcu::log << _T( "CPlayerDialog::OnRtspClose is rec:" ) << bRecording << endl;
 	if ( bRecording )
 	{
         EMCU_ErrorCode er;
@@ -841,18 +845,18 @@ void CPlayerDialog::OnRtspClose(int nErrorCode)
 		mcu::log << _T( "stop record result: " ) << bResult << endl;
 	}
 
+//     mcu::log << _T( "before OnMenuRestore! " ) << endl;
 	this->OnMenuRestore();
 
     // 清理屏幕。
+//    mcu::log << _T( "before clear screen! " ) << endl;
     this->m_cVideoWnd.ClearScreen();
 
     if ( nErrorCode == E_DlgEndRetry )
     {
         // this->m_cVideoWnd.SetRstpUrl( m)
-        // 暂时关闭。
-//        mcu::log << _T( "应该重新连接服务器。" ) << endl;
 //        __super::OnOK();
-
+        mcu::log << _T( "befre Restart video play. ret: " ) << endl;
         BOOL bResult = this->m_cVideoWnd.RestartPlay();
         mcu::log << _T( "Restart video play. ret: " ) << bResult << endl;
     }

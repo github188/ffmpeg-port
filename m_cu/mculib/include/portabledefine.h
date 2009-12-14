@@ -14,7 +14,7 @@
 // This is a GCCE toolchain workaround needed when compiling with GCCE
 // and using main() entry point
 #ifdef __GCCE__
-#include <staticlibinit_gcce.h>
+// #include <staticlibinit_gcce.h>
 #endif
 
 #ifdef __SYMBIAN32__
@@ -201,8 +201,9 @@ typedef const TCHAR *LPCTSTR;
 /* Some compilers use a special export keyword */
 
 /** 如果是静态库工程，不需要导出。 */
+
 #ifdef MCUCOMMON_STATIC_LIB
-#define MU_DECLSPEC
+#define MU_DECLSPEC  
 #endif
 
 #ifndef MU_DECLSPEC
@@ -245,23 +246,6 @@ typedef const TCHAR *LPCTSTR;
 #   define MU_DECLSPEC
 #  endif
 # endif
-#endif
-
-/** 函数调用方式.*/
-/* By default SDL uses the C calling convention */
-#ifndef MU_CALL
-#if defined(__WIN32__) || defined( _WIN32_WCE ) && !defined(__GNUC__)
-#define MU_CALL __cdecl
-#else
-#ifdef __OS2__
-/* But on OS/2, we use the _System calling convention */
-/* to be compatible with every compiler */
-#define MU_CALL _System
-#else
-#define MU_CALL
-#endif
-#endif
-#endif /* MU_CALL */
 
 #ifdef __SYMBIAN32__ 
 #ifndef EKA2 
@@ -273,18 +257,41 @@ typedef const TCHAR *LPCTSTR;
 #endif /* !EKA2 */
 #endif /* __SYMBIAN32__ */
 
+#endif	// #ifndef MU_DECLSPEC
+
+/** 函数调用方式.*/
+/* By default SDL uses the C calling convention */
+#ifndef MU_CALL
+
+#if defined(__WIN32__) || defined( _WIN32_WCE ) && !defined(__GNUC__)
+#define MU_CALL __cdecl
+#elif defined( __OS2__ )
+/* But on OS/2, we use the _System calling convention */
+/* to be compatible with every compiler */
+#define MU_CALL _System
+#else
+#define MU_CALL   
+#endif	// #if defined(__WIN32__) || defined( _WIN32_WCE ) && !defined(__GNUC__)
+
+#endif /* MU_CALL */
+
+
+
 
 #if defined ( __GNUC__ ) || defined( __SYMBIAN32__ )
 
 #define INVALID_SOCKET (int)(~0)
 
-#define _access access 
-#define _mkdir mkdir
+//#define _access access 
+//#define _waccess waccess
+//
+//#define _mkdir mkdir
+//#define _wmkdir wmkdir
 
 #if defined(UNICODE) || defined( _UNICODE )  
 
-/*
- * Unicode functions
+/** thinkingl: !!!!!有些需要修改！！！！！！！
+ * 	Unicode functions
  */
 #define	_tprintf	wprintf
 #define	_ftprintf	fwprintf
@@ -371,6 +378,27 @@ typedef const TCHAR *LPCTSTR;
 #define _wcsninc(_wcs, _inc) (((_wcs)+(_inc)))
 #define _wcsncnt(_wcs, _cnt) ((wcslen(_wcs)>_cnt) ? _count : wcslen(_wcs))
 #define _wcsspnp(_wcs1, _wcs2) ((*((_wcs1)+wcsspn(_wcs1,_wcs2))) ? ((_wcs1)+wcsspn(_wcs1,_wcs2)) : NULL)
+
+
+#define _tchmod     wchmod
+#define _tcreat     wcreat
+#define _tfindfirst wfindfirst
+#define _tfindnext  wfindnext
+#define _tmktemp    wmktemp
+#define _topen      wopen
+#define _taccess    waccess
+#define _tremove    wremove
+#define _trename    wrename
+#define _tsopen     wsopen
+#define _tsetlocale wsetlocale
+#define _tunlink    wunlink
+#define _tfinddata_t    wfinddata_t
+#define _tchdir	    wchdir
+#define _tgetcwd    wgetcwd
+#define _tgetdcwd   wgetdcwd
+#define _tmkdir	    wmkdir
+#define _trmdir	    wrmdir
+#define _tstat      wstat
 
 #else
 
@@ -487,17 +515,17 @@ typedef const TCHAR *LPCTSTR;
 #define _tfindnext  _findnext
 #define _tmktemp    _mktemp
 #define _topen      _open
-#define _taccess    _access
+#define _taccess    access
 #define _tremove    remove
 #define _trename    rename
 #define _tsopen     _sopen
 #define _tsetlocale setlocale
-#define _tunlink    _unlink
+#define _tunlink    unlink
 #define _tfinddata_t    _finddata_t
 #define _tchdir	    _chdir
 #define _tgetcwd    _getcwd
 #define _tgetdcwd   _getdcwd
-#define _tmkdir	    _mkdir
+#define _tmkdir	    mkdir
 #define _trmdir	    _rmdir
 #define _tstat      _stat
 

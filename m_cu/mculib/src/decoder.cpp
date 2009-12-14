@@ -68,6 +68,8 @@ CDecoder * CDecoder::CreateDecoder( ECodecId eCodecId, int nBandWidth, LPCTSTR s
 
 void CDecoder::Release( CDecoder *pDecoder )
 {
+ //   mcu::log << _T( "Release call" ) << endl;
+
 	SCOPE_LOCK( s_decoderNameTableLock );
 	for ( TDecoderNameTable::iterator iter = s_tDecoderNameTable.begin(); iter != s_tDecoderNameTable.end(); ++iter )
 	{
@@ -79,20 +81,30 @@ void CDecoder::Release( CDecoder *pDecoder )
 	}
 	delete pDecoder;
 	pDecoder = NULL;
+
+//    mcu::log << _T( "Release call" ) << endl;
 }
 
 CDecoder *CDecoder::FindDecoder( LPCTSTR strName )
 {
+//    mcu::log << _T( "FindDecoder call" ) << endl;
+
 	SCOPE_LOCK( s_decoderNameTableLock );
+
+    CDecoder *pDec = NULL;
 	TDecoderNameTable::iterator iter = s_tDecoderNameTable.find( strName );
 	if ( iter != s_tDecoderNameTable.end() )
 	{
-		return iter->second;
+		pDec = iter->second;
 	}
 	else
 	{
-		return NULL;
+		pDec = NULL;
 	}
+
+ //   mcu::log << _T( "FindDecoder over" ) << endl;
+
+    return pDec;
 }
 
 void CDecoder::ReleaseAll()
@@ -119,11 +131,15 @@ void CDecoder::RegDec( LPCTSTR lpName, CDecoder *pDec )
 
 void CDecoder::OnDecodeResult( BOOL bSuccess, TVideoPicture *pPic, TVideoFrameInfo* pFrameInfo )
 {
+//    mcu::log << _T( "OnDecodeResult call" ) << endl;
+
 	SCOPE_LOCK( s_decoderNameTableLock );
 	if ( bSuccess && this->m_pPicCallBack )
 	{
 		m_pPicCallBack( pPic, pFrameInfo, this->m_picCallbackParam );
 	}
+
+//    mcu::log << _T( "OnDecodeResult over" ) << endl;
 }
 
 BOOL CDecoder::CapturePic( LPCTSTR strPicPath )

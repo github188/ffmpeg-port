@@ -467,7 +467,7 @@ BOOL CVirtualPlayerWnd::IsRecording() const
 
 BOOL CVirtualPlayerWnd::RestartPlay()
 {
-    mcu::log << _T( "Restart play Has no code" ) << endl;
+//    mcu::log << _T( "Restart play Has no code" ) << endl;
 
     BOOL bResult;
     bResult = this->StopPlay();

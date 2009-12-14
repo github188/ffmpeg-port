@@ -268,7 +268,7 @@ static void GetH264NextStartCode(TBitReader *ptBs)
 =============================================================================*/
 l32 GetH264Headers(TBitReader *ptBs, TH264ConfigInfo *ptH264ConfigInfo)
 {
-    l32 l32Msg = VIDEO_SUCCESS;
+//    l32 l32Msg = VIDEO_SUCCESS;
     u32 u32StartCode;
     l32 l32Tmp;
     u8 *pu8Start;

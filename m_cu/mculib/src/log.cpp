@@ -34,7 +34,10 @@ void CLog::SetLogFileDir( LPCTSTR strLogDir, LPCTSTR strPrefix )
         strLogFilePath += TimeToStr( GetCurTime() );
         strLogFilePath += _T( ".log" );
 
-        this->m_fLog.open( strLogFilePath.c_str() );
+        // 某些版本的iostram的open不支持16bit unicode版本的open。
+//        this->m_fLog.open( strLogFilePath.c_str() );
+        string strUtf8 = ::UTF16toUTF8( strLogFilePath );
+        this->m_fLog.open( strUtf8.c_str() );
 
     }
     else
@@ -81,6 +84,8 @@ CLog& CLog::operator <<( const char * strMsg )
     return *this;
 }
 
+
+
 CLog& CLog::operator <<( const string& strMsg )
 {	
     return ( (*this) << strMsg.c_str() );
@@ -93,11 +98,15 @@ CLog& CLog::operator <<( const wstring& strMsg )
 
 CLog& CLog::operator <<( long nNum )
 {
-    tstringstream ssTmp;
+     tstringstream ssTmp;
     ssTmp << nNum;
 
-    return ( *this << ssTmp.str() );
+    *this << ssTmp.str();
+
+    return *this;
 }
+
+
 /**
 CLog& CLog::operator << ( FunWEndl _Pfn )
 {
@@ -191,7 +200,10 @@ CLog& CLog::operator <<( const float _var )
     tstringstream ssTmp;
     ssTmp << _var;
 
-    return ( *this << ssTmp.str() );
+    *this << ssTmp.str();
+    
+    return *this;
 }
+
 
 
