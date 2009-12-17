@@ -87,6 +87,7 @@ BOOL CLoginDialog::LoginIn( ELoginType eType )
     tLoginInfo.m_bSaveLoginInfo = this->m_bSaveLoginInfo;
     tLoginInfo.m_eStreamType = this->m_b3GStream ? STREAM_EVDO : STREAM_1X;
 
+
     return this->Login( tLoginInfo, LOGIN_NORMAL );
 }
 
@@ -714,6 +715,10 @@ void CLoginDialog::AssertError( ELoginInfoErrorCode eErrCode )
         break;
     case ErrorRegionEmpty:
         MessageBox( _T( "客户域名没有设置！" ) );
+        this->OnBnClickedButtonConfig();
+        break;
+    case ErrorServerUrlInvalid:
+        MessageBox( _T( "服务器地址不是合法的HTTP地址！" ) );
         this->OnBnClickedButtonConfig();
         break;
     default:

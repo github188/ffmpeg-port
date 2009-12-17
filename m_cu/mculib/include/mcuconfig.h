@@ -1,7 +1,7 @@
 #pragma once
 
 #include "mcudefine.h"
-
+#include "ixmlparse.h"
 
 
 
@@ -38,8 +38,8 @@ public:
 
 	BOOL SetServer( LPCTSTR strUrl );
 
-    BOOL GetServerFullUrl( LPTSTR ServerFullStr);
-    BOOL GetServerFullSvrUrl(LPTSTR ServerFullStr);
+//    BOOL GetServerFullUrl( tstring& strServerFullStr);
+//    BOOL GetServerFullSvrUrl( tstring &ServerFullStr);
 
 	/** 获取用户名，密码。*/
 	BOOL GetLoginInfo( tstring& strUserId, tstring& strPw, EStreamType& eStreamType );
@@ -107,8 +107,8 @@ private:
 	BOOL WriteConfig( LPCTSTR strCfgEntryName, int nValue );
 
 private:
-	CXmlParse *m_pXmlParse;
+	IXmlParser *m_pXmlParser;
 
-    /** 程序预设配置文件 */
-    CXmlParse *m_pBkCfgxmlParse;
+    /** 程序备份配置文件 */
+    IXmlParser *m_pBkCfgxmlParser;
 };

@@ -80,6 +80,9 @@ private:
     /** 获取失败的html网页链接。 */
     tstring GetFailHtmlUrl() const;
 
+    /** 获取当前网页。 */
+    tstring GetCurUrl() const;
+
 public :
 	BOOL m_bWaittingNavigateComplete;
 	BOOL m_bIsFaild;

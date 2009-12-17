@@ -9,27 +9,45 @@
 #include <unistd.h>
 #endif
 
+#ifdef __SYMBIAN32__
+#include <utf.h>
+#endif
 
-#ifdef _WIN32_WCE
+
 
 string UTF16toUTF8( wstring strUTF16 )
 {
-	if ( strUTF16.empty() )
-	{
-		return "";
-	}
-
+if ( strUTF16.empty() )
+{
+	return "";
+}
+#if defined( _WIN32_WCE )
 	int nLen8 = WideCharToMultiByte( CP_UTF8, 0, strUTF16.c_str(), strUTF16.length(), 0, 0, 0, 0 );
 	if ( 0 == nLen8 )
 	{
 		return "";
 	}
-
 	std::vector<char> vTemp( nLen8+1, 0 );
 	WideCharToMultiByte( CP_UTF8, 0, strUTF16.c_str(), strUTF16.length(), &vTemp[0], nLen8, 0, 0 );
 
 	return &vTemp[0];
+#elif defined( __SYMBIAN32__ )
+	int nMaxLen8 = 2 * strUTF16.length();
+	
+	std::vector< TUint8 > vTmp( nMaxLen8 + 1, 0 );
+	
+	TPtr8 pUtf8( &vTmp[0], vTmp.size() );
+	//pUtf8.AppendFill( 0, nMaxLen8 + 1 );
+	TPtrC16 pUtf16( (TUint16*)strUTF16.c_str() );
+	
+	CnvUtfConverter::ConvertFromUnicodeToUtf8( pUtf8, pUtf16 );
+	
+	string strRet = (char*)&vTmp[0];
+	return strRet;
+#endif 
 }
+
+#ifdef _WIN32_WCE
 
 wstring UTF8toUTF16( string strUTF8 )
 {
@@ -203,9 +221,10 @@ BOOL WCtoMB(const wchar_t* srcStr, char *dstStr, int len )
 		return FALSE;
 	}
 }
-
+#endif
 __time64_t StrToTime( LPCTSTR lpTime )
 {
+#if defined( _WIN32_WCE )
 	CString strTime = lpTime;
 	SYSTEMTIME tTime;
 	memset( &tTime, 0, sizeof( tTime ) );
@@ -280,11 +299,13 @@ __time64_t StrToTime( LPCTSTR lpTime )
 	{
 		return 0;
 	}
-
+#elif defined( __SYMBIAN32__ )
+	return 0;
+#endif
 	
 	
 }
-#endif
+
 
 
 

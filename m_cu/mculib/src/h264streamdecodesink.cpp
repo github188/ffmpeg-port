@@ -42,7 +42,7 @@ CH264StreamDecodeSink::CH264StreamDecodeSink( UsageEnvironment& env, unsigned bu
 	if ( NULL == m_pDecoder )
 	{
 		// 出错了！
-		mcu::log << _T( "创建H264解码器失败!" ) << endl;
+		mcu::log << _T( "Create H264 Decoder fail!!" ) << endl;
 #ifdef _WIN32_WCE
 		AfxMessageBox( _T( "无法创建H264解码器!" ) );
 #endif

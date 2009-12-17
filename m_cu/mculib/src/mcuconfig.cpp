@@ -55,52 +55,54 @@ static const int CONFIG_DEFAULT_MIN_SPACE = MIN_STORAGE_SPACE;
 
 CConfig::CConfig(void)
 {
-	this->m_pXmlParse = new CXmlParse();
+    this->m_pXmlParser = IXmlParser::CreateNew();
+
 	tstring strXmlFile = this->GetDefaultConfigFilePath();
-	BOOL bResult = this->m_pXmlParse->LoadXML( strXmlFile.c_str(), CONFIG_SECTION_CONFIG_NAME);
+	BOOL bResult = this->m_pXmlParser->LoadXML( strXmlFile.c_str(), CONFIG_SECTION_CONFIG_NAME);
 
 	mcu::log << _T( "config load xml: " ) << strXmlFile << _T( " result: ") << bResult << endl;
 	_ASSERT( bResult );
 
-    m_pBkCfgxmlParse = NULL;
-    this->m_pBkCfgxmlParse = new CXmlParse();
+    m_pBkCfgxmlParser = NULL;
+    this->m_pBkCfgxmlParser = IXmlParser::CreateNew();
+
     tstring strPresetFile = this->GetBkCfgFilePath();
 
-    bResult = this->m_pBkCfgxmlParse->LoadXML( strPresetFile.c_str(), CONFIG_SECTION_CONFIG_NAME );
+    bResult = this->m_pBkCfgxmlParser->LoadXML( strPresetFile.c_str(), CONFIG_SECTION_CONFIG_NAME );
     mcu::log << _T( "config load preset: " ) << strPresetFile << _T( " result: " ) << bResult << endl;
 
-//	bResult = this->m_pXmlParse->SetCurRootElement( CONFIG_SECTION_CONFIG_NAME );
+//	bResult = this->m_pXmlParser->SetCurRootElement( CONFIG_SECTION_CONFIG_NAME );
 //	mcu::log << _T( "config set config root: result: ") << bResult << endl;
 }
 
 CConfig::~CConfig(void)
 {
-	if ( this->m_pXmlParse )
+	if ( this->m_pXmlParser )
 	{
-		delete m_pXmlParse;
-		m_pXmlParse = NULL;
+		delete m_pXmlParser;
+		m_pXmlParser = NULL;
 	}
 }
 
 void CConfig::SetConfigFilePath( LPCTSTR strCfgFilePath )
 {
-	if ( m_pXmlParse )
+	if ( m_pXmlParser )
 	{
-		this->m_pXmlParse->LoadXML( strCfgFilePath, CONFIG_SECTION_CONFIG_NAME );
+		this->m_pXmlParser->LoadXML( strCfgFilePath, CONFIG_SECTION_CONFIG_NAME );
 	}
 	else
 	{
 		mcu::log << _T( "SetConfigFilePath xml parse is null!" ) << endl;
 	}
 	
-//	this->m_pXmlParse->SetCurRootElement( CONFIG_SECTION_CONFIG_NAME );
+//	this->m_pXmlParser->SetCurRootElement( CONFIG_SECTION_CONFIG_NAME );
 }
 
 tstring CConfig::GetConfigFilePath( ) const
 {
-	if ( m_pXmlParse )
+	if ( m_pXmlParser )
 	{
-		return this->m_pXmlParse->GetXMLPath();
+		return this->m_pXmlParser->GetXMLPath();
 	}
 	else
 	{
@@ -170,85 +172,87 @@ BOOL CConfig::SetServer( LPCTSTR strUrl )
 	return bResult;
 }
 
-BOOL CConfig::GetServerFullSvrUrl( LPTSTR ServerFullStr)
-{
-    BOOL bret = FALSE;
-    tstring strServer;
-    CConfig::Instance()->GetServer( strServer );
+//BOOL CConfig::GetServerFullSvrUrl( LPTSTR ServerFullStr)
+//{
+//    BOOL bret = FALSE;
+//    tstring strServer;
+//    CConfig::Instance()->GetServer( strServer );
+//
+//    LPCTSTR ServerStr = strServer.c_str();
+//    //LPCTSTR ServerStr = L"http:adf//172.16.160.24:8080/adfadf/adfadf/adfadf/";
+//
+//    TCHAR ServerPath[1024];
+//    wcscpy( (LPTSTR)ServerPath, ServerStr);
+//    LPCTSTR lpcopy = _wcslwr( (LPTSTR)ServerPath);
+//
+//    LPCTSTR lpProtocol = L"http://";
+//    LPTSTR lpRet = wcsstr(ServerPath, lpProtocol);
+//    if(lpRet != NULL && lpRet == lpcopy)
+//    {
+//        LPCTSTR lpRight = (LPCTSTR)ServerPath + wcslen(lpProtocol); 
+//        LPTSTR lpRet2 = wcschr(lpRight,'/');
+//        if((lpRet2 != NULL) && (lpRet2 > lpRet) && (lpRet2 - lpRet)>7 )
+//        {
+//            //符合格式 "http://server/..."
+//            wcsncpy(ServerFullStr, ServerStr, (lpRet2 - lpRet) );
+//            //wcsncpy(ServerFullStr, ServerStr, (lpRet2 - lpRet) + 1);
+//            bret = TRUE;
+//        }
+//        else
+//        {
+//            //符合格式 "htpp://server" 需要补
+//            //swprintf(ServerFullStr, L"%s%s", ServerStr, L"/");
+//            wcscpy(ServerFullStr, ServerStr);
+//            bret = TRUE;
+//        }
+//    }
+//    else 
+//    {
+//        mcu::log << _T( "Not right http url! " ) << endl;
+//    }
+//    return bret;
+//}
 
-    LPCTSTR ServerStr = strServer.c_str();
-    //LPCTSTR ServerStr = L"http:adf//172.16.160.24:8080/adfadf/adfadf/adfadf/";
-
-    TCHAR ServerPath[1024];
-    wcscpy( (LPTSTR)ServerPath, ServerStr);
-    LPCTSTR lpcopy = _wcslwr( (LPTSTR)ServerPath);
-
-    LPCTSTR lpProtocol = L"http://";
-    LPTSTR lpRet = wcsstr(ServerPath, lpProtocol);
-    if(lpRet != NULL && lpRet == lpcopy)
-    {
-        LPCTSTR lpRight = (LPCTSTR)ServerPath + wcslen(lpProtocol); 
-        LPTSTR lpRet2 = wcschr(lpRight,'/');
-        if((lpRet2 != NULL) && (lpRet2 > lpRet) && (lpRet2 - lpRet)>7 )
-        {
-            //符合格式 "http://server/..."
-            wcsncpy(ServerFullStr, ServerStr, (lpRet2 - lpRet) );
-            //wcsncpy(ServerFullStr, ServerStr, (lpRet2 - lpRet) + 1);
-            bret = TRUE;
-        }
-        else
-        {
-            //符合格式 "htpp://server" 需要补
-            //swprintf(ServerFullStr, L"%s%s", ServerStr, L"/");
-            wcscpy(ServerFullStr, ServerStr);
-            bret = TRUE;
-        }
-    }
-    else 
-    {
-        mcu::log << L"不是合法的HTTP地址" << endl;
-    }
-    return bret;
-}
-
-BOOL CConfig::GetServerFullUrl( LPTSTR ServerFullStr)
-{
-    BOOL bret = FALSE;
-    tstring strServer;
-    CConfig::Instance()->GetServer( strServer );
-
-    LPCTSTR ServerStr = strServer.c_str();
-    //LPCTSTR ServerStr = L"http:adf//172.16.160.24:8080/adfadf/adfadf/adfadf/";
-
-    TCHAR ServerPath[1024];
-    wcscpy( (LPTSTR)ServerPath, ServerStr);
-    LPCTSTR lpcopy = _wcslwr( (LPTSTR)ServerPath);
-
-    LPCTSTR lpProtocol = L"http://";
-    LPTSTR lpRet = wcsstr(ServerPath, lpProtocol);
-    if(lpRet != NULL && lpRet == lpcopy)
-    {
-        LPCTSTR lpRight = (LPCTSTR)ServerPath + wcslen(lpProtocol); 
-        LPTSTR lpRet2 = wcschr(lpRight,'/');
-        if((lpRet2 != NULL) && (lpRet2 > lpRet) && (lpRet2 - lpRet)>7 )
-        {
-            //符合格式 "http://server/..."
-            wcscpy(ServerFullStr, ServerStr);
-            bret = TRUE;
-        }
-        else
-        {
-            //符合格式 "htpp://server" 需要补/
-            swprintf(ServerFullStr, L"%s%s", ServerStr, L"/");
-            bret = TRUE;
-        }
-    }
-    else 
-    {
-        mcu::log << L"不是合法的HTTP地址" << endl;
-    }
-    return bret;
-}
+//BOOL CConfig::GetServerFullUrl( tstring& strServerFullStr )
+//{
+//    BOOL bret = FALSE;
+//    tstring strServer;
+//    CConfig::Instance()->GetServer( strServer );
+//
+//    LPCTSTR ServerStr = strServer.c_str();
+//    //LPCTSTR ServerStr = L"http:adf//172.16.160.24:8080/adfadf/adfadf/adfadf/";
+//
+//    TCHAR ServerPath[1024];
+//    wcscpy( (LPTSTR)ServerPath, ServerStr);
+//    LPCTSTR lpcopy = _wcslwr( (LPTSTR)ServerPath);
+//
+//    LPCTSTR lpProtocol = L"http://";
+//    LPTSTR lpRet = wcsstr(ServerPath, lpProtocol);
+//    if(lpRet != NULL && lpRet == lpcopy)
+//    {
+//        LPCTSTR lpRight = (LPCTSTR)ServerPath + wcslen(lpProtocol); 
+//        LPTSTR lpRet2 = wcschr(lpRight,'/');
+//        if((lpRet2 != NULL) && (lpRet2 > lpRet) && (lpRet2 - lpRet)>7 )
+//        {
+//            //符合格式 "http://server/..."
+//            //wcscpy(ServerFullStr, ServerStr);
+//            strServerFullStr = strServer;
+//            bret = TRUE;
+//        }
+//        else
+//        {
+//            //符合格式 "htpp://server" 需要补/
+//           // swprintf(ServerFullStr, L"%s%s", ServerStr, L"/");
+//            strServerFullStr = strServer + _T( "/" );
+//            bret = TRUE;
+//        }
+//    }
+//    else 
+//    {
+//        mcu::log << _T( "Not right http url!" ) << endl;
+//    }
+//    return bret;
+//}
 
 BOOL CConfig::GetLoginInfo( tstring& strUserId, tstring& strPw, EStreamType& eStreamType )
 {
@@ -323,12 +327,17 @@ BOOL CConfig::SetLoginInfo( LPCTSTR strUserId, LPCTSTR strPw, EStreamType eStrea
 
 	// 将加密后的密码看作16进制数字写入配置文件。
 	tstring strSavePw;
+    
 	for ( int i=0; i<nBufByteLen; ++i )
 	{
+        tstringstream ssSavePw;
 		//		mcu::log << pDateBuf[i] ;
-		TCHAR tmpBuf[10] = {0};
-		_stprintf( tmpBuf,  _T("%02X" ), pDateBuf[i] );
-		strSavePw += tmpBuf;
+		//TCHAR tmpBuf[10] = {0};
+		//_stprintf( tmpBuf,  _T("%02X" ), pDateBuf[i] );
+        ssSavePw << setbase( 16 ) << pDateBuf[i];
+        tstring strTmp = ssSavePw.str();
+        strTmp = strTmp.substr( strTmp.length() -2 );
+		strSavePw += strTmp;
 	}
 
 	
@@ -499,7 +508,11 @@ int CConfig::ReadConfig( LPCTSTR strCfgEntryName, int nDefault )
 	ssDef << nDefault;
 	tstring strValue = this->ReadConfig( strCfgEntryName, ssDef.str().c_str() );
 
-	int nValue = _ttoi( strValue.c_str() );
+	tstringstream ssTmp;
+    ssTmp << strValue;
+
+    int nValue = nDefault;
+    ssTmp >> nValue;
 
 	return nValue;
 }
@@ -517,14 +530,14 @@ tstring CConfig::ReadConfig( LPCTSTR strCfgEntryName, LPCTSTR strDefault )
 {
 	tstring strResult;
 
-    if ( m_pXmlParse == NULL )
+    if ( m_pXmlParser == NULL )
     {
         return _T( "" );
     }
-	strResult = this->m_pXmlParse->GetElementValue( strCfgEntryName );
-	if ( strResult.empty() && m_pBkCfgxmlParse )
+	strResult = this->m_pXmlParser->GetElementValue( strCfgEntryName );
+	if ( strResult.empty() && m_pBkCfgxmlParser )
 	{
-        strResult = this->m_pBkCfgxmlParse->GetElementValue( strCfgEntryName );
+        strResult = this->m_pBkCfgxmlParser->GetElementValue( strCfgEntryName );
         if ( strResult.empty() )
         {
             strResult = strDefault;
@@ -539,13 +552,13 @@ BOOL CConfig::WriteConfig( LPCTSTR strCfgEntryName, LPCTSTR strValue )
 {
 	BOOL bResult = FALSE;
 
-    if ( m_pXmlParse )
+    if ( m_pXmlParser )
     {
-        bResult = this->m_pXmlParse->SetElementValue( strCfgEntryName, strValue );
+        bResult = this->m_pXmlParser->SetElementValue( strCfgEntryName, strValue );
 
-        if ( m_pBkCfgxmlParse )
+        if ( m_pBkCfgxmlParser )
         {
-            this->m_pBkCfgxmlParse->SetElementValue( strCfgEntryName, strValue );
+            this->m_pBkCfgxmlParser->SetElementValue( strCfgEntryName, strValue );
         }        
     }
 	

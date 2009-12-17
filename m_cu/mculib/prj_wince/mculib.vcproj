@@ -610,6 +610,30 @@
 			>
 		</File>
 		<File
+			RelativePath="..\src\ixmlparse.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\include\ixmlparse.h"
+			>
+		</File>
+		<File
+			RelativePath="..\src\libxmlxmlparser.cpp"
+			>
+			<FileConfiguration
+				Name="Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCCLCompilerTool"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath="..\include\libxmlxmlparser.h"
+			>
+		</File>
+		<File
 			RelativePath="..\..\htmldoc\mcufail.htm"
 			DeploymentContent="true"
 			>
@@ -650,6 +674,14 @@
 		</File>
 		<File
 			RelativePath="..\unittest\prj_wince\mculibunittest.vcproj"
+			>
+		</File>
+		<File
+			RelativePath="..\src\msxmlparser.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\include\msxmlparser.h"
 			>
 		</File>
 		<File

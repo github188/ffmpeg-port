@@ -5,7 +5,7 @@
 */
 
 #include "mcucommon.h" 
-#include "xmlparse.h"
+#include "ixmlparse.h"
 
 LPCTSTR HELP_FILE_PATH;
 
@@ -19,7 +19,7 @@ public:
 protected:
 
 private:
-	CXmlParse m_helpXMLParser;
+//	CXmlParse m_helpXMLParser;
 };
 
 

@@ -26,6 +26,7 @@ public:
 		ErrorUserIdEmpty,
 		ErrorPasswordEmpty,
 		ErrorServerUrlEmpty,
+        ErrorServerUrlInvalid,  // 登录服务器不是合法的http链接。
 		ErrorRegionEmpty,
 	};
 

@@ -143,6 +143,15 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 				return TRUE;
 			}
 
+            // test.
+            //static int n=0;
+            //n++;
+            //if ( n%5 == 0 )
+            //{
+            //    strUrl = _T( "/download/downloadmcu.do?abce=1&de=2" );
+            //}
+
+
 			LPCTSTR lpUrlToken = _T( "/download/downloadmcu.do?" );
 			CString UrlString = ( LPCTSTR )strUrl.c_str();
 			if ( UrlString.Left( _tcslen( lpUrlToken ) ).CompareNoCase( lpUrlToken ) == 0 )
@@ -150,16 +159,29 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 				//判断是下载MCU链接 不兼容其它版本MSP
 
 				//需要拼接完整的URL
-				TCHAR ServerFullUrl[1024];
-				memset(ServerFullUrl, 0, sizeof(ServerFullUrl));
-				if(CConfig::Instance()->GetServerFullSvrUrl((LPTSTR)ServerFullUrl))
+                tstring strCurUrl = GetCurUrl();
+                int nPos = strCurUrl.rfind( _T( '/' ) );
+                tstring strUrlDir;
+               
+                if ( nPos > 0 )
+                {
+                    // 要带上 '/',所以加一。
+                    strUrlDir = strCurUrl.substr( 0, nPos + 1 );
+                }
+                else
+                {
+                    strUrlDir = strCurUrl + _T( "/" );
+                }
+
+                // this->GetFailHtmlUrl()
+//				tstring strFullUrl;
+				if( 1 )
 				{
 					
-					TCHAR DownloadFullUrl[2048];
-					memset(DownloadFullUrl, 0, sizeof(DownloadFullUrl));
-					swprintf(DownloadFullUrl, L"%s%s", ServerFullUrl, strUrl.c_str());
+					 tstring strDownloadUrl ;
+                     strDownloadUrl = strUrlDir + strUrl;
 
-					mcu::log << L"Download Url:"<<DownloadFullUrl << endl;
+					mcu::log << L"Download Url:"<< strDownloadUrl << endl;
 
 					//调用系统Shell下载
 					{
@@ -194,7 +216,7 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 					//seInfo.lpFile = strUrl.c_str();
 					//seInfo.lpFile = DownloadFullUrl;
 					seInfo.lpFile = _T("IEXPLORE.EXE");
-					seInfo.lpParameters = DownloadFullUrl;
+					seInfo.lpParameters = strDownloadUrl.c_str();
 					BOOL bResult = ::ShellExecuteEx( &seInfo );					
 
 					mcu::log << _T( "shell execute result: " ) << bResult << _T( " instapp: " ) << seInfo.hInstApp 
@@ -548,4 +570,16 @@ tstring CHtmlWnd::GetFailHtmlUrl() const
     mcu::log << _T( "Fail html webpage: " ) << strFailHtml << endl;
 
     return strFailHtml;
+}
+
+tstring CHtmlWnd::GetCurUrl() const
+{
+    if ( INVALID_INDEX != m_nCurUrlHistoryIndex )
+    {
+        return m_tHistoryUrl[m_nCurUrlHistoryIndex];
+    }
+    else
+    {
+        return _T( "" );
+    }    
 }

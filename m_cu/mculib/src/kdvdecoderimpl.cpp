@@ -4,6 +4,7 @@
 #include "mem.h"
 #include "log.h"
 #include "portabledefine.h"
+#include "mcucommon.h"
 
 //#define OUT_WIDTH ( 352 )
 //#define OUT_HEIGHT ( 288 )
@@ -142,7 +143,7 @@ BOOL CKDVDecoderImpl::Create( CDecoder::ECodecId eCodec )
 
 	if ( NULL == m_pDecParam )
 	{
-		mcu::log << _T( "m_pDecParam = (TVideoUnitDecParam*)mu_mallocz mu_mallocz 失败！" ) << endl;
+		mcu::log << _T( "m_pDecParam = (TVideoUnitDecParam*)mu_mallocz mu_mallocz fail!" ) << endl;
 		return FALSE;
 	}
 
@@ -373,7 +374,8 @@ BOOL CKDVDecoderImpl::CapturePic( LPCTSTR strPicPath, CEncoder *pEnc )
 	{
 		// 把缓冲区存起来。
 		std::ofstream picFile;
-		picFile.open( strPicPath, std::ios::out | std::ios::trunc | std::ios::binary );
+        string strUtf8 = ::UTF16toUTF8( strPicPath );
+		picFile.open( strUtf8.c_str(), std::ios::out | std::ios::trunc | std::ios::binary );
 		if ( picFile.is_open() )
 		{
 			picFile.write( (char*)m_pCaptureDataBuf, nBufLen );

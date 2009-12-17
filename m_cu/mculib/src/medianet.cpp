@@ -10,8 +10,9 @@
 #include "mcudefine.h"
 #include "log.h"
 #include "mcuconfig.h"
+#include "mcucommon.h"
 
-#ifdef _WIN32_WCE
+#if defined( _WIN32_WCE ) || defined( __SYMBIAN32__ )
 #include "SDL.h"
 #else
 #include <SDL/SDL.h>
@@ -712,16 +713,14 @@ BOOL CMediaNet::OpenRTSP( LPCTSTR strRtspUrl )
 		this->CloseRTSP();
 	}
 
-	char multiVideoSrc[5024] = {0};
+	
 #ifdef _UNICODE	
-	WideCharToMultiByte( CP_ACP, 0, strRtspUrl, -1,
-		multiVideoSrc, 5024, NULL, NULL );
+    m_strRTSPUrlA = ::UTF16toUTF8( strRtspUrl );
 #else
 	strcpy( multiVideoSrc, strRtspUrl );
+    this->m_strRTSPUrlA = strRtspUrl;
 #endif
 
-	this->m_strRTSPUrlA = multiVideoSrc;
-	
 	m_runFlag = 0;
 	this->SetRtspStatus( RTSPStatus_Init );
 
@@ -960,7 +959,7 @@ int CMediaNet::MediaNet_Thread( void * pThisVoid )
 			} 
 			else 
 			{
-				mcu::log << _T( "Use port£º " ) << (int)subsession->clientPortNum() << endl;
+				mcu::log << _T( "Use port: " ) << (int)subsession->clientPortNum() << endl;
 				if (subsession->clientPortNum() == 0) 
 				{
 					*env << "No client port was specified for the \""

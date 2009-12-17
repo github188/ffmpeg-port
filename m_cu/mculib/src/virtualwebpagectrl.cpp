@@ -38,9 +38,18 @@ CVirtualWebpageCtrl::EUrlType CVirtualWebpageCtrl::OnLoadPage( LPCTSTR strUrl )
 	{
 		mcu::log << _T( "Is url with Param! " ) << strUrl << endl;
 		CMCUSession::Instance()->CurVideoSession()->PtzIP( strPtzAddr );
-		CMCUSession::Instance()->CurVideoSession()->PtzPort( _ttoi( strPtzPort.c_str() ) );
+		tstringstream ssTmp;
+		ssTmp << strPtzPort;
+		int nPort = 0;
+		ssTmp >> nPort;
+		CMCUSession::Instance()->CurVideoSession()->PtzPort( nPort );
 		CMCUSession::Instance()->CurVideoSession()->PuId( strPuId );
-		CMCUSession::Instance()->CurVideoSession()->StreamType( (EStreamType)_ttoi( strStreamType.c_str() ) );
+		
+		int nStreamType = 0;
+		ssTmp.clear();
+		ssTmp << strStreamType;
+		ssTmp >> nStreamType;
+		CMCUSession::Instance()->CurVideoSession()->StreamType( (EStreamType)nStreamType );
 		CMCUSession::Instance()->CurVideoSession()->PuName( strPuName.c_str() );
 
 		CMCUSession::Instance()->CurVideoSession()->PtzControl( bPtzControl );

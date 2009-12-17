@@ -27,7 +27,7 @@ CMpeg4StreamDecodeSink::CMpeg4StreamDecodeSink( UsageEnvironment& env, unsigned 
 	if ( NULL == m_pDecoder )
 	{
 		// 出错了！
-		mcu::log << _T( "创建Mpeg4解码器失败!" ) << endl;
+		mcu::log << _T( "Create Mpeg4 decoder fail!" ) << endl;
 #ifdef _WIN32_WCE
 		AfxMessageBox( _T( "无法创建MPEG4解码器!" ) );
 #endif

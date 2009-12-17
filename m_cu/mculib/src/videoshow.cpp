@@ -1,6 +1,6 @@
 #include "videoshow.h"
 #include "log.h"
-#ifdef _WIN32_WCE
+#if defined( _WIN32_WCE ) || defined( __SYMBIAN32__ )
 #include "SDL.h"
 #else
 #include <SDL/SDL.h>

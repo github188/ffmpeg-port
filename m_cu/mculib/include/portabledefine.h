@@ -322,8 +322,8 @@ typedef const TCHAR *LPCTSTR;
 #define	_itot		_itow
 #define	_ltot		_ltow
 #define	_ultot		_ultow
-#define	_ttoi		_wtoi
-#define	_ttol		_wtol
+#define	_ttoi		wtoi
+#define	_ttol		wtol
 #define	_tcscat		wcscat
 #define _tcschr		wcschr
 #define _tcscmp		wcscmp

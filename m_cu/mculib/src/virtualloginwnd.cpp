@@ -107,6 +107,13 @@ CVirtualLoginWnd::ELoginInfoErrorCode CVirtualLoginWnd::CheckInvalid( const TLog
 		return ErrorServerUrlEmpty;
 	}
 
+    // 服务器地址必须是 “http://” 开始的。
+    tstring strHttp = _T( "http://" );
+    int nDif = CompareNoCase( strServer.substr( 0, strHttp.length() ), strHttp );
+    if ( nDif != 0 )
+    {
+        return ErrorServerUrlInvalid;
+    }
 
 
 	return NoError;
