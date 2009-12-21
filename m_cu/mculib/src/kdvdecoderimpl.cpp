@@ -27,14 +27,14 @@ CKDVDecoderImpl * CKDVDecoderImpl::GetDecoder( CBaseCodec::ECodecId eCodecId, LP
 	}
 	if ( NULL == pDec )
 	{
-		mcu::log << _T( "CKDVDecoderImpl::GetDecoder new CKDVDecoderImpl Fail!" ) << endl;
+		Log() << _T( "CKDVDecoderImpl::GetDecoder new CKDVDecoderImpl Fail!" ) << endl;
 		return NULL;
 	}
 	
 	BOOL bResult = pDec->Create( eCodecId );
 	if ( !bResult )
 	{
-		mcu::log << _T( "keda decoder Create Fail! codecid: " ) << eCodecId << endl;
+		Log() << _T( "keda decoder Create Fail! codecid: " ) << eCodecId << endl;
 	}
 
 	_ASSERT( bResult );
@@ -130,7 +130,7 @@ BOOL CKDVDecoderImpl::Create( CDecoder::ECodecId eCodec )
 		break;
 
 	default:
-		mcu::log << _T( "unkown kdv codec Id " ) << eCodec << endl;
+		Log() << _T( "unkown kdv codec Id " ) << eCodec << endl;
 		_ASSERT( FALSE );
 		return FALSE;
 	    break;
@@ -143,7 +143,7 @@ BOOL CKDVDecoderImpl::Create( CDecoder::ECodecId eCodec )
 
 	if ( NULL == m_pDecParam )
 	{
-		mcu::log << _T( "m_pDecParam = (TVideoUnitDecParam*)mu_mallocz mu_mallocz fail!" ) << endl;
+		Log() << _T( "m_pDecParam = (TVideoUnitDecParam*)mu_mallocz mu_mallocz fail!" ) << endl;
 		return FALSE;
 	}
 
@@ -173,14 +173,14 @@ BOOL CKDVDecoderImpl::Create( CDecoder::ECodecId eCodec )
 		l32Result = VideoUnitDecoderOpen( &m_pvHandle, m_pDecParam, NULL /*&tIputMemParam*/);
 		if(VIDEO_SUCCESS != l32Result)
 		{
-			mcu::log << _T("VideoUnitDecoderOpen failure!") << endl;
+			Log() << _T("VideoUnitDecoderOpen failure!") << endl;
 			PrintErrorInfo( m_pvHandle, l32Result);
 
 			return FALSE;
 		}
 		else
 		{
-			mcu::log << _T( "Craete H264 Decoder success! VideoUnitDecoderOpen" ) << endl;
+			Log() << _T( "Craete H264 Decoder success! VideoUnitDecoderOpen" ) << endl;
 		}
 
 		m_pDecParam->tDecParam.u32DecType = eOldType;
@@ -197,7 +197,7 @@ BOOL CKDVDecoderImpl::Create( CDecoder::ECodecId eCodec )
 	}
 	else
 	{
-		mcu::log << _T( "VideoUnitDecoderSetParam success! codec change to: " ) << m_pDecParam->tDecParam.u32DecType <<endl;
+		Log() << _T( "VideoUnitDecoderSetParam success! codec change to: " ) << m_pDecParam->tDecParam.u32DecType <<endl;
 	}
 
 	char as8Version[ 256 ] = {0};
@@ -232,7 +232,7 @@ BOOL CKDVDecoderImpl::Create( CDecoder::ECodecId eCodec )
 		m_pPicDataBuf = ( mu_uint8 * )mu_mallocz( lPicBufLen );
 		if ( NULL == m_pPicDataBuf )
 		{
-			mcu::log << "m_pPicDataBuf = ( mu_uint8 * )mu_mallocz( lPicBufLen ) ÉêÇëÄÚ´æÊ§°Ü£¡" << endl;
+			Log() << "m_pPicDataBuf = ( mu_uint8 * )mu_mallocz( lPicBufLen ) ÉêÇëÄÚ´æÊ§°Ü£¡" << endl;
 			return FALSE;
 		}
 	}
@@ -277,7 +277,7 @@ BOOL CKDVDecoderImpl::Decode( const CBaseCodec::TStreamPacket& tPkt, CBaseCodec:
 	//static mu_uint64 pkttime = 0;
 	//int nSpan = tPkt.timeStamp - pkttime;
 	//pkttime = tPkt.timeStamp;
-	////mcu::log << _T( "Decode pkt timespan: " ) << nSpan << endl;
+	////Log() << _T( "Decode pkt timespan: " ) << nSpan << endl;
 	//printf( "Decode pkt timespan: %d \n", nSpan );
 
 	TDecInput tDecoderInput;
@@ -383,7 +383,7 @@ BOOL CKDVDecoderImpl::CapturePic( LPCTSTR strPicPath, CEncoder *pEnc )
 		}
 		else
 		{
-			mcu::log << "Capture pic open file fail! file: " << strPicPath << endl;
+			Log() << "Capture pic open file fail! file: " << strPicPath << endl;
 			bResult = FALSE;
 		}		
 	}	

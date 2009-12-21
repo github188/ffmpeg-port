@@ -27,7 +27,7 @@ CMpeg4StreamDecodeSink::CMpeg4StreamDecodeSink( UsageEnvironment& env, unsigned 
 	if ( NULL == m_pDecoder )
 	{
 		// 出错了！
-		mcu::log << _T( "Create Mpeg4 decoder fail!" ) << endl;
+		Log() << _T( "Create Mpeg4 decoder fail!" ) << endl;
 #ifdef _WIN32_WCE
 		AfxMessageBox( _T( "无法创建MPEG4解码器!" ) );
 #endif
@@ -39,7 +39,7 @@ CMpeg4StreamDecodeSink::CMpeg4StreamDecodeSink( UsageEnvironment& env, unsigned 
 	if ( InvalidDecoder == m_decoderId )
 	{
 		// 出错了！
-		mcu::log << _T( "创建Mpeg4解码器失败!" ) << endl;
+		Log() << _T( "创建Mpeg4解码器失败!" ) << endl;
 		AfxMessageBox( _T( "无法创建MPEG4解码器!" ) );
 	}
 #endif
@@ -129,7 +129,7 @@ Boolean CMpeg4StreamDecodeSink::DecodeData()
 		//mu_uint64 newTime = GetTick();
 		//mu_uint64 nTimeSpan = newTime - nTime;
 		//nTime = newTime;
-		//mcu::log << "net data time" << nTime << " span:" << nTimeSpan << endl;
+		//Log() << "net data time" << nTime << " span:" << nTimeSpan << endl;
 
 		m_pDecoder->InputStreamSync( tPkt );
 	}

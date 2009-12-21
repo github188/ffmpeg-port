@@ -78,13 +78,13 @@ BOOL CVideoWndDialog::OnInitDialog()
 	bResult = this->InitSDL();
 	if ( !bResult )
 	{
-		mcu::log << _T( "Init SDL fail! Maybe Only one video window is permit at one time！！！" ) << endl;
+		Log() << _T( "Init SDL fail! Maybe Only one video window is permit at one time！！！" ) << endl;
 	}
 
     bResult = m_frameBuffer.Init( 10 );
     if ( !bResult )
     {
-        mcu::log << _T( "Init frame buffer fail!!!!" ) << endl;
+        Log() << _T( "Init frame buffer fail!!!!" ) << endl;
     }
     m_frameBuffer.SetFrameCallback( OnBufferdVideoFrameShowS, this );
 
@@ -248,16 +248,16 @@ int CVideoWndDialog::SDL_ThreadFunc( void *param )
 				  {
 
 		            case SDLK_LEFT:
-		                mcu::log << _T( "left" ) << endl;
+		                Log() << _T( "left" ) << endl;
 		                break; 
 		            case SDLK_RIGHT:
-		                mcu::log << _T( "right" ) << endl;
+		                Log() << _T( "right" ) << endl;
 		                break;
 		            case SDLK_UP:
-						mcu::log << _T( "up" ) << endl;
+						Log() << _T( "up" ) << endl;
 		                break;
 		            case SDLK_DOWN:
-						mcu::log << _T( "down" ) << endl;
+						Log() << _T( "down" ) << endl;
 		                break;			            
 		            default:
 		                break;
@@ -804,7 +804,7 @@ void CVideoWndDialog::OnTimer(UINT_PTR nIDEvent)
 //	default:
 //	    break;
 //	}
-//	mcu::log << _T( "rtsp status: " ) << strStatus << endl;
+//	Log() << _T( "rtsp status: " ) << strStatus << endl;
 //
 //	// 更新保存的RTSP状态.
 //	this->m_eRtspStatus = eRtspStat;
@@ -888,13 +888,13 @@ void CVideoWndDialog::OnBufferdVideoFrameShowS( const CBaseCodec::TVideoPicture 
     }
     else
     {
-        mcu::log << _T( "Video wnd buffer video frame show S this is NULL!" ) << endl;
+        Log() << _T( "Video wnd buffer video frame show S this is NULL!" ) << endl;
     }
 }
 
 void CVideoWndDialog::OnBufferdVideoFrameShow( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo )
 {
- //   mcu::log << _T( "CVideoWndDialog Video pic callback!" ) << endl;
+ //   Log() << _T( "CVideoWndDialog Video pic callback!" ) << endl;
 	SCOPE_LOCK( m_threadSafeLock );
 
 	int nPicWidth = pic->picWidth;
@@ -903,7 +903,7 @@ void CVideoWndDialog::OnBufferdVideoFrameShow( const CBaseCodec::TVideoPicture *
 	// SDL还没有正常初始化.
 	if ( !m_pSDLSurface )
 	{
-        mcu::log << _T( "SDL Surface not init when pic callback!" ) << endl;
+        Log() << _T( "SDL Surface not init when pic callback!" ) << endl;
 		return;
 	}
 
@@ -921,7 +921,7 @@ void CVideoWndDialog::OnBufferdVideoFrameShow( const CBaseCodec::TVideoPicture *
 //		SDL_Surface *screen = SDL_SetVideoMode( nWidth, nHeight, 0, SDL_HWSURFACE|SDL_RESIZABLE|SDL_ASYNCBLIT|SDL_HWACCEL );
 		m_pSDLOverlay = SDL_CreateYUVOverlay( nPicWidth, nPicHeight, SDL_IYUV_OVERLAY, m_pSDLSurface );
 
-        mcu::log << _T( "Create YUV overlay! w: " ) << nPicWidth << _T( " h: " ) << nPicHeight << _T( " ret: " ) << m_pSDLOverlay << endl;
+        Log() << _T( "Create YUV overlay! w: " ) << nPicWidth << _T( " h: " ) << nPicHeight << _T( " ret: " ) << m_pSDLOverlay << endl;
 
 	}
 
@@ -1043,12 +1043,12 @@ void CVideoWndDialog::OnRtspStatus( const ERTSPStatus eRtspStatus, const EMCU_Er
     tstringstream tmp;
     tmp << _T( "CVideoWndDialog Rtso status notify status: " ) << eRtspStatus << _T( " er: " ) << eErrorCode 
         << _T( " show status: " ) << strShowVideoStatus << endl;
-    mcu::log << tmp.str();
+    Log() << tmp.str();
 }
 
 BOOL CVideoWndDialog::ClearScreen()
 {
-    mcu::log << _T( "Clear the Video screen." ) << endl;
+    Log() << _T( "Clear the Video screen." ) << endl;
 
     if ( m_pSDLOverlay )
     {

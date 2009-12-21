@@ -53,7 +53,7 @@ BOOL CVirtualPlayerWnd::StartPlay( CVideoSession *pVideoSession, EMCU_ErrorCode&
 	else
 	{
 		pErrorCode = MCU_Error_Unknow;
-		mcu::log << _T( "player wnd startplay() fail! video session 0! " ) << endl;
+		Log() << _T( "player wnd startplay() fail! video session 0! " ) << endl;
 	}
 
 	// 是否开始监测。
@@ -69,7 +69,7 @@ BOOL CVirtualPlayerWnd::PausePlay( BOOL bPause )
 	// 服务器不支持暂停，直接停止。
 	if ( m_bPause == bPause )
 	{
-		mcu::log << _T( "CVirtualPlayerWnd::PausePlay already pause/restart!" ) << endl;
+		Log() << _T( "CVirtualPlayerWnd::PausePlay already pause/restart!" ) << endl;
 		return TRUE;
 	}
 	m_bPause = bPause;
@@ -106,14 +106,14 @@ BOOL CVirtualPlayerWnd::StopPlay()
 
         mcu::PostMsg( this, WM_RECORD_FAIL, MCU_Error_PlayStop, 0 );
 
-        mcu::log << _T( "Stop play when recording post WM_RECORD_FAIL msg.. stop record ret:" ) << bResult << _T( " er: " ) << er << endl;
+        Log() << _T( "Stop play when recording post WM_RECORD_FAIL msg.. stop record ret:" ) << bResult << _T( " er: " ) << er << endl;
     }
 
-	mcu::log << _T( "CVirtualPlayerWnd::StopPlay" ) << endl;
+	Log() << _T( "CVirtualPlayerWnd::StopPlay" ) << endl;
 	return this->m_MediaNet.CloseRTSP();
 
     this->StopCheckThread();
-    mcu::log << _T( "Stop Check status.!" ) << endl;
+    Log() << _T( "Stop Check status.!" ) << endl;
     
 }
 
@@ -155,7 +155,7 @@ BOOL CVirtualPlayerWnd::SendPtzCmd( EPTZCmdId eCmd )
 	BOOL bHasPtzPower =	CMCUSession::Instance()->CurVideoSession()->PtzControl();
 	if ( !bHasPtzPower )
 	{
-		mcu::log << _T( "Have no ptz right. can't control ptz." ) << endl;
+		Log() << _T( "Have no ptz right. can't control ptz." ) << endl;
 		return FALSE;
 	}
 
@@ -178,7 +178,7 @@ BOOL CVirtualPlayerWnd::SendPtzCmd( EPTZCmdId eCmd )
 		bPtz = FALSE;
 		break;
 	default:
-		mcu::log << _T( "Ptz Control Don't suport the cmd: " ) << eCmd << endl;
+		Log() << _T( "Ptz Control Don't suport the cmd: " ) << eCmd << endl;
 	    break;
 	}
 
@@ -232,7 +232,7 @@ BOOL CVirtualPlayerWnd::Capture( tstring& strPicPath, EMCU_ErrorCode& eErrorCode
 	BOOL bResult = this->Capture( strPicPath.c_str(), eErrorCode );    
 
 
-	mcu::log << _T( "Capture file: " ) << strPicPath << "result" << bResult  << endl;
+	Log() << _T( "Capture file: " ) << strPicPath << "result" << bResult  << endl;
 	return bResult;
 }
 
@@ -284,7 +284,7 @@ void CVirtualPlayerWnd::StopCheckThread()
 
 int CVirtualPlayerWnd::CheckThread( void * pParam )
 {
-	mcu::log << _T( "CVirtualPlayerWnd CheckThread run!" ) << endl;
+	Log() << _T( "CVirtualPlayerWnd CheckThread run!" ) << endl;
 	CVirtualPlayerWnd *pThis = ( CVirtualPlayerWnd*) pParam;
 	if ( pThis )
 	{
@@ -299,7 +299,7 @@ int CVirtualPlayerWnd::CheckThread( void * pParam )
 		
 	}
 
-	mcu::log << _T( "CVirtualPlayerWnd CheckThread exit!" ) << endl;
+	Log() << _T( "CVirtualPlayerWnd CheckThread exit!" ) << endl;
 	return 0;
 
 }
@@ -348,7 +348,7 @@ void CVirtualPlayerWnd::CheckStatsu()
             && this->m_eLastRtspStatus != RTSPStatus_WaitingPacket )
         {
             // 如果当前状态变为正常时，记录时间，以便开始计时。
-            mcu::log << _T( "The media stream detecter reset the net timeout timer." ) << endl;
+            Log() << _T( "The media stream detecter reset the net timeout timer." ) << endl;
             this->m_timeLastPic = ::GetCurTime();
         }
         break;
@@ -367,7 +367,7 @@ void CVirtualPlayerWnd::CheckStatsu()
 
         if ( timeSpan > timeoutNoPacket && RTSPStatus_WaitingPacket == this->m_eLastRtspStatus )
         {
-            mcu::log << _T( "Time out for waiting packet. stop the play!" ) << endl;
+            Log() << _T( "Time out for waiting packet. stop the play!" ) << endl;
             eStatus = RTSPStatus_Error_WaitPacket;
             //           mcu::PostMsg( this, WM_VIDEO_PLAY_STATUS, MCU_Error_Rtsp_Fail, eStatus );
             eErrorCode = MCU_Error_Rtsp_Fail;
@@ -376,7 +376,7 @@ void CVirtualPlayerWnd::CheckStatsu()
         }
         else if( timeSpan > timeoutWaitPacket  )
         {
-            mcu::log << _T( "Time out for packet .start to wait packet." ) << endl;
+            Log() << _T( "Time out for packet .start to wait packet." ) << endl;
             eStatus = RTSPStatus_WaitingPacket;
             
  //           mcu::PostMsg( this, WM_VIDEO_PLAY_STATUS, 0, eStatus );
@@ -419,10 +419,10 @@ mu_int32 CVirtualPlayerWnd::OnMessage( const mcu::TMsg& tMsg )
 
 BOOL CVirtualPlayerWnd::StartRecord( LPCTSTR strRecPath, EMCU_ErrorCode& eErrorCode )
 {
- //   mcu::log << _T( "Start Record Has no code" ) << endl;
+ //   Log() << _T( "Start Record Has no code" ) << endl;
     if ( this->IsRecording() )
     {
-        mcu::log << _T( "StartRecord called twice!!!!" ) << endl;
+        Log() << _T( "StartRecord called twice!!!!" ) << endl;
         return TRUE;
     }
 
@@ -442,12 +442,12 @@ BOOL CVirtualPlayerWnd::StartRecord( LPCTSTR strRecPath, EMCU_ErrorCode& eErrorC
 		return FALSE;
 	}	
 
-//    mcu::log << _T( "start record " ) << strRecPath << _T( " er: " ) << eErrorCode << endl;
+//    Log() << _T( "start record " ) << strRecPath << _T( " er: " ) << eErrorCode << endl;
 }
 
 BOOL CVirtualPlayerWnd::StartRecord( tstring& strRecPath, EMCU_ErrorCode& eErrorCode )
 {
-//    mcu::log << _T( "Start Record Has no code" ) << endl;
+//    Log() << _T( "Start Record Has no code" ) << endl;
     strRecPath = this->GetFileName( _T( "3gp" ) );
 
     return this->StartRecord( strRecPath.c_str(), eErrorCode );
@@ -456,7 +456,7 @@ BOOL CVirtualPlayerWnd::StartRecord( tstring& strRecPath, EMCU_ErrorCode& eError
 
 BOOL CVirtualPlayerWnd::IsRecording() const
 {
-//    mcu::log << _T( "Is Recording Has no code" ) << endl;
+//    Log() << _T( "Is Recording Has no code" ) << endl;
 	CDecoder *pDec = CDecoder::FindDecoder( MAIN_DECODER_NAME );
 	if( pDec )
 	{
@@ -467,19 +467,19 @@ BOOL CVirtualPlayerWnd::IsRecording() const
 
 BOOL CVirtualPlayerWnd::RestartPlay()
 {
-//    mcu::log << _T( "Restart play Has no code" ) << endl;
+//    Log() << _T( "Restart play Has no code" ) << endl;
 
     BOOL bResult;
     bResult = this->StopPlay();
     if( !bResult )
     {
-        mcu::log << _T( "Restart play can't StopPlay " ) << endl;
+        Log() << _T( "Restart play can't StopPlay " ) << endl;
     }
     EMCU_ErrorCode er;
     bResult = this->StartPlay( CMCUSession::Instance()->CurVideoSession(),er );
     if ( !bResult )
     {
-        mcu::log << _T( "Restart play can't Start Play! er: " ) << er << endl;
+        Log() << _T( "Restart play can't Start Play! er: " ) << er << endl;
     }
     return bResult;
 }
@@ -498,7 +498,7 @@ BOOL CVirtualPlayerWnd::StopRecord( EMCU_ErrorCode& pErrorCode )
 	{
 		return FALSE;
 	}
- //   mcu::log << _T( " CVirtualPlayerWnd::StopRecord has no code!" ) << endl;
+ //   Log() << _T( " CVirtualPlayerWnd::StopRecord has no code!" ) << endl;
     return FALSE;
 }
 
@@ -564,7 +564,7 @@ void CVirtualPlayerWnd::CheckDiskSpace()
 		CConfig::Instance()->GetMinStorageSpace( nMinSpace ) ;
 		if ( nFreeSpace < nMinSpace )
 		{
-            mcu::log << _T( "CheckDiskSpace dir " ) << strRecDir << _T( " don't have enough space to rec! left: " )
+            Log() << _T( "CheckDiskSpace dir " ) << strRecDir << _T( " don't have enough space to rec! left: " )
                 << nFreeSpace << _T( " min: " ) << nMinSpace << endl;
 
             EMCU_ErrorCode er;

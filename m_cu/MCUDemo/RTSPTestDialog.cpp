@@ -58,12 +58,12 @@ void CRTSPTestDialog::OnBnClickedButtonOpn()
     if ( pPlayer )
     {
         BOOL bResult = pPlayer->Play( CMCUSession::Instance()->CurVideoSession() );
-        mcu::log << _T( "Play rtsp: " ) << CMCUSession::Instance()->CurVideoSession()->RtspUrl() 
+        Log() << _T( "Play rtsp: " ) << CMCUSession::Instance()->CurVideoSession()->RtspUrl() 
             << _T( " ret " ) << bResult << endl;
     }
     else
     {
-        mcu::log << _T( "Can't get the Player Window!" ) << endl;
+        Log() << _T( "Can't get the Player Window!" ) << endl;
     }
 }
 

@@ -196,7 +196,7 @@ BOOL CWindowFactory::ShowWindow( EWindowId eShowWndId, EWindowId eShowAfter )
     }
     else
     {
-        mcu::log << _T( "CWindowFactory::ShowWindow can't find the window: " ) << eShowWndId << endl;
+        Log() << _T( "CWindowFactory::ShowWindow can't find the window: " ) << eShowWndId << endl;
         return FALSE;
     }
 

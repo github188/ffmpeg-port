@@ -149,7 +149,7 @@ LRESULT CPTZDialog::OnPtzButtonDown( WPARAM btnId, LPARAM )
     }
     else
     {
-        mcu::log << _T( "Send Ptz Cmd Fail! ptz sender is NULL!" ) << endl;
+        Log() << _T( "Send Ptz Cmd Fail! ptz sender is NULL!" ) << endl;
     }
     return S_OK;
 

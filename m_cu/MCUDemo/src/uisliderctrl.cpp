@@ -73,7 +73,7 @@ void CUISliderCtrl::OnPaint()
 		}
 		else
 		{
-			mcu::log << _T( "背景DC没有初始化！！！" ) << endl;
+			Log() << _T( "背景DC没有初始化！！！" ) << endl;
 		}
 
 		{
@@ -127,7 +127,7 @@ void CUISliderCtrl::OnTimer(UINT_PTR nIDEvent)
 //
 //	if ( pNMCD )
 //	{
-//		//mcu::log << _T( "custom draw: stage: " ) << (void*)pNMCD->dwDrawStage << _T( " spec: " ) << (void*)pNMCD->dwItemSpec << 
+//		//Log() << _T( "custom draw: stage: " ) << (void*)pNMCD->dwDrawStage << _T( " spec: " ) << (void*)pNMCD->dwItemSpec << 
 //		//	_T( " state: " ) << (void*)pNMCD->uItemState << _T( " param: " ) << pNMCD->lItemlParam << endl;
 //		switch( pNMCD->dwDrawStage )
 //		{
@@ -141,7 +141,7 @@ void CUISliderCtrl::OnTimer(UINT_PTR nIDEvent)
 //			}
 //			else
 //			{
-//				mcu::log << _T( "背景DC没有初始化！！！" ) << endl;
+//				Log() << _T( "背景DC没有初始化！！！" ) << endl;
 //			}
 //
 //			{
@@ -168,7 +168,7 @@ void CUISliderCtrl::OnTimer(UINT_PTR nIDEvent)
 //				switch( pNMCD->dwItemSpec )
 //				{
 //				case TBCD_CHANNEL:
-///*					mcu::log << _T( "Channel: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
+///*					Log() << _T( "Channel: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
 //						_T( " r" ) << pNMCD->rc.right << _T( " b: " ) << pNMCD->rc.bottom << endl;		*/			
 //					{
 //						//LPCTSTR PIC_SLIDER_CHANNEL = _T( "slider_chanel.jpg" );
@@ -189,13 +189,13 @@ void CUISliderCtrl::OnTimer(UINT_PTR nIDEvent)
 //					dwResult = CDRF_SKIPDEFAULT;
 //					break;
 //				case TBCD_TICS:		
-//					//mcu::log << _T( "tics: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
+//					//Log() << _T( "tics: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
 //					//	_T( " r" ) << pNMCD->rc.right << _T( " b: " ) << pNMCD->rc.bottom << endl;
 //					// 不画刻度。
 //					dwResult = CDRF_SKIPDEFAULT ;
 //					break;
 //				case TBCD_THUMB:
-//					//mcu::log << _T( "Thumb: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
+//					//Log() << _T( "Thumb: l: " ) << pNMCD->rc.left << _T( " t: " ) << pNMCD->rc.top << 
 //					//	_T( " r" ) << pNMCD->rc.right << _T( " b: " ) << pNMCD->rc.bottom << endl;
 //
 //					{

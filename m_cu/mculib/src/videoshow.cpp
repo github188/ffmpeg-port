@@ -55,7 +55,7 @@ BOOL CVideoShowWnd::SetRect( int nXpos, int nYpos, int nWidth, int nHeight, BOOL
 	// 用消息机制实现，进行了线程转换，阻塞处理。
 	// 除了存储参数外，不需要加锁，否则会死锁。
 
-	mcu::log << _T( "Vidw Show Set Rect. x: " ) << nXpos << _T( " y: " ) << nYpos
+	Log() << _T( "Vidw Show Set Rect. x: " ) << nXpos << _T( " y: " ) << nYpos
 		<< _T( "w: " ) << nWidth << _T( "h: " ) << nHeight << _T( "full: " ) << bFullScreen << endl;
 
 	// 只在保存参数时加锁。
@@ -88,12 +88,12 @@ BOOL CVideoShowWnd::CreateThreadSafe()
 	{		
 		if ( SDL_Init ( initFlags ) ) 
 		{
-			mcu::log << _T( "Could not initialize SDL ec: " ) << SDL_GetError() << endl;
+			Log() << _T( "Could not initialize SDL ec: " ) << SDL_GetError() << endl;
 			_ASSERT( FALSE );
 		}
 		else
 		{
-			mcu::log << _T( "SDL Init!" ) << endl;
+			Log() << _T( "SDL Init!" ) << endl;
 		}
 	}	
 
@@ -111,11 +111,11 @@ BOOL CVideoShowWnd::CreateThreadSafe()
 	ssEnvWindowPos << "SDL_VIDEO_WINDOW_POS=" << nXpos << "," << nYpos ;
 	strcpy( szPosEnv, ssEnvWindowPos.str().c_str() );
 	int nResult = SDL_putenv( szPosEnv );
-	mcu::log << "sdl set env: " << szPosEnv  << "result: " << nResult << endl;
+	Log() << "sdl set env: " << szPosEnv  << "result: " << nResult << endl;
 
 	//	SDL_putenv( "SDL_VIDEO_WINDOW_POS=0,50" );
 	//	SDL_putenv( ( "SDL_VIDEO_WINDOW_POS=200,100" ) );
-	mcu::log << "new set env2" << endl;
+	Log() << "new set env2" << endl;
 
 	SDL_WM_SetCaption("M_CU", "mcu" );
 
@@ -123,7 +123,7 @@ BOOL CVideoShowWnd::CreateThreadSafe()
 
 	char szSDLDrivers[1000] = {0};
 	SDL_VideoDriverName( szSDLDrivers, 1000 );
-	mcu::log << "sdl driver: " << szSDLDrivers << endl;
+	Log() << "sdl driver: " << szSDLDrivers << endl;
 
 	//SDL_VIDEODRIVER
 
@@ -190,7 +190,7 @@ BOOL CVideoShowWnd::DestroyThreadSafe()
 	}
 
 //	this->DestroyNotQuit();
-//	mcu::log << _T( "DestroyNotQuit Vidwo show !" ) << endl;
+//	Log() << _T( "DestroyNotQuit Vidwo show !" ) << endl;
 
 	//	this->m_pCbVideoEvent = NULL;
 	//	this->m_uUserData = NULL;
@@ -225,7 +225,7 @@ BOOL CVideoShowWnd::DestroyThreadSafe()
 //{
 //	SCOPE_LOCK( m_threadSafeLock );
 //
-//	mcu::log << _T( "DestroyNotQuit Vidwo show !" ) << endl;
+//	Log() << _T( "DestroyNotQuit Vidwo show !" ) << endl;
 //
 //	//	this->m_pCbVideoEvent = NULL;
 //	//	this->m_uUserData = NULL;
@@ -255,7 +255,7 @@ BOOL CVideoShowWnd::DisplayAsync( const CBaseCodec::TVideoPicture& tPic, const C
 		int nNewTime = tFrameInfo.frameTimeStamp - m_u64LastTimeStamp;
 		nNewTime /= 1000;	// 视频帧时间戳的单位是 microsecond， 1/1000000 s。
 
-//			mcu::log << _T( "DisplayAsync frame time span: " ) << nNewTime 
+//			Log() << _T( "DisplayAsync frame time span: " ) << nNewTime 
 //				<< _T( " frame time: " ) << (mu_uint32)tFrameInfo.frameTimeStamp << endl;
 		
 		// 定时器读取会有一个延时，所以将定时器设置小一些，让定时器来的快一些。
@@ -265,12 +265,12 @@ BOOL CVideoShowWnd::DisplayAsync( const CBaseCodec::TVideoPicture& tPic, const C
 		{
 			if ( nNewTime < 5 || nNewTime > 500 )
 			{
-				mcu::log << _T( "DisplayAsync Invalid nNewTime :" ) << nNewTime << endl;
+				Log() << _T( "DisplayAsync Invalid nNewTime :" ) << nNewTime << endl;
 			}
 			else
 			{
 				m_nDisplayTime = nNewTime;
-				mcu::log << _T( "DisplayAsync Timer change to " ) << m_nDisplayTime << endl;
+				Log() << _T( "DisplayAsync Timer change to " ) << m_nDisplayTime << endl;
 			}
 			
 		}
@@ -293,7 +293,7 @@ BOOL CVideoShowWnd::DisplayAsync( const CBaseCodec::TVideoPicture& tPic, const C
 			m_nReadCursor = nNextPos;
 			if( PicBufferDebug )
 			{
-				mcu::log << _T( "Write faster, read slow. write change read cursor to " ) << m_nReadCursor << endl;
+				Log() << _T( "Write faster, read slow. write change read cursor to " ) << m_nReadCursor << endl;
 			}			
 		}
 	}
@@ -304,7 +304,7 @@ BOOL CVideoShowWnd::DisplayAsync( const CBaseCodec::TVideoPicture& tPic, const C
 	BOOL bResult = this->m_arPicBuffer[ nWriteIndex ].m_tPic.Copy( tPic );
 	if ( !bResult )
 	{
-		mcu::log << _T( "DisplayAsync copy pic failed!" ) << endl;
+		Log() << _T( "DisplayAsync copy pic failed!" ) << endl;
 	}
 	this->m_arPicBuffer[ nWriteIndex ].m_bFillData = bResult;
 	
@@ -316,7 +316,7 @@ BOOL CVideoShowWnd::DisplayAsync( const CBaseCodec::TVideoPicture& tPic, const C
 			m_nWriteCursor -= PicBufferSize;
 		}
 
-//		mcu::log << _T( "write cursor move to" ) << m_nWriteCursor << endl;
+//		Log() << _T( "write cursor move to" ) << m_nWriteCursor << endl;
 	}
 	return bResult;
 
@@ -333,7 +333,7 @@ void CVideoShowWnd::SetEventCallback( CB_VideoWndEvent pFun, mu_uint32 uUserData
 
 int CVideoShowWnd::SDL_ThreadFunc( void *param )
 {
-	mcu::log << _T( "video show wnd thread run! " ) << endl;
+	Log() << _T( "video show wnd thread run! " ) << endl;
 	CVideoShowWnd *pThis = (CVideoShowWnd*)param;
 	if ( NULL == pThis )
 	{
@@ -346,7 +346,7 @@ int CVideoShowWnd::SDL_ThreadFunc( void *param )
 	while( bRun ) 
 	{
 		SDL_WaitEvent(&sdlevent);
-		mcu::log << _T( "sdl event : " ) << (int)sdlevent.type << endl;
+		Log() << _T( "sdl event : " ) << (int)sdlevent.type << endl;
 
 		switch( sdlevent.type ) 
 		{
@@ -355,16 +355,16 @@ int CVideoShowWnd::SDL_ThreadFunc( void *param )
 			//{
 
 			//case SDLK_LEFT:
-			//	mcu::log << _T( "left" ) << endl;
+			//	Log() << _T( "left" ) << endl;
 			//	break; 
 			//case SDLK_RIGHT:
-			//	mcu::log << _T( "right" ) << endl;
+			//	Log() << _T( "right" ) << endl;
 			//	break;
 			//case SDLK_UP:
-			//	mcu::log << _T( "up" ) << endl;
+			//	Log() << _T( "up" ) << endl;
 			//	break;
 			//case SDLK_DOWN:
-			//	mcu::log << _T( "down" ) << endl;
+			//	Log() << _T( "down" ) << endl;
 			//	break;			            
 			//default:
 			//	break;
@@ -386,7 +386,7 @@ int CVideoShowWnd::SDL_ThreadFunc( void *param )
 				//	}
 				//	catch( ... )
 				//	{
-				//		mcu::log << _T( "WM_VIDEO_SHOW_CLICK m_pCbVideoEvent crash!!" ) << endl;
+				//		Log() << _T( "WM_VIDEO_SHOW_CLICK m_pCbVideoEvent crash!!" ) << endl;
 				//	}
 				//}
 				mcu::PostMsg( pThis, WM_VIDEO_SHOW_CLICK, NULL, NULL );
@@ -424,7 +424,7 @@ int CVideoShowWnd::SDL_ThreadFunc( void *param )
 		}
 	}
 
-//	mcu::log << _T( "SDL_ThreadFunc sdl thread exit! " ) << endl;
+//	Log() << _T( "SDL_ThreadFunc sdl thread exit! " ) << endl;
 	return 0;
 }
 
@@ -456,7 +456,7 @@ mu_int32 CVideoShowWnd::OnMessageCallback( const mcu::TMsg& tMsg )
 	CVideoShowWnd *pThis = (CVideoShowWnd*)tMsg.m_MessageTarget;
 	if ( NULL == pThis )
 	{
-		mcu::log << "OnMessageCallback this = 0! msg: " << tMsg.m_nMessage << endl;
+		Log() << "OnMessageCallback this = 0! msg: " << tMsg.m_nMessage << endl;
 		return 0;
 	}
 
@@ -471,7 +471,7 @@ mu_int32 CVideoShowWnd::OnMessageCallback( const mcu::TMsg& tMsg )
 			}
 			catch( ... )
 			{
-				mcu::log << _T( "WM_VIDEO_SHOW_CLICK m_pCbVideoEvent crash!!" ) << endl;
+				Log() << _T( "WM_VIDEO_SHOW_CLICK m_pCbVideoEvent crash!!" ) << endl;
 			}
 		}
 		break;
@@ -510,12 +510,12 @@ unsigned int CVideoShowWnd::OnDisplayTimerCallback(unsigned int interval, void *
 
 		//	if ( nTimeSpan > 10 && nTimeSpan < 500 )
 		//	{
-		//		mcu::log << _T( "timer: " ) << nTimeSpan << endl;
+		//		Log() << _T( "timer: " ) << nTimeSpan << endl;
 		//		return nTimeSpan;
 		//	}
 		//}
 
-//		mcu::log << _T( "interval" ) << interval << _T( "m_nDisplayTime: " )<< pThis->m_nDisplayTime << endl;
+//		Log() << _T( "interval" ) << interval << _T( "m_nDisplayTime: " )<< pThis->m_nDisplayTime << endl;
 
 		// 返回当前的显示间隔时间，定时器会自动的以这个时间做下次的定时。
 		return pThis->m_nDisplayTime;
@@ -537,7 +537,7 @@ mu_uint64 CVideoShowWnd::DisplayFromPicBuffer()
 		pPic = &(this->m_arPicBuffer[ nReadCur ].m_tPic);
 		pFrame = &( this->m_arPicBuffer[ nReadCur ].m_tFrameInfo );
 
-//		mcu::log << _T( "read pic cursor: " ) << nReadCur << endl;
+//		Log() << _T( "read pic cursor: " ) << nReadCur << endl;
 
 		this->m_arPicBuffer[ nReadCur ].m_bFillData = FALSE;
 		// move to next.
@@ -552,7 +552,7 @@ mu_uint64 CVideoShowWnd::DisplayFromPicBuffer()
 	{
 		if( PicBufferDebug )
 		{
-			mcu::log << _T( "DisplayFromPicBuffer has no pic! " ) << endl;
+			Log() << _T( "DisplayFromPicBuffer has no pic! " ) << endl;
 		}		
 		return 0;
 	}
@@ -567,7 +567,7 @@ mu_uint64 CVideoShowWnd::DisplayFromPicBuffer()
 	// SDL还没有正常初始化.
 	if ( !m_pSDLSurface )
 	{
-		mcu::log << _T( "Vidow show wnd display: Surface didn't inited! " ) << endl;
+		Log() << _T( "Vidow show wnd display: Surface didn't inited! " ) << endl;
 		return pFrame->frameTimeStamp;
 	}
 
@@ -583,7 +583,7 @@ mu_uint64 CVideoShowWnd::DisplayFromPicBuffer()
 		}
 		m_pSDLOverlay = SDL_CreateYUVOverlay( nPicWidth, nPicHeight, SDL_IYUV_OVERLAY, m_pSDLSurface );
 
-		mcu::log << _T( "Recreate the yuv overlay! " ) << endl;
+		Log() << _T( "Recreate the yuv overlay! " ) << endl;
 	}
 
 	// copy图像。
@@ -620,11 +620,11 @@ mu_uint64 CVideoShowWnd::DisplayFromPicBuffer()
 	rect.x = conBlackBorderOffset + ( m_pSDLSurface->w - rect.w ) /2 ;
 	rect.y = conBlackBorderOffset + ( m_pSDLSurface->h - rect.h ) /2 ;
 
-	//	mcu::log << _T( "SDL_DisplayYUVOverlay time : " ) << GetTick() << endl;
+	//	Log() << _T( "SDL_DisplayYUVOverlay time : " ) << GetTick() << endl;
 
 	SDL_DisplayYUVOverlay( m_pSDLOverlay, &rect );
 
-	//	mcu::log << _T( "after SDL_DisplayYUVOverlay time : " ) << GetTick() << endl;
+	//	Log() << _T( "after SDL_DisplayYUVOverlay time : " ) << GetTick() << endl;
 	return pFrame->frameTimeStamp;
 }
 

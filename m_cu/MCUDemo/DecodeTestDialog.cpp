@@ -68,7 +68,7 @@ void CDecodeTestDialog::OnBnClickedButtonPlay()
 		return;
 	}
 
-	mcu::log << _T( "OnBnClickedButtonPlay: " ) << LPCTSTR( m_strFilePath ) << endl;
+	Log() << _T( "OnBnClickedButtonPlay: " ) << LPCTSTR( m_strFilePath ) << endl;
 
 	// Ïú»Ù.
 	Reset();
@@ -85,17 +85,17 @@ void CDecodeTestDialog::OnBnClickedButtonPlay()
 		m_cVideoWndDlg.ShowWindow( SW_SHOW );
 	}
 
-	mcu::log << _T( "before SDL_CreateThread" ) << endl;
+	Log() << _T( "before SDL_CreateThread" ) << endl;
 	m_bRunFlag = TRUE;
 	m_pDecodeThread = SDL_CreateThread( DecodeThread, this );
 
-	mcu::log << _T( "Create Thread: " ) << int( m_pDecodeThread ) << endl;
+	Log() << _T( "Create Thread: " ) << int( m_pDecodeThread ) << endl;
 	
 }
 
 int CDecodeTestDialog::DecodeThread( void * pvThis )
 {
-	mcu::log << _T( "DecodeThread run!!" ) << endl;
+	Log() << _T( "DecodeThread run!!" ) << endl;
 	CDecodeTestDialog *pThis = (CDecodeTestDialog*)pvThis;
 
 	CString strFilePath = pThis->m_strFilePath;
@@ -174,7 +174,7 @@ int CDecodeTestDialog::DecodeThread( void * pvThis )
 
 		if ( nFrameCount > nOldFrameCount )
 		{
-			mcu::log << _T( "frame count: " ) << nFrameCount << endl;
+			Log() << _T( "frame count: " ) << nFrameCount << endl;
 		}
 		
 	}
@@ -188,7 +188,7 @@ int CDecodeTestDialog::DecodeThread( void * pvThis )
 	tstringstream ssMsg;
 	ssMsg << _T( "total frame: " ) << nFrameCount << _T( " useTime(s): " ) 
 		<< nSeconds << _T( "FPS: " ) << fFramePS << endl;
-	mcu::log << ssMsg.str();
+	Log() << ssMsg.str();
 	AfxMessageBox( ssMsg.str().c_str() );
 
 	CDecoder::Release( pDec );
@@ -229,7 +229,7 @@ int CDecodeTestDialog::DecodeThread( void * pvThis )
 		}
 		nFrameCount += InputData( decoderId, videoBuf, nReadLen );
 
-		mcu::log << _T( "frame count: " ) << nFrameCount << endl;
+		Log() << _T( "frame count: " ) << nFrameCount << endl;
 	}
 
 	CTime cAfterDecode = CTime::GetCurrentTime();
@@ -241,7 +241,7 @@ int CDecodeTestDialog::DecodeThread( void * pvThis )
 	tstringstream ssMsg;
 	ssMsg << _T( "total frame: " ) << nFrameCount << _T( " useTime(s): " ) 
 		<< nSeconds << _T( "FPS: " ) << fFramePS << endl;
-	mcu::log << ssMsg.str();
+	Log() << ssMsg.str();
 	AfxMessageBox( ssMsg.str().c_str() );
 
 	DestroyDecoder( decoderId );
@@ -317,7 +317,7 @@ void CDecodeTestDialog::OnBnClickedCheckRecord()
 		
 		if ( !bSuccess )
 		{
-			mcu::log << _T( "record operation fail!" ) << endl;
+			Log() << _T( "record operation fail!" ) << endl;
 		}
 	}
 }

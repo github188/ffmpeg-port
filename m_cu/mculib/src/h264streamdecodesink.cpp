@@ -25,7 +25,7 @@ CH264StreamDecodeSink::CH264StreamDecodeSink( UsageEnvironment& env, unsigned bu
 	if ( InvalidDecoder == m_decoderId )
 	{
 		// 出错了！
-		mcu::log << _T( "创建H264解码器失败!" ) << endl;
+		Log() << _T( "创建H264解码器失败!" ) << endl;
 		AfxMessageBox( _T( "无法创建H264解码器!" ) );
 	}
 #endif
@@ -42,7 +42,7 @@ CH264StreamDecodeSink::CH264StreamDecodeSink( UsageEnvironment& env, unsigned bu
 	if ( NULL == m_pDecoder )
 	{
 		// 出错了！
-		mcu::log << _T( "Create H264 Decoder fail!!" ) << endl;
+		Log() << _T( "Create H264 Decoder fail!!" ) << endl;
 #ifdef _WIN32_WCE
 		AfxMessageBox( _T( "无法创建H264解码器!" ) );
 #endif
@@ -144,7 +144,7 @@ Boolean CH264StreamDecodeSink::DecodeData()
 		// 暂时写在这里。
 		tPkt.timeStamp = m_timeStamp.tv_sec * 1000000 + m_timeStamp.tv_usec;
 
-	//	mcu::log << _T( "Receive video data!" ) << endl;
+	//	Log() << _T( "Receive video data!" ) << endl;
 
 		m_pDecoder->InputStreamSync( tPkt );
 	}

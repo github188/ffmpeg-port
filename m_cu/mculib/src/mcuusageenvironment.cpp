@@ -21,31 +21,31 @@ CMCUUsageEnvironment *CMCUUsageEnvironment::createNew(TaskScheduler& taskSchedul
 
 
 UsageEnvironment& CMCUUsageEnvironment::operator<<(char const* str) {
-    mcu::log << str;
+    Log() << str;
     return *this;
 }
 
 UsageEnvironment& CMCUUsageEnvironment::operator<<(int i) {
 //    fprintf(stderr, "%d", i);
-    mcu::log << i;
+    Log() << i;
     return *this;
 }
 
 UsageEnvironment& CMCUUsageEnvironment::operator<<(unsigned u) {
 //    fprintf(stderr, "%u", u);
-    mcu::log << u;
+    Log() << u;
     return *this;
 }
 
 UsageEnvironment& CMCUUsageEnvironment::operator<<(double d) {
 //    fprintf(stderr, "%f", d);
-    mcu::log << d;
+    Log() << d;
     return *this;
 }
 
 UsageEnvironment& CMCUUsageEnvironment::operator<<(void* p) {
 //    fprintf(stderr, "%p", p);
-    mcu::log << p;
+    Log() << p;
     return *this;
 }
 

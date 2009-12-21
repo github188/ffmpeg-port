@@ -52,7 +52,7 @@ BOOL CWebpageDlg::OnInitDialog()
 
     
     BOOL bResult;// = SHDoneButton( FALSE );
-    //mcu::log << _T( "SHDoneButton result: " ) << bResult << endl;
+    //Log() << _T( "SHDoneButton result: " ) << bResult << endl;
 
     // TODO:  在此添加额外的初始化
     
@@ -76,7 +76,7 @@ BOOL CWebpageDlg::OnInitDialog()
     this->m_btnSip.SetImage( _T( "btn_sip_normal.jpg" ), _T( "btn_sip_focus.jpg" ), _T( "btn_sip_disable.jpg" ), FALSE );
 
     bResult = CreateBrowserCtrl();
-    mcu::log << _T( "Create Browser Control ret: " ) << bResult << endl;
+    Log() << _T( "Create Browser Control ret: " ) << bResult << endl;
 
     tstring strAppTitle;
     CConfig::Instance()->GetAppTitle( strAppTitle );
@@ -115,7 +115,7 @@ LRESULT CWebpageDlg::OnCreateBrowserCtrlCmd( WPARAM, LPARAM )
             CWindow::rcDefault, 
             _T( "MCU Browser" ) );   
 
-        mcu::log << _T( "Create web browser. wnd; " ) << hWnd << endl;
+        Log() << _T( "Create web browser. wnd; " ) << hWnd << endl;
 
         bResult = ( hWnd != NULL );
         
@@ -135,7 +135,7 @@ LRESULT CWebpageDlg::OnCreateBrowserCtrlCmd( WPARAM, LPARAM )
     else
     {
         int err = ::GetLastError();
-        mcu::log << _T( "Create web browser ctrl fail! errcode: " ) << err << endl;
+        Log() << _T( "Create web browser ctrl fail! errcode: " ) << err << endl;
     }
 
     return bResult;
@@ -176,21 +176,21 @@ BOOL CWebpageDlg::OpenUrl( LPCTSTR strUrl )
     BOOL bResult = this->m_htmlWnd.OpenUrl( strUrl );
     if ( !bResult )
     {
-        mcu::log << _T( "CWebpageDlg OpenUrl fail! url: " ) << strUrl << endl;
+        Log() << _T( "CWebpageDlg OpenUrl fail! url: " ) << strUrl << endl;
     }
     return bResult;
 }
 
 BOOL CWebpageDlg::HistoryBack( int nStep )
 {
-    mcu::log << _T( "CWebpageDlg::HistoryBack!!!step: " ) << nStep << endl;
+    Log() << _T( "CWebpageDlg::HistoryBack!!!step: " ) << nStep << endl;
     this->m_htmlWnd.HistoryBack( nStep );
     return TRUE;
 }
 
 BOOL CWebpageDlg::OpenPlayer( CVideoSession *pVideoSession )
 {
-    mcu::log << _T( "CWebpageDlg::OpenPlayer called!!!" ) << pVideoSession->RtspUrl() << endl;
+    Log() << _T( "CWebpageDlg::OpenPlayer called!!!" ) << pVideoSession->RtspUrl() << endl;
 
     CWindowFactory::Instance()->ShowWindow( WndPlayer, this->GetWindowId() );
     CPlayerDialog *pPlayer = dynamic_cast< CPlayerDialog * >( CWindowFactory::Instance()->GetWnd( WndPlayer ) );
@@ -200,7 +200,7 @@ BOOL CWebpageDlg::OpenPlayer( CVideoSession *pVideoSession )
     }
     else
     {
-        mcu::log << _T( "OpenPlayer Can't get the player wnd!" ) << endl;
+        Log() << _T( "OpenPlayer Can't get the player wnd!" ) << endl;
     }
 
     return TRUE;
@@ -410,7 +410,7 @@ void CWebpageDlg::OnShowWindowCmd( int nSWCmd )
         
         if ( !bResult )
         {
-            mcu::log << _T( "web browser control show window failed!!!" ) << endl;
+            Log() << _T( "web browser control show window failed!!!" ) << endl;
         }
 //        
 
@@ -437,7 +437,7 @@ void CWebpageDlg::OnDestroy()
 LRESULT CWebpageDlg::OnHtmlPreLoad( WPARAM wParam, LPARAM )
 {
     LPCTSTR strUrl = (LPCTSTR)wParam;
-    mcu::log << _T( "CWebpageDlg::OnHtmlPreLoad" ) << strUrl << endl;
+    Log() << _T( "CWebpageDlg::OnHtmlPreLoad" ) << strUrl << endl;
 
     EUrlType eUT = this->OnLoadPage( strUrl );
     return ( UrlRtsp == eUT );

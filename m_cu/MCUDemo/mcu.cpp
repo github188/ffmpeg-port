@@ -124,7 +124,7 @@ void CMCUApp::BackupRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueName, PWC
 			&ftLastWriteTime); // Last write time.
 		if( retCode != ERROR_SUCCESS )
 		{
-			mcu::log << _T( "RegQueryInfoKey Ê§°Ü£¡" ) << endl;
+			Log() << _T( "RegQueryInfoKey Ê§°Ü£¡" ) << endl;
 		}
 		
 
@@ -144,14 +144,14 @@ void CMCUApp::BackupRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueName, PWC
 		}
 		else
 		{
-			mcu::log << _T( "RegQueryValueEx Ê§°Ü£¡" ) << endl;
+			Log() << _T( "RegQueryValueEx Ê§°Ü£¡" ) << endl;
 		}
 		LocalFree ((HLOCAL)bData);
 		RegCloseKey(hkey);
 	}
 	else
 	{
-		mcu::log << _T( "BackupRegValue ´ò¿ª×¢²á±íÊ§°Ü£¡" ) << endl;
+		Log() << _T( "BackupRegValue ´ò¿ª×¢²á±íÊ§°Ü£¡" ) << endl;
 	}
 }
 /*
@@ -206,7 +206,7 @@ void CMCUApp::RestoreRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueName, PW
 	}
 	else
 	{
-		mcu::log << _T( "RestoreRegValue ´ò¿ª×¢²á±íÊ§°Ü£¡" ) << endl;
+		Log() << _T( "RestoreRegValue ´ò¿ª×¢²á±íÊ§°Ü£¡" ) << endl;
 	}
 }
 */
@@ -306,7 +306,7 @@ BOOL CMCUApp::InitInstance()
 	HRESULT hr = ::CoInitializeEx( NULL, COINIT_MULTITHREADED );
 	if ( FAILED( hr ) )
 	{
-		mcu::log << _T( "COM³õÊ¼»¯Ê§°Ü£¡" ) << endl;
+		Log() << _T( "COM³õÊ¼»¯Ê§°Ü£¡" ) << endl;
 	}
 
 	// ÉèÖÃ½çÃæÍ¼Æ¬µÄÄ¬ÈÏÄ¿Â¼.

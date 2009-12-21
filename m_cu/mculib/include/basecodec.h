@@ -84,7 +84,7 @@ public:
 					this->data[i] = (mu_uint8*)mu_fast_realloc( this->data[i], &this->linesize[i], tAnother.linesize[i] );
 					if ( NULL == this->data[i] )
 					{
-						mcu::log << _T( "TVideoPicture malloc memery failed when copy!!" ) << endl;
+						Log() << _T( "TVideoPicture malloc memery failed when copy!!" ) << endl;
 						return FALSE;
 					}
 					this->linesize[i] = tAnother.linesize[i];

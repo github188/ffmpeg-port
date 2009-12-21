@@ -48,7 +48,7 @@ BOOL CVirtualLoginWnd::Login( const TLoginInfo& tLoginInfo, ELoginType eLoginTyp
 
 	this->SaveConfig( tLoginInfo );
 
-	mcu::log << _T( "mculib login url: " ) << ssServerFullUrl.str() << endl;
+	Log() << _T( "mculib login url: " ) << ssServerFullUrl.str() << endl;
 	this->OpenWebpage( ssServerFullUrl.str().c_str() );
 
 	return TRUE;

@@ -60,7 +60,7 @@ CConfig::CConfig(void)
 	tstring strXmlFile = this->GetDefaultConfigFilePath();
 	BOOL bResult = this->m_pXmlParser->LoadXML( strXmlFile.c_str(), CONFIG_SECTION_CONFIG_NAME);
 
-	mcu::log << _T( "config load xml: " ) << strXmlFile << _T( " result: ") << bResult << endl;
+	Log() << _T( "config load xml: " ) << strXmlFile << _T( " result: ") << bResult << endl;
 	_ASSERT( bResult );
 
     m_pBkCfgxmlParser = NULL;
@@ -69,10 +69,10 @@ CConfig::CConfig(void)
     tstring strPresetFile = this->GetBkCfgFilePath();
 
     bResult = this->m_pBkCfgxmlParser->LoadXML( strPresetFile.c_str(), CONFIG_SECTION_CONFIG_NAME );
-    mcu::log << _T( "config load preset: " ) << strPresetFile << _T( " result: " ) << bResult << endl;
+    Log() << _T( "config load preset: " ) << strPresetFile << _T( " result: " ) << bResult << endl;
 
 //	bResult = this->m_pXmlParser->SetCurRootElement( CONFIG_SECTION_CONFIG_NAME );
-//	mcu::log << _T( "config set config root: result: ") << bResult << endl;
+//	Log() << _T( "config set config root: result: ") << bResult << endl;
 }
 
 CConfig::~CConfig(void)
@@ -92,7 +92,7 @@ void CConfig::SetConfigFilePath( LPCTSTR strCfgFilePath )
 	}
 	else
 	{
-		mcu::log << _T( "SetConfigFilePath xml parse is null!" ) << endl;
+		Log() << _T( "SetConfigFilePath xml parse is null!" ) << endl;
 	}
 	
 //	this->m_pXmlParser->SetCurRootElement( CONFIG_SECTION_CONFIG_NAME );
@@ -106,7 +106,7 @@ tstring CConfig::GetConfigFilePath( ) const
 	}
 	else
 	{
-		mcu::log << _T( "GetConfigFilePath xml parse is null!" ) << endl;
+		Log() << _T( "GetConfigFilePath xml parse is null!" ) << endl;
 		return _T( "" );
 	}	
 }
@@ -208,7 +208,7 @@ BOOL CConfig::SetServer( LPCTSTR strUrl )
 //    }
 //    else 
 //    {
-//        mcu::log << _T( "Not right http url! " ) << endl;
+//        Log() << _T( "Not right http url! " ) << endl;
 //    }
 //    return bret;
 //}
@@ -249,7 +249,7 @@ BOOL CConfig::SetServer( LPCTSTR strUrl )
 //    }
 //    else 
 //    {
-//        mcu::log << _T( "Not right http url!" ) << endl;
+//        Log() << _T( "Not right http url!" ) << endl;
 //    }
 //    return bret;
 //}
@@ -291,10 +291,10 @@ BOOL CConfig::GetLoginInfo( tstring& strUserId, tstring& strPw, EStreamType& eSt
 			unsigned char cLow = nLow> '9' ? ( 10 + nLow - 'A' ) : ( nLow - '0' );
 			pEncDataBuf[i] = ( cHigh << 4 ) + cLow;
 
-			//		mcu::log << pEncDataBuf[i];
+			//		Log() << pEncDataBuf[i];
 		}
 
-		//	mcu::log << endl;
+		//	Log() << endl;
 
 		// 解密。
 		tean_dec( s_EncKey, (char*)pEncDataBuf, nEncDataLen );
@@ -331,7 +331,7 @@ BOOL CConfig::SetLoginInfo( LPCTSTR strUserId, LPCTSTR strPw, EStreamType eStrea
 	for ( int i=0; i<nBufByteLen; ++i )
 	{
         tstringstream ssSavePw;
-		//		mcu::log << pDateBuf[i] ;
+		//		Log() << pDateBuf[i] ;
 		//TCHAR tmpBuf[10] = {0};
 		//_stprintf( tmpBuf,  _T("%02X" ), pDateBuf[i] );
         ssSavePw << setbase( 16 ) << pDateBuf[i];
@@ -341,7 +341,7 @@ BOOL CConfig::SetLoginInfo( LPCTSTR strUserId, LPCTSTR strPw, EStreamType eStrea
 	}
 
 	
-//	mcu::log << endl;
+//	Log() << endl;
 
 
 
@@ -436,7 +436,7 @@ BOOL CConfig::GetCaptureDir( tstring& strCaptureDir )
 
     // 标准化文件夹。
     NormalizeDir( strCaptureDir );
-//	mcu::log << _T( "CConfig::GetCaptureDir [" ) << strCaptureDir << _T( "]" )<< endl;
+//	Log() << _T( "CConfig::GetCaptureDir [" ) << strCaptureDir << _T( "]" )<< endl;
 
 	return ( !strCaptureDir.empty() );
 }

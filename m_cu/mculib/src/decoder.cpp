@@ -41,7 +41,7 @@ CDecoder * CDecoder::CreateDecoder( ECodecId eCodecId, int nBandWidth, LPCTSTR s
 		pDec = new CMpeg4Decoder(); 
 		break;	
 	default:
-		mcu::log << _T( "unknown codec! " ) << endl;
+		Log() << _T( "unknown codec! " ) << endl;
 		_ASSERT( FALSE );
 		return 0;
 	    break;
@@ -50,7 +50,7 @@ CDecoder * CDecoder::CreateDecoder( ECodecId eCodecId, int nBandWidth, LPCTSTR s
 	BOOL bResult = pDec->Init( nBandWidth );
 	if ( !bResult )
 	{
-		mcu::log << _T( "decoder Init Fail! bandwidth: " ) << nBandWidth << endl;
+		Log() << _T( "decoder Init Fail! bandwidth: " ) << nBandWidth << endl;
 	}
 	
 	_ASSERT( bResult );
@@ -68,7 +68,7 @@ CDecoder * CDecoder::CreateDecoder( ECodecId eCodecId, int nBandWidth, LPCTSTR s
 
 void CDecoder::Release( CDecoder *pDecoder )
 {
- //   mcu::log << _T( "Release call" ) << endl;
+ //   Log() << _T( "Release call" ) << endl;
 
 	SCOPE_LOCK( s_decoderNameTableLock );
 	for ( TDecoderNameTable::iterator iter = s_tDecoderNameTable.begin(); iter != s_tDecoderNameTable.end(); ++iter )
@@ -82,12 +82,12 @@ void CDecoder::Release( CDecoder *pDecoder )
 	delete pDecoder;
 	pDecoder = NULL;
 
-//    mcu::log << _T( "Release call" ) << endl;
+//    Log() << _T( "Release call" ) << endl;
 }
 
 CDecoder *CDecoder::FindDecoder( LPCTSTR strName )
 {
-//    mcu::log << _T( "FindDecoder call" ) << endl;
+//    Log() << _T( "FindDecoder call" ) << endl;
 
 	SCOPE_LOCK( s_decoderNameTableLock );
 
@@ -102,7 +102,7 @@ CDecoder *CDecoder::FindDecoder( LPCTSTR strName )
 		pDec = NULL;
 	}
 
- //   mcu::log << _T( "FindDecoder over" ) << endl;
+ //   Log() << _T( "FindDecoder over" ) << endl;
 
     return pDec;
 }
@@ -131,7 +131,7 @@ void CDecoder::RegDec( LPCTSTR lpName, CDecoder *pDec )
 
 void CDecoder::OnDecodeResult( BOOL bSuccess, TVideoPicture *pPic, TVideoFrameInfo* pFrameInfo )
 {
-//    mcu::log << _T( "OnDecodeResult call" ) << endl;
+//    Log() << _T( "OnDecodeResult call" ) << endl;
 
 	SCOPE_LOCK( s_decoderNameTableLock );
 	if ( bSuccess && this->m_pPicCallBack )
@@ -139,7 +139,7 @@ void CDecoder::OnDecodeResult( BOOL bSuccess, TVideoPicture *pPic, TVideoFrameIn
 		m_pPicCallBack( pPic, pFrameInfo, this->m_picCallbackParam );
 	}
 
-//    mcu::log << _T( "OnDecodeResult over" ) << endl;
+//    Log() << _T( "OnDecodeResult over" ) << endl;
 }
 
 BOOL CDecoder::CapturePic( LPCTSTR strPicPath )

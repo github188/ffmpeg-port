@@ -40,7 +40,7 @@ BOOL CFrameBuffer::Init( int nFrameBufNum )
     this->m_nFrameBufferNum = nFrameBufNum;
     if ( m_nFrameBufferNum > MaxFrameBufferSize )
     {
-        mcu::log << _T( "Init framebuf num is biger than Max frame buffer size! cut to Max size. Req: " )
+        Log() << _T( "Init framebuf num is biger than Max frame buffer size! cut to Max size. Req: " )
             << m_nFrameBufferNum << _T( " maxsize: " ) << MaxFrameBufferSize << endl;
         m_nFrameBufferNum = MaxFrameBufferSize;
     }
@@ -51,17 +51,17 @@ BOOL CFrameBuffer::Init( int nFrameBufNum )
     {		
         if ( SDL_Init ( initFlags ) ) 
         {
-            mcu::log << _T( "Could not initialize SDL timer subsys err: " ) << SDL_GetError() << endl;
+            Log() << _T( "Could not initialize SDL timer subsys err: " ) << SDL_GetError() << endl;
             _ASSERT( FALSE );
         }
         else
         {
-            mcu::log << _T( "SDL Timer Init!" ) << endl;
+            Log() << _T( "SDL Timer Init!" ) << endl;
         }
     }	
     else
     {
-        mcu::log << _T( "SDL Timer already inited!" ) << endl;
+        Log() << _T( "SDL Timer already inited!" ) << endl;
     }
 
     // 创建显示定时器。
@@ -71,7 +71,7 @@ BOOL CFrameBuffer::Init( int nFrameBufNum )
     }
     else
     {
-        mcu::log << _T( "Display timer already run!" ) << endl;
+        Log() << _T( "Display timer already run!" ) << endl;
     }
 
     return m_pDisplayTimerId != NULL;
@@ -88,7 +88,7 @@ BOOL CFrameBuffer::InputFrame( const CBaseCodec::TVideoPicture& tPic, const CBas
         int nNewTime = int( tFrameInfo.frameTimeStamp - m_u64LastTimeStamp );
         nNewTime /= 1000;	// 视频帧时间戳的单位是 microsecond， 1/1000000 s。
 
-        //			mcu::log << _T( "DisplayAsync frame time span: " ) << nNewTime 
+        //			Log() << _T( "DisplayAsync frame time span: " ) << nNewTime 
         //				<< _T( " frame time: " ) << (mu_uint32)tFrameInfo.frameTimeStamp << endl;
 
         // 定时器读取会有一个延时，所以将定时器设置小一些，让定时器来的快一些。
@@ -98,12 +98,12 @@ BOOL CFrameBuffer::InputFrame( const CBaseCodec::TVideoPicture& tPic, const CBas
         {
             if ( nNewTime < 5 || nNewTime > 500 )
             {
-                mcu::log << _T( "DisplayAsync Invalid nNewTime :" ) << nNewTime << endl;
+                Log() << _T( "DisplayAsync Invalid nNewTime :" ) << nNewTime << endl;
             }
             else
             {
                 m_nDisplayTime = nNewTime;
-                mcu::log << _T( "DisplayAsync Timer change to " ) << m_nDisplayTime << endl;
+                Log() << _T( "DisplayAsync Timer change to " ) << m_nDisplayTime << endl;
             }
 
         }
@@ -127,7 +127,7 @@ BOOL CFrameBuffer::InputFrame( const CBaseCodec::TVideoPicture& tPic, const CBas
             m_nReadCursor = nNextPos;
             if( PicBufferDebug )
             {
-                mcu::log << _T( "Write faster, read slow. write change read cursor to " ) << m_nReadCursor << endl;
+                Log() << _T( "Write faster, read slow. write change read cursor to " ) << m_nReadCursor << endl;
             }			
         }
     }
@@ -138,7 +138,7 @@ BOOL CFrameBuffer::InputFrame( const CBaseCodec::TVideoPicture& tPic, const CBas
     BOOL bResult = this->m_arPicBuffer[ nWriteIndex ].m_tPic.Copy( tPic );
     if ( !bResult )
     {
-        mcu::log << _T( "DisplayAsync copy pic failed!" ) << endl;
+        Log() << _T( "DisplayAsync copy pic failed!" ) << endl;
     }
     this->m_arPicBuffer[ nWriteIndex ].m_bFillData = bResult;
 
@@ -150,7 +150,7 @@ BOOL CFrameBuffer::InputFrame( const CBaseCodec::TVideoPicture& tPic, const CBas
             m_nWriteCursor -= nPicBufferNum;
         }
 
-        //		mcu::log << _T( "write cursor move to" ) << m_nWriteCursor << endl;
+        //		Log() << _T( "write cursor move to" ) << m_nWriteCursor << endl;
     }
     return bResult;
 }
@@ -171,12 +171,12 @@ unsigned int CFrameBuffer::OnDisplayTimerCallback(unsigned int interval, void *p
 
         //	if ( nTimeSpan > 10 && nTimeSpan < 500 )
         //	{
-        //		mcu::log << _T( "timer: " ) << nTimeSpan << endl;
+        //		Log() << _T( "timer: " ) << nTimeSpan << endl;
         //		return nTimeSpan;
         //	}
         //}
 
-        //		mcu::log << _T( "interval" ) << interval << _T( "m_nDisplayTime: " )<< pThis->m_nDisplayTime << endl;
+        //		Log() << _T( "interval" ) << interval << _T( "m_nDisplayTime: " )<< pThis->m_nDisplayTime << endl;
 
         // 返回当前的显示间隔时间，定时器会自动的以这个时间做下次的定时。
         return pThis->m_nDisplayTime;
@@ -200,7 +200,7 @@ mu_uint64 CFrameBuffer::DisplayFromPicBuffer()
         pPic = &(this->m_arPicBuffer[ nReadCur ].m_tPic);
         pFrame = &( this->m_arPicBuffer[ nReadCur ].m_tFrameInfo );
 
-        //		mcu::log << _T( "read pic cursor: " ) << nReadCur << endl;
+        //		Log() << _T( "read pic cursor: " ) << nReadCur << endl;
 
         this->m_arPicBuffer[ nReadCur ].m_bFillData = FALSE;
         // move to next.
@@ -215,7 +215,7 @@ mu_uint64 CFrameBuffer::DisplayFromPicBuffer()
     {
         if( PicBufferDebug )
         {
-            mcu::log << _T( "DisplayFromPicBuffer has no pic! " ) << endl;
+            Log() << _T( "DisplayFromPicBuffer has no pic! " ) << endl;
         }		
         return 0;
     }
@@ -226,7 +226,7 @@ mu_uint64 CFrameBuffer::DisplayFromPicBuffer()
     }
     else
     {
-        mcu::log << _T( "Display Callback function is null!" ) << endl;
+        Log() << _T( "Display Callback function is null!" ) << endl;
     }
 
     return pFrame->frameTimeStamp;

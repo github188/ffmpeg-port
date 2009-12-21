@@ -7,7 +7,7 @@
 
 using namespace mcu;
 
-MU_DECLSPEC  CLog  mcu::log;
+MU_DECLSPEC  CLog  Log();
 #define LOGFILE (L"M_CU.log")
 #define MAXFILESIZE 1024*1024
 //__declspec(dllexport) CLog   log;

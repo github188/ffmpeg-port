@@ -2,10 +2,19 @@
 #include "log.h"
 #include "mcucommon.h"
 
-using namespace mcu;
+#if defined( __SYMBIAN32__ )
+#include <e32def.h>
+#include <e32debug.h>
+#endif
+//using namespace mcu;
 
-MU_DECLSPEC  CLog  mcu::log;
+//MU_DECLSPEC  CLog  mcu::log;
 //__declspec(dllexport) CLog   log;
+CLog& Log()
+{
+	static CLog s_log;
+	return s_log;
+}
 
 CLog::CLog(void)
 {
@@ -52,12 +61,13 @@ CLog& CLog::operator <<( const wchar_t * strMsg)
 
 #ifdef _WIN32_WCE
     OutputDebugString( strMsg );
-#else	
-#ifndef __CYGWIN__	// cygwin 不支持unicode!
+#elif defined( __SYMBIAN32__ )
+    RDebug::Print( _L( "%s" ) , strMsg );
+#elif	!defined( __CYGWIN__ )// cygwin 不支持unicode!
     std::wcout << strMsg;
 #else
     cout << ( "CLog << fail! cygwin don't support unicode!" ) << endl;
-#endif
+
 #endif
 
     if ( this->m_fLog )
@@ -74,6 +84,14 @@ CLog& CLog::operator <<( const char * strMsg )
     SCOPE_LOCK( m_threadSafeLock );
 
     cout << strMsg;
+    
+#ifdef _WIN32_WCE
+	tstring strMsgUtf16 = ::UTF8toUTF16( strMsg );
+	*this << strMsgUtf16;
+	
+#elif defined( __SYMBIAN32__ )
+    RDebug::Printf( ( "%s" ) , strMsg );
+#endif
 
     if ( this->m_fLog )
     {

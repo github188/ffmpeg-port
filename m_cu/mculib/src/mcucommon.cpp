@@ -448,7 +448,7 @@ TFileList EnumAllFile( LPCTSTR strFolder )
 	{
 		dirent tDirEnt;
 		dirent *pFileResult;
-//		mcu::log << _T( "Open dir and enum all file: " ) << strFolder  << endl;
+//		Log() << _T( "Open dir and enum all file: " ) << strFolder  << endl;
 		while( TRUE )
 		{			
 			int nResult = readdir_r( pDir, &tDirEnt, &pFileResult );
@@ -463,14 +463,14 @@ TFileList EnumAllFile( LPCTSTR strFolder )
 			}
 			strFilePath += pFileResult->d_name;
 			tFiles.push_back( strFilePath );
-//			mcu::log << _T( "find file: " ) << pFileResult->d_name << _T( " i-num: " ) << pFileResult->d_ino << endl;
+//			Log() << _T( "find file: " ) << pFileResult->d_name << _T( " i-num: " ) << pFileResult->d_ino << endl;
 		}
 
 		closedir( pDir );
 	}
 	else
 	{
-		mcu::log << _T( "EnumAllFile open dir fail! dir: " ) << strFolder << endl;
+		Log() << _T( "EnumAllFile open dir fail! dir: " ) << strFolder << endl;
 	}
 
 #endif
@@ -575,7 +575,7 @@ mu_uint64 GetDirFreeSpace( LPCTSTR strDirPath )
     }
     else
     {
-        mcu::log << _T( "GetDiskFreeSpaceEx Fail! " ) << endl;
+        Log() << _T( "GetDiskFreeSpaceEx Fail! " ) << endl;
         return 0;
     }
 #endif

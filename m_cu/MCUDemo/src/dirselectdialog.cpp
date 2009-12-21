@@ -62,7 +62,7 @@ BOOL CDirSelectDialog::OnInitDialog()
 	if (!SHCreateMenuBar(&shmbi))
 	{
 		// Failed!!
-		mcu::log << _T( "dirselectdialog create menu fail!" ) << endl;
+		Log() << _T( "dirselectdialog create menu fail!" ) << endl;
 		return FALSE;
 	}
 
@@ -227,7 +227,7 @@ void CDirSelectDialog::OnNMClickListDir(NMHDR *pNMHDR, LRESULT *pResult)
 			}
 			else
 			{
-				mcu::log << _T( "上一级目录失败！！！ " ) << strCurPath << endl;
+				Log() << _T( "上一级目录失败！！！ " ) << strCurPath << endl;
 				strNewPath = strCurPath;
 			}
 		}

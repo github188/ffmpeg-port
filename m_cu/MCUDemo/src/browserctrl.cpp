@@ -109,13 +109,13 @@ LRESULT CBrowserCtrl::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHan
     CRect rcClient( 0,0,nWidth, nHeight );
     this->UpdateLayout( &rcClient );
 
-    mcu::log << _T( "CBrowserCtrl::OnSize. type: " ) << fwSizeType << 
+    Log() << _T( "CBrowserCtrl::OnSize. type: " ) << fwSizeType << 
         _T( " w: ") << nWidth << _T( " h: " ) << nHeight << endl;
 
 
     if ( SIZE_MINIMIZED == fwSizeType )
     {
-        mcu::log << _T( "web browser control is minimized!" ) << endl;
+        Log() << _T( "web browser control is minimized!" ) << endl;
 
         if ( this->m_hWebpageParentWnd )
         {
@@ -127,7 +127,7 @@ LRESULT CBrowserCtrl::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHan
 
             BOOL bClose = ::SendMessage( m_hWebpageParentWnd, WM_WINDOW_CLOSE_CMD, 0, 0 );
 
-            mcu::log << _T( "Send WM_WINDOW_CLOSE_CMD parent! msg: " ) 
+            Log() << _T( "Send WM_WINDOW_CLOSE_CMD parent! msg: " ) 
                 << uMessage << _T( " wp: " ) << 0 << _T( " lp: " ) << 0 << _T( " ret: " ) << bClose << endl;
 
             if ( !bClose )
@@ -143,12 +143,12 @@ LRESULT CBrowserCtrl::OnSize(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHan
             }
 
  //           ::PostMessage( m_hWebpageParentWnd, uMessage, 0, 0 );
- //           mcu::log << _T( "Minimize the web browser,hide parent wnd! " ) << m_hWebpageParentWnd << endl;
+ //           Log() << _T( "Minimize the web browser,hide parent wnd! " ) << m_hWebpageParentWnd << endl;
  //           ::ShowWindow( m_hWebpageParentWnd, SW_HIDE );
         }
         else
         {
-            mcu::log << _T( "The webpage parent wnd is NULL! When minimize the web browser!" ) << endl;
+            Log() << _T( "The webpage parent wnd is NULL! When minimize the web browser!" ) << endl;
         }
     }
 
@@ -161,7 +161,7 @@ BOOL CBrowserCtrl::OpenUrl( LPCTSTR lpstrUrl )
 
     if ( NULL == m_spIWebBrowser2 )
     {
-        mcu::log << _T( "CBrowserCtrl::OpenUrl m_spIWebBrowser2 is NULL!" ) << endl;
+        Log() << _T( "CBrowserCtrl::OpenUrl m_spIWebBrowser2 is NULL!" ) << endl;
         return FALSE;
     }
 
@@ -173,7 +173,7 @@ BOOL CBrowserCtrl::OpenUrl( LPCTSTR lpstrUrl )
     _tcscpy( szTmp, strUrl.c_str() );
     HRESULT hr = m_spIWebBrowser2->Navigate( szTmp, NULL, NULL, NULL, NULL );
 
-    mcu::log << _T( "Open Url: " ) << lpstrUrl << _T( " ret: " ) << hr << endl;
+    Log() << _T( "Open Url: " ) << lpstrUrl << _T( " ret: " ) << hr << endl;
     return SUCCEEDED( hr );
 }
 
@@ -217,7 +217,7 @@ LRESULT CBrowserCtrl::OnActivate(UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BO
     // TODO: 在此添加消息处理程序代码和/或调用默认值
     // Notify shell of our WM_ACTIVATE message
  //   SHHandleWMActivate(m_hWnd, wParam, lParam, &m_sai, 0);
-    mcu::log << _T( "CBrowserCtrl::OnActivate" ) << endl;
+    Log() << _T( "CBrowserCtrl::OnActivate" ) << endl;
     return 0;
 }
 
@@ -254,7 +254,7 @@ void CBrowserCtrl::OnBeforeNavigate(IDispatch* pDisp,
 {   
     tstring strUrl =  OLE2CT(V_BSTR(pvtURL));
 
-mcu::log << _T( "CBrowserCtrl::OnBeforeNavigate url: " ) << strUrl << endl;
+Log() << _T( "CBrowserCtrl::OnBeforeNavigate url: " ) << strUrl << endl;
 
 
 if ( m_hWebpageParentWnd )
@@ -266,7 +266,7 @@ if ( m_hWebpageParentWnd )
 }
 else
 {
-    mcu::log << _T( "CBrowserCtrl::OnBeforeNavigate2 when webpage parent wnd is NULL!" ) << endl;
+    Log() << _T( "CBrowserCtrl::OnBeforeNavigate2 when webpage parent wnd is NULL!" ) << endl;
 }
 
 }
@@ -285,7 +285,7 @@ void __stdcall CBrowserCtrl::OnBeforeNavigate2(IDispatch* pDisp, VARIANT * pvtUR
     //OutputDebugString(szOutput);
     tstring strUrl =  OLE2CT(V_BSTR(pvtURL));
 
-    mcu::log << _T( "CBrowserCtrl::OnBeforeNavigate2 url: " ) << strUrl << endl;
+    Log() << _T( "CBrowserCtrl::OnBeforeNavigate2 url: " ) << strUrl << endl;
 
     CComPtr<IWebBrowser2> spIWebBrowser2 = NULL;
     pDisp->QueryInterface( &spIWebBrowser2 );
@@ -310,7 +310,7 @@ void __stdcall CBrowserCtrl::OnBeforeNavigate2(IDispatch* pDisp, VARIANT * pvtUR
     }
     else
     {
-        mcu::log << _T( "CBrowserCtrl::OnBeforeNavigate2 when webpage parent wnd is NULL!" ) << endl;
+        Log() << _T( "CBrowserCtrl::OnBeforeNavigate2 when webpage parent wnd is NULL!" ) << endl;
     }
 
 //   SetWindowText(TEXT("Untitled")); 

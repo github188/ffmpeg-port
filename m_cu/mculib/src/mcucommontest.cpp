@@ -91,26 +91,26 @@ void CMCUCommonTest::TestEnumFolder()
 {
 	LPCTSTR strFolder = _T( "." );
 	TFileList tAllFile = EnumAllFile( strFolder );
-	mcu::log << _T( "Enum all file of folder: " ) << strFolder << endl;
+	Log() << _T( "Enum all file of folder: " ) << strFolder << endl;
 	for ( size_t i=0; i<tAllFile.size(); ++i )
 	{
-		mcu::log << tAllFile[i] << endl;
+		Log() << tAllFile[i] << endl;
 	}
 
 	strFolder = _T( "/media/mmc1/M_CU" );
 	tAllFile = EnumAllFile( strFolder );
-	mcu::log << _T( "Enum all file of folder: " ) << strFolder << endl;
+	Log() << _T( "Enum all file of folder: " ) << strFolder << endl;
 	for ( size_t i=0; i<tAllFile.size(); ++i )
 	{
-		mcu::log << tAllFile[i] << endl;
+		Log() << tAllFile[i] << endl;
 	}
 
 	strFolder = _T( "\\Storage Card\\" );
 	tAllFile = EnumAllFile( strFolder );
-	mcu::log << _T( "Enum all file of folder: " ) << strFolder << endl;
+	Log() << _T( "Enum all file of folder: " ) << strFolder << endl;
 	for ( size_t i=0; i<tAllFile.size(); ++i )
 	{
-		mcu::log << tAllFile[i] << endl;
+		Log() << tAllFile[i] << endl;
 	}
 
 }
@@ -133,7 +133,7 @@ void CMCUCommonTest::TestDelFile()
 	}
 	else
 	{
-		mcu::log << _T( "Unittest DelFile create temp file fail! file: " ) << strFile << endl;
+		Log() << _T( "Unittest DelFile create temp file fail! file: " ) << strFile << endl;
 	}
 }
 
@@ -157,7 +157,7 @@ void CMCUCommonTest::TestTimeStr()
     const __time64_t TestTime = 3600 * 8 + 6;
     tstring strTime = TimeToStr( TestTime );
 
-    CPPUNIT_ASSERT_EQUAL( tstring( _T( "19700101000006" ) ), strTime );
+    CPPUNIT_ASSERT_EQUAL( tstring( _T( "19700101160006" ) ), strTime );
 
     __time64_t tTime = StrToTime( strTime.c_str() );
 

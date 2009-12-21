@@ -158,7 +158,7 @@ LRESULT CUIDialog::OnFullScreenCmd( WPARAM, LPARAM )
 		BOOL bResult = SHFullScreen( this->GetSafeHwnd(), dwFlag );   
 		if ( !bResult )
 		{
-			mcu::log << _T( "SHFullScreen Fail!" ) << endl; 
+			Log() << _T( "SHFullScreen Fail!" ) << endl; 
 		}
 		//_ASSERT( bResult );
 	}
@@ -222,7 +222,7 @@ LRESULT CUIDialog::OnScreenOrientation( WPARAM, LPARAM )
 	lResult = ChangeDisplaySettingsEx(NULL, &settings, NULL, CDS_TEST, NULL);
 	if ( DISP_CHANGE_SUCCESSFUL != lResult )
 	{
-		mcu::log << _T( "Change Display setting fail 1!" ) << endl;
+		Log() << _T( "Change Display setting fail 1!" ) << endl;
 	}
 	_ASSERT( DISP_CHANGE_SUCCESSFUL == lResult );	
 
@@ -280,20 +280,20 @@ LRESULT CUIDialog::OnScreenOrientation( WPARAM, LPARAM )
 		lResult = ChangeDisplaySettingsEx(NULL,&testSetting,NULL, CDS_TEST,NULL);
 		if ( DISP_CHANGE_SUCCESSFUL != lResult )
 		{
-			mcu::log << _T( "Change Display setting fail 2!" ) << endl;
+			Log() << _T( "Change Display setting fail 2!" ) << endl;
 		}
 		if ( DISP_CHANGE_SUCCESSFUL == lResult )
 		{
 			lResult = ChangeDisplaySettingsEx( NULL, &settings, NULL, CDS_RESET, NULL );
 			if ( DISP_CHANGE_SUCCESSFUL != lResult )
 			{
-				mcu::log << _T( "Change Display setting fail 3!" ) << endl;
+				Log() << _T( "Change Display setting fail 3!" ) << endl;
 			}
 			_ASSERT( DISP_CHANGE_SUCCESSFUL == lResult );
 		}
 		else
 		{
-			mcu::log << _T( "The Machine do not surpport Trun around the screen!" ) << endl;
+			Log() << _T( "The Machine do not surpport Trun around the screen!" ) << endl;
 		}
 		_ASSERT( DISP_CHANGE_SUCCESSFUL == lResult );
 	}
@@ -340,7 +340,7 @@ LRESULT CUIDialog::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 {
 	// TODO: 在此添加专用代码和/或调用基类
 
-//	mcu::log << _T( "uidialog message: 10: " ) << message << _T( " 16: " ) << (void*)message << endl;
+//	Log() << _T( "uidialog message: 10: " ) << message << _T( " 16: " ) << (void*)message << endl;
 
 	return CDialog::WindowProc(message, wParam, lParam);
 }
@@ -352,10 +352,10 @@ BOOL CUIDialog::PreTranslateMessage(MSG* pMsg)
 	switch( pMsg->message )
 	{
 	case WM_KEYDOWN:
-//		mcu::log << _T( "key down, wp " ) << pMsg->wParam << _T( " lp " ) << pMsg->lParam << endl;
+//		Log() << _T( "key down, wp " ) << pMsg->wParam << _T( " lp " ) << pMsg->lParam << endl;
 		break;
 	case WM_KEYUP:
-//		mcu::log << _T( "key up, wp " ) << pMsg->wParam << _T( " lp " ) << pMsg->lParam << endl;
+//		Log() << _T( "key up, wp " ) << pMsg->wParam << _T( " lp " ) << pMsg->lParam << endl;
 		if ( pMsg->wParam == VK_F1 )
 		{
 			this->OnClickLeftFunKey();
@@ -421,7 +421,7 @@ void CUIDialog::OnDelayedEvent( int nEventId )
 		BOOL bResult = SHFullScreen( this->GetSafeHwnd(), dwFlag );   
 		if ( !bResult )
 		{
-			mcu::log << _T( "SHFullScreen Fail!" ) << endl;
+			Log() << _T( "SHFullScreen Fail!" ) << endl;
 		}
 //		_ASSERT( bResult );
 	}
@@ -493,7 +493,7 @@ BOOL CUIDialog::IsSipRaise()
 	BOOL bGetSipResult = SipGetInfo( &tSipInfo );
 	if ( !bGetSipResult )
 	{
-		mcu::log << _T( "BOOL bGetSipResult = SipGetInfo( &tSipInfo ); fail!!!" ) << endl;
+		Log() << _T( "BOOL bGetSipResult = SipGetInfo( &tSipInfo ); fail!!!" ) << endl;
 	}
 
 	return ( SIPF_ON & tSipInfo.fdwFlags );
@@ -579,7 +579,7 @@ void CUIDialog::OnClose()
 
 void CUIDialog::EndDialog(int nResult)
 {
-    mcu::log << _T( "CUIDialog::EndDialog called!" ) << endl;
+    Log() << _T( "CUIDialog::EndDialog called!" ) << endl;
     return __super::EndDialog( nResult );
 }
 

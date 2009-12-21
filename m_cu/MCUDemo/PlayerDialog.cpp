@@ -124,7 +124,7 @@ BOOL CPlayerDialog::OnInitDialog()
 	//_ASSERT( m_pSubPtzMenu );
     if ( NULL == m_menuPtz.m_hMenu )
     {
-        mcu::log << _T( "Ptz Menu Load Fail!" ) << endl;
+        Log() << _T( "Ptz Menu Load Fail!" ) << endl;
     }
 
 	BOOL bHasPtz = this->HasPtz();
@@ -208,7 +208,7 @@ BOOL CPlayerDialog::Play( CVideoSession *pVs )
     }
     else
     {
-        mcu::log << _T( "CPlayerDialog::Play video session is NULL" ) << endl;
+        Log() << _T( "CPlayerDialog::Play video session is NULL" ) << endl;
         return FALSE;
     }
 }
@@ -404,7 +404,7 @@ void CPlayerDialog::OnSize(UINT nType, int cx, int cy)
 	//ssMsg << _T( "(" ) << cx << _T( "," ) << cy << _T( ")" ) << endl;
 	//AfxMessageBox( ssMsg.str().c_str() );
 
-	//mcu::log << _T( "cy: " ) << cy << endl;
+	//Log() << _T( "cy: " ) << cy << endl;
 
 	if ( GetSafeHwnd() )
 	{
@@ -457,7 +457,7 @@ LRESULT CPlayerDialog::OnVideoFail( WPARAM eErrorCode, LPARAM )
 	else if( IDYES == MessageBox( _T( "连接视频服务器失败！是否重试？" ), _T( "" ), MB_YESNO ) )
 	{
 		//this->EndDialog( E_DlgEndRetry );
-        mcu::log << _T( "OnRtspClose E_DlgEndRetry call! " ) << endl;
+        Log() << _T( "OnRtspClose E_DlgEndRetry call! " ) << endl;
 		OnRtspClose(E_DlgEndRetry);
 	}
 	else
@@ -482,7 +482,7 @@ LRESULT CPlayerDialog::OnRecordFail( WPARAM wpErrorCode, LPARAM )
     	break;
     case MCU_Error_PlayStop:
     default:
-        mcu::log << _T( "Player wnd receive Reord error MCU_Error_PlayStop message." ) << endl;
+        Log() << _T( "Player wnd receive Reord error MCU_Error_PlayStop message." ) << endl;
         break;
     }
 
@@ -590,16 +590,16 @@ void CPlayerDialog::OnBnClickedButtonPause()
 // 	if ( bIsPause )
 // 	{
 // 		BOOL bResult = m_cVideoWnd.Resume();
-// 		mcu::log << _T( "Resume result " ) << bResult << endl;
+// 		Log() << _T( "Resume result " ) << bResult << endl;
 // 	}
 // 	else
 // 	{
 // 		BOOL bResult = m_cVideoWnd.Pause();
-// 		mcu::log << _T( "Pause result " ) << bResult << endl;
+// 		Log() << _T( "Pause result " ) << bResult << endl;
 // 	}
 
     BOOL bResult =this->m_cVideoWnd.PausePlay( !bIsPause );
-    mcu::log << _T( "pause cmd: ") << !bIsPause << _T(" result " ) << bResult << endl;
+    Log() << _T( "pause cmd: ") << !bIsPause << _T(" result " ) << bResult << endl;
 
 	// 切换按钮状态。
     this->UpdateCtrlStatus();
@@ -613,7 +613,7 @@ void CPlayerDialog::OnBnClickedButtonRecord()
 	{
         EMCU_ErrorCode er;
 		BOOL bResult = m_cVideoWnd.StopRecord( er );
-        mcu::log << _T( "stop record result: " ) << bResult << _T( " er: " ) << er << endl;
+        Log() << _T( "stop record result: " ) << bResult << _T( " er: " ) << er << endl;
 	}
 	else
 	{
@@ -652,7 +652,7 @@ void CPlayerDialog::OnBnClickedButtonRecord()
 			MessageBox(L"录像失败 请检查图片及录像保存路径！\n");
 		}
 
-		mcu::log << _T( "Start record " ) << strRecPath << _T( " result " ) << bResult << endl;
+		Log() << _T( "Start record " ) << strRecPath << _T( " result " ) << bResult << endl;
 	}
 
 	// 根据当前状态设置图标。
@@ -711,7 +711,7 @@ void CPlayerDialog::OnBnClickedButtonCapture()
 	//取消当前焦点,按钮弹起
 	this->SetFocus();
 
-	mcu::log << _T( "capture pic :" ) << strPicPath << _T( " result: " ) << bResult << endl;
+	Log() << _T( "capture pic :" ) << strPicPath << _T( " result: " ) << bResult << endl;
 }
 
 void CPlayerDialog::OnBnClickedButtonFullscreen()
@@ -747,7 +747,7 @@ void CPlayerDialog::OnBnClickedButtonPtz()
 	}
     else
     {
-        mcu::log << _T( "Ptz Menu is NULL!!" ) << endl;
+        Log() << _T( "Ptz Menu is NULL!!" ) << endl;
     }
 
 }
@@ -814,11 +814,11 @@ void CPlayerDialog::OnUserClose()
 		{
             EMCU_ErrorCode er;
 			BOOL bResult = m_cVideoWnd.StopRecord( er );
-			mcu::log << _T( "stop record result: " ) << bResult << endl;
+			Log() << _T( "stop record result: " ) << bResult << endl;
 		}
 
         BOOL bStopRet = this->m_cVideoWnd.StopPlay();
-        mcu::log << _T( "stop video play ret: " ) << bStopRet << endl;
+        Log() << _T( "stop video play ret: " ) << bStopRet << endl;
 
 		this->OnMenuRestore();
 
@@ -834,31 +834,31 @@ void CPlayerDialog::OnUserClose()
 void CPlayerDialog::OnRtspClose(int nErrorCode)
 {
 	//如果正在录像 停止当前录像录像
-//    mcu::log << _T( "CPlayerDialog::OnRtspClose begin! " ) << endl;
+//    Log() << _T( "CPlayerDialog::OnRtspClose begin! " ) << endl;
 	BOOL bRecording = this->m_cVideoWnd.IsRecording();
 
-    mcu::log << _T( "CPlayerDialog::OnRtspClose is rec:" ) << bRecording << endl;
+    Log() << _T( "CPlayerDialog::OnRtspClose is rec:" ) << bRecording << endl;
 	if ( bRecording )
 	{
         EMCU_ErrorCode er;
 		BOOL bResult = m_cVideoWnd.StopRecord( er );
-		mcu::log << _T( "stop record result: " ) << bResult << endl;
+		Log() << _T( "stop record result: " ) << bResult << endl;
 	}
 
-//     mcu::log << _T( "before OnMenuRestore! " ) << endl;
+//     Log() << _T( "before OnMenuRestore! " ) << endl;
 	this->OnMenuRestore();
 
     // 清理屏幕。
-//    mcu::log << _T( "before clear screen! " ) << endl;
+//    Log() << _T( "before clear screen! " ) << endl;
     this->m_cVideoWnd.ClearScreen();
 
     if ( nErrorCode == E_DlgEndRetry )
     {
         // this->m_cVideoWnd.SetRstpUrl( m)
 //        __super::OnOK();
-        mcu::log << _T( "befre Restart video play. ret: " ) << endl;
+        Log() << _T( "befre Restart video play. ret: " ) << endl;
         BOOL bResult = this->m_cVideoWnd.RestartPlay();
-        mcu::log << _T( "Restart video play. ret: " ) << bResult << endl;
+        Log() << _T( "Restart video play. ret: " ) << bResult << endl;
     }
     else
     {
@@ -905,7 +905,7 @@ void CPlayerDialog::BackupRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueNam
 			&ftLastWriteTime); // Last write time.
 		if( retCode != ERROR_SUCCESS )
 		{
-			mcu::log << _T( "RegQueryInfoKey 失败！" ) << endl;
+			Log() << _T( "RegQueryInfoKey 失败！" ) << endl;
 		}
 
 
@@ -925,14 +925,14 @@ void CPlayerDialog::BackupRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueNam
 		}
 		else
 		{
-			mcu::log << _T( "RegQueryValueEx 失败！" ) << endl;
+			Log() << _T( "RegQueryValueEx 失败！" ) << endl;
 		}
 		LocalFree ((HLOCAL)bData);
 		RegCloseKey(hkey);
 	}
 	else
 	{
-		mcu::log << _T( "BackupRegValue 打开注册表失败！" ) << endl;
+		Log() << _T( "BackupRegValue 打开注册表失败！" ) << endl;
 	}
 }
 
@@ -987,7 +987,7 @@ void CPlayerDialog::RestoreRegValue(HKEY root, PWCHAR szSubKey, PWCHAR szValueNa
 	}
 	else
 	{
-		mcu::log << _T( "RestoreRegValue 打开注册表失败！" ) << endl;
+		Log() << _T( "RestoreRegValue 打开注册表失败！" ) << endl;
 	}
 }
 

@@ -209,7 +209,7 @@ BOOL CLoginDialog::OnInitDialog()
     BOOL bResult = CConfig::Instance()->GetAppTitle( strTitle );
     if ( !bResult )
     {
-        mcu::log << _T( "Get App title fail!" ) << endl;
+        Log() << _T( "Get App title fail!" ) << endl;
         strTitle = _T( "MCU" ) ;
     }
     this->SetWindowText( strTitle.c_str() );

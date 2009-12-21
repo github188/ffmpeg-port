@@ -23,7 +23,7 @@ CEncoder * CEncoder::CreateEncoder( ECodecId eCodecId, LPCTSTR strName /* = NULL
 		pEec = new CJpegEncoder();
 		break;
 	default:
-		mcu::log << _T( "Unknown encoder!" ) << eCodecId << endl;
+		Log() << _T( "Unknown encoder!" ) << eCodecId << endl;
 		_ASSERT( FALSE );
 		return 0;
 		break;
@@ -32,7 +32,7 @@ CEncoder * CEncoder::CreateEncoder( ECodecId eCodecId, LPCTSTR strName /* = NULL
 	BOOL bResult = pEec->Init();
 	if ( !bResult )
 	{
-		mcu::log << _T( "Encoder init Fail!" ) << endl;
+		Log() << _T( "Encoder init Fail!" ) << endl;
 	}
 	
 	_ASSERT( bResult );

@@ -48,7 +48,7 @@ BOOL CImageShow::LoadImage( LPCTSTR strImage )
 		}
 		else
 		{
-			mcu::log << _T( "Create Image Facotry Fail!" ) << endl;
+			Log() << _T( "Create Image Facotry Fail!" ) << endl;
 			_ASSERT( FALSE );
 		}
 	}
@@ -73,7 +73,7 @@ BOOL CImageShow::LoadImage( LPCTSTR strImage )
 		}
 		else
 		{
-			mcu::log << _T( "Load Image : " ) << strImage << _T( " Fail! return: " ) << lResult << endl;
+			Log() << _T( "Load Image : " ) << strImage << _T( " Fail! return: " ) << lResult << endl;
 //			_ASSERT( FALSE );
 			if ( m_pImage )
 			{
@@ -114,7 +114,7 @@ BOOL CImageShow::Draw( HDC hdc, LPRECT pRect /* = NULL */ )
 			BOOL bSuc =  dcImage.CreateCompatibleDC( CDC::FromHandle( hdc ) );
 			if ( !bSuc )
 			{
-				mcu::log << _T( "Create compatible Dc Fail!" ) << endl;
+				Log() << _T( "Create compatible Dc Fail!" ) << endl;
 			}
 			_ASSERT( bSuc );
 
@@ -139,7 +139,7 @@ BOOL CImageShow::Draw( HDC hdc, LPRECT pRect /* = NULL */ )
 			if( !bResult )
 			{
 				DWORD dwError = ::GetLastError();
-				mcu::log << _T( "Draw Image Fail! Error code: " ) << dwError << endl;
+				Log() << _T( "Draw Image Fail! Error code: " ) << dwError << endl;
 			}			
 
 
@@ -160,7 +160,7 @@ BOOL CImageShow::Draw( HDC hdc, LPRECT pRect /* = NULL */ )
 	}
 	if ( S_OK != lResult )
 	{
-		mcu::log << _T( "Draw Image fail!!" ) << endl;
+		Log() << _T( "Draw Image fail!!" ) << endl;
 		_ASSERT( FALSE );
 	}
 	 
