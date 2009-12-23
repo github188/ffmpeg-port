@@ -334,7 +334,7 @@ BOOL CConfig::SetLoginInfo( LPCTSTR strUserId, LPCTSTR strPw, EStreamType eStrea
 		//		Log() << pDateBuf[i] ;
 		//TCHAR tmpBuf[10] = {0};
 		//_stprintf( tmpBuf,  _T("%02X" ), pDateBuf[i] );
-        ssSavePw << setbase( 16 ) << pDateBuf[i];
+        ssSavePw << setbase( 16 ) << (void*)pDateBuf[i];
         tstring strTmp = ssSavePw.str();
         strTmp = strTmp.substr( strTmp.length() -2 );
 		strSavePw += strTmp;

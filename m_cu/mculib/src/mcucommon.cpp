@@ -32,7 +32,7 @@ if ( strUTF16.empty() )
 
 	return &vTemp[0];
 #elif defined( __SYMBIAN32__ )
-	int nMaxLen8 = 2 * strUTF16.length();
+	int nMaxLen8 = 2 * strUTF16.length() ;
 	
 	std::vector< TUint8 > vTmp( nMaxLen8 + 1, 0 );
 	
@@ -98,7 +98,7 @@ BOOL ParsePath( LPCTSTR strPath, TFileNameInfo& tFileNameInfo )
 
 	tstring strAppPath = strPath;
 
-#if defined( _WIN32_WCE )
+#if defined( _WIN32_WCE ) || defined( __SYMBIAN32__ )
 	const TCHAR chDirToken = '\\';
 	const TCHAR chWrongDirToken = '/';
 #else
@@ -314,7 +314,8 @@ BOOL HasStorageCard()
 #ifdef _WIN32_WCE
 
 	LPCTSTR strCardPath = _T( "\\Storage Card\\" );
-
+#elif defined( __SYMBIAN32__ )
+	LPCTSTR strCardPath = _T( "e:\\" );
 #else
 	LPCTSTR strCardPath = _T( "/media/mmc1" );
 #endif

@@ -88,7 +88,7 @@ BOOL CLoginDialog::LoginIn( ELoginType eType )
     tLoginInfo.m_eStreamType = this->m_b3GStream ? STREAM_EVDO : STREAM_1X;
 
 
-    return this->Login( tLoginInfo, LOGIN_NORMAL );
+    return this->Login( tLoginInfo, eType );
 }
 
 void CLoginDialog::OnBnClickedButtonLogin()
