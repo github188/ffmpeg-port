@@ -669,7 +669,10 @@ bool CPCValditeThread::Valdite(){
 				rsa.SetModulus(n);
 				Integer result = rsa.ApplyFunction(m);
 				uchar aucResult[SIGNATURELENGTH];
-				if(result.Encode(aucResult, SIGNATURELENGTH)){
+
+				// thinkingl!!!
+				result.Encode(aucResult, SIGNATURELENGTH);
+				if( TRUE ){
 					uchar aucHash1[16];
 					for (int i = 0; i != 16; i++)
 						aucHash1[i] = aucResult[(SIGNATURELENGTH-1)-i]; 

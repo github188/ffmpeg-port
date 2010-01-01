@@ -79,8 +79,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="version.lib winmm.lib ws2_32.lib gdiplus.lib ADSIId.lib crypt32.lib wmvcore.lib ..\zlib\contrib\vstudio\vc9\x86\zlibstat_debug\zlibstat.lib ..\crypto51\debug_vc9\cryptlib.lib ..\id3lib\libprj\debug_vc9\id3lib.lib .\cximage\debug_vc9\cximage.lib ..\libpng\projects\visualc9\debug\libpngd.lib ..\resizablelib\debug_vc9\resizablelib.lib .\miniupnpc\debug_vc9\miniupnpc.lib"
+				AdditionalDependencies="version.lib winmm.lib ws2_32.lib gdiplus.lib ADSIId.lib crypt32.lib wmvcore.lib cryptlib.lib"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\cryptlib\"
 				IgnoreDefaultLibraryNames=""
 				DelayLoadDLLs="oleacc.dll;gdiplus.dll"
 				GenerateDebugInformation="true"
