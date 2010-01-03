@@ -53,7 +53,7 @@ struct CreditStruct{
 	uint8		nKeySize;
 	uchar		abySecureIdent[MAXPUBKEYSIZE];
 };
-#pragma pack()
+#pragma pack() // Reset to default.
 
 enum EIdentState{
 	IS_NOTAVAILABLE,

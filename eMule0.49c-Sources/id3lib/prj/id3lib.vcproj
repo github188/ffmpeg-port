@@ -74,7 +74,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="..\zlib\zlibD.lib"
 				OutputFile=".\Debug/id3lib.dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
