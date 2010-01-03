@@ -51,6 +51,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "clstencil", "..\ATL_Server\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "miniupnpc", "miniupnpc\miniupnpc_vc9.vcproj", "{CC763AB0-5EBF-4A3F-884D-F5E2D12E12F3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "id3lib", "..\id3lib\prj\id3lib.vcproj", "{D3F7B817-4E27-49AB-9784-63984B30FE7D}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -581,6 +583,38 @@ Global
 		{CC763AB0-5EBF-4A3F-884D-F5E2D12E12F3}.Unicode Release|Win32.ActiveCfg = Release|Win32
 		{CC763AB0-5EBF-4A3F-884D-F5E2D12E12F3}.Unicode Release|Win32.Build.0 = Release|Win32
 		{CC763AB0-5EBF-4A3F-884D-F5E2D12E12F3}.Unicode Release|x64.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Debug Static|Itanium.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Debug Static|Win32.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Debug Static|Win32.Build.0 = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Debug Static|x64.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Debug|Itanium.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Debug|Win32.Build.0 = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Debug|x64.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.DLL-Import Debug|Itanium.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.DLL-Import Debug|Win32.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.DLL-Import Debug|Win32.Build.0 = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.DLL-Import Debug|x64.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.DLL-Import Release|Itanium.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.DLL-Import Release|Win32.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.DLL-Import Release|Win32.Build.0 = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.DLL-Import Release|x64.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Release Static|Itanium.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Release Static|Win32.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Release Static|Win32.Build.0 = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Release Static|x64.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Release|Itanium.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Release|Win32.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Release|Win32.Build.0 = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Release|x64.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Unicode Debug|Itanium.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Unicode Debug|Win32.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Unicode Debug|Win32.Build.0 = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Unicode Debug|x64.ActiveCfg = Debug|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Unicode Release|Itanium.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Unicode Release|Win32.ActiveCfg = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Unicode Release|Win32.Build.0 = Release|Win32
+		{D3F7B817-4E27-49AB-9784-63984B30FE7D}.Unicode Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
