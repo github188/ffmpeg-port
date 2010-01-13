@@ -1050,6 +1050,10 @@ BOOL CVideoWndDialog::ClearScreen()
 {
     Log() << _T( "Clear the Video screen." ) << endl;
 
+	// Çå¿ÕÏÔÊ¾»º´æ¡£
+	this->m_frameBuffer.Clear();
+
+
     if ( m_pSDLOverlay )
     {
         SDL_LockYUVOverlay ( m_pSDLOverlay );

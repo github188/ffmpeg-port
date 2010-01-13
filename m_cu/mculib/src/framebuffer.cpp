@@ -241,3 +241,18 @@ void CFrameBuffer::SetFrameCallback( FunFrameCb pFun, void * param )
 
 }
 
+void CFrameBuffer::Clear()
+{
+	SCOPE_LOCK( m_threadSafeLock );
+
+	this->m_nReadCursor = 0;
+	this->m_nWriteCursor = 0;
+
+	// 重置图像缓冲区的标志。
+	for ( int i=0; i<MaxFrameBufferSize; ++i )
+	{
+		this->m_arPicBuffer[i].m_bFillData = FALSE;
+	}
+
+}
+

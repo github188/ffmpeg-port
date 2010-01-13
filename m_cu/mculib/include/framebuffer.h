@@ -29,6 +29,9 @@ public:
     /** 设置图像输出回调。 */
     void SetFrameCallback( FunFrameCb pFun, void * param );
 
+	/** 清空缓存图像。 */
+	void Clear();
+
 private:
     /** 显示定时器回调。 */
     static unsigned int OnDisplayTimerCallback( unsigned int interval, void *param);
