@@ -272,6 +272,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5DD91460648F4F94BB644D78197D1965"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_613863F567E8488EA3C527473E4014BF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -441,12 +447,6 @@
         "Entry"
         {
         "MsmKey" = "8:_AB7F61C04D5E4EA0890794364F81C3A3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AD5BB455B4D24B7B810159925A7906D8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1454,6 +1454,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_5DD91460648F4F94BB644D78197D1965"
+            {
+            "SourcePath" = "8:..\\sysdlls\\msvcr90.dll"
+            "TargetName" = "8:msvcr90.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_498EA9CD317241238C891AD1282795B1"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_62863082F48C4475A5390345D99217D9"
             {
             "SourcePath" = "8:..\\res\\chs\\keda\\btn_player_ptz_disable.jpg"
@@ -1946,24 +1964,6 @@
             "TargetName" = "8:btn_player_pause_disable.jpg"
             "Tag" = "8:"
             "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
-            "Condition" = "8:"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "Register" = "3:0"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{BA458234-9B71-4F46-8107-E91156377184}:_AD5BB455B4D24B7B810159925A7906D8"
-            {
-            "SourcePath" = "8:D:\\Program Files\\Microsoft Visual Studio 9.0\\VC\\ce\\dll\\armv4i\\msvcr90.dll"
-            "TargetName" = "8:msvcr90.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_498EA9CD317241238C891AD1282795B1"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"

@@ -212,6 +212,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_593D7E0F367E44A89CAE0DB2110B22FB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5C406EC98CE14853A8C6C687E3E9FF4B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -369,12 +375,6 @@
         "Entry"
         {
         "MsmKey" = "8:_ACC3BD0C83C24C36B2A85026ADB54D85"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AD5BB455B4D24B7B810159925A7906D8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1244,6 +1244,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_593D7E0F367E44A89CAE0DB2110B22FB"
+            {
+            "SourcePath" = "8:..\\sysdlls\\msvcr90.dll"
+            "TargetName" = "8:msvcr90.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_498EA9CD317241238C891AD1282795B1"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_5C406EC98CE14853A8C6C687E3E9FF4B"
             {
             "SourcePath" = "8:..\\res\\chs\\mobile\\btn_ptz_dark_focus.jpg"
@@ -1718,24 +1736,6 @@
             "TargetName" = "8:mcuhelp6.htm"
             "Tag" = "8:"
             "Folder" = "8:_0DA4B43B6C1B4201BA6B484097DC0663"
-            "Condition" = "8:"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "Register" = "3:0"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{BA458234-9B71-4F46-8107-E91156377184}:_AD5BB455B4D24B7B810159925A7906D8"
-            {
-            "SourcePath" = "8:D:\\Program Files\\Microsoft Visual Studio 9.0\\VC\\ce\\dll\\armv4i\\msvcr90.dll"
-            "TargetName" = "8:msvcr90.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_498EA9CD317241238C891AD1282795B1"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -2560,7 +2560,7 @@
         {
             "{605BE39E-5046-48BD-AEC0-63C3A46626D5}:_CEDD1D774E3F4736A75AF52AC4541A4F"
             {
-            "SourcePath" = "8:..\\MCUDemo\\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\\Debug\\M_CU.exe"
+            "SourcePath" = "8:..\\MCUDemo\\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\\Release\\KDMCU.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_498EA9CD317241238C891AD1282795B1"
