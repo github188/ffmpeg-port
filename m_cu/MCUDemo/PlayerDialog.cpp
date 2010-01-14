@@ -37,6 +37,9 @@ CPlayerDialog::CPlayerDialog(CWnd* pParent /*=NULL*/)
 	m_nOrigRotation = 0;
 //	m_pSubPtzMenu = NULL;
 	m_bIsEnding = FALSE;
+	m_timeLastDbClick = CTime::GetCurrentTime();
+
+	m_pVideoSessionInit = NULL;
 }
 
 CPlayerDialog::~CPlayerDialog()
@@ -82,6 +85,7 @@ ON_BN_CLICKED(IDC_BUTTON_CLOSE, &CPlayerDialog::OnBnClickedButtonClose)
 ON_BN_CLICKED(IDC_BUTTON_PTZ, &CPlayerDialog::OnBnClickedButtonPtz)
 ON_WM_ACTIVATE()
 ON_WM_DESTROY()
+ON_MESSAGE( WM_VIDEO_PLAY_STATUS, &CPlayerDialog::OnRtspStatusNotify )
 END_MESSAGE_MAP()
 
 
@@ -108,7 +112,7 @@ BOOL CPlayerDialog::OnInitDialog()
     m_cPtzDlg.SetPtzSender( &m_cVideoWnd );
 
 	/** 调整窗口布局. */
-	this->UpdateLayout();
+//	this->UpdateLayout();
 
 	m_cVideoWnd.ShowWindow( SW_SHOW );
 	m_cPtzDlg.ShowWindow( SW_SHOW );
@@ -155,7 +159,15 @@ BOOL CPlayerDialog::OnInitDialog()
 
 	this->FullScreen( FS_HideMenuBar | FS_HideSipButton );
 
+	this->m_btnCapture.EnableWindow( FALSE );
+	this->m_btnRecord.EnableWindow( FALSE );
+
 	this->UpdateLayout();
+
+	if ( m_pVideoSessionInit )
+	{
+		this->Play( m_pVideoSessionInit );
+	}
 	
 
 	return TRUE;  // return TRUE unless you set the focus to a control
@@ -193,8 +205,16 @@ void CPlayerDialog::PlayFullScreen( BOOL bFullScreen )
 
 BOOL CPlayerDialog::Play( CVideoSession *pVs )
 {
-    if( pVs )
+	if ( !GetSafeHwnd() )
+	{
+		this->m_pVideoSessionInit = pVs;
+		return TRUE;
+	}
+	else if( pVs )
     {
+		// 清屏。
+		this->m_cVideoWnd.ClearScreen();
+
         EMCU_ErrorCode er;
         BOOL bResult = this->m_cVideoWnd.StartPlay( pVs, er );
 
@@ -392,7 +412,12 @@ void CPlayerDialog::UpdateLayout( LPRECT lprcClient /* =/* = NULL */ )
 	if ( m_cVideoWnd.GetSafeHwnd() )
 	{
 		CRect rcVideoWnd = rcLeftSpace;
-		m_cVideoWnd.MoveWindow( rcVideoWnd );
+		CRect rcCur;
+		m_cVideoWnd.GetWindowRect( rcCur );
+		if ( rcVideoWnd != rcCur )
+		{
+			m_cVideoWnd.MoveWindow( rcVideoWnd );
+		}		
 	}
 	
 }
@@ -530,6 +555,21 @@ void CPlayerDialog::PostNcDestroy()
 void CPlayerDialog::OnLButtonDblClk(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	// 双击消息可能很频繁，超出视频窗口的处理速度，造成问题。
+	// 这里进行限速，过于频繁的点击将被忽略。
+	CTime tNow = CTime::GetCurrentTime();
+	CTimeSpan ts = tNow - m_timeLastDbClick;	
+	if ( ts.GetSeconds() < 1 )
+	{
+		return;
+	}
+	else
+	{
+		this->m_timeLastDbClick = tNow;
+	}
+
+
+
 	this->PlayFullScreen( !this->m_bFullScreenMode );
 
 
@@ -1075,3 +1115,52 @@ void CPlayerDialog::OnShowWindowCmd( int nSWCmd )
     }
 }
 
+LRESULT CPlayerDialog::OnRtspStatusNotify( WPARAM wParam, LPARAM lParam )
+{
+	BOOL bRecEnable = FALSE;
+	BOOL bCapEnable = FALSE;
+	ERTSPStatus eRtspStatus = (ERTSPStatus)lParam;
+	switch( eRtspStatus )
+	{
+	case RTSPStatus_Idle:
+	case RTSPStatus_Init:
+	case RTSPStatus_Opition:
+	case RTSPStatus_Description:
+	case RTSPStatus_Setup:
+	case RTSPStatus_Play:
+	case RTSPStatus_Error_Server_Full:
+	case RTSPStatus_Error_Unknown:    
+	case RTSPStatus_Error_Init_Fail:
+	case RTSPStatus_Error_Opition:
+	case RTSPStatus_Error_Description:
+	case RTSPStatus_Error_Setup:
+	case RTSPStatus_Error_Play:
+	case RTSPStatus_Error_SDP:
+	case RTSPStatus_Error_Create_Rcv:
+	case RTSPStatus_Error_WaitPacket:
+	case RTSPStatus_Error_Decoder_Fail:
+		// 不能抓拍，不能录像。
+		bRecEnable = FALSE;
+		bCapEnable = FALSE;
+		break;
+
+	case RTSPStatus_Running:
+	case RTSPStatus_WaitingPacket:
+		// 可以抓拍，可以录像。
+		bRecEnable = TRUE;
+		bCapEnable = TRUE;
+		break;
+	default:
+		break;
+	}
+
+	if ( m_btnCapture.GetSafeHwnd() )
+	{
+		m_btnCapture.EnableWindow( bCapEnable );
+	}
+	if ( m_btnRecord.GetSafeHwnd() )
+	{
+		m_btnRecord.EnableWindow( bRecEnable );
+	}
+	return TRUE;
+}

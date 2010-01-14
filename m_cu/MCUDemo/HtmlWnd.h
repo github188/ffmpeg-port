@@ -87,6 +87,8 @@ public :
 	BOOL m_bWaittingNavigateComplete;
 	BOOL m_bIsFaild;
 
+
+
 private:
 	/** html 控件 窗口. */
 	HWND m_hHtmlCtrlWnd;
@@ -105,6 +107,9 @@ private:
 
 	/** 历史记录的结束游标. */
 	int m_nHistoryEndIndex;
+
+	/** 初始化时需要打开的url。 */
+	tstring m_strUrlInitLoad;
 
 
 	/** 最大的历史记录个数. */

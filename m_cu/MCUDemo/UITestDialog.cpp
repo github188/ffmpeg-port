@@ -4,18 +4,9 @@
 #include "stdafx.h"
 #include "mcu.h"
 #include "UITestDialog.h"
-
-#include "PlayerDialog.h"
-#include "logindialog.h"
-#include "MCUDemoDlg.h"
-
-#include "MainDialog.h"
-#include "controltestdialog.h"
-#include "picmanagedialog.h"
 #include "MCUSession.h"
-#include "configdialog.h"
-#include "dirselectdialog.h"
 #include "windowfactory.h"
+#include "dirselectdialog.h"
 
 // CUITestDialog 对话框
 
@@ -64,28 +55,36 @@ void CUITestDialog::OnBnClickedButtonPlayerDlgTest()
 	CMCUSession::Instance()->CurVideoSession()->PtzControl( TRUE );
 //	dlg.DoModal();
 
-    CWindowFactory::Instance()->ShowWindow( WndPlayer, WndUnittestUI );
+//    CWindowFactory::Instance()->ShowWindow( WndPlayer, WndUnittestUI );
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndPlayer );
+	pDlg->DoModal();
 
 }
 
 void CUITestDialog::OnBnClickedButtonLoginDialogTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-    CWindowFactory::Instance()->ShowWindow( WndLogin, this->GetWindowId() );
-    return ;
+//     CWindowFactory::Instance()->ShowWindow( WndLogin, this->GetWindowId() );
+//     return ;
+
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndLogin );
+	pDlg->DoModal();
 
 }
 
 void CUITestDialog::OnBnClickedButtonHtmlDialogTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-    CWindowFactory::Instance()->ShowWindow( WndWebpage, this->GetWindowId() );
-
+ //   CWindowFactory::Instance()->ShowWindow( WndWebpage, this->GetWindowId() );
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndWebpage );
+	pDlg->DoModal();
 }
 
 void CUITestDialog::OnBnClickedButtonConfigDialogTest()
 {
-    CWindowFactory::Instance()->ShowWindow( WndConfig, this->GetWindowId() );
+ //   CWindowFactory::Instance()->ShowWindow( WndConfig, this->GetWindowId() );
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndConfig );
+	pDlg->DoModal();
 }
 
 void CUITestDialog::OnBnClickedButtonMainDialogTest()
@@ -105,8 +104,8 @@ void CUITestDialog::OnBnClickedButtonMainDialogTest()
 	//	sdf;
 	//}
 
-	CMainDialog dlg;
-	dlg.DoModal();
+// 	CMainDialog dlg;
+// 	dlg.DoModal();
 }
 
 void CUITestDialog::OnBnClickedOk()
@@ -127,15 +126,19 @@ BOOL CUITestDialog::OnInitDialog()
 void CUITestDialog::OnBnClickedButtonImage()
 {
 	// TODO: 在此添加控件通知处理程序代码
-    CWindowFactory::Instance()->ShowWindow( WndPicManage, this->GetWindowId() );
+ //   CWindowFactory::Instance()->ShowWindow( WndPicManage, this->GetWindowId() );
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndPicManage );
+	pDlg->DoModal();
 
 }
 
 void CUITestDialog::OnBnClickedButtonControlTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CControlTestDialog dlg;
-	dlg.DoModal();
+// 	CControlTestDialog dlg;
+// 	dlg.DoModal();
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndUnittestCtrl );
+	pDlg->DoModal();
 }
 
 void CUITestDialog::OnBnClickedButtonPlayerDlgNoPtz()
@@ -145,7 +148,9 @@ void CUITestDialog::OnBnClickedButtonPlayerDlgNoPtz()
 	CMCUSession::Instance()->CurVideoSession()->PtzControl( FALSE );
 //	dlg.DoModal();
 
-    CWindowFactory::Instance()->ShowWindow( WndPlayer, this->GetWindowId() );
+//    CWindowFactory::Instance()->ShowWindow( WndPlayer, this->GetWindowId() );
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndPlayer );
+	pDlg->DoModal();
 }
 
 void CUITestDialog::OnBnClickedButtonDirSelTest()

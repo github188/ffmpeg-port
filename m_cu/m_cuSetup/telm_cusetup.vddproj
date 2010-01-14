@@ -98,6 +98,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_255022356815416DB013A876C6DB2CC1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_25C02CFCA9244602A53C2B82B98B0B79"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -195,6 +201,12 @@
         "Entry"
         {
         "MsmKey" = "8:_4200BFAAB22047DA90046996C209B377"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_45B19A9045EB4DC2B788DF97A724C45D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -950,6 +962,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_255022356815416DB013A876C6DB2CC1"
+            {
+            "SourcePath" = "8:..\\res\\chs\\keda\\btn_player_capture_disable.jpg"
+            "TargetName" = "8:btn_player_capture_disable.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_25C02CFCA9244602A53C2B82B98B0B79"
             {
             "SourcePath" = "8:..\\res\\chs\\tel\\btn_pic_pre_page_normal.jpg"
@@ -1224,6 +1254,24 @@
             {
             "SourcePath" = "8:..\\res\\chs\\tel\\btn_delete_disable.jpg"
             "TargetName" = "8:btn_delete_disable.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_45B19A9045EB4DC2B788DF97A724C45D"
+            {
+            "SourcePath" = "8:..\\res\\chs\\keda\\btn_player_record_disable.jpg"
+            "TargetName" = "8:btn_player_record_disable.jpg"
             "Tag" = "8:"
             "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
             "Condition" = "8:"

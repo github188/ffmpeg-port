@@ -70,9 +70,10 @@ BOOL CHtmlWnd::OnInitDialog()
         //}
        
         //spBrowser->
-
-
-
+		if ( !m_strUrlInitLoad.empty() )
+		{
+			this->OpenUrl( m_strUrlInitLoad.c_str() );
+		}
 	}
 	else
 	{
@@ -98,9 +99,15 @@ void CHtmlWnd::OnSize(UINT nType, int cx, int cy)
 BOOL CHtmlWnd::OpenUrl( LPCTSTR lpstrUrl )
 {
 	if( NULL == lpstrUrl || *lpstrUrl == 0 )
-	{
+	{		
         Log() << _T( "CHtmlWnd::OpenUrl url is null!" ) << endl;
 		return FALSE;
+	}
+	else if( NULL == m_hHtmlCtrlWnd )
+	{
+		Log() << _T( "Open url before html control being created! save it to init load!" ) << endl;
+		m_strUrlInitLoad = lpstrUrl;	
+		return TRUE;
 	}
 	else
 	{

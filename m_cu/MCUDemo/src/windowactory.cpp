@@ -27,19 +27,19 @@ CWindowFactory::CWindowFactory(void)
 
 CWindowFactory::~CWindowFactory(void)
 {
-    for ( int i=0; i<WndAllNum; ++i )
-    {
-        CUIDialog *pWnd = this->GetWnd( EWindowId( i ) );
-        if ( pWnd && pWnd->GetSafeHwnd() )
-        {
-            pWnd->DestroyWindow();
-        }
-        if ( pWnd )
-        {
-            delete pWnd;
-        }
-    }
-    m_tWndTable.clear();
+//     for ( int i=0; i<WndAllNum; ++i )
+//     {
+//         CUIDialog *pWnd = this->GetWnd( EWindowId( i ) );
+//         if ( pWnd && pWnd->GetSafeHwnd() )
+//         {
+//             pWnd->DestroyWindow();
+//         }
+//         if ( pWnd )
+//         {
+//             delete pWnd;
+//         }
+//     }
+//     m_tWndTable.clear();
 }
 
 CWindowFactory * CWindowFactory::Instance()
@@ -60,158 +60,263 @@ void CWindowFactory::Release()
     }
 }
 
-CUIDialog *CWindowFactory::CreateWnd( EWindowId eWndId )
+// int CWindowFactory::DoModalWnd( EWindowId eWndId )
+// {
+// 	CUIDialog *pDlg = NULL;
+// 	if ( NULL == pDlg )
+// 	{
+// 		switch( eWndId )
+// 		{
+// 		case WndLogin:
+// 			pDlg = new CLoginDialog();              
+// 			break;
+// 		case WndWebpage:
+// 			pDlg = new CWebpageDlg();
+// 			break;
+// 		case WndPicManage:
+// 			pDlg = new CPicManageDialog();
+// 			break;
+// 		case WndPicView:
+// 			pDlg = new CPicViewDialog();
+// 			break;
+// 		case WndPlayer:
+// 			pDlg = new CPlayerDialog();
+// 			break;
+// 		case WndConfig:
+// 			pDlg = new CConfigDialog();
+// 			break;
+// #ifdef UNIT_TEST
+// 		case WndUnittestMain:
+// 			pDlg = new CUnitTestMainDialog();
+// 			break;
+// 		case WndUnittestUI:                
+// 			pDlg = new CUITestDialog();
+// 			break;
+// 		case WndUnittestWebpage:
+// 			pDlg = new CHtmlTestDialog();
+// 			break;
+// 		case WndUnittestRtsp:
+// 			pDlg = new CRTSPTestDialog();
+// 			break;
+// #endif
+// 		default:
+// 			break;
+// 		}
+// 	}
+// 	int nDlgRet = 0;
+// 	if ( pDlg )
+// 	{
+// 		nDlgRet = pDlg->DoModal();
+// 	}
+// 	else
+// 	{
+// 		Log() << _T( "Dlg domodal fail!!! wnd id: " ) << eWndId << endl;
+// 		_ASSERT( FALSE );
+// 	}
+// 	return nDlgRet;
+// }
+// 
+// CUIDialog *CWindowFactory::CreateWnd( EWindowId eWndId )
+// {
+//     CUIDialog *pDlg = NULL;
+//     if ( NULL == pDlg )
+//     {
+//         switch( eWndId )
+//         {
+//         case WndLogin:
+//             pDlg = new CLoginDialog();
+//             if ( pDlg )
+//             {
+//                 pDlg->Create( CLoginDialog::IDD );
+//             }                
+//             break;
+//         case WndWebpage:
+//             pDlg = new CWebpageDlg();
+//             if ( pDlg )
+//             {
+//                 pDlg->Create( CWebpageDlg::IDD );
+//             } 
+//             break;
+//         case WndPicManage:
+//             pDlg = new CPicManageDialog();
+//             if ( pDlg )
+//             {
+//                 pDlg->Create( CPicManageDialog::IDD );
+//             } 
+//             break;
+//         case WndPicView:
+//             pDlg = new CPicViewDialog();
+//             if ( pDlg )
+//             {
+//                 pDlg->Create( CPicViewDialog::IDD );
+//             } 
+//             break;
+//         case WndPlayer:
+//             pDlg = new CPlayerDialog();
+//             if ( pDlg )
+//             {
+//                 pDlg->Create( CPlayerDialog::IDD );
+//             } 
+//             break;
+//         case WndConfig:
+//             pDlg = new CConfigDialog();
+//             if ( pDlg )
+//             {
+//                 pDlg->Create( CConfigDialog::IDD );
+//             } 
+//             break;
+// #ifdef UNIT_TEST
+//         case WndUnittestMain:
+//             pDlg = new CUnitTestMainDialog();
+//             if ( pDlg )
+//             {
+//                 pDlg->Create( CUnitTestMainDialog::IDD );
+//             }
+//             break;
+//         case WndUnittestUI:                
+//             pDlg = new CUITestDialog();
+//             if ( pDlg )
+//             {
+//                 pDlg->Create( CUITestDialog::IDD );
+//             }
+//             break;
+//         case WndUnittestWebpage:
+//             pDlg = new CHtmlTestDialog();
+//             if ( pDlg )
+//             {
+//                 pDlg->Create( CHtmlTestDialog::IDD );
+//             }
+//             break;
+//         case WndUnittestRtsp:
+//             pDlg = new CRTSPTestDialog();
+//             if( pDlg )
+//             {
+//                 pDlg->Create( CRTSPTestDialog::IDD );
+//             }
+//             break;
+// #endif
+//         default:
+//             break;
+//         }
+//     }
+// 
+//     return pDlg;
+// }
+// 
+// BOOL CWindowFactory::CreateAllWnd()
+// {
+//     for ( int i=0; i<WndAllNum; ++i )
+//     {
+//         EWindowId eWndId = EWindowId( i );
+// 
+//         CUIDialog *pDlg = this->CreateWnd( eWndId );
+// 
+//         if ( pDlg )
+//         {
+//             pDlg->SetWindowId( eWndId );
+//             pDlg->ShowWindow( SW_HIDE );
+//             this->m_tWndTable[ eWndId ] = pDlg;
+//         }
+//         
+//     }
+//     return TRUE;
+// }
+
+CDialog *CWindowFactory::NewDlg( EWindowId eWndId )
 {
-    CUIDialog *pDlg = NULL;
-    if ( NULL == pDlg )
-    {
-        switch( eWndId )
-        {
-        case WndLogin:
-            pDlg = new CLoginDialog();
-            if ( pDlg )
-            {
-                pDlg->Create( CLoginDialog::IDD );
-            }                
-            break;
-        case WndWebpage:
-            pDlg = new CWebpageDlg();
-            if ( pDlg )
-            {
-                pDlg->Create( CWebpageDlg::IDD );
-            } 
-            break;
-        case WndPicManage:
-            pDlg = new CPicManageDialog();
-            if ( pDlg )
-            {
-                pDlg->Create( CPicManageDialog::IDD );
-            } 
-            break;
-        case WndPicView:
-            pDlg = new CPicViewDialog();
-            if ( pDlg )
-            {
-                pDlg->Create( CPicViewDialog::IDD );
-            } 
-            break;
-        case WndPlayer:
-            pDlg = new CPlayerDialog();
-            if ( pDlg )
-            {
-                pDlg->Create( CPlayerDialog::IDD );
-            } 
-            break;
-        case WndConfig:
-            pDlg = new CConfigDialog();
-            if ( pDlg )
-            {
-                pDlg->Create( CConfigDialog::IDD );
-            } 
-            break;
+	CUIDialog *pDlg = NULL;
+	switch( eWndId )
+	{
+	case WndLogin:
+		pDlg = new CLoginDialog();              
+		break;
+	case WndWebpage:
+		pDlg = new CWebpageDlg();
+		break;
+	case WndPicManage:
+		pDlg = new CPicManageDialog();
+		break;
+	case WndPicView:
+		pDlg = new CPicViewDialog();
+		break;
+	case WndPlayer:
+		pDlg = new CPlayerDialog();
+		break;
+	case WndConfig:
+		pDlg = new CConfigDialog();
+		break;
 #ifdef UNIT_TEST
-        case WndUnittestMain:
-            pDlg = new CUnitTestMainDialog();
-            if ( pDlg )
-            {
-                pDlg->Create( CUnitTestMainDialog::IDD );
-            }
-            break;
-        case WndUnittestUI:                
-            pDlg = new CUITestDialog();
-            if ( pDlg )
-            {
-                pDlg->Create( CUITestDialog::IDD );
-            }
-            break;
-        case WndUnittestWebpage:
-            pDlg = new CHtmlTestDialog();
-            if ( pDlg )
-            {
-                pDlg->Create( CHtmlTestDialog::IDD );
-            }
-            break;
-        case WndUnittestRtsp:
-            pDlg = new CRTSPTestDialog();
-            if( pDlg )
-            {
-                pDlg->Create( CRTSPTestDialog::IDD );
-            }
-            break;
+	case WndUnittestMain:
+		pDlg = new CUnitTestMainDialog();
+		break;
+	case WndUnittestUI:                
+		pDlg = new CUITestDialog();
+		break;
+	case WndUnittestWebpage:
+		pDlg = new CHtmlTestDialog();
+		break;
+	case WndUnittestRtsp:
+		pDlg = new CRTSPTestDialog();
+		break;
 #endif
-        default:
-            break;
-        }
-    }
-
-    return pDlg;
+	default:
+		break;
+	}
+	return pDlg;
 }
 
-BOOL CWindowFactory::CreateAllWnd()
-{
-    for ( int i=0; i<WndAllNum; ++i )
-    {
-        EWindowId eWndId = EWindowId( i );
-
-        CUIDialog *pDlg = this->CreateWnd( eWndId );
-
-        if ( pDlg )
-        {
-            pDlg->SetWindowId( eWndId );
-            pDlg->ShowWindow( SW_HIDE );
-            this->m_tWndTable[ eWndId ] = pDlg;
-        }
-        
-    }
-    return TRUE;
-}
-
-CUIDialog *CWindowFactory::GetWnd( EWindowId eWndId )
-{
-    CUIDialog *pWnd = this->m_tWndTable[ eWndId ];
-
-
-    return pWnd;
-}
-
-BOOL CWindowFactory::ShowWindow( EWindowId eShowWndId, EWindowId eShowAfter )
-{
-    CUIDialog *pWnd = this->GetWnd( eShowWndId );
-
-    if ( NULL == pWnd )
-    {
-        // 如果没有，尝试创建。
-        pWnd = this->CreateWnd( eShowWndId );
-        pWnd->SetWindowId( eShowWndId );
-        this->m_tWndTable[ eShowWndId ] = pWnd;
-    }
-   
-
-    if ( pWnd )
-    {
-        pWnd->SetWndAfterClose( eShowAfter );
-        pWnd->ShowWindow( SW_SHOW );   
-  //      pWnd->SetForegroundWindow();
-  //      SetForegroundWindow((HWND)((ULONG) pWnd->GetSafeHwnd() | 0x00000001));
-    }
-    else
-    {
-        Log() << _T( "CWindowFactory::ShowWindow can't find the window: " ) << eShowWndId << endl;
-        return FALSE;
-    }
-
-    // 隐藏其它窗口。
-    for ( int i=0; i<WndAllNum; ++i )
-    {
-        if ( i != eShowWndId )
-        {
-            CUIDialog *pHideWnd = GetWnd( EWindowId( i ) );
-            if ( pHideWnd )
-            {
-                pHideWnd->ShowWindow( SW_HIDE );
-            }
-        }
-    }
-    return TRUE;
-}
-
+// CUIDialog *CWindowFactory::GetWnd( EWindowId eWndId )
+// {
+//     CUIDialog *pWnd = this->m_tWndTable[ eWndId ];
+// 
+// 
+//     return pWnd;
+// }
+// 
+// BOOL CWindowFactory::ShowWindow( EWindowId eShowWndId, EWindowId eShowAfter )
+// {
+//     CUIDialog *pWnd = this->GetWnd( eShowWndId );
+// 
+// 	if ( NULL == pWnd || !::IsWindow( pWnd->GetSafeHwnd() ) )
+//     {
+//         // 如果没有，尝试创建。
+// 		if ( pWnd )
+// 		{
+// 			delete pWnd;
+// 			pWnd = NULL;
+// 			this->m_tWndTable[ eShowWndId ] = pWnd;
+// 		}
+//         pWnd = this->CreateWnd( eShowWndId );
+//         pWnd->SetWindowId( eShowWndId );
+//         this->m_tWndTable[ eShowWndId ] = pWnd;
+//     }
+//    
+// 
+//     if ( pWnd )
+//     {
+//         pWnd->SetWndAfterClose( eShowAfter );
+//         pWnd->ShowWindow( SW_SHOW );   
+//   //      pWnd->SetForegroundWindow();
+//   //      SetForegroundWindow((HWND)((ULONG) pWnd->GetSafeHwnd() | 0x00000001));
+//     }
+//     else
+//     {
+//         Log() << _T( "CWindowFactory::ShowWindow can't find the window: " ) << eShowWndId << endl;
+//         return FALSE;
+//     }
+// 
+//     // 隐藏其它窗口。
+//     for ( int i=0; i<WndAllNum; ++i )
+//     {
+//         if ( i != eShowWndId )
+//         {
+//             CUIDialog *pHideWnd = GetWnd( EWindowId( i ) );
+// 			if ( pHideWnd && ::IsWindow( pHideWnd->GetSafeHwnd() ) )
+//             {
+//                 pHideWnd->ShowWindow( SW_HIDE );
+//             }
+//         }
+//     }
+//     return TRUE;
+// }
+// 

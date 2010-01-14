@@ -17,6 +17,7 @@ enum EWindowId
     WndUnittestUI,
     WndUnittestWebpage,
     WndUnittestRtsp,
+	WndUnittestCtrl,
 
     WndAllNum,      // 所有窗口数目。
 
@@ -31,32 +32,38 @@ public:
     static CWindowFactory *Instance();
     static void Release();
 
-    /** 弹出模态对话框。 */
-    int PopoupWnd( EWindowId eWndId );
+//     /** 弹出模态对话框。 */
+//     int PopoupWnd( EWindowId eWndId );
+// 
+//     /** 显示窗口。 */
+//     BOOL ShowWindow( EWindowId eShowWndId, EWindowId eShowAfter );
+// 
+//     /** 创建所有窗口。 */
+//     BOOL CreateAllWnd();
 
-    /** 显示窗口。 */
-    BOOL ShowWindow( EWindowId eShowWndId, EWindowId eShowAfter );
-
-    /** 创建所有窗口。 */
-    BOOL CreateAllWnd();
-
+	/** 创建窗口对象，不创建窗口。*/
+	CDialog *NewDlg( EWindowId eWndId );
     
 
     /** 获取窗口。 */
-    CUIDialog *GetWnd( EWindowId eWndId );
+//    CUIDialog *GetWnd( EWindowId eWndId );
 
 protected:
     CWindowFactory(void);
     virtual ~CWindowFactory(void);
 
 private:
-    /** 创建某窗口。 */
-    CUIDialog * CreateWnd( EWindowId eWndId );
+ //   /** 创建某窗口。 */
+ //   CUIDialog * CreateWnd( EWindowId eWndId );
+
+	///** 模态弹出某窗口。 */
+	//int DoModalWnd( EWindowId eWndId );
+
 private:
     static CWindowFactory *s_instance;
 
-    typedef std::map< EWindowId, CUIDialog * > TWindowsTalbe;
-    TWindowsTalbe m_tWndTable;
+    //typedef std::map< EWindowId, CUIDialog * > TWindowsTalbe;
+    //TWindowsTalbe m_tWndTable;
 
     
 };

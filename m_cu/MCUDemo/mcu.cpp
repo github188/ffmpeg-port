@@ -3,18 +3,13 @@
 
 #include "stdafx.h"
 #include "mcu.h"
-#include "MCUDemoDlg.h"
 #include "MCUSession.h"
-
 #include "mculib.h"
 #include <initguid.h>
-//#include "MCUDemo_i.c"
-
-#include "MainDialog.h"
 
 #include "ImageFactory.h"
-
 #include "windowfactory.h"
+
 
 /** 单元测试头文件*/
 #ifdef UNIT_TEST
@@ -27,8 +22,6 @@
 
 //#include <locale>
 #ifdef UNIT_TEST
-#include "UnitTestMainDialog.h"
-#include "webpagedlg.h"
 #include "MCUDemo_i.c"
 #else
 #ifdef _DEBUG
@@ -356,37 +349,33 @@ BOOL CMCUApp::InitInstance()
 	//记录进程正常退出状态
 	WriteProfileInt(L"AppStatus",L"Status",APP_RUNNING);
 
-#ifdef UNIT_TEST
+// #ifdef UNIT_TEST
+// 
+//     this->UnitTest();
+// 
+//  /*   CWebpageDlg dlg;
+//     dlg.DoModal();*/
+// 
+//     CWindowFactory::Instance()->ShowWindow( WndUnittestMain, WndLogin );
+// 
+//     m_pMainWnd = CWindowFactory::Instance()->GetWnd( WndUnittestMain );
+//     return TRUE;
+//  //   CUnitTestMainDialog utDlg;
+//  //   utDlg.DoModal();
+// 
+// #else
+// 
+// #ifdef _DEBUG
+//     CUnitTestMainDialog utDlg;
+//     utDlg.DoModal();
+// #endif 
+// 
+// #endif
 
-    this->UnitTest();
-
- /*   CWebpageDlg dlg;
-    dlg.DoModal();*/
-
-    CWindowFactory::Instance()->ShowWindow( WndUnittestMain, WndLogin );
-
-    m_pMainWnd = CWindowFactory::Instance()->GetWnd( WndUnittestMain );
-    return TRUE;
- //   CUnitTestMainDialog utDlg;
- //   utDlg.DoModal();
-
-#else
-
-#ifdef _DEBUG
-    CUnitTestMainDialog utDlg;
-    utDlg.DoModal();
-#endif
-
- 
-
-#endif
-
-    CWindowFactory::Instance()->ShowWindow( WndLogin, WndInvalid );
-
-    m_pMainWnd = CWindowFactory::Instance()->GetWnd( WndLogin );
-
+//    CWindowFactory::Instance()->ShowWindow( WndLogin, WndInvalid );
+//    m_pMainWnd = CWindowFactory::Instance()->GetWnd( WndLogin );
     // 改为为非模态对话框，所以需要消息泵程序才能运行。
-    return TRUE;
+//    return TRUE;
 
     //CMCUDemoDlg dlg;
     //m_pMainWnd = &dlg;
@@ -397,6 +386,20 @@ BOOL CMCUApp::InitInstance()
     //    //  “确定”来关闭对话框的代码
     //}
 
+	// 改回模态对话框方式。
+#ifdef UNIT_TEST
+	this->UnitTest();
+	
+	CDialog *pUtDlg = CWindowFactory::Instance()->NewDlg( WndUnittestMain );
+//	m_pMainWnd = &utdlg;
+	pUtDlg->DoModal();
+#endif
+	
+	CDialog *plogindlg = CWindowFactory::Instance()->NewDlg( WndLogin );
+	m_pMainWnd = plogindlg;
+	plogindlg->DoModal();
+
+	return FALSE;// exit app.
 	
 
 	// 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，

@@ -274,10 +274,11 @@ int CVideoWndDialog::SDL_ThreadFunc( void *param )
 				{
 					nflag |= SDL_FULLSCREEN;		
 
-					//// 写死,全屏只能横着.
-					//SDL_Event tempEvent = sdlevent;
-					//sdlevent.resize.w = max( tempEvent.resize.w, tempEvent.resize.h );
-					//sdlevent.resize.h = min( tempEvent.resize.w, tempEvent.resize.h );
+					// 写死,全屏只能横着,占满屏幕。
+					int nSH = ::GetScreenLong();
+					int nSW = ::GetScreenShort();
+					sdlevent.resize.w = nSH;
+					sdlevent.resize.h = nSW;
 				}
 				else
 				{
@@ -286,7 +287,7 @@ int CVideoWndDialog::SDL_ThreadFunc( void *param )
 				if ( !pThis->m_pSDLSurface 
 					|| pThis->m_pSDLSurface->w != sdlevent.resize.w 
 					|| pThis->m_pSDLSurface->h != sdlevent.resize.h 
-					|| pThis->m_pSDLSurface->flags != nflag ) 
+					/*|| pThis->m_pSDLSurface->flags != nflag*/ ) 
 				{
 					pThis->m_pSDLSurface = SDL_SetVideoMode( sdlevent.resize.w, sdlevent.resize.h, 0,
 						nflag );
@@ -979,7 +980,11 @@ void CVideoWndDialog::OnBufferdVideoFrameShow( const CBaseCodec::TVideoPicture *
 
 void CVideoWndDialog::OnRtspStatus( const ERTSPStatus eRtspStatus, const EMCU_ErrorCode eErrorCode )
 {
-    
+	if ( GetSafeHwnd() )
+	{
+		CWnd *pParent = this->GetParent();
+		pParent->PostMessage( WM_VIDEO_PLAY_STATUS, eErrorCode, eRtspStatus  );
+	}
 
     BOOL bShowRtspStatus = TRUE;
     tstring strShowVideoStatus;
@@ -1034,11 +1039,15 @@ void CVideoWndDialog::OnRtspStatus( const ERTSPStatus eRtspStatus, const EMCU_Er
         break;
     }
 
-    if ( bShowRtspStatus )
-    {
-        m_staticVideoStatus.SetWindowText( strShowVideoStatus.c_str() );
-    }
-    m_staticVideoStatus.ShowWindow( bShowRtspStatus ? SW_SHOW : SW_HIDE );	// 如果工作状态不好,显示状态条.
+	if ( m_staticVideoStatus.GetSafeHwnd() )
+	{
+		if ( bShowRtspStatus )
+		{
+			m_staticVideoStatus.SetWindowText( strShowVideoStatus.c_str() );
+		}
+		m_staticVideoStatus.ShowWindow( bShowRtspStatus ? SW_SHOW : SW_HIDE );	// 如果工作状态不好,显示状态条.
+	}
+   
   
     tstringstream tmp;
     tmp << _T( "CVideoWndDialog Rtso status notify status: " ) << eRtspStatus << _T( " er: " ) << eErrorCode 
@@ -1054,7 +1063,7 @@ BOOL CVideoWndDialog::ClearScreen()
 	this->m_frameBuffer.Clear();
 
 
-    if ( m_pSDLOverlay )
+    if ( m_pSDLOverlay && m_pSDLSurface )
     {
         SDL_LockYUVOverlay ( m_pSDLOverlay );
 
@@ -1073,32 +1082,11 @@ BOOL CVideoWndDialog::ClearScreen()
         SDL_Rect rect;
         rect.x = 0;
         rect.y = 0;
-        rect.w = m_pSDLOverlay->w;
-        rect.h = m_pSDLOverlay->h;
+        rect.w = m_pSDLSurface->w;
+        rect.h = m_pSDLSurface->h;
         SDL_DisplayYUVOverlay( m_pSDLOverlay, &rect );
     }
-    //SDL_LockYUVOverlay ( m_pSDLOverlay );
-
-    ////	int dst_pix_fmt = PIX_FMT_YUV420P;
-    ////pict.data[0] = m_pSDLOverlay->pixels[0];
-    ////pict.data[1] = m_pSDLOverlay->pixels[1];
-    ////pict.data[2] = m_pSDLOverlay->pixels[2];
-
-    ////pict.linesize[0] = m_pSDLOverlay->pitches[0];
-    ////pict.linesize[1] = m_pSDLOverlay->pitches[1];
-    ////pict.linesize[2] = m_pSDLOverlay->pitches[2];
-
-    ////av_picture_copy(&pict, (const AVPicture *)avFrame, 
-    ////	dst_pix_fmt, nWidth, nHeight );
-    //for( int i=0; i<3; ++i )
-    //{
-    //    memcpy( m_pSDLOverlay->pixels[i], pic->data[i], pic->linesize[i] );
-    //    m_pSDLOverlay->pitches[i] = (mu_uint16)pic->linesize[i];
-    //}
-
-
-    ///* update the bitmap content */
-    //SDL_UnlockYUVOverlay( m_pSDLOverlay );
+ 
 
     return TRUE;
 }

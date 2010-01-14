@@ -53,8 +53,10 @@ void CRTSPTestDialog::OnBnClickedButtonOpn()
 //	playerDlg.SetRtspUrl( (LPCTSTR)m_strRtspUrl );
 //	playerDlg.DoModal();
     CMCUSession::Instance()->CurVideoSession()->RtspUrl( (LPCTSTR)m_strRtspUrl );
-    CWindowFactory::Instance()->ShowWindow( WndPlayer, this->GetWindowId() );
-    CPlayerDialog *pPlayer = dynamic_cast< CPlayerDialog* >( CWindowFactory::Instance()->GetWnd( WndPlayer ) );
+//    CWindowFactory::Instance()->ShowWindow( WndPlayer, this->GetWindowId() );
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndPlayer );
+
+    CPlayerDialog *pPlayer = dynamic_cast< CPlayerDialog* >( pDlg );
     if ( pPlayer )
     {
         BOOL bResult = pPlayer->Play( CMCUSession::Instance()->CurVideoSession() );
@@ -65,6 +67,8 @@ void CRTSPTestDialog::OnBnClickedButtonOpn()
     {
         Log() << _T( "Can't get the Player Window!" ) << endl;
     }
+
+	pPlayer->DoModal();
 }
 
 BOOL CRTSPTestDialog::OnInitDialog()

@@ -65,13 +65,17 @@ void CUnitTestMainDialog::OnBnClickedButtonRtspTest()
 	// TODO: 在此添加控件通知处理程序代码
 //	CRTSPTestDialog dlg;
 //	dlg.DoModal();
-    CWindowFactory::Instance()->ShowWindow( WndUnittestRtsp, this->GetWindowId() );
+//    CWindowFactory::Instance()->ShowWindow( WndUnittestRtsp, this->GetWindowId() );
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndUnittestRtsp );
+	pDlg->DoModal();
 }
 
 void CUnitTestMainDialog::OnBnClickedButtonUiTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-    CWindowFactory::Instance()->ShowWindow( WndUnittestUI, this->GetWindowId() );
+ //   CWindowFactory::Instance()->ShowWindow( WndUnittestUI, this->GetWindowId() );
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndUnittestUI );
+	pDlg->DoModal();
     return;
 
 }
@@ -86,7 +90,9 @@ void CUnitTestMainDialog::OnBnClickedButtonPlayerDialogTest()
 void CUnitTestMainDialog::OnBnClickedButtonHtmlTest()
 {
 	// TODO: 在此添加控件通知处理程序代码
-    CWindowFactory::Instance()->ShowWindow( WndUnittestWebpage, this->GetWindowId() );
+ //   CWindowFactory::Instance()->ShowWindow( WndUnittestWebpage, this->GetWindowId() );
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndUnittestWebpage );
+	pDlg->DoModal();
 }
 
 void CUnitTestMainDialog::OnBnClickedButtonImageTest()

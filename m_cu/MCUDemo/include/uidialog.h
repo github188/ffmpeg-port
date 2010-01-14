@@ -150,7 +150,7 @@ private:
 	BOOL m_bCorSet;
 
 	/** 原始窗口大小. */
-	CRect m_rcOldWndRect;
+//	CRect m_rcOldWndRect;
 
 	/** 当前的全屏命令. EFullScreenCmd的组合. */
 	DWORD m_dwFullScreenCmd;

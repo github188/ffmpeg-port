@@ -105,16 +105,17 @@ BOOL CUIDialog::FullScreen( DWORD dwFullScreenCmd )
 {
 	this->m_dwFullScreenCmd = dwFullScreenCmd;
 
-	// 在做窗口变换之前,首先记录下原始的窗口位置.
-	if( this->HasCmd( FS_HideMenuBar ) || this->HasCmd( FS_HideTaskBar ) )
-	{
-		this->GetWindowRect( m_rcOldWndRect );
-	}
-
+// 	// 在做窗口变换之前,首先记录下原始的窗口位置.
+// 	if( this->HasCmd( FS_HideMenuBar ) || this->HasCmd( FS_HideTaskBar ) )
+// 	{
+// 		this->GetWindowRect( m_rcOldWndRect );
+// 	}
 	
-	this->PostMessage( WM_SCREEN_DISPLAY_MODE );
+	
 	this->PostMessage( WM_FULLSCREEN );
+	this->PostMessage( WM_SCREEN_DISPLAY_MODE );
 
+	this->PostMessage( WM_FS_SET_WINDOW_POS );
 
 	return TRUE;
 }
@@ -166,7 +167,7 @@ LRESULT CUIDialog::OnFullScreenCmd( WPARAM, LPARAM )
 	// 遍历窗口,干掉下面一条.
 	::EnumWindows( WindowsEnumCBForFulscreenS, (LPARAM)GetSafeHwnd() );
 	
-	this->PostMessage( WM_FS_SET_WINDOW_POS );
+	
 
 
 	return S_OK;
@@ -204,9 +205,12 @@ LRESULT CUIDialog::OnSetWindowPosCmd( WPARAM, LPARAM )
 
 	if( this->HasCmd( FS_ShowTaskBar ) )
 	{
-		// 调整为原始大小.
-		::SetWindowPos( GetSafeHwnd(), 0, m_rcOldWndRect.left, m_rcOldWndRect.top, m_rcOldWndRect.Width(), m_rcOldWndRect.Height(), SWP_NOZORDER );
+		// 调整为原始工作区大小.
+		CRect rcWorkarea;
+		SystemParametersInfo(SPI_GETWORKAREA,0,&rcWorkarea,0);
+		::SetWindowPos( GetSafeHwnd(), 0, rcWorkarea.left, rcWorkarea.top, rcWorkarea.Width(), rcWorkarea.Height(), SWP_NOZORDER );
 	}
+
 	return S_OK;
 }
 
@@ -536,25 +540,25 @@ EWindowId CUIDialog::GetWndAfterClose() const
 void CUIDialog::OnOK()
 {
     // TODO: 在此添加专用代码和/或调用基类
-    if ( WndInvalid == this->m_eWndAfterClose )
-    {
-        // 退出程序。
-        PostQuitMessage( 0 );
-    }
-    else
-    {
-        // 显示下一个。
-        EWindowId eWndAfterAferId = WndInvalid;
-        CUIDialog *pDlgAfterClose = CWindowFactory::Instance()->GetWnd( m_eWndAfterClose );
-        if ( pDlgAfterClose )
-        {
-            eWndAfterAferId = pDlgAfterClose->GetWndAfterClose();
-        }
+//     if ( WndInvalid == this->m_eWndAfterClose )
+//     {
+//         // 退出程序。
+//         PostQuitMessage( 0 );
+//     }
+//     else
+//     {
+//         // 显示下一个。
+//         EWindowId eWndAfterAferId = WndInvalid;
+//         CUIDialog *pDlgAfterClose = CWindowFactory::Instance()->GetWnd( m_eWndAfterClose );
+//         if ( pDlgAfterClose )
+//         {
+//             eWndAfterAferId = pDlgAfterClose->GetWndAfterClose();
+//         }
+// 
+//         CWindowFactory::Instance()->ShowWindow( m_eWndAfterClose, eWndAfterAferId );
+//     }
 
-        CWindowFactory::Instance()->ShowWindow( m_eWndAfterClose, eWndAfterAferId );
-    }
-
-//    CDialog::OnOK();
+    CDialog::OnOK();
 }
 
 void CUIDialog::OnCancel()

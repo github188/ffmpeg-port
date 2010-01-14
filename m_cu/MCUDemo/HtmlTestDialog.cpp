@@ -43,14 +43,17 @@ void CHtmlTestDialog::OnBnClickedButtonOpenUrl()
     this->m_cmbUrlList.GetWindowText( strUrl );
 
 
-    CWindowFactory::Instance()->ShowWindow( WndWebpage, this->GetWindowId() );
-    CWebpageDlg *pWebDlg = dynamic_cast< CWebpageDlg * >( CWindowFactory::Instance()->GetWnd( WndWebpage ) );
-    if ( pWebDlg )
-    {
-        pWebDlg->OpenUrl( strUrl );
-    }
+//     CWindowFactory::Instance()->ShowWindow( WndWebpage, this->GetWindowId() );
+//     CWebpageDlg *pWebDlg = dynamic_cast< CWebpageDlg * >( CWindowFactory::Instance()->GetWnd( WndWebpage ) );
+//     if ( pWebDlg )
+//     {
+//         pWebDlg->OpenUrl( strUrl );
+//     }
 
-
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndWebpage );
+	CWebpageDlg *pWebDlg = dynamic_cast< CWebpageDlg * >( pDlg );
+	pWebDlg->OpenUrl( strUrl );
+	pDlg->DoModal();
 
     //if( ! m_webpageDlg.GetSafeHwnd() )
     //{

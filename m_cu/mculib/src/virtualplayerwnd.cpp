@@ -35,6 +35,7 @@ BOOL CVirtualPlayerWnd::StartPlay( CVideoSession *pVideoSession, EMCU_ErrorCode&
 	// 不管如何，开始监测状态。反正不会重复开始。
 	this->StartCheckThread();
 
+
     // 暂停改成False。
     this->m_bPause = FALSE;
 

@@ -5,9 +5,6 @@
 #include "mcu.h"
 #include "LoginDialog.h"
 #include "mculib.h"
-
-#include "picmanagedialog.h"
-#include "configdialog.h"
 #include "webpagedlg.h"
 
 
@@ -532,12 +529,14 @@ void CLoginDialog::OnPicManage()
 {
     //CPicManageDialog dlg;
     //dlg.DoModal();
-    CWindowFactory::Instance()->ShowWindow( WndPicManage, this->GetWindowId() );
+//    CWindowFactory::Instance()->ShowWindow( WndPicManage, this->GetWindowId() );
+	CDialog *pPicManDlg = CWindowFactory::Instance()->NewDlg( WndPicManage );
+	pPicManDlg->DoModal();
 }
 
 void CLoginDialog::OnConfig()
 {
-    CWindowFactory::Instance()->ShowWindow( WndConfig, this->GetWindowId() );
+ //   CWindowFactory::Instance()->ShowWindow( WndConfig, this->GetWindowId() );
     //CConfigDialog dlg;
     //dlg.DoModal();
     //CSysCfgPage syscfg;
@@ -545,6 +544,8 @@ void CLoginDialog::OnConfig()
     //CConfigPropertySheet sheet( _T( "ÉèÖÃ" ), this );
     //sheet.AddPage( &syscfg );
     //sheet.DoModal();
+	CDialog *pCfgDlg = CWindowFactory::Instance()->NewDlg( WndConfig );
+	pCfgDlg->DoModal();
 }
 void CLoginDialog::OnBnClickedButtonPicRecManage()
 {
@@ -684,17 +685,27 @@ BOOL CLoginDialog::OpenWebpage( LPCTSTR strLoginUrl )
 {
     BOOL bResult = TRUE;
 
-    bResult &= CWindowFactory::Instance()->ShowWindow( WndWebpage, this->GetWindowId() );
+    //bResult &= CWindowFactory::Instance()->ShowWindow( WndWebpage, this->GetWindowId() );
 
-    CWebpageDlg *pWebpageDlg = dynamic_cast< CWebpageDlg * >( CWindowFactory::Instance()->GetWnd( WndWebpage ) );
-    if ( pWebpageDlg )
-    {
-        bResult &= pWebpageDlg->OpenUrl( strLoginUrl );
-    }
-    else
-    {
-        bResult = FALSE;
-    }
+    //CWebpageDlg *pWebpageDlg = dynamic_cast< CWebpageDlg * >( CWindowFactory::Instance()->GetWnd( WndWebpage ) );
+    //if ( pWebpageDlg )
+    //{
+    //    bResult &= pWebpageDlg->OpenUrl( strLoginUrl );
+    //}
+    //else
+    //{
+    //    bResult = FALSE;
+    //}
+	CDialog *pWebpageDlg = CWindowFactory::Instance()->NewDlg( WndWebpage );
+	if ( pWebpageDlg )
+	{
+		CWebpageDlg *pWb = dynamic_cast< CWebpageDlg* >( pWebpageDlg );
+		if ( pWb )
+		{
+			pWb->OpenUrl( strLoginUrl );
+		}
+		pWebpageDlg->DoModal();
+	}
 
     return bResult;
 }

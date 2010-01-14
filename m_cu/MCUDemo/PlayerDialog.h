@@ -48,6 +48,8 @@ protected:
     afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
     afx_msg void OnDestroy();
 
+	afx_msg LRESULT OnRtspStatusNotify( WPARAM wParam, LPARAM lParam );
+
 public:
 	enum EMenuItem
 	{
@@ -104,6 +106,12 @@ private:
 
 	/** ptz菜单。 */
 	CMenu m_menuPtz;
+
+	/** 最后一次双击时间。为了消除频繁的双击。 */
+	CTime m_timeLastDbClick;
+
+	/** 如果需要在最开始的时候就需要开始播放这个session。 */
+	CVideoSession *m_pVideoSessionInit;
 
 private:
 

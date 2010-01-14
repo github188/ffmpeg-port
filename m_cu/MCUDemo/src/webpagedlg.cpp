@@ -160,6 +160,7 @@ BOOL CWebpageDlg::CloseWindowWithWarnning()
         //}
         //        CWindowFactory::Instance()->ShowWindow( WndLogin, eLoginAfter ); 
         __super::OnOK();   
+
         return TRUE;
         //        this->ShowWindow( SW_HIDE );
     }
@@ -192,16 +193,27 @@ BOOL CWebpageDlg::OpenPlayer( CVideoSession *pVideoSession )
 {
     Log() << _T( "CWebpageDlg::OpenPlayer called!!!" ) << pVideoSession->RtspUrl() << endl;
 
-    CWindowFactory::Instance()->ShowWindow( WndPlayer, this->GetWindowId() );
-    CPlayerDialog *pPlayer = dynamic_cast< CPlayerDialog * >( CWindowFactory::Instance()->GetWnd( WndPlayer ) );
-    if ( pPlayer )
-    {
-        pPlayer->Play( pVideoSession );
-    }
-    else
-    {
-        Log() << _T( "OpenPlayer Can't get the player wnd!" ) << endl;
-    }
+//     CWindowFactory::Instance()->ShowWindow( WndPlayer, this->GetWindowId() );
+//     CPlayerDialog *pPlayer = dynamic_cast< CPlayerDialog * >( CWindowFactory::Instance()->GetWnd( WndPlayer ) );
+//     if ( pPlayer )
+//     {
+//         pPlayer->Play( pVideoSession );
+//     }
+//     else
+//     {
+//         Log() << _T( "OpenPlayer Can't get the player wnd!" ) << endl;
+//     }
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndPlayer );
+	CPlayerDialog *pPlayer = dynamic_cast< CPlayerDialog* >( pDlg );
+	if ( pPlayer )
+	{
+		pPlayer->Play( pVideoSession );
+		pPlayer->DoModal();
+	}
+	else
+	{
+		Log() << _T( "OpenPlayer Can't get the player wnd!" ) << endl;
+	}
 
     return TRUE;
 }
@@ -344,14 +356,18 @@ void CWebpageDlg::UpdateLayout( CRect *prcClient /* = NULL */ )
 void CWebpageDlg::OnBnClickedButtonPic()
 {
     // TODO: 在此添加控件通知处理程序代码
-    CWindowFactory::Instance()->ShowWindow( WndPicManage, this->GetWindowId() );
+//    CWindowFactory::Instance()->ShowWindow( WndPicManage, this->GetWindowId() );
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndPicManage );
+	pDlg->DoModal();
 }
 
 void CWebpageDlg::OnBnClickedButtonConfig()
 {
     // TODO: 在此添加控件通知处理程序代码
 
-    CWindowFactory::Instance()->ShowWindow( WndConfig, this->GetWindowId() );
+//    CWindowFactory::Instance()->ShowWindow( WndConfig, this->GetWindowId() );
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndConfig );
+	pDlg->DoModal();
 }
 
 void CWebpageDlg::OnBnClickedButtonSipButton()
