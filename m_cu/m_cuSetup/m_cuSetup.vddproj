@@ -524,12 +524,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C5FFA3EBE29E4F57814FDF7AF3F3C00D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_C6246DD9EEE147EBB9C0524136183E7E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2198,24 +2192,6 @@
             "TargetName" = "8:image008.jpg"
             "Tag" = "8:"
             "Folder" = "8:_92629EEF9CD54EE1A551449BDC35BA35"
-            "Condition" = "8:"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "Register" = "3:0"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{BA458234-9B71-4F46-8107-E91156377184}:_C5FFA3EBE29E4F57814FDF7AF3F3C00D"
-            {
-            "SourcePath" = "8:..\\res\\chs\\keda\\btn_player_recording_disable.jpg"
-            "TargetName" = "8:btn_player_recording_disable.jpg"
-            "Tag" = "8:"
-            "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"

@@ -26,6 +26,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_08BF8360F0B442549D6489DC60DC0084"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0ABA4CEB6DEB457AA56CBC809B5A6EFC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -63,6 +69,12 @@
         "Entry"
         {
         "MsmKey" = "8:_1BBDE0009A99484A8DCF06023764671E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1CC0F53C08A147798C3A58A141C2C717"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -818,6 +830,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_08BF8360F0B442549D6489DC60DC0084"
+            {
+            "SourcePath" = "8:..\\res\\chs\\mobile\\btn_player_record_disable.jpg"
+            "TargetName" = "8:btn_player_record_disable.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_0ABA4CEB6DEB457AA56CBC809B5A6EFC"
             {
             "SourcePath" = "8:..\\res\\chs\\unicom\\btn_pic_focus.jpg"
@@ -930,6 +960,24 @@
             {
             "SourcePath" = "8:..\\res\\chs\\unicom\\btn_player_ptz_normal.jpg"
             "TargetName" = "8:btn_player_ptz_normal.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_1CC0F53C08A147798C3A58A141C2C717"
+            {
+            "SourcePath" = "8:..\\res\\chs\\mobile\\btn_player_capture_disable.jpg"
+            "TargetName" = "8:btn_player_capture_disable.jpg"
             "Tag" = "8:"
             "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
             "Condition" = "8:"

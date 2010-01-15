@@ -248,6 +248,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6E76A065FEAF4036A437C7511731DF93"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6FBD97B51AC34EB7A8DD35FB0D48BB85"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -273,6 +279,12 @@
         "Entry"
         {
         "MsmKey" = "8:_81167854056F4E59A031139F7085135F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8263D373135F49F7AD9B82461DB82E03"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1352,6 +1364,24 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_6E76A065FEAF4036A437C7511731DF93"
+            {
+            "SourcePath" = "8:..\\res\\chs\\mobile\\btn_player_record_disable.jpg"
+            "TargetName" = "8:btn_player_record_disable.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_6FBD97B51AC34EB7A8DD35FB0D48BB85"
             {
             "SourcePath" = "8:..\\res\\chs\\mobile\\btn_player_play_focus.jpg"
@@ -1430,6 +1460,24 @@
             "TargetName" = "8:mcuhelp0.htm"
             "Tag" = "8:"
             "Folder" = "8:_0DA4B43B6C1B4201BA6B484097DC0663"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{BA458234-9B71-4F46-8107-E91156377184}:_8263D373135F49F7AD9B82461DB82E03"
+            {
+            "SourcePath" = "8:..\\res\\chs\\mobile\\btn_player_capture_disable.jpg"
+            "TargetName" = "8:btn_player_capture_disable.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_FB00F9DB227C43D8B556476B84C75612"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -2560,7 +2608,7 @@
         {
             "{605BE39E-5046-48BD-AEC0-63C3A46626D5}:_CEDD1D774E3F4736A75AF52AC4541A4F"
             {
-            "SourcePath" = "8:..\\MCUDemo\\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\\Release\\KDMCU.exe"
+            "SourcePath" = "8:..\\MCUDemo\\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\\Release-Tel\\Mega Eyes.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_498EA9CD317241238C891AD1282795B1"
