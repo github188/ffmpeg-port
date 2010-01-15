@@ -40,6 +40,7 @@ BEGIN_MESSAGE_MAP(CWebpageDlg, CUIDialog)
 //    ON_MESSAGE( WM_HTML_CREATE_CMD, &CWebpageDlg::OnCreateBrowserCtrlCmd )
     ON_MESSAGE( WM_WINDOW_CLOSE_CMD, &CWebpageDlg::OnCloseWindowCmd )
     ON_MESSAGE( WM_HTML_PRE_LOAD, &CWebpageDlg::OnHtmlPreLoad )
+	ON_MESSAGE( WM_OPEN_MCU_PLAYER_CMD, &CWebpageDlg::OnOpenPlayerCmd )
     ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
@@ -193,6 +194,8 @@ BOOL CWebpageDlg::OpenPlayer( CVideoSession *pVideoSession )
 {
     Log() << _T( "CWebpageDlg::OpenPlayer called!!!" ) << pVideoSession->RtspUrl() << endl;
 
+	this->PostMessage( WM_OPEN_MCU_PLAYER_CMD, (WPARAM)pVideoSession );
+
 //     CWindowFactory::Instance()->ShowWindow( WndPlayer, this->GetWindowId() );
 //     CPlayerDialog *pPlayer = dynamic_cast< CPlayerDialog * >( CWindowFactory::Instance()->GetWnd( WndPlayer ) );
 //     if ( pPlayer )
@@ -203,17 +206,7 @@ BOOL CWebpageDlg::OpenPlayer( CVideoSession *pVideoSession )
 //     {
 //         Log() << _T( "OpenPlayer Can't get the player wnd!" ) << endl;
 //     }
-	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndPlayer );
-	CPlayerDialog *pPlayer = dynamic_cast< CPlayerDialog* >( pDlg );
-	if ( pPlayer )
-	{
-		pPlayer->Play( pVideoSession );
-		pPlayer->DoModal();
-	}
-	else
-	{
-		Log() << _T( "OpenPlayer Can't get the player wnd!" ) << endl;
-	}
+
 
     return TRUE;
 }
@@ -459,3 +452,25 @@ LRESULT CWebpageDlg::OnHtmlPreLoad( WPARAM wParam, LPARAM )
     return ( UrlRtsp == eUT );
 }
 
+LRESULT CWebpageDlg::OnOpenPlayerCmd( WPARAM wp , LPARAM )
+{
+	CVideoSession* pVS = (CVideoSession*)wp;
+	
+	if ( !pVS )
+	{
+		pVS = CMCUSession::Instance()->CurVideoSession();
+	}
+
+	CDialog *pDlg = CWindowFactory::Instance()->NewDlg( WndPlayer );
+	CPlayerDialog *pPlayer = dynamic_cast< CPlayerDialog* >( pDlg );
+	if ( pPlayer )
+	{
+		pPlayer->Play( pVS );
+		pPlayer->DoModal();
+	}
+	else
+	{
+		Log() << _T( "OpenPlayer Can't get the player wnd!" ) << endl;
+	}
+	return 0;
+}

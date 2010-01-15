@@ -66,6 +66,9 @@ private:
     /** 响应html控件的url载入。 */
     afx_msg LRESULT OnHtmlPreLoad( WPARAM wParam, LPARAM );
 
+	/** 打开播放器命令。 */
+	afx_msg LRESULT OnOpenPlayerCmd( WPARAM , LPARAM );
+
 private:
     /** 浏览器控件。 */
 //    CBrowserCtrl m_browserCtrl;

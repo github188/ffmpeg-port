@@ -41,6 +41,7 @@ enum WM_MCU_MESSAGE
 	WM_PTZ_BUTTON_UP,					// ptz按钮抬起,wparam:控件id.
 
     WM_WINDOW_CLOSE_CMD,                // 关闭当前窗口。
+	WM_OPEN_MCU_PLAYER_CMD,				// 打开M_CU的播放器窗口。 wparam: 视频会话 CVideoSession *
 
 	WM_HTML_CLICK,						// 用户的点击.wparam: LPCTSTR 的字符串.
 	WM_HTML_PRE_LOAD,					// 响应在页面载入之前. wparam:  LPCTSTR的字符串.
