@@ -47,7 +47,7 @@ if ( strUTF16.empty() )
 #endif 
 }
 
-#ifdef _WIN32_WCE
+
 
 wstring UTF8toUTF16( string strUTF8 )
 {
@@ -57,11 +57,19 @@ wstring UTF8toUTF16( string strUTF8 )
 	}
 
 	std::vector< wchar_t > vTemp( strUTF8.length()+1, 0 );
+	
+#if defined ( _WIN32_WCE )
 	MultiByteToWideChar( CP_UTF8, 0, strUTF8.c_str(), strUTF8.length(), &vTemp[0], strUTF8.length() );
-
+#elif defined( __SYMBIAN32__ )
+	TPtr16 pUtf16( (TUint16*)&vTemp[0], vTemp.size() );
+	TPtrC8 pUtf8( (TUint8*)strUTF8.c_str() );
+	
+	CnvUtfConverter::ConvertToUnicodeFromUtf8 ( pUtf16, pUtf8 );
+#endif
 	return &vTemp[0];
 }
 
+#ifdef _WIN32_WCE
 tstring GetModulePath( HMODULE hm /*= NULL*/ )
 {
 	std::vector< wchar_t > vTemp( MAX_PATH+1, 0 );

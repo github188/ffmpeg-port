@@ -82,15 +82,16 @@ CLog& CLog::operator <<( const wchar_t * strMsg)
 CLog& CLog::operator <<( const char * strMsg )
 {
     SCOPE_LOCK( m_threadSafeLock );
-
-    cout << strMsg;
     
 #ifdef _WIN32_WCE
+    cout << strMsg;
 	tstring strMsgUtf16 = ::UTF8toUTF16( strMsg );
 	*this << strMsgUtf16;
 	
 #elif defined( __SYMBIAN32__ )
     RDebug::Printf( ( "%s" ) , strMsg );
+#else
+    cout << strMsg;
 #endif
 
     if ( this->m_fLog )

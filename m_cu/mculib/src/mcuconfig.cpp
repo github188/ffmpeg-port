@@ -3,7 +3,6 @@
 
 #include "mcucommon.h"
 #include "encrypt.h"
-#include "xmlparse.h"
 #include "log.h"
 
 
@@ -60,7 +59,7 @@ CConfig::CConfig(void)
 	tstring strXmlFile = this->GetDefaultConfigFilePath();
 	BOOL bResult = this->m_pXmlParser->LoadXML( strXmlFile.c_str(), CONFIG_SECTION_CONFIG_NAME);
 
-	Log() << _T( "config load xml: " ) << strXmlFile << _T( " result: ") << bResult << endl;
+//	Log() << _T( "config load xml: " ) << strXmlFile << _T( " result: ") << bResult << endl;
 	_ASSERT( bResult );
 
     m_pBkCfgxmlParser = NULL;
@@ -69,7 +68,7 @@ CConfig::CConfig(void)
     tstring strPresetFile = this->GetBkCfgFilePath();
 
     bResult = this->m_pBkCfgxmlParser->LoadXML( strPresetFile.c_str(), CONFIG_SECTION_CONFIG_NAME );
-    Log() << _T( "config load preset: " ) << strPresetFile << _T( " result: " ) << bResult << endl;
+//    Log() << _T( "config load preset: " ) << strPresetFile << _T( " result: " ) << bResult << endl;
 
 //	bResult = this->m_pXmlParser->SetCurRootElement( CONFIG_SECTION_CONFIG_NAME );
 //	Log() << _T( "config set config root: result: ") << bResult << endl;
@@ -116,6 +115,9 @@ tstring CConfig::GetDefaultConfigFilePath() const
 #ifdef _WIN32
 	tstring strPath = ::GetAppDir();
 	return ( strPath + CONFIG_FILE_NAME ).c_str();
+#elif defined ( __SYMBIAN32__ )
+	
+	return _T( "c:\\mcu\\mcucfg.xml" );
 #else
 	tstring strPath = _T( "/usr/share/mcu/" );
 	if( !IsFileExist( strPath.c_str() ) )
@@ -131,6 +133,9 @@ tstring CConfig::GetBkCfgFilePath() const
 #ifdef _WIN32
     tstring strPath = ::GetAppDir();
     return ( strPath + CONFIG_BK_FILE ).c_str();
+#elif defined ( __SYMBIAN32__ )
+	
+	return _T( "c:\\mcu\\mcucfgbk.xml" );
 #else
     tstring strPath = _T( "/usr/share/mcu/" );
     if( !IsFileExist( strPath.c_str() ) )
@@ -334,7 +339,7 @@ BOOL CConfig::SetLoginInfo( LPCTSTR strUserId, LPCTSTR strPw, EStreamType eStrea
 		//		Log() << pDateBuf[i] ;
 		//TCHAR tmpBuf[10] = {0};
 		//_stprintf( tmpBuf,  _T("%02X" ), pDateBuf[i] );
-        ssSavePw << setbase( 16 ) << (void*)pDateBuf[i];
+        ssSavePw << setbase( 16 ) << (void*)(int)pDateBuf[i];
         tstring strTmp = ssSavePw.str();
         strTmp = strTmp.substr( strTmp.length() -2 );
 		strSavePw += strTmp;
