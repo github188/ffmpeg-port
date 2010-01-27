@@ -21,6 +21,15 @@ CKDVDecoderImpl * CKDVDecoderImpl::GetDecoder( CBaseCodec::ECodecId eCodecId, LP
 	SCOPE_LOCK( s_decoderNameTableLock );
 
 	CKDVDecoderImpl *pDec = FindDecoder( strName );
+
+	// test
+// 	if ( pDec )
+// 	{
+// 		Release( pDec );
+// 		pDec = NULL;
+// 	}
+
+
 	if ( NULL == pDec )
 	{
 		pDec = new CKDVDecoderImpl();

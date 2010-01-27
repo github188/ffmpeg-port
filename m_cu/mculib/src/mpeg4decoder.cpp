@@ -1,11 +1,13 @@
 
 #include "mpeg4decoder.h"
+#include "getconfig.h"
 
 CMpeg4Decoder::CMpeg4Decoder(void)
 {
 	m_bRecording = FALSE;
 	m_nBandWidth = 0;
 	this->m_pKdvDecoder = NULL;
+	m_bHaveIFrame = FALSE;
 }
 
 CMpeg4Decoder::~CMpeg4Decoder(void)
@@ -33,24 +35,39 @@ mu_int32 CMpeg4Decoder::InputStreamSync( const TStreamPacket& pkt )
 		mu_uint32 nStreamPackLen;
 		if (  m_cMediaStreamParse.GetCurFrame( &pStreamPack, &nStreamPackLen ) )
 		{
-			// 解码.			
-			TVideoFrameInfo tFrameInfo;
-			TVideoPicture tPic;
-			TStreamPacket tFramePacket;
-			tFramePacket.data = (mu_uint8*)pStreamPack;
-			tFramePacket.datalen = nStreamPackLen;
-			tFramePacket.timeStamp = pkt.timeStamp;
-			BOOL bDecodeResult = m_pKdvDecoder->Decode( tFramePacket, tPic, &tFrameInfo );
-			// 录像。
-			if ( bDecodeResult && m_bRecording )
-			{				
-				BOOL bWriteSuc = this->m_cFFRecoder.WriteFrame( (mu_uint8 *)pStreamPack, nStreamPackLen, tFrameInfo );
+			// 只有I帧来过，才解码。
+			if ( !m_bHaveIFrame )
+			{
+				// 判断是否是I帧。
+				BOOL bIsIFrame = IsIFrameMPG4( (u8*)pStreamPack, nStreamPackLen );
+				if ( bIsIFrame )
+				{
+					m_bHaveIFrame = TRUE;
+				}				
 			}
 
-			nFrameCount ++;
+			if ( m_bHaveIFrame )
+			{
+				// 解码.			
+				TVideoFrameInfo tFrameInfo;
+				TVideoPicture tPic;
+				TStreamPacket tFramePacket;
+				tFramePacket.data = (mu_uint8*)pStreamPack;
+				tFramePacket.datalen = nStreamPackLen;
+				tFramePacket.timeStamp = pkt.timeStamp;
+				BOOL bDecodeResult = m_pKdvDecoder->Decode( tFramePacket, tPic, &tFrameInfo );
+				// 录像。
+				if ( bDecodeResult && m_bRecording )
+				{				
+					BOOL bWriteSuc = this->m_cFFRecoder.WriteFrame( (mu_uint8 *)pStreamPack, nStreamPackLen, tFrameInfo );
+				}
 
-			// 调用基类处理.
-			this->OnDecodeResult( bDecodeResult, &tPic, &tFrameInfo );
+				nFrameCount ++;
+
+				// 调用基类处理.
+				this->OnDecodeResult( bDecodeResult, &tPic, &tFrameInfo );
+			}
+			
 		}
 
 		nReadLen += nSinkLen;

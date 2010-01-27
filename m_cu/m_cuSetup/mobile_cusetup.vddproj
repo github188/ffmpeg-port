@@ -2608,7 +2608,7 @@
         {
             "{605BE39E-5046-48BD-AEC0-63C3A46626D5}:_CEDD1D774E3F4736A75AF52AC4541A4F"
             {
-            "SourcePath" = "8:..\\MCUDemo\\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\\Release-Tel\\Mega Eyes.exe"
+            "SourcePath" = "8:..\\MCUDemo\\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\\Release-Mobile\\Mobile CU.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_498EA9CD317241238C891AD1282795B1"
@@ -2671,17 +2671,6 @@
             {
                 "Keys"
                 {
-                    "{B1EBC968-6B66-4532-A885-748B79AF4477}:_64C40EC642434365BD8C474A5D7E3B9E"
-                    {
-                    "Name" = "8:Kedacom"
-                    "Condition" = "8:"
-                        "Keys"
-                        {
-                        }
-                        "Values"
-                        {
-                        }
-                    }
                 }
             }
             "HKCR"

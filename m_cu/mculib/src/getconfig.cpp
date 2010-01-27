@@ -434,3 +434,19 @@ l32 GetH264Config(u8 *pu8Stream, u32 u32BsLen, TH264ConfigInfo *ptH264ConfigInfo
     //解码SPS, PPS等头信息
     return GetH264Headers(&tBs, ptH264ConfigInfo);
 }
+
+BOOL IsIFrameH264( u8 *pu8Stream, u32 u32BsLen )
+{
+	TH264ConfigInfo tH264ConfigInfo;
+	l32 lRet = GetH264Config( pu8Stream, u32BsLen, &tH264ConfigInfo );
+
+	return 0 == lRet;
+}
+
+BOOL IsIFrameMPG4( u8 *pu8Stream, u32 u32BsLen )
+{
+	TMpeg4ConfigInfo tMpeg4ConfigInfo;
+	l32 lRet = GetMpeg4Config( pu8Stream, u32BsLen, &tMpeg4ConfigInfo );
+
+	return 0 == lRet;
+}

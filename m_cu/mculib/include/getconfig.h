@@ -91,6 +91,12 @@ l32 GetMpeg4Config(u8 *pu8Stream, u32 u32BsLen, TMpeg4ConfigInfo *ptMpeg4ConfigI
 =============================================================================*/
 l32 GetH264Config(u8 *pu8Stream, u32 u32BsLen, TH264ConfigInfo *ptH264ConfigInfo);
 
+/** ≈–∂œ «∑Ò «I÷°°£ 
+*	by lizhixing @2010.01.27
+*/
+BOOL IsIFrameH264( u8 *pu8Stream, u32 u32BsLen );
+BOOL IsIFrameMPG4( u8 *pu8Stream, u32 u32BsLen );
+
 
 #endif
 

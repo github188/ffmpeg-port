@@ -47,4 +47,7 @@ private:
 
 	/** ÂëÂÊ.¡£*/
 	int m_nBandWidth;
+
+	/** IÖ¡À´¹ı¡£ */
+	BOOL m_bHaveIFrame;
 };
