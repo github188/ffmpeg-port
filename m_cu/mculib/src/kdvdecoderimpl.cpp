@@ -341,6 +341,20 @@ BOOL CKDVDecoderImpl::Decode( const CBaseCodec::TStreamPacket& tPkt, CBaseCodec:
 		pFrameInfo->frameTimeStamp = tPkt.timeStamp;
 	}
 
+#ifdef _DEBUG
+// 	static int s_count = 0;
+// 	s_count ++;
+// 	static CFile s_tmpF;
+// 	if ( s_count == 10 )
+// 	{
+// 		s_tmpF.Open( _T( "\\Storage Card\\yuv.yuv" ), CFile::modeCreate | CFile::modeWrite );
+// 		int nLen = 320 * 240 * 3 / 2;
+// 		s_tmpF.Write( tDecoderOutput.pu8YUV, nLen );
+// 	}
+
+#endif
+	
+
 	return TRUE;
 }
 

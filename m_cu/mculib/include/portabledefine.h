@@ -110,7 +110,7 @@ typedef unsigned short mu_uint16;
 typedef signed long mu_int32;
 typedef unsigned long mu_uint32;  
 
-#ifdef __GNUC__
+#if defined( __GNUC__ ) || defined( __SYMBIAN32__ )
 
 typedef signed long long mu_int64;
 typedef unsigned long long mu_uint64;

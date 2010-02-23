@@ -199,7 +199,7 @@ void CPlayerDialog::PlayFullScreen( BOOL bFullScreen )
 	
 	m_cVideoWnd.SetFullScreen( bFullScreen );
 
-	this->FullScreen( bFullScreen ? FS_HideTaskBar | FS_HorizontalScreen : FS_ShowTaskBar | FS_ResumeScreen );
+	this->FullScreen( bFullScreen ? FS_HideTaskBar : FS_ShowTaskBar );
 
 }
 
@@ -557,16 +557,16 @@ void CPlayerDialog::OnLButtonDblClk(UINT nFlags, CPoint point)
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 	// 双击消息可能很频繁，超出视频窗口的处理速度，造成问题。
 	// 这里进行限速，过于频繁的点击将被忽略。
-	CTime tNow = CTime::GetCurrentTime();
-	CTimeSpan ts = tNow - m_timeLastDbClick;	
-	if ( ts.GetSeconds() < 1 )
-	{
-		return;
-	}
-	else
-	{
-		this->m_timeLastDbClick = tNow;
-	}
+// 	CTime tNow = CTime::GetCurrentTime();
+// 	CTimeSpan ts = tNow - m_timeLastDbClick;	
+// 	if ( ts.GetSeconds() < 1 )
+// 	{
+// 		return;
+// 	}
+// 	else
+// 	{
+// 		this->m_timeLastDbClick = tNow;
+// 	}
 
 
 

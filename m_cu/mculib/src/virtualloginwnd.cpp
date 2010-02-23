@@ -45,6 +45,7 @@ BOOL CVirtualLoginWnd::Login( const TLoginInfo& tLoginInfo, ELoginType eLoginTyp
 	// ±£´æ.
 	CMCUSession::Instance()->UserId( ssAccount.str() );
 	CMCUSession::Instance()->Password( tLoginInfo.m_strPassword );
+	CMCUSession::Instance()->LoginUrl( ssServerFullUrl.str() );
 
 	this->SaveConfig( tLoginInfo );
 

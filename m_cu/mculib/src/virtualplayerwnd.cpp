@@ -13,8 +13,17 @@ CVirtualPlayerWnd::CVirtualPlayerWnd(void)
 	m_timeLastPic = 0;
 	m_bCheckStatus = FALSE;
     m_bCheckDiskSpace = FALSE;
+	m_bFullScreenMode = FALSE;
+
 
 	mcu::RegisterMessageCallback( this, OnMessage );
+
+	BOOL bResult = m_frameBuffer.Init( 10 );
+	if ( !bResult )
+	{
+		Log() << _T( "Init frame buffer fail!!!!" ) << endl;
+	}
+	m_frameBuffer.SetFrameCallback( OnBufferdVideoFrameShowS, this );
 }
 
 CVirtualPlayerWnd::~CVirtualPlayerWnd(void)
@@ -26,6 +35,8 @@ CVirtualPlayerWnd::~CVirtualPlayerWnd(void)
 	this->StopCheckThread();
 
 	mcu::UnregisterMessageCallback( this );
+
+	m_tVideoRollPicBuf.Free();
 }
 
 BOOL CVirtualPlayerWnd::StartPlay( CVideoSession *pVideoSession, EMCU_ErrorCode& pErrorCode )
@@ -144,8 +155,19 @@ BOOL CVirtualPlayerWnd::YUVCallbackS( const CBaseCodec::TVideoPicture *pic, cons
         // 记录最近一次的图像回调时间。
         pThis->m_timeLastPic = ::GetCurTime();
 
-		pThis->OnVideoPicture( pic, pFrameInfo );
+// 		pThis->OnVideoPicture( pic, pFrameInfo );
+		pThis->YUVCallback( pic, pFrameInfo );
 	}
+	return TRUE;
+}
+
+BOOL CVirtualPlayerWnd::YUVCallback( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo )
+{
+	// 不需要加锁！因为frameBuffer里面会做多线程同步处理。
+	// 加锁后反而会造成frameBuffer回调时死锁！
+	//    SCOPE_LOCK( m_threadSafeLock );
+
+	this->m_frameBuffer.InputFrame( *pic, *pFrameInfo );
 	return TRUE;
 }
 
@@ -581,3 +603,108 @@ void CVirtualPlayerWnd::CheckDiskSpace()
     }
 }
 
+void CVirtualPlayerWnd::OnBufferdVideoFrameShowS( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo, void *userData )
+{
+	CVirtualPlayerWnd *pThis = ( CVirtualPlayerWnd *)userData;
+	if ( pThis )
+	{
+		pThis->OnBufferdVideoFrameShow( pic, pFrameInfo );
+	}
+	else
+	{
+		Log() << _T( "Video wnd buffer video frame show S this is NULL!" ) << endl;
+	}
+}
+
+void RollClockwise( int nWidth, int nHeight,  void *pSrc, void *pDst )
+{
+	int i = 0;
+	for ( int y = 0; y < nWidth; ++y )
+	{
+		for ( int x=0; x<nHeight; ++x )
+		{
+			int nIndex = nWidth * nHeight - nWidth * x - nWidth + y;
+			(( unsigned char * )pDst)[i] = ( (unsigned char* )pSrc )[ nIndex ];
+			i++;
+		}
+	}
+}
+
+void RollYUV420Clockwise( int nWidth, int nHeight, void * pSrc, void * pDst )
+{
+	int nOffset = 0;
+
+	int nYWidth = nWidth;
+	int nYHeight = nHeight;
+	RollClockwise( nYWidth, nYHeight, pSrc, pDst );
+	nOffset += nYWidth * nYHeight;
+
+	int nUWidth = nWidth / 2;
+	int nUHeight = nHeight / 2;
+	RollClockwise( nUWidth, nUHeight, (char*)pSrc + nOffset, (char*)pDst + nOffset );
+	nOffset += nUWidth * nUHeight;
+
+	int nVWidth = nWidth / 2;
+	int nVHeight = nHeight / 2;
+	RollClockwise( nVWidth, nVHeight, (char*)pSrc + nOffset, (char*)pDst + nOffset );
+}
+
+void CVirtualPlayerWnd::OnBufferdVideoFrameShow( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo )
+{
+	const CBaseCodec::TVideoPicture *pVideoPic = pic;
+	CBaseCodec::TVideoFrameInfo tFrameInfo = *pFrameInfo;
+	if ( this->IsFullScreen() )
+	{
+		// 旋转图像。
+		// 判断是否需要旋转。
+		int nScreenWidth = ::GetScreenWidth();
+		int nScreenHeight = ::GetScreenHeight();
+		if ( ( nScreenWidth - nScreenHeight ) * ( pFrameInfo->frameWidth - pFrameInfo->frameHeight ) < 0  )
+		{
+			// 需要旋转。顺时针旋转90度。
+			// 数组中图像是YUV格式的。0是Y，1，2是U,V.
+
+			// 初始化缓存,这里copy目的是申请内存而不是拷贝数据。
+			if ( this->m_tVideoRollPicBuf.picWidth != pic->picWidth 
+				|| this->m_tVideoRollPicBuf.picHeight != pic->picHeight )
+			{
+				this->m_tVideoRollPicBuf.Copy( *pic );
+			}
+
+			for ( int i=0; i<VIDEO_PICTURE_DIM; ++i )
+			{
+				if ( i == 0 )
+				{
+					RollClockwise( pic->picWidth, pic->picHeight, pic->data[i], m_tVideoRollPicBuf.data[i] );					
+				}
+				else if ( i == 1 || i == 2 )
+				{
+					int nDimWidth = pic->picWidth / 2;
+					int nDimHeight = pic->picHeight / 2;
+					RollClockwise( nDimWidth, nDimHeight, pic->data[i], m_tVideoRollPicBuf.data[i] );
+				}
+			}
+
+			// 构造新的图片结构体。
+			m_tVideoRollPicBuf.picWidth = pic->picHeight;
+			m_tVideoRollPicBuf.picHeight = pic->picWidth;
+			pVideoPic = &m_tVideoRollPicBuf;
+
+			int nTmp = tFrameInfo.frameHeight;
+			tFrameInfo.frameHeight = tFrameInfo.frameWidth;
+			tFrameInfo.frameWidth = nTmp;
+
+		}
+	}
+	this->OnVideoPicture( pVideoPic, &tFrameInfo );
+}
+
+void CVirtualPlayerWnd::SetFullScreen( BOOL bFullScreen )
+{
+	m_bFullScreenMode = bFullScreen;
+}
+
+BOOL CVirtualPlayerWnd::IsFullScreen() const
+{
+	return m_bFullScreenMode;
+}

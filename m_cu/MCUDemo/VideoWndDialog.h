@@ -50,8 +50,7 @@ public:
 	/** 当前是否暂停了. */
 //	BOOL IsPause();
 
-	/** 设置全屏状态.*/
-	void SetFullScreen( BOOL bFullScreen );
+	
 
 	/** 抓拍图片. */
 //	BOOL PicCapture( LPCTSTR strPicPath );
@@ -75,10 +74,7 @@ protected:
     /** 录像状态回调。 */
     virtual void OnRecordStatus( BOOL bSuccess, EMCU_ErrorCode er );
 
-    /** 图像帧数据回调。经过缓存。 */
-    static void OnBufferdVideoFrameShowS( const CBaseCodec::TVideoPicture *pic, 
-        const CBaseCodec::TVideoFrameInfo *pFrameInfo,
-        void *userData );
+
 
     /** 图像帧数据回调。经过缓存。 */
     void OnBufferdVideoFrameShow( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo );
@@ -96,9 +92,6 @@ private:
 //	CMediaNet m_MediaNet;
 //	CString m_strRtspUrl;
 
-    /** 帧缓存。 */
-    CFrameBuffer m_frameBuffer;
-
 	/** SDL 线程句柄。 */
 	SDL_Thread *m_pSDLThread;
 
@@ -111,8 +104,7 @@ private:
 	/** SDL surface */
 	SDL_Surface *m_pSDLSurface;
 	
-	/** 是否是全屏模式. */
-	BOOL m_bFullScreenMode;
+
 
 	/** ptz控制对话框. */
 //	CPTZDialog m_dlgPtz;

@@ -242,6 +242,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_64114789C19146EEB951E1F7E658EAED"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_65CC042996B74826ACCE7E7AC7EF2B5D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -495,12 +501,6 @@
         "Entry"
         {
         "MsmKey" = "8:_CBABDBF692A3471B9FEDCF16EEA17DA4"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CEDD1D774E3F4736A75AF52AC4541A4F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2606,7 +2606,7 @@
         }
         "ProjectOutput"
         {
-            "{605BE39E-5046-48BD-AEC0-63C3A46626D5}:_CEDD1D774E3F4736A75AF52AC4541A4F"
+            "{605BE39E-5046-48BD-AEC0-63C3A46626D5}:_64114789C19146EEB951E1F7E658EAED"
             {
             "SourcePath" = "8:..\\MCUDemo\\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\\Release-Mobile\\Mobile CU.exe"
             "TargetName" = "8:"
@@ -2624,7 +2624,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:0"
-            "OutputConfiguration" = "8:"
+            "OutputConfiguration" = "8:Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{F76A60D7-E3B1-483A-8822-E1E6B7AB5213}"
             "ShowKeyOutput" = "11:TRUE"
@@ -2694,13 +2694,13 @@
         }
         "Shortcut"
         {
-            "{971D45E9-E38C-49AC-B36E-4C5BEA533350}:_C0E459A54A35425FBE71B5E9DD7A545D"
+            "{971D45E9-E38C-49AC-B36E-4C5BEA533350}:_52FD422D91F44B7680DAE15D9F23C411"
             {
             "Name" = "8:MCU"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
-            "Target" = "8:_CEDD1D774E3F4736A75AF52AC4541A4F"
+            "Target" = "8:_64114789C19146EEB951E1F7E658EAED"
             "Folder" = "8:_8E436BBC4109477DA02B74598285F69A"
             "WorkingFolder" = "8:_498EA9CD317241238C891AD1282795B1"
             }

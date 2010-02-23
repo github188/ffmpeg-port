@@ -44,6 +44,9 @@ static const BOOL CONFIG_DEFAULT_SEND_NAT_PACKET = TRUE;
 #ifdef _WIN32_WCE
 static LPCTSTR CONFIG_DEFAULT_CAPTURE_DIR_RAM = _T( "\\My Documents\\M_CU\\" );
 static LPCTSTR CONFIG_DEFAULT_CAPTURE_DIR_CARD = _T( "\\Storage Card\\M_CU\\" );
+#elif defined( __SYMBIAN32__)
+static LPCTSTR CONFIG_DEFAULT_CAPTURE_DIR_RAM = _T( "c:\\M_CU\\pic\\" );
+static LPCTSTR CONFIG_DEFAULT_CAPTURE_DIR_CARD = _T( "e:\\M_CU\\pic\\" );
 #else
 static LPCTSTR CONFIG_DEFAULT_CAPTURE_DIR_RAM = _T( "/media/mmc1/M_CU/" );
 static LPCTSTR CONFIG_DEFAULT_CAPTURE_DIR_CARD = _T( "/media/mmc1/M_CU/" );
@@ -117,7 +120,7 @@ tstring CConfig::GetDefaultConfigFilePath() const
 	return ( strPath + CONFIG_FILE_NAME ).c_str();
 #elif defined ( __SYMBIAN32__ )
 	
-	return _T( "c:\\mcu\\mcucfg.xml" );
+	return _T( "e:\\mcu\\mcucfg.xml" );
 #else
 	tstring strPath = _T( "/usr/share/mcu/" );
 	if( !IsFileExist( strPath.c_str() ) )
@@ -135,7 +138,7 @@ tstring CConfig::GetBkCfgFilePath() const
     return ( strPath + CONFIG_BK_FILE ).c_str();
 #elif defined ( __SYMBIAN32__ )
 	
-	return _T( "c:\\mcu\\mcucfgbk.xml" );
+	return _T( "e:\\mcu\\mcucfgbk.xml" );
 #else
     tstring strPath = _T( "/usr/share/mcu/" );
     if( !IsFileExist( strPath.c_str() ) )

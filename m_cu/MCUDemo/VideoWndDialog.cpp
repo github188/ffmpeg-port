@@ -24,8 +24,7 @@ CVideoWndDialog::CVideoWndDialog(  CWnd* pParent /*=NULL*/)
 	: CDialog(CVideoWndDialog::IDD, pParent),
 	m_pSDLOverlay( NULL ),
 	m_pSDLSurface( NULL ),
-	m_pSDLThread( NULL ),
-	m_bFullScreenMode( FALSE )
+	m_pSDLThread( NULL )	
 {
 	m_timeLastMouseClick =0;
     m_prcVideoShow = NULL;
@@ -81,12 +80,12 @@ BOOL CVideoWndDialog::OnInitDialog()
 		Log() << _T( "Init SDL fail! Maybe Only one video window is permit at one time！！！" ) << endl;
 	}
 
-    bResult = m_frameBuffer.Init( 10 );
-    if ( !bResult )
-    {
-        Log() << _T( "Init frame buffer fail!!!!" ) << endl;
-    }
-    m_frameBuffer.SetFrameCallback( OnBufferdVideoFrameShowS, this );
+//     bResult = m_frameBuffer.Init( 10 );
+//     if ( !bResult )
+//     {
+//         Log() << _T( "Init frame buffer fail!!!!" ) << endl;
+//     }
+//     m_frameBuffer.SetFrameCallback( OnBufferdVideoFrameShowS, this );
 
 
 	// 设置解码回调。
@@ -105,25 +104,7 @@ BOOL CVideoWndDialog::OnInitDialog()
 //	m_strRtspUrl = strRtspUrl;
 //}
 
-void CVideoWndDialog::SetFullScreen( BOOL bFullScreen )
-{
-	m_bFullScreenMode = bFullScreen;
 
-	
-
-	//if ( m_bFullScreenMode )
-	//{
-	//	CRect rcClient;
-	//	this->GetClientRect( rcClient );
-	//	SDL_Event fe;
-	//	fe.type = SDL_VIDEORESIZE;
-	//	fe.resize.w = max( rcClient.Width(), rcClient.Height() );
-	//	fe.resize.h = min( rcClient.Width(), rcClient.Height() );
-
-	//	SDL_PushEvent( &fe );
-	//}
-	
-}
 
 //BOOL CVideoWndDialog::PicCapture( LPCTSTR strPicPath )
 //{
@@ -148,7 +129,7 @@ void CVideoWndDialog::PostNcDestroy()
 
 BOOL CVideoWndDialog::InitSDL()
 {
-	if ( SDL_WasInit( 0 ) )
+	if ( SDL_WasInit( SDL_INIT_VIDEO ) )
 	{
 		return FALSE;
 	}
@@ -218,7 +199,7 @@ int CVideoWndDialog::SDL_ThreadFunc( void *param )
 	int videoFlags = SDL_HWSURFACE|SDL_ASYNCBLIT|SDL_HWACCEL;
 //	int w,h;
 
-	if( pThis->m_bFullScreenMode ) 
+	if( pThis->IsFullScreen() ) 
 		videoFlags |= SDL_FULLSCREEN;
 	else               
 		videoFlags |= SDL_RESIZABLE;
@@ -270,15 +251,15 @@ int CVideoWndDialog::SDL_ThreadFunc( void *param )
 
 				int nflag = 0;
 				nflag |= SDL_HWSURFACE|SDL_ASYNCBLIT|SDL_HWACCEL;
-				if ( pThis->m_bFullScreenMode )
+				if ( pThis->IsFullScreen() )
 				{
 					nflag |= SDL_FULLSCREEN;		
 
 					// 写死,全屏只能横着,占满屏幕。
-					int nSH = ::GetScreenLong();
-					int nSW = ::GetScreenShort();
-					sdlevent.resize.w = nSH;
-					sdlevent.resize.h = nSW;
+// 					int nSH = ::GetScreenLong();
+// 					int nSW = ::GetScreenShort();
+// 					sdlevent.resize.w = nSH;
+// 					sdlevent.resize.h = nSW;
 				}
 				else
 				{
@@ -877,21 +858,22 @@ void CVideoWndDialog::OnVideoPicture( const CBaseCodec::TVideoPicture *pic, cons
     // 加锁后反而会造成frameBuffer回调时死锁！
 //    SCOPE_LOCK( m_threadSafeLock );
     
-    this->m_frameBuffer.InputFrame( *pic, *pFrameInfo );
+//    this->m_frameBuffer.InputFrame( *pic, *pFrameInfo );
+	this->OnBufferdVideoFrameShow( pic, pFrameInfo );
 }
 
-void CVideoWndDialog::OnBufferdVideoFrameShowS( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo, void *userData )
-{
-    CVideoWndDialog *pThis = ( CVideoWndDialog *)userData;
-    if ( pThis )
-    {
-        pThis->OnBufferdVideoFrameShow( pic, pFrameInfo );
-    }
-    else
-    {
-        Log() << _T( "Video wnd buffer video frame show S this is NULL!" ) << endl;
-    }
-}
+// void CVideoWndDialog::OnBufferdVideoFrameShowS( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo, void *userData )
+// {
+//     CVideoWndDialog *pThis = ( CVideoWndDialog *)userData;
+//     if ( pThis )
+//     {
+//         pThis->OnBufferdVideoFrameShow( pic, pFrameInfo );
+//     }
+//     else
+//     {
+//         Log() << _T( "Video wnd buffer video frame show S this is NULL!" ) << endl;
+//     }
+// }
 
 void CVideoWndDialog::OnBufferdVideoFrameShow( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo )
 {
@@ -1060,7 +1042,7 @@ BOOL CVideoWndDialog::ClearScreen()
     Log() << _T( "Clear the Video screen." ) << endl;
 
 	// 清空显示缓存。
-	this->m_frameBuffer.Clear();
+//	this->m_frameBuffer.Clear();
 
 
     if ( m_pSDLOverlay && m_pSDLSurface )

@@ -6,6 +6,7 @@
 #include "videosession.h"
 #include "ptzcontrol.h"
 #include "message.h"
+#include "framebuffer.h"
 
 class CVirtualPlayerWnd
 {
@@ -26,6 +27,11 @@ public:
 
 	/** 关闭RTSP。 */
 	BOOL StopPlay();
+
+	/** 全屏。 */
+	/** 设置全屏状态.*/
+	void SetFullScreen( BOOL bFullScreen );
+	BOOL IsFullScreen() const;
 
 	/** 抓拍。 */
 	BOOL Capture( tstring& strPicPath, EMCU_ErrorCode& eErrorCode );
@@ -71,6 +77,16 @@ private:
 	/** 图像回调。 */
 	static BOOL YUVCallbackS( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo, void *param );
 
+	BOOL YUVCallback( const CBaseCodec::TVideoPicture *pic, const CBaseCodec::TVideoFrameInfo *pFrameInfo );
+
+	/** 图像帧数据回调。经过缓存。 */
+	static void OnBufferdVideoFrameShowS( const CBaseCodec::TVideoPicture *pic, 
+		const CBaseCodec::TVideoFrameInfo *pFrameInfo,
+		void *userData );
+
+	void OnBufferdVideoFrameShow( const CBaseCodec::TVideoPicture *pic, 
+		const CBaseCodec::TVideoFrameInfo *pFrameInfo );
+
 	/** 监测线程函数。 */
 	static int CheckThread( void * pThis );
 
@@ -87,6 +103,9 @@ private:
 	CMediaNet m_MediaNet;
 
 	CPtzControl m_ptzControl;
+
+	/** 帧缓存。 */
+	CFrameBuffer m_frameBuffer;
 
 	BOOL m_bPause;
 
@@ -111,6 +130,12 @@ private:
 
 	/** 线程同步锁。 */
 	mutable CMCUMutex m_threadSafeLock;
+
+	/** 是否是全屏模式. */
+	BOOL m_bFullScreenMode;
+
+	/** 旋转图像时使用的缓存。 */
+	CBaseCodec::TVideoPicture m_tVideoRollPicBuf;
 
 };
 

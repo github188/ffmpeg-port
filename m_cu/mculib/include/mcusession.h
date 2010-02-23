@@ -27,6 +27,10 @@ public:
 
 //	const CVideoSession * CurVideoSession() const { return &m_curVideoSession; }
 	CVideoSession * CurVideoSession() { return &m_curVideoSession; }
+	
+	tstring LoginUrl() const { return m_strLoginUrl; }
+	
+	void LoginUrl( tstring val ) { m_strLoginUrl = val; }		
 private:
 	/** 用户名*/
 	tstring m_strUserId;
@@ -40,5 +44,8 @@ private:
 
 	/** 当前视频会话. */
 	CVideoSession m_curVideoSession;
+	
+	/** 登录url。 */
+	tstring m_strLoginUrl;
 	
 };
