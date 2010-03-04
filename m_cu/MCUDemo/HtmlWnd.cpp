@@ -167,13 +167,13 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 
 				//需要拼接完整的URL
                 tstring strCurUrl = GetCurUrl();
-                int nPos = strCurUrl.rfind( _T( '/' ) );
+				int nPos = strCurUrl.find( _T( '/' ), _tcslen( _T( "http://" ) ) );
                 tstring strUrlDir;
                
                 if ( nPos > 0 )
                 {
-                    // 要带上 '/',所以加一。
-                    strUrlDir = strCurUrl.substr( 0, nPos + 1 );
+                    // 不要带上 '/'。
+                    strUrlDir = strCurUrl.substr( 0, nPos );
                 }
                 else
                 {

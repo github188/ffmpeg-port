@@ -19,6 +19,9 @@ CVirtualPlayerWnd::CVirtualPlayerWnd(void)
 	mcu::RegisterMessageCallback( this, OnMessage );
 
 	BOOL bResult = m_frameBuffer.Init( 10 );
+	
+	Log() << _T( "After m_frameBuffer.Init( 10 );" );
+	
 	if ( !bResult )
 	{
 		Log() << _T( "Init frame buffer fail!!!!" ) << endl;

@@ -130,6 +130,8 @@ BOOL CMCUMessage::Init()
 		m_bThreadSwitch = TRUE;
 		Log() << _T( "before CMCUMessage SDL_CreateThread" ) <<endl;
 		this->m_pMessageHandleThread = SDL_CreateThread( MessageHandleThread, this );
+		
+		Log() << _T( "after CMCUMessage SDL_CreateThread" );
 
 		this->m_semaphoreSendMessage = SDL_CreateSemaphore( 0 );
 	}

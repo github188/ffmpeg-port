@@ -397,7 +397,9 @@ BOOL CKDVDecoderImpl::CapturePic( LPCTSTR strPicPath, CEncoder *pEnc )
 	{
 		// 把缓冲区存起来。
 		std::ofstream picFile;
-        string strUtf8 = ::UTF16toUTF8( strPicPath );
+		char szPath[MAX_PATH] = {0};
+		WCtoMB( strPicPath, szPath, MAX_PATH-1 );
+        string strUtf8 = szPath;
 		picFile.open( strUtf8.c_str(), std::ios::out | std::ios::trunc | std::ios::binary );
 		if ( picFile.is_open() )
 		{

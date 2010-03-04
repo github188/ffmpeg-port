@@ -25,8 +25,11 @@ BOOL CFFMpegRecorderImpl::s_bFileProtocolReg = FALSE;
 
 CFFMpegRecorderImpl::CFFMpegRecorderImpl(void)
 {
+#if !defined( __SYMBIAN32__ )
 	m_pavFormatContext = NULL;
 	m_pavStream = NULL;
+	
+#endif
 
 	this->m_timeBegin = 0;
 	this->m_timeEnd = 0;
@@ -42,6 +45,8 @@ CFFMpegRecorderImpl::~CFFMpegRecorderImpl(void)
 
 BOOL CFFMpegRecorderImpl::Init( CBaseCodec::ECodecId eCodec, int nBandWidth, LPCTSTR strFileName )
 {
+#if !defined( __SYMBIAN32__ )
+	
 	SCOPE_LOCK( this->m_threadSafeLock );
 
 	BOOL bResult = TRUE;
@@ -110,10 +115,16 @@ BOOL CFFMpegRecorderImpl::Init( CBaseCodec::ECodecId eCodec, int nBandWidth, LPC
 	bResult &= ( NULL != m_pavStream );
 
 	return bResult;
+	
+#else
+	return FALSE;
+#endif
 }
 
 BOOL CFFMpegRecorderImpl::WriteFrame( mu_uint8 *buf, int len, const CBaseCodec::TVideoFrameInfo& tFrameInfo )
 {
+#if !defined( __SYMBIAN32__ )
+	
 	SCOPE_LOCK( this->m_threadSafeLock );
 
 
@@ -330,10 +341,17 @@ BOOL CFFMpegRecorderImpl::WriteFrame( mu_uint8 *buf, int len, const CBaseCodec::
 //	OutputDebugString( _T( "WriteFrame 2\n" ) );
 	
 	return TRUE;
+	
+#else
+	return FALSE;
+#endif
+	
 }
 
 BOOL CFFMpegRecorderImpl::CloseFile()
 {
+#if !defined( __SYMBIAN32__ )
+	
 	SCOPE_LOCK( this->m_threadSafeLock );
 
 //	OutputDebugString( _T( "close file 1 \n" ) );
@@ -395,10 +413,15 @@ BOOL CFFMpegRecorderImpl::CloseFile()
 //	OutputDebugString( _T( "close file 4 \n" ) );
 
 	return bResult;
+#else
+	return FALSE;
+#endif
 }
 
 BOOL CFFMpegRecorderImpl::Release()
 {
+#if	!defined( __SYMBIAN32__ )
+			
 	SCOPE_LOCK( this->m_threadSafeLock );
 
 	if ( m_pavFormatContext && m_pavFormatContext->pb )
@@ -422,6 +445,8 @@ BOOL CFFMpegRecorderImpl::Release()
 
     Log() << _T( "CFFMpegRecorderImpl::Release call over!" ) << endl;
 
+#endif
+    
 	return TRUE;
 }
 

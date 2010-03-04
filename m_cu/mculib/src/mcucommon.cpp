@@ -163,7 +163,6 @@ tstring GetAppDir()
 #endif
 }
 
-#ifdef _WIN32_WCE
 
 int GetScreenLong()
 {
@@ -182,13 +181,24 @@ int GetScreenShort()
 
 int GetScreenWidth()
 {
+#if defined( _WIN32_WCE )
 	return ::GetSystemMetrics( SM_CXSCREEN );
+#elif defined( __SYMBIAN32__ )
+	return 360;
+#endif	
 }
 
 int GetScreenHeight()
 {
+#if defined( _WIN32_WCE )
 	return ::GetSystemMetrics( SM_CYSCREEN );
+#elif defined( __SYMBIAN32__ )
+	return 640;
+#endif
 }
+
+#ifdef _WIN32_WCE
+
 
 /* char -> wchar_t */
 BOOL MBtoWC(const char* srcStr, wchar_t * dstStr, int len )
@@ -210,9 +220,13 @@ BOOL MBtoWC(const char* srcStr, wchar_t * dstStr, int len )
 	}
 }
 
+
+#endif
+
 /* wchar_t -> char */
 BOOL WCtoMB(const wchar_t* srcStr, char *dstStr, int len )
 {
+#if defined( _WIN32_WCE )
 	int charlength;
 
 	charlength = WideCharToMultiByte(CP_ACP, 0, srcStr,
@@ -228,8 +242,18 @@ BOOL WCtoMB(const wchar_t* srcStr, char *dstStr, int len )
 	{
 		return FALSE;
 	}
+#elif defined( __SYMBIAN32__ )
+	
+	TPtr8 pUtf8( ( TUint8*)dstStr, len );
+	//pUtf8.AppendFill( 0, nMaxLen8 + 1 );
+	TPtrC16 pUtf16( ( const TUint16*)srcStr );
+	
+	CnvUtfConverter::ConvertFromUnicodeToUtf8( pUtf8, pUtf16 );
+	
+	return TRUE;
+#endif 
 }
-#endif
+
 __time64_t StrToTime( LPCTSTR lpTime )
 {
 #if defined( _WIN32_WCE )

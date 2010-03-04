@@ -62,7 +62,16 @@ CLog& CLog::operator <<( const wchar_t * strMsg)
 #ifdef _WIN32_WCE
     OutputDebugString( strMsg );
 #elif defined( __SYMBIAN32__ )
-    RDebug::Print( _L( "%s" ) , strMsg );
+	if ( _tcslen( strMsg ) > 255 )
+	{
+		tstring strTmp = strMsg;
+		strTmp = strTmp.substr( 0, 255 );
+		RDebug::Print( _L( "%s" ) , strTmp.c_str() );
+	}
+	else
+	{
+		RDebug::Print( _L( "%s" ) , strMsg );
+	}
 #elif	!defined( __CYGWIN__ )// cygwin ²»Ö§³Öunicode!
     std::wcout << strMsg;
 #else

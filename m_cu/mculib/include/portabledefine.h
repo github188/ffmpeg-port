@@ -165,6 +165,9 @@ typedef const TCHAR *LPCTSTR;
 
 #endif // #ifdef __GNUC__
 
+#ifdef __SYMBIAN32__
+#define MAX_PATH 256
+#endif
 
 /** 
 //////////////////////////////////////////////////////////////////////////
