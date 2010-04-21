@@ -76,7 +76,7 @@ public:
 	BOOL GetAppTitle( tstring& strAppTitle );
 
 	/** 获取存储空间阀值，小于此阀值不抓拍和录像。 */
-	BOOL GetMinStorageSpace( int& nMinSpace );
+	BOOL GetMinStorageSpace( mu_uint32& nMinSpace );
 
 	/** 页面放大倍数。 */
 	BOOL GetWebpageZoomLevel( float& fZoom );

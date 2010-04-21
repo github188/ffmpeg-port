@@ -13,22 +13,22 @@ namespace mcu
 
 
 
-BOOL mcu::PostMsg( MessageTarget target, mu_int32 nMessage, WPARAM wParam, LPARAM lParam )
+BOOL PostMsg( MessageTarget target, mu_int32 nMessage, WPARAM wParam, LPARAM lParam )
 {
 	return CMCUMessage::Instance()->PostMsg( target, nMessage, wParam, lParam );
 }
 
-mu_int32 mcu::SendMsg( MessageTarget target, mu_int32 nMessage, WPARAM wParam, LPARAM lParam )
+mu_int32 SendMsg( MessageTarget target, mu_int32 nMessage, WPARAM wParam, LPARAM lParam )
 {
 	return CMCUMessage::Instance()->SendMsg( target, nMessage, wParam, lParam );
 }
 
-void mcu::RegisterMessageCallback( MessageTarget target, FunMessageCallback pFunCb )
+void RegisterMessageCallback( MessageTarget target, FunMessageCallback pFunCb )
 {
 	return CMCUMessage::Instance()->RegisterMessageCallback( target, pFunCb );
 }
 
-BOOL mcu::UnregisterMessageCallback( MessageTarget target )
+BOOL UnregisterMessageCallback( MessageTarget target )
 {
 	return CMCUMessage::Instance()->UnregisterMessageCallback( target );
 }
@@ -128,11 +128,9 @@ BOOL CMCUMessage::Init()
 	else
 	{
 		m_bThreadSwitch = TRUE;
-		Log() << _T( "before CMCUMessage SDL_CreateThread" ) <<endl;
+
 		this->m_pMessageHandleThread = SDL_CreateThread( MessageHandleThread, this );
 		
-		Log() << _T( "after CMCUMessage SDL_CreateThread" );
-
 		this->m_semaphoreSendMessage = SDL_CreateSemaphore( 0 );
 	}
 	return TRUE;

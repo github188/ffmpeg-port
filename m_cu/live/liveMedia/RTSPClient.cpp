@@ -1860,7 +1860,8 @@ Boolean RTSPClient
         tvout.tv_usec = 0;
         makeSocketNonBlocking(fInputSocketNum);
       }
-      if (connect(fInputSocketNum, (struct sockaddr*) &remoteName, sizeof remoteName) != 0) {
+      int nConnectRet = connect(fInputSocketNum, (struct sockaddr*) &remoteName, sizeof remoteName);
+      if ( nConnectRet != 0) {
 #if defined(__WIN32__) || defined(_WIN32)
 
 		  // by lizhixing !

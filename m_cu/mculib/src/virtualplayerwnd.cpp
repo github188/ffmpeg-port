@@ -20,8 +20,6 @@ CVirtualPlayerWnd::CVirtualPlayerWnd(void)
 
 	BOOL bResult = m_frameBuffer.Init( 10 );
 	
-	Log() << _T( "After m_frameBuffer.Init( 10 );" );
-	
 	if ( !bResult )
 	{
 		Log() << _T( "Init frame buffer fail!!!!" ) << endl;
@@ -125,11 +123,12 @@ BOOL CVirtualPlayerWnd::StopPlay()
     }
 
 	Log() << _T( "CVirtualPlayerWnd::StopPlay" ) << endl;
-	return this->m_MediaNet.CloseRTSP();
+	this->m_MediaNet.CloseRTSP();
 
     this->StopCheckThread();
     Log() << _T( "Stop Check status.!" ) << endl;
     
+    return TRUE;
 }
 
 
@@ -185,7 +184,7 @@ BOOL CVirtualPlayerWnd::SendPtzCmd( EPTZCmdId eCmd )
 		return FALSE;
 	}
 
-	BOOL bPtz;
+	BOOL bPtz = TRUE;
 	switch( eCmd )
 	{
 	case PTZ_MOVEUP:
@@ -586,7 +585,7 @@ void CVirtualPlayerWnd::CheckDiskSpace()
 
         mu_uint64 nFreeSpace = ::GetDirFreeSpace( strRecDir.c_str() );
         
-		int nMinSpace = MIN_STORAGE_SPACE;
+		mu_uint32 nMinSpace = MIN_STORAGE_SPACE;
 		CConfig::Instance()->GetMinStorageSpace( nMinSpace ) ;
 		if ( nFreeSpace < nMinSpace )
 		{
@@ -596,6 +595,10 @@ void CVirtualPlayerWnd::CheckDiskSpace()
             EMCU_ErrorCode er;
 			BOOL bResult = this->StopRecord( er );
 
+			if( !bResult )
+				{
+			Log() << _T( "Stop Recorder Fail!!" ) << endl;
+				}
 
             // ²»ÔÙ¼ì²â´ÅÅÌ¿Õ¼ä¡£
 			this->m_bCheckDiskSpace = FALSE;

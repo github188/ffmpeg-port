@@ -143,7 +143,7 @@ unsigned short movieHeight = 180; // default
 BOOL movieHeightOptionSet = False;
 unsigned movieFPS = 15; // default
 BOOL movieFPSOptionSet = False;
-char* fileNamePrefix = "";
+const char* fileNamePrefix = "";
 unsigned fileSinkBufferSize = 20000;
 unsigned socketInputBufferSize = 0;
 BOOL packetLossCompensate = False;
@@ -818,6 +818,21 @@ int CMediaNet::MediaNet_Thread( void * pThisVoid )
 			pThis->SetRtspStatus( RTSPStatus_Error_Init_Fail );
 			break;
 		}
+		
+#if defined( __SYMBIAN32__ )
+		char* sdpDescription3
+					= getSDPDescriptionFromURL(ourClient, pThis->m_strRTSPUrlA.c_str(), username, password,
+					proxyServerName, proxyServerPortNum,
+					desiredPortNum);
+				if (sdpDescription3 == NULL) 
+				{
+					*env << "Failed to get a SDP description from URL \"" << pThis->m_strRTSPUrlA.c_str()
+						<< "\": " << env->getResultMsg() << "\n";
+
+					pThis->SetRtspStatus( RTSPStatus_Error_Description  );
+					break;
+				}
+#endif
 
 		// 开始获取Opition.
 		pThis->SetRtspStatus( RTSPStatus_Opition );

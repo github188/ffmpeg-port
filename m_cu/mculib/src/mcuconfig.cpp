@@ -473,7 +473,7 @@ BOOL CConfig::GetAppTitle( tstring& strAppTitle )
 	return ( !strAppTitle.empty() );
 }
 
-BOOL CConfig::GetMinStorageSpace( int& nMinSpace )
+BOOL CConfig::GetMinStorageSpace( mu_uint32& nMinSpace )
 {
 	nMinSpace = this->ReadConfig( CONFIG_ENTRY_MIN_SPACE, CONFIG_DEFAULT_MIN_SPACE );
 	return TRUE;

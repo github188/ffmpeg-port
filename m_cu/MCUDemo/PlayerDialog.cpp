@@ -666,7 +666,7 @@ void CPlayerDialog::OnBnClickedButtonRecord()
 		// ¼ì²â´ÅÅÌ¿Õ¼ä¡£
 		ULARGE_INTEGER nFreeSpaceToCaller, nTotalSpace, nFreeSpace;
 		bResult = ::GetDiskFreeSpaceEx( strPicDir.c_str(), &nFreeSpaceToCaller, &nTotalSpace, &nFreeSpace );
-		int nMinSpace = MIN_STORAGE_SPACE;
+		mu_uint32 nMinSpace = MIN_STORAGE_SPACE;
 		CConfig::Instance()->GetMinStorageSpace( nMinSpace ) ;
 		if ( nFreeSpaceToCaller.QuadPart < nMinSpace )
 		{
@@ -713,7 +713,7 @@ void CPlayerDialog::OnBnClickedButtonCapture()
 	// ¼ì²â´ÅÅÌ¿Õ¼ä¡£
 	ULARGE_INTEGER nFreeSpaceToCaller, nTotalSpace, nFreeSpace;
 	bResult = ::GetDiskFreeSpaceEx( strPicDir.c_str(), &nFreeSpaceToCaller, &nTotalSpace, &nFreeSpace );
-	int nMinSpace = MIN_STORAGE_SPACE;
+	mu_uint32 nMinSpace = MIN_STORAGE_SPACE;
 	CConfig::Instance()->GetMinStorageSpace( nMinSpace ) ;
 	if ( nFreeSpaceToCaller.QuadPart < nMinSpace )
 	{

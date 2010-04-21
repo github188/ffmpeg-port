@@ -161,12 +161,14 @@ int setupStreamSocket(UsageEnvironment& env,
     return newSocket;
   }
 
-  if (setsockopt(newSocket, SOL_SOCKET, SO_REUSEADDR,
-		 (const char*)&reuseFlag, sizeof reuseFlag) < 0) {
-    socketErr(env, "setsockopt(SO_REUSEADDR) error: ");
-    closeSocket(newSocket);
-    return -1;
-  }
+  // SO_REUSEPORT is nouse and it will cause exit on symbian !
+//  
+//  if (setsockopt(newSocket, SOL_SOCKET, SO_REUSEADDR,
+//		 (const char*)&reuseFlag, sizeof reuseFlag) < 0) {
+//    socketErr(env, "setsockopt(SO_REUSEADDR) error: ");
+//    closeSocket(newSocket);
+//    return -1;
+//  }
 
   // SO_REUSEPORT doesn't really make sense for TCP sockets, so we
   // normally don't set them.  However, if you really want to do this
@@ -233,6 +235,7 @@ static int blockUntilReadable(UsageEnvironment& env,
     } else if (result <= 0) {
 #if defined(__WIN32__) || defined(_WIN32)
 #else
+    int nEr = errno;
       if (errno == EINTR || errno == EAGAIN) continue;
 #endif
       socketErr(env, "select() error: ");
