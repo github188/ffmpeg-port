@@ -76,6 +76,7 @@ BOOL CRTSPTestDialog::OnInitDialog()
 	CUIDialog::OnInitDialog();
 
 	// TODO:  在此添加额外的初始化
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://117.35.58.70:554/service?PuId-ChannelNo=27000000000000000011200014200000-1&PlayMethod=0&StreamingType=1" ) );
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://218.61.2.152:554/service?PuId-ChannelNo=11000000000000000011200001100000-1&PlayMethod=0&StreamingType=1" ) );
 
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://221.224.163.200:554/service?PuId-ChannelNo=112200112000001000-1&PlayMethod=0&StreamingType=1" ) );

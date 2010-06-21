@@ -389,7 +389,18 @@ BOOL CMCUApp::InitInstance()
 	// 改回模态对话框方式。
 #ifdef UNIT_TEST
 
-	Log().SetLogFileDir( _T( "\\Storage Card\\" ), _T( "mculog" ) );
+	tstring strLogPath = _T( "\\Storage Card\\" );
+	if ( !IsFileExist( strLogPath.c_str() ) )
+	{
+		strLogPath = _T( "\\存储卡\\" );
+	}
+
+	if ( !IsFileExist( strLogPath.c_str() ) )
+	{
+		strLogPath = _T( "\\" );
+	}
+
+	Log().SetLogFileDir( strLogPath.c_str(), _T( "mculog" ) );
 
 	this->UnitTest();
 	

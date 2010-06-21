@@ -246,11 +246,11 @@ BOOL CHtmlWnd::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 	case NM_META:
 		{
 			Log() << _T( "NM_META" ) << endl;
-			tstring strHttpEquiv = UTF8toUTF16( (const char *)pnmHTMLView->szTarget );
-			tstring strData = UTF8toUTF16( ( const char * ) pnmHTMLView->szData );
-
-			Log() << _T( "meta httpequiv: " ) << strHttpEquiv << endl;
-			Log() << _T( "meta data: " ) << strData << endl;
+// 			tstring strHttpEquiv = UTF8toUTF16( (const char *)pnmHTMLView->szTarget );
+// 			tstring strData = UTF8toUTF16( ( const char * ) pnmHTMLView->szData );
+// 
+// 			Log() << _T( "meta httpequiv: " ) << strHttpEquiv << endl;
+// 			Log() << _T( "meta data: " ) << strData << endl;
 
 			//BOOL bResult = this->GetParent()->SendMessage( WM_HTML_WND_META, (WPARAM)strHttpEquiv.c_str(), (LPARAM)strData.c_str() );
 			//return bResult;
