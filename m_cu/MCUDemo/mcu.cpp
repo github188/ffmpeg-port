@@ -388,6 +388,9 @@ BOOL CMCUApp::InitInstance()
 
 	// 改回模态对话框方式。
 #ifdef UNIT_TEST
+
+	Log().SetLogFileDir( _T( "\\Storage Card\\" ), _T( "mculog" ) );
+
 	this->UnitTest();
 	
 	CDialog *pUtDlg = CWindowFactory::Instance()->NewDlg( WndUnittestMain );
