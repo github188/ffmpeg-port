@@ -128,6 +128,25 @@ enum ERTSPStatus
 
 };
 
+/** 图像的大小标准。 */
+enum EImgSize
+{
+	CIFWidth = 352,
+	CIFHeight = 288,
+	QVGAWidth = 320,
+	QVGAHeight = 240,
+};
+
+/** 解码输出的图像大小。
+*	2010/6/22 由QVGA改为CIF
+*	by lizhixing@2010/6/22
+*/
+enum EOutImgSize
+{
+	OUT_IMG_WIDTH = ( CIFWidth ),
+	OUT_IMG_HEIGHT = ( CIFHeight ),
+};
+
 
 /** 解码器名. */
 extern LPCTSTR MAIN_DECODER_NAME;

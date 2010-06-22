@@ -6,11 +6,7 @@
 #include "portabledefine.h"
 #include "mcucommon.h"
 
-//#define OUT_WIDTH ( 352 )
-//#define OUT_HEIGHT ( 288 )
 
-#define OUT_WIDTH ( 320 )
-#define OUT_HEIGHT ( 240 )
 
 /** 静态变量定义及初始化. */
 CKDVDecoderImpl::TDecoderNameTable CKDVDecoderImpl::s_tDecoderNameTable;
@@ -156,19 +152,19 @@ BOOL CKDVDecoderImpl::Create( CDecoder::ECodecId eCodec )
 		return FALSE;
 	}
 
-	m_pDecParam->tDecParam.l32DecMaxWidth = OUT_WIDTH;
-	m_pDecParam->tDecParam.l32DecMaxHeight = OUT_HEIGHT;
+	m_pDecParam->tDecParam.l32DecMaxWidth = OUT_IMG_WIDTH;
+	m_pDecParam->tDecParam.l32DecMaxHeight = OUT_IMG_HEIGHT;
 	m_pDecParam->tDecParam.u32DecType = eKdvCodecType;
 	m_pDecParam->tDecParam.l32DecPacketMode = 0;
 
 	TPostProcessParam *ptPostProcessParam = &m_pDecParam->tPostProcessParam;
 	ptPostProcessParam->l32OutYUVType = YUV420;	
-	ptPostProcessParam->l32OutWidth = OUT_WIDTH;
-	ptPostProcessParam->l32OutHeight = OUT_HEIGHT;
+	ptPostProcessParam->l32OutWidth = OUT_IMG_WIDTH;
+	ptPostProcessParam->l32OutHeight = OUT_IMG_HEIGHT;
 	ptPostProcessParam->l32ImageQuality = 0;
 	ptPostProcessParam->l32OutIsInterlace = 1;
-	ptPostProcessParam->l32OutYStride = OUT_WIDTH;
-	ptPostProcessParam->l32OutUVStride = OUT_WIDTH/2;
+	ptPostProcessParam->l32OutYStride = OUT_IMG_WIDTH;
+	ptPostProcessParam->l32OutUVStride = OUT_IMG_WIDTH/2;
 	ptPostProcessParam->u32Reserved = 0;
 
 	mu_int32 l32Result;
@@ -308,11 +304,11 @@ BOOL CKDVDecoderImpl::Decode( const CBaseCodec::TStreamPacket& tPkt, CBaseCodec:
 		return FALSE;
 	}
 
-	tPicture.picWidth = OUT_WIDTH;
-	tPicture.picHeight = OUT_HEIGHT;
+	tPicture.picWidth = OUT_IMG_WIDTH;
+	tPicture.picHeight = OUT_IMG_HEIGHT;
 	tPicture.type = CDecoder::PIC_YUV420P;
 	tPicture.data[0] = tDecoderOutput.pu8YUV;
-	tPicture.linesize[0] = OUT_WIDTH * OUT_HEIGHT;
+	tPicture.linesize[0] = OUT_IMG_WIDTH * OUT_IMG_HEIGHT;
 	tPicture.data[1] = tPicture.data[0] + tPicture.linesize[0];
 	tPicture.linesize[1] = tPicture.linesize[0] >> 2;
 	tPicture.data[2] = tPicture.data[1] + tPicture.linesize[1];
@@ -377,11 +373,11 @@ BOOL CKDVDecoderImpl::CapturePic( LPCTSTR strPicPath, CEncoder *pEnc )
 
 	// 获取当前图片。
 	CBaseCodec::TVideoPicture tPicture;
-	tPicture.picWidth = OUT_WIDTH;
-	tPicture.picHeight = OUT_HEIGHT;
+	tPicture.picWidth = OUT_IMG_WIDTH;
+	tPicture.picHeight = OUT_IMG_HEIGHT;
 	tPicture.type = CDecoder::PIC_YUV420P;
 	tPicture.data[0] = this->m_pPicDataBuf;
-	tPicture.linesize[0] = OUT_WIDTH * OUT_HEIGHT;
+	tPicture.linesize[0] = OUT_IMG_WIDTH * OUT_IMG_HEIGHT;
 	tPicture.data[1] = tPicture.data[0] + tPicture.linesize[0];
 	tPicture.linesize[1] = tPicture.linesize[0] >> 2;
 	tPicture.data[2] = tPicture.data[1] + tPicture.linesize[1];
