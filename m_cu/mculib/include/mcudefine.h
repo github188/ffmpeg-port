@@ -135,6 +135,8 @@ enum EImgSize
 	CIFHeight = 288,
 	QVGAWidth = 320,
 	QVGAHeight = 240,
+	D1Width = 720,
+	D1Height = 576,
 };
 
 /** 解码输出的图像大小。
@@ -143,8 +145,8 @@ enum EImgSize
 */
 enum EOutImgSize
 {
-	OUT_IMG_WIDTH = ( CIFWidth ),
-	OUT_IMG_HEIGHT = ( CIFHeight ),
+	OUT_IMG_WIDTH = ( D1Width ),
+	OUT_IMG_HEIGHT = ( D1Height ),
 };
 
 
