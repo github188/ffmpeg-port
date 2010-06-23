@@ -331,13 +331,11 @@ int CVirtualPlayerWnd::CheckThread( void * pParam )
 
 BOOL CVirtualPlayerWnd::GetCheckThreadSwitch() const
 {
-	SCOPE_LOCK( m_threadSafeLock );
 	return m_bStatusCheckThreadRun;
 }
 
 void CVirtualPlayerWnd::CheckStatsu()
 {
-	SCOPE_LOCK( m_threadSafeLock );
 
 	if ( !m_bCheckStatus )
 	{

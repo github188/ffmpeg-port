@@ -79,6 +79,8 @@ BOOL CRTSPTestDialog::OnInitDialog()
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://117.35.58.70:554/service?PuId-ChannelNo=27000000000000000011200014200000-1&PlayMethod=0&StreamingType=1" ) );
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://218.61.2.152:554/service?PuId-ChannelNo=11000000000000000011200001100000-1&PlayMethod=0&StreamingType=1" ) );
 
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://172.16.65.67:554/service?PUID-ChannelNo=110000112000014000-1&PlayMethod=0&StreamingType=3" ) );
+
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://221.224.163.200:554/service?PuId-ChannelNo=112200112000001000-1&PlayMethod=0&StreamingType=1" ) );
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://221.224.163.200:554/service?PuId-ChannelNo=112200112000001000-1&PlayMethod=0&StreamingType=2" ) );
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://218.4.130.248/service?PuId-ChannelNo=11040100000000000011100004400000-1&PlayMethod=0" ) );
