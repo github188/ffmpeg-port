@@ -89,6 +89,11 @@ public:
     /** 是否发送NAT穿透包。 */
     BOOL GetIsSendNatPacket( BOOL& bSendnat );
 
+	/** 获取解码输出图像的大小。 
+	*	+by lizhixing@2010/6/24
+	*/
+	BOOL GetOutputImageSize( mu_uint32& nImgWidth, mu_uint32& nImgHeight );
+
 private:
 
 

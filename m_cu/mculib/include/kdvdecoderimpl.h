@@ -64,6 +64,13 @@ public:
 private:
 	void PrintErrorInfo(void * pvHandle, mu_int32 l32ResultForAnalyze);
 private:
+
+	/** 解码输出图片的大小。 
+	*	+by lizhixing@2010/6/24
+	*/
+	mu_uint32 m_nOutputImgWidth;
+	mu_uint32 m_nOutputImgHeight;
+
 	TVideoUnitDecParam *m_pDecParam;
 
 	/** 解码器句柄. */

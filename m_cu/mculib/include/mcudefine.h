@@ -137,6 +137,8 @@ enum EImgSize
 	QVGAHeight = 240,
 	D1Width = 720,
 	D1Height = 576,
+	VGAWidth = 640,
+	VGAHeight = 480,
 };
 
 /** 解码输出的图像大小。
@@ -145,8 +147,8 @@ enum EImgSize
 */
 enum EOutImgSize
 {
-	OUT_IMG_WIDTH = ( D1Width ),
-	OUT_IMG_HEIGHT = ( D1Height ),
+	OUT_IMG_WIDTH = ( QVGAWidth ),
+	OUT_IMG_HEIGHT = ( QVGAHeight ),
 };
 
 

@@ -4,6 +4,7 @@
 #include "vid_videounit.h"
 #include "mem.h"
 #include "log.h"
+#include "mcuconfig.h"
 
 CKDVEncoderImpl::CKDVEncoderImpl(void)
 {
@@ -51,24 +52,26 @@ BOOL CKDVEncoderImpl::Create( CBaseCodec::ECodecId eCodec )
 	}
 
 	const int conQuality = 80;
-	const int INPUT_IMG_WIDHT = OUT_IMG_WIDTH;
-	const int INPUT_IMG_HEIGHT = OUT_IMG_HEIGHT;
+
+	mu_uint32 nInputImgWidth, nInputImgHeight;
+
+	CConfig::Instance()->GetOutputImageSize( nInputImgWidth, nInputImgHeight );
 
 	m_pEncParam->tEncParam.u32EncType = eKdvCodecType;
 	m_pEncParam->tEncParam.l32EncQuality = conQuality;
-	m_pEncParam->tEncParam.l32EncWidth = INPUT_IMG_WIDHT;
-	m_pEncParam->tEncParam.l32EncHeight = INPUT_IMG_HEIGHT;
+	m_pEncParam->tEncParam.l32EncWidth = nInputImgWidth;
+	m_pEncParam->tEncParam.l32EncHeight = nInputImgHeight;
 
 	m_pEncParam->tPreProcessParam.l32SrcYUVType = YUV420;
-	m_pEncParam->tPreProcessParam.l32SrcWidth = INPUT_IMG_WIDHT;
-	m_pEncParam->tPreProcessParam.l32SrcHeight = INPUT_IMG_HEIGHT;
+	m_pEncParam->tPreProcessParam.l32SrcWidth = nInputImgWidth;
+	m_pEncParam->tPreProcessParam.l32SrcHeight = nInputImgHeight;
 	m_pEncParam->tPreProcessParam.l32SrcIsInterlace = 1;
 	m_pEncParam->tPreProcessParam.l32SrcYStride = m_pEncParam->tPreProcessParam.l32SrcWidth;
 	m_pEncParam->tPreProcessParam.l32SrcUVStride = m_pEncParam->tPreProcessParam.l32SrcYStride >> 1;
 
 	m_pEncParam->tPreProcessParam.l32DstYUVType = YUV420;
-	m_pEncParam->tPreProcessParam.l32DstWidth = INPUT_IMG_WIDHT;
-	m_pEncParam->tPreProcessParam.l32DstHeight = INPUT_IMG_HEIGHT;
+	m_pEncParam->tPreProcessParam.l32DstWidth = nInputImgWidth;
+	m_pEncParam->tPreProcessParam.l32DstHeight = nInputImgHeight;
 	m_pEncParam->tPreProcessParam.l32DstIsInterlace = 1;
 	m_pEncParam->tPreProcessParam.l32DstYStride = m_pEncParam->tPreProcessParam.l32DstWidth;
 	m_pEncParam->tPreProcessParam.l32DstUVStride = m_pEncParam->tPreProcessParam.l32DstYStride >> 1;

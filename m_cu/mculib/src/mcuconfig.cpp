@@ -29,7 +29,8 @@ static LPCTSTR CONFIG_ENTRY_MIN_SPACE = _T( "minspace" );
 static LPCTSTR CONFIG_ENTRY_WEBPAGE_ZOOM_LEVEL = _T( "webpagezoom" );
 static LPCTSTR CONFIG_ENTRY_WEBPAGE_HISTORY_BACK = _T( "webpagehistoryback" );
 static LPCTSTR CONFIG_ENTRY_SEND_NAT_PACKET = _T( "sendnatpacket" );
-
+static LPCTSTR CONFIG_ENTRY_OUTPUT_IMAGE_WIDTH = _T( "outputimgwidth" );
+static LPCTSTR CONFIG_ENTRY_OUTPUT_IMAGE_HEIGHT = _T( "outputimgheight" );
 
 static LPCTSTR CONFIG_DEFAULT_SERVER = _T( "" );
 static LPCTSTR CONFIG_DEFAULT_REGION = _T( "" );
@@ -40,6 +41,8 @@ static const int CONFIG_DEFAULT_LEN_SPEED = 5;
 static const int CONFIG_DEFAULT_WEBPAGE_ZOOM_LEVEL = 100;
 static const int CONFIG_DEFAULT_WEBPAGE_HISTORY_BACK = 2;
 static const BOOL CONFIG_DEFAULT_SEND_NAT_PACKET = TRUE;
+static mu_uint32 CONFIG_DEFAULT_OUTPUT_IMG_WIDHT = OUT_IMG_WIDTH;
+static mu_uint32 CONFIG_DEFAULT_OUTPUT_IMG_HEIGHT = OUT_IMG_HEIGHT;
 
 #ifdef _WIN32_WCE
 static LPCTSTR CONFIG_DEFAULT_CAPTURE_DIR_RAM = _T( "\\My Documents\\M_CU\\" );
@@ -507,6 +510,13 @@ BOOL CConfig::GetIsSendNatPacket( BOOL& bSendnat )
 {
     bSendnat = this->ReadConfig( CONFIG_ENTRY_SEND_NAT_PACKET, CONFIG_DEFAULT_SEND_NAT_PACKET );
     return TRUE;
+}
+
+BOOL CConfig::GetOutputImageSize( mu_uint32& nImgWidth, mu_uint32& nImgHeight )
+{
+	nImgWidth = this->ReadConfig( CONFIG_ENTRY_OUTPUT_IMAGE_WIDTH, CONFIG_DEFAULT_OUTPUT_IMG_WIDHT );
+	nImgHeight = this->ReadConfig( CONFIG_ENTRY_OUTPUT_IMAGE_HEIGHT, CONFIG_DEFAULT_OUTPUT_IMG_HEIGHT );
+	return TRUE;
 }
 
 
