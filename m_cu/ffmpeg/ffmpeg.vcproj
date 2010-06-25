@@ -295,7 +295,7 @@
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
-				RemoteDirectory=""
+				RemoteDirectory="%CSIDL_PROGRAM_FILES%\M_CU"
 				RegisterOutput="0"
 				AdditionalFiles=""
 			/>

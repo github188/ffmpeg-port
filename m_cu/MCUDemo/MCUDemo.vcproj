@@ -114,7 +114,101 @@
 				ForceDirty="-1"
 				RemoteDirectory=""
 				RegisterOutput="0"
-				AdditionalFiles="msvcr90d.dll|$(BINDIR)\armv4i|%CSIDL_PROGRAM_FILES%\m_cu|0;wincecodec.dll|$(SolutionDir)kdvdecode\lib|%CSIDL_PROGRAM_FILES%\m_cu|0;mcufail.htm|$(SolutionDir)htmldoc|%CSIDL_PROGRAM_FILES%\m_cu\htmldoc|0;wait.htm|$(SolutionDir)htmldoc|%CSIDL_PROGRAM_FILES%\m_cu\htmldoc|0;titlelogo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;titlebg.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_normal.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_focus.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_disable.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;main_bg.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;st_user_logo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;st_password_logo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_pre_page_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_pre_page_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_next_page_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_next_page_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_in_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_in_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_out_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_out_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_left_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_left_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_right_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_right_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_up_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_up_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_down_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_down_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomin_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomin_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomout_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomout_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_light_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_light_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_dark_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_dark_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;capture.wav|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_return_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_return_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;bottombg.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_sip_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_sip_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_play_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_play_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_fullscreen_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_fullscreen_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_return_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_return_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0"
+				AdditionalFiles="msvcr90d.dll|$(BINDIR)\armv4i|%CSIDL_PROGRAM_FILES%\m_cu|0;wincecodec.dll|$(SolutionDir)kdvdecode\lib|%CSIDL_PROGRAM_FILES%\m_cu|0;mcufail.htm|$(SolutionDir)htmldoc|%CSIDL_PROGRAM_FILES%\m_cu\htmldoc|0;wait.htm|$(SolutionDir)htmldoc|%CSIDL_PROGRAM_FILES%\m_cu\htmldoc|0;titlelogo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;titlebg.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_normal.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_focus.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_disable.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;main_bg.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;st_user_logo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;st_password_logo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_pre_page_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_pre_page_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_next_page_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_next_page_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_in_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_in_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_out_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_out_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_left_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_left_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_right_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_right_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_up_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_up_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_down_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_down_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomin_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomin_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomout_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomout_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_light_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_light_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_dark_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_dark_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;capture.wav|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_return_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_return_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;bottombg.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_sip_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_sip_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_play_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_play_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_fullscreen_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_fullscreen_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_return_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_return_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0"
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug|Windows Mobile 6 Professional SDK (ARMV4I)"
+			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			UseOfMFC="1"
+			UseOfATL="1"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\SDL\include;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;&quot;..\cppunit-1.12.1\include&quot;;..\mculib\include;..\kdvdecode\include\video;.\include;..\ffmpeg\libavformat;..\ffmpeg\libavcodec;..\ffmpeg\libavutil;..\ffmpeg\"
+				PreprocessorDefinitions="UNIT_TEST;_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
+				MinimalRebuild="true"
+				RuntimeLibrary="1"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions=" /subsystem:windowsce,5.01"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib imaging.lib uuid.lib ffmpeg.lib cppunitwm6d.lib wincecodec.lib"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="&quot;..\SDL\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\Debug&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\debug&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)/debug&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\debug&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)/debug&quot;;&quot;..\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\Debug&quot;;&quot;..\cppunit-1.12.1\lib&quot;;..\kdvdecode\lib"
+				IgnoreDefaultLibraryNames="MSVCR90D.lib;MSVCR90.lib"
+				GenerateDebugInformation="true"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				EntryPointSymbol="WinMainCRTStartup"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles="msvcr90d.dll|$(BINDIR)\armv4i|%CSIDL_PROGRAM_FILES%\m_cu|0;wincecodec.dll|$(SolutionDir)kdvdecode\lib|%CSIDL_PROGRAM_FILES%\m_cu|0;mcufail.htm|$(SolutionDir)htmldoc|%CSIDL_PROGRAM_FILES%\m_cu\htmldoc|0;wait.htm|$(SolutionDir)htmldoc|%CSIDL_PROGRAM_FILES%\m_cu\htmldoc|0;titlelogo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;titlebg.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_direct_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_normal.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_focus.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_login_disable.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;main_bg.JPG|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;st_user_logo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;st_password_logo.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_pre_page_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_pre_page_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_next_page_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_next_page_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_in_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_in_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_out_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_zoom_out_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_left_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_left_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_right_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_right_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_up_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_up_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_down_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_down_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomin_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomin_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomout_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_zoomout_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_light_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_light_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_dark_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_ptz_dark_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;capture.wav|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_delete_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_return_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_return_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;bottombg.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_pic_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_config_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_sip_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_sip_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_save_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_pause_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_play_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_play_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_record_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_recording_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_capture_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_fullscreen_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_fullscreen_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_return_normal.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_return_focus.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0;btn_player_ptz_disable.jpg|$(SolutionDir)res\chs\keda|%CSIDL_PROGRAM_FILES%\m_cu\res\chs\|0"
 			/>
 			<DebuggerTool
 			/>
@@ -217,6 +311,103 @@
 			/>
 		</Configuration>
 		<Configuration
+			Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			UseOfMFC="1"
+			UseOfATL="1"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="2"
+				FavorSizeOrSpeed="2"
+				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;E:\study\MCUDemo\ffmpeg;E:\study\MCUDemo\ffmpeg\libavcodec"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
+				MinimalRebuild="false"
+				RuntimeLibrary="0"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions=" /subsystem:windowsce,5.01"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib ffmpeg.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;E:\study\MCUDemo\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;"
+				GenerateDebugInformation="true"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				LinkTimeCodeGeneration="1"
+				EntryPointSymbol="WinMainCRTStartup"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
 			Name="debug-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 			OutputDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
 			IntermediateDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
@@ -311,6 +502,99 @@
 			/>
 		</Configuration>
 		<Configuration
+			Name="debug-oldffmpeglib|Windows Mobile 6 Professional SDK (ARMV4I)"
+			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			UseOfMFC="1"
+			UseOfATL="1"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;&quot;E:\study\MCUDemo\MCUDemo\ffmpeg-old&quot;;&quot;E:\study\MCUDemo\MCUDemo\ffmpeg-old\libavcodec&quot;"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
+				MinimalRebuild="true"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions=" /subsystem:windowsce,5.01"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib imaging.lib uuid.lib ffmpeg.lib"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Debug&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\debug&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/debug&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\debug&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/debug&quot;;&quot;E:\study\MCUDemo\MCUDemo\ffmpeg-old&quot;"
+				IgnoreDefaultLibraryNames="MSVCR90D.lib;MSVCR90.lib"
+				GenerateDebugInformation="true"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				EntryPointSymbol="WinMainCRTStartup"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
 			Name="release-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 			OutputDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
 			IntermediateDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
@@ -347,6 +631,102 @@
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
 				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions=" /subsystem:windowsce,5.01"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib avcodec-52.lib avformat-52.lib avutil-50.lib cppunit.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\ffmpeg\libavcodec;..\ffmpeg\libavformat;..\ffmpeg\libavutil;&quot;..\cppunit-1.12.1\lib&quot;"
+				GenerateDebugInformation="true"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				EntryPointSymbol="WinMainCRTStartup"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
+			Name="release-oldffmpeglib|Windows Mobile 6 Professional SDK (ARMV4I)"
+			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			UseOfMFC="1"
+			UseOfATL="1"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="2"
+				FavorSizeOrSpeed="2"
+				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg;..\ffmpeg\libavcodec;..\ffmpeg\libavutil;..\ffmpeg\libavformat"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
+				MinimalRebuild="false"
+				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -506,6 +886,103 @@
 			/>
 		</Configuration>
 		<Configuration
+			Name="UnitTestRelease|Windows Mobile 6 Professional SDK (ARMV4I)"
+			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			UseOfMFC="1"
+			UseOfATL="1"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="2"
+				FavorSizeOrSpeed="2"
+				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;..\ffmpeg;..\ffmpeg\libavcodec;&quot;..\cppunit-1.12.1\include&quot;"
+				PreprocessorDefinitions="UNIT_TEST;NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
+				MinimalRebuild="false"
+				RuntimeLibrary="0"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions=" /subsystem:windowsce,5.01"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib ffmpeg.lib cppunit.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;..\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;..\cppunit-1.12.1\lib&quot;"
+				GenerateDebugInformation="true"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				LinkTimeCodeGeneration="1"
+				EntryPointSymbol="WinMainCRTStartup"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
 			Name="UnitTestReleaseFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 			OutputDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
 			IntermediateDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
@@ -604,6 +1081,103 @@
 			/>
 		</Configuration>
 		<Configuration
+			Name="UnitTestReleaseFFMpeg|Windows Mobile 6 Professional SDK (ARMV4I)"
+			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			UseOfMFC="1"
+			UseOfATL="1"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="2"
+				FavorSizeOrSpeed="2"
+				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;..\ffmpeg;..\ffmpeg\libavcodec;&quot;..\cppunit-1.12.1\include&quot;"
+				PreprocessorDefinitions="UNIT_TEST;NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
+				MinimalRebuild="false"
+				RuntimeLibrary="0"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions=" /subsystem:windowsce,5.01"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib ffmpeg.lib cppunit.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;..\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;..\cppunit-1.12.1\lib&quot;"
+				GenerateDebugInformation="true"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				LinkTimeCodeGeneration="1"
+				EntryPointSymbol="WinMainCRTStartup"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
 			Name="DebugFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 			OutputDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
 			IntermediateDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
@@ -661,6 +1235,99 @@
 				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib imaging.lib uuid.lib ffmpeg.lib cppunitd.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Debug&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\debug&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/debug&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\debug&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/debug&quot;;&quot;..\ffmpeg\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Debug&quot;;&quot;..\cppunit-1.12.1\lib&quot;"
+				IgnoreDefaultLibraryNames="MSVCR90D.lib;MSVCR90.lib"
+				GenerateDebugInformation="true"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				EntryPointSymbol="WinMainCRTStartup"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
+			Name="DebugFFMpeg|Windows Mobile 6 Professional SDK (ARMV4I)"
+			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			UseOfMFC="1"
+			UseOfATL="1"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg;..\ffmpeg\libavcodec;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;&quot;..\cppunit-1.12.1\include&quot;"
+				PreprocessorDefinitions="UNIT_TEST;_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
+				MinimalRebuild="true"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions=" /subsystem:windowsce,5.01"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib imaging.lib uuid.lib ffmpeg.lib cppunitwm6d.lib"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\Debug&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\debug&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)/debug&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\debug&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)/debug&quot;;&quot;..\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\Debug&quot;;&quot;..\cppunit-1.12.1\lib&quot;"
 				IgnoreDefaultLibraryNames="MSVCR90D.lib;MSVCR90.lib"
 				GenerateDebugInformation="true"
 				StackReserveSize="65536"
@@ -798,6 +1465,103 @@
 			/>
 		</Configuration>
 		<Configuration
+			Name="Release-Tel|Windows Mobile 6 Professional SDK (ARMV4I)"
+			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			UseOfMFC="1"
+			UseOfATL="1"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="2"
+				FavorSizeOrSpeed="2"
+				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;E:\study\MCUDemo\ffmpeg;E:\study\MCUDemo\ffmpeg\libavcodec"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
+				MinimalRebuild="false"
+				RuntimeLibrary="0"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions=" /subsystem:windowsce,5.01"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib ffmpeg.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;E:\study\MCUDemo\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;"
+				GenerateDebugInformation="true"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				LinkTimeCodeGeneration="1"
+				EntryPointSymbol="WinMainCRTStartup"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
 			Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 			OutputDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
 			IntermediateDirectory="Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\$(ConfigurationName)"
@@ -858,6 +1622,103 @@
 				OutputFile="$(OutDir)\CUView.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;..\SDL\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\kdvdecode\lib;&quot;..\mculib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\release&quot;"
+				GenerateDebugInformation="true"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				LinkTimeCodeGeneration="1"
+				EntryPointSymbol="WinMainCRTStartup"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			UseOfMFC="1"
+			UseOfATL="1"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="2"
+				FavorSizeOrSpeed="2"
+				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;E:\study\MCUDemo\ffmpeg;E:\study\MCUDemo\ffmpeg\libavcodec"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
+				MinimalRebuild="false"
+				RuntimeLibrary="0"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions=" /subsystem:windowsce,5.01"
+				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib ffmpeg.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;E:\study\MCUDemo\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;"
 				GenerateDebugInformation="true"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
@@ -958,866 +1819,6 @@
 				OutputFile="$(OutDir)\Mobile CU.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;..\SDL\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\kdvdecode\lib;&quot;..\mculib\prj_wince\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\release&quot;"
-				GenerateDebugInformation="true"
-				StackReserveSize="65536"
-				StackCommitSize="4096"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				LinkTimeCodeGeneration="1"
-				EntryPointSymbol="WinMainCRTStartup"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="0"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCCodeSignTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-			<DeploymentTool
-				ForceDirty="-1"
-				RemoteDirectory=""
-				RegisterOutput="0"
-				AdditionalFiles=""
-			/>
-			<DebuggerTool
-			/>
-		</Configuration>
-		<Configuration
-			Name="Debug|Windows Mobile 6 Professional SDK (ARMV4I)"
-			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="1"
-			UseOfATL="1"
-			CharacterSet="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				MkTypLibCompatible="false"
-				TargetEnvironment="1"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				ExecutionBucket="7"
-				Optimization="0"
-				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;&quot;..\cppunit-1.12.1\include&quot;;..\mcucommonlib\include;..\kdvdecode\include\video;.\include;..\ffmpeg\libavformat;..\ffmpeg\libavcodec;..\ffmpeg\libavutil;..\ffmpeg\"
-				PreprocessorDefinitions="UNIT_TEST;_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
-				MinimalRebuild="true"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				Culture="2052"
-				AdditionalIncludeDirectories="$(IntDir)"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib imaging.lib uuid.lib ffmpeg.lib cppunitwm6d.lib wincecodec.lib"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\Debug&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\debug&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)/debug&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\debug&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)/debug&quot;;&quot;..\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\Debug&quot;;&quot;..\cppunit-1.12.1\lib&quot;;..\kdvdecode\lib"
-				IgnoreDefaultLibraryNames="MSVCR90D.lib;MSVCR90.lib"
-				GenerateDebugInformation="true"
-				StackReserveSize="65536"
-				StackCommitSize="4096"
-				EntryPointSymbol="WinMainCRTStartup"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="0"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCCodeSignTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-			<DeploymentTool
-				ForceDirty="-1"
-				RemoteDirectory=""
-				RegisterOutput="0"
-				AdditionalFiles="fail.htm|$(SolutionDir)htmlfail|%CSIDL_PROGRAM_FILES%\MCUDemo\htmlfail|0;failnet.tmp|$(SolutionDir)htmlfail|%CSIDL_PROGRAM_FILES%\MCUDemo\htmlfail|0"
-			/>
-			<DebuggerTool
-			/>
-		</Configuration>
-		<Configuration
-			Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
-			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="1"
-			UseOfATL="1"
-			CharacterSet="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				MkTypLibCompatible="false"
-				TargetEnvironment="1"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				ExecutionBucket="7"
-				Optimization="2"
-				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;E:\study\MCUDemo\ffmpeg;E:\study\MCUDemo\ffmpeg\libavcodec"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
-				MinimalRebuild="false"
-				RuntimeLibrary="0"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				Culture="2052"
-				AdditionalIncludeDirectories="$(IntDir)"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib ffmpeg.lib"
-				OutputFile="$(OutDir)\$(ProjectName).exe"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;E:\study\MCUDemo\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;"
-				GenerateDebugInformation="true"
-				StackReserveSize="65536"
-				StackCommitSize="4096"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				LinkTimeCodeGeneration="1"
-				EntryPointSymbol="WinMainCRTStartup"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="0"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCCodeSignTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-			<DeploymentTool
-				ForceDirty="-1"
-				RemoteDirectory=""
-				RegisterOutput="0"
-				AdditionalFiles=""
-			/>
-			<DebuggerTool
-			/>
-		</Configuration>
-		<Configuration
-			Name="debug-oldffmpeglib|Windows Mobile 6 Professional SDK (ARMV4I)"
-			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="1"
-			UseOfATL="1"
-			CharacterSet="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				MkTypLibCompatible="false"
-				TargetEnvironment="1"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				ExecutionBucket="7"
-				Optimization="0"
-				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;.\;&quot;E:\study\MCUDemo\MCUDemo\ffmpeg-old&quot;;&quot;E:\study\MCUDemo\MCUDemo\ffmpeg-old\libavcodec&quot;"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
-				MinimalRebuild="true"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				Culture="2052"
-				AdditionalIncludeDirectories="$(IntDir)"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib imaging.lib uuid.lib ffmpeg.lib"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Debug&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\debug&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/debug&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\debug&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/debug&quot;;&quot;E:\study\MCUDemo\MCUDemo\ffmpeg-old&quot;"
-				IgnoreDefaultLibraryNames="MSVCR90D.lib;MSVCR90.lib"
-				GenerateDebugInformation="true"
-				StackReserveSize="65536"
-				StackCommitSize="4096"
-				EntryPointSymbol="WinMainCRTStartup"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="0"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCCodeSignTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-			<DeploymentTool
-				ForceDirty="-1"
-				RemoteDirectory=""
-				RegisterOutput="0"
-				AdditionalFiles=""
-			/>
-			<DebuggerTool
-			/>
-		</Configuration>
-		<Configuration
-			Name="release-oldffmpeglib|Windows Mobile 6 Professional SDK (ARMV4I)"
-			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="1"
-			UseOfATL="1"
-			CharacterSet="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				MkTypLibCompatible="false"
-				TargetEnvironment="1"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				ExecutionBucket="7"
-				Optimization="2"
-				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg;..\ffmpeg\libavcodec;..\ffmpeg\libavutil;..\ffmpeg\libavformat"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
-				MinimalRebuild="false"
-				RuntimeLibrary="0"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				Culture="2052"
-				AdditionalIncludeDirectories="$(IntDir)"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib avcodec-52.lib avformat-52.lib avutil-50.lib cppunit.lib"
-				OutputFile="$(OutDir)\$(ProjectName).exe"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 5.0 Pocket PC SDK (ARMV4I)/Release&quot;;..\ffmpeg\libavcodec;..\ffmpeg\libavformat;..\ffmpeg\libavutil;&quot;..\cppunit-1.12.1\lib&quot;"
-				GenerateDebugInformation="true"
-				StackReserveSize="65536"
-				StackCommitSize="4096"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				EntryPointSymbol="WinMainCRTStartup"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="0"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCCodeSignTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-			<DeploymentTool
-				ForceDirty="-1"
-				RemoteDirectory=""
-				RegisterOutput="0"
-				AdditionalFiles=""
-			/>
-			<DebuggerTool
-			/>
-		</Configuration>
-		<Configuration
-			Name="UnitTestRelease|Windows Mobile 6 Professional SDK (ARMV4I)"
-			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="1"
-			UseOfATL="1"
-			CharacterSet="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				MkTypLibCompatible="false"
-				TargetEnvironment="1"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				ExecutionBucket="7"
-				Optimization="2"
-				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;..\ffmpeg;..\ffmpeg\libavcodec;&quot;..\cppunit-1.12.1\include&quot;"
-				PreprocessorDefinitions="UNIT_TEST;NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
-				MinimalRebuild="false"
-				RuntimeLibrary="0"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				Culture="2052"
-				AdditionalIncludeDirectories="$(IntDir)"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib ffmpeg.lib cppunit.lib"
-				OutputFile="$(OutDir)\$(ProjectName).exe"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;..\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;..\cppunit-1.12.1\lib&quot;"
-				GenerateDebugInformation="true"
-				StackReserveSize="65536"
-				StackCommitSize="4096"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				LinkTimeCodeGeneration="1"
-				EntryPointSymbol="WinMainCRTStartup"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="0"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCCodeSignTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-			<DeploymentTool
-				ForceDirty="-1"
-				RemoteDirectory=""
-				RegisterOutput="0"
-				AdditionalFiles=""
-			/>
-			<DebuggerTool
-			/>
-		</Configuration>
-		<Configuration
-			Name="UnitTestReleaseFFMpeg|Windows Mobile 6 Professional SDK (ARMV4I)"
-			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="1"
-			UseOfATL="1"
-			CharacterSet="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				MkTypLibCompatible="false"
-				TargetEnvironment="1"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				ExecutionBucket="7"
-				Optimization="2"
-				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;..\ffmpeg;..\ffmpeg\libavcodec;&quot;..\cppunit-1.12.1\include&quot;"
-				PreprocessorDefinitions="UNIT_TEST;NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
-				MinimalRebuild="false"
-				RuntimeLibrary="0"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				Culture="2052"
-				AdditionalIncludeDirectories="$(IntDir)"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib ffmpeg.lib cppunit.lib"
-				OutputFile="$(OutDir)\$(ProjectName).exe"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;..\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\UnitTestRelease&quot;;&quot;..\cppunit-1.12.1\lib&quot;"
-				GenerateDebugInformation="true"
-				StackReserveSize="65536"
-				StackCommitSize="4096"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				LinkTimeCodeGeneration="1"
-				EntryPointSymbol="WinMainCRTStartup"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="0"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCCodeSignTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-			<DeploymentTool
-				ForceDirty="-1"
-				RemoteDirectory=""
-				RegisterOutput="0"
-				AdditionalFiles=""
-			/>
-			<DebuggerTool
-			/>
-		</Configuration>
-		<Configuration
-			Name="DebugFFMpeg|Windows Mobile 6 Professional SDK (ARMV4I)"
-			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="1"
-			UseOfATL="1"
-			CharacterSet="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				MkTypLibCompatible="false"
-				TargetEnvironment="1"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				ExecutionBucket="7"
-				Optimization="0"
-				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg;..\ffmpeg\libavcodec;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;&quot;..\cppunit-1.12.1\include&quot;"
-				PreprocessorDefinitions="UNIT_TEST;_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL"
-				MinimalRebuild="true"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				Culture="2052"
-				AdditionalIncludeDirectories="$(IntDir)"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib imaging.lib uuid.lib ffmpeg.lib cppunitwm6d.lib"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\Debug&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\debug&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)/debug&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\debug&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)/debug&quot;;&quot;..\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\Debug&quot;;&quot;..\cppunit-1.12.1\lib&quot;"
-				IgnoreDefaultLibraryNames="MSVCR90D.lib;MSVCR90.lib"
-				GenerateDebugInformation="true"
-				StackReserveSize="65536"
-				StackCommitSize="4096"
-				EntryPointSymbol="WinMainCRTStartup"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="0"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCCodeSignTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-			<DeploymentTool
-				ForceDirty="-1"
-				RemoteDirectory=""
-				RegisterOutput="0"
-				AdditionalFiles=""
-			/>
-			<DebuggerTool
-			/>
-		</Configuration>
-		<Configuration
-			Name="Release-Tel|Windows Mobile 6 Professional SDK (ARMV4I)"
-			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="1"
-			UseOfATL="1"
-			CharacterSet="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				MkTypLibCompatible="false"
-				TargetEnvironment="1"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				ExecutionBucket="7"
-				Optimization="2"
-				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;E:\study\MCUDemo\ffmpeg;E:\study\MCUDemo\ffmpeg\libavcodec"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
-				MinimalRebuild="false"
-				RuntimeLibrary="0"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				Culture="2052"
-				AdditionalIncludeDirectories="$(IntDir)"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib ffmpeg.lib"
-				OutputFile="$(OutDir)\$(ProjectName).exe"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;E:\study\MCUDemo\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;"
-				GenerateDebugInformation="true"
-				StackReserveSize="65536"
-				StackCommitSize="4096"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				LinkTimeCodeGeneration="1"
-				EntryPointSymbol="WinMainCRTStartup"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				TargetMachine="0"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCCodeSignTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-			<DeploymentTool
-				ForceDirty="-1"
-				RemoteDirectory=""
-				RegisterOutput="0"
-				AdditionalFiles=""
-			/>
-			<DebuggerTool
-			/>
-		</Configuration>
-		<Configuration
-			Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
-			OutputDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="1"
-			UseOfATL="1"
-			CharacterSet="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				MkTypLibCompatible="false"
-				TargetEnvironment="1"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				ExecutionBucket="7"
-				Optimization="2"
-				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="&quot;..\SDL-1.2.13\include&quot;;..\live\livemedia\include;../live/groupsock/include;../live/UsageEnvironment/include;../live/basicUsageenvironment/include;..\ffmpeg\libavutil;..\ffmpeg\libavformat;.\;E:\study\MCUDemo\ffmpeg;E:\study\MCUDemo\ffmpeg\libavcodec"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;$(ARCHFAM);$(_ARCHFAM_);POCKETPC2003_UI_MODEL;POCKETPC2003_UI_MODEL"
-				MinimalRebuild="false"
-				RuntimeLibrary="0"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES)"
-				Culture="2052"
-				AdditionalIncludeDirectories="$(IntDir)"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=" /subsystem:windowsce,5.01"
-				AdditionalDependencies="htmlview.lib gx.lib sdl.lib livemedia.lib groupsock.lib usageenvironment.lib basicUsageEnvironment.lib ffmpeg.lib"
-				OutputFile="$(OutDir)\$(ProjectName).exe"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\SDL-1.2.13\VisualCE\SDL\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/groupsock/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/usageenvironment/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;../live/BasicUsageEnvironment/Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;;&quot;../live/livemedia/Windows Mobile 6 Professional SDK (ARMV4I)/Release&quot;;&quot;E:\study\MCUDemo\ffmpeg\Windows Mobile 6 Professional SDK (ARMV4I)\Release&quot;"
 				GenerateDebugInformation="true"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
@@ -1983,7 +1984,33 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Debug|Windows Mobile 6 Professional SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCMIDLTool"
+						PreprocessorDefinitions="_DEBUG"
+						MkTypLibCompatible="false"
+						GenerateStublessProxies="true"
+						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCMIDLTool"
+						PreprocessorDefinitions="NDEBUG"
+						MkTypLibCompatible="false"
+						GenerateStublessProxies="true"
+						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
 					>
 					<Tool
 						Name="VCMIDLTool"
@@ -2009,7 +2036,33 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="debug-oldffmpeglib|Windows Mobile 6 Professional SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCMIDLTool"
+						PreprocessorDefinitions="_DEBUG"
+						MkTypLibCompatible="false"
+						GenerateStublessProxies="true"
+						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="release-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCMIDLTool"
+						PreprocessorDefinitions="NDEBUG"
+						MkTypLibCompatible="false"
+						GenerateStublessProxies="true"
+						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="release-oldffmpeglib|Windows Mobile 6 Professional SDK (ARMV4I)"
 					>
 					<Tool
 						Name="VCMIDLTool"
@@ -2035,124 +2088,20 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="UnitTestReleaseFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCMIDLTool"
-						PreprocessorDefinitions="NDEBUG"
-						MkTypLibCompatible="false"
-						GenerateStublessProxies="true"
-						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="MCUDemo_i.h"
-						InterfaceIdentifierFileName="MCUDemo_i.c"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DebugFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCMIDLTool"
-						PreprocessorDefinitions="_DEBUG"
-						MkTypLibCompatible="false"
-						GenerateStublessProxies="true"
-						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="MCUDemo_i.h"
-						InterfaceIdentifierFileName="MCUDemo_i.c"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCMIDLTool"
-						PreprocessorDefinitions="NDEBUG"
-						MkTypLibCompatible="false"
-						GenerateStublessProxies="true"
-						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="MCUDemo_i.h"
-						InterfaceIdentifierFileName="MCUDemo_i.c"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCMIDLTool"
-						PreprocessorDefinitions="NDEBUG"
-						MkTypLibCompatible="false"
-						GenerateStublessProxies="true"
-						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="MCUDemo_i.h"
-						InterfaceIdentifierFileName="MCUDemo_i.c"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCMIDLTool"
-						PreprocessorDefinitions="NDEBUG"
-						MkTypLibCompatible="false"
-						GenerateStublessProxies="true"
-						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="MCUDemo_i.h"
-						InterfaceIdentifierFileName="MCUDemo_i.c"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Windows Mobile 6 Professional SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCMIDLTool"
-						PreprocessorDefinitions="_DEBUG"
-						MkTypLibCompatible="false"
-						GenerateStublessProxies="true"
-						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="MCUDemo_i.h"
-						InterfaceIdentifierFileName="MCUDemo_i.c"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCMIDLTool"
-						PreprocessorDefinitions="NDEBUG"
-						MkTypLibCompatible="false"
-						GenerateStublessProxies="true"
-						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="MCUDemo_i.h"
-						InterfaceIdentifierFileName="MCUDemo_i.c"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="debug-oldffmpeglib|Windows Mobile 6 Professional SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCMIDLTool"
-						PreprocessorDefinitions="_DEBUG"
-						MkTypLibCompatible="false"
-						GenerateStublessProxies="true"
-						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="MCUDemo_i.h"
-						InterfaceIdentifierFileName="MCUDemo_i.c"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="release-oldffmpeglib|Windows Mobile 6 Professional SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCMIDLTool"
-						PreprocessorDefinitions="NDEBUG"
-						MkTypLibCompatible="false"
-						GenerateStublessProxies="true"
-						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
-						HeaderFileName="MCUDemo_i.h"
-						InterfaceIdentifierFileName="MCUDemo_i.c"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="UnitTestRelease|Windows Mobile 6 Professional SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCMIDLTool"
+						PreprocessorDefinitions="NDEBUG"
+						MkTypLibCompatible="false"
+						GenerateStublessProxies="true"
+						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="UnitTestReleaseFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					>
 					<Tool
 						Name="VCMIDLTool"
@@ -2178,11 +2127,37 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="DebugFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCMIDLTool"
+						PreprocessorDefinitions="_DEBUG"
+						MkTypLibCompatible="false"
+						GenerateStublessProxies="true"
+						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="DebugFFMpeg|Windows Mobile 6 Professional SDK (ARMV4I)"
 					>
 					<Tool
 						Name="VCMIDLTool"
 						PreprocessorDefinitions="_DEBUG"
+						MkTypLibCompatible="false"
+						GenerateStublessProxies="true"
+						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCMIDLTool"
+						PreprocessorDefinitions="NDEBUG"
 						MkTypLibCompatible="false"
 						GenerateStublessProxies="true"
 						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
@@ -2204,7 +2179,33 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCMIDLTool"
+						PreprocessorDefinitions="NDEBUG"
+						MkTypLibCompatible="false"
+						GenerateStublessProxies="true"
+						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCMIDLTool"
+						PreprocessorDefinitions="NDEBUG"
+						MkTypLibCompatible="false"
+						GenerateStublessProxies="true"
+						TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+						HeaderFileName="MCUDemo_i.h"
+						InterfaceIdentifierFileName="MCUDemo_i.c"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					>
 					<Tool
 						Name="VCMIDLTool"
@@ -2246,79 +2247,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="debug-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="release-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="UnitTestRelease|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="UnitTestReleaseFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DebugFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Windows Mobile 6 Professional SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2334,7 +2271,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="debug-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="debug-oldffmpeglib|Windows Mobile 6 Professional SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="release-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2350,7 +2303,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="UnitTestRelease|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="UnitTestRelease|Windows Mobile 6 Professional SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="UnitTestReleaseFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2366,7 +2335,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="DebugFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="DebugFFMpeg|Windows Mobile 6 Professional SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2382,7 +2367,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2470,79 +2471,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCResourceCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="debug-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCResourceCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="release-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCResourceCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="UnitTestRelease|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCResourceCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="UnitTestReleaseFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCResourceCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DebugFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCResourceCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCResourceCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCResourceCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCResourceCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Debug|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCResourceCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -2558,7 +2495,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="debug-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCResourceCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="debug-oldffmpeglib|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCResourceCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="release-oldffmpeglib|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -2574,7 +2527,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="UnitTestRelease|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCResourceCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="UnitTestRelease|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCResourceCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="UnitTestReleaseFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -2590,7 +2559,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="DebugFFMpeg|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCResourceCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="DebugFFMpeg|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCResourceCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -2606,7 +2591,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCResourceCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCResourceCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -2661,94 +2662,6 @@
 			<File
 				RelativePath=".\MainDialog.h"
 				>
-			</File>
-			<File
-				RelativePath=".\MCUDemoDlg.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\MCUDemoDlg.h"
-				>
-				<FileConfiguration
-					Name="Debug|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\src\picmanagedialog.cpp"
@@ -2886,31 +2799,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -2926,7 +2823,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -2954,31 +2867,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -2994,7 +2891,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3166,31 +3079,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3206,7 +3103,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3234,31 +3147,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3274,7 +3171,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3302,31 +3215,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3342,7 +3239,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3370,31 +3283,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3410,7 +3307,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3438,31 +3351,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3478,7 +3375,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3506,31 +3419,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3546,7 +3443,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3574,31 +3487,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3614,7 +3511,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3642,31 +3555,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3682,7 +3579,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3710,31 +3623,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3750,7 +3647,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3778,31 +3691,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Tel|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -3818,7 +3715,23 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Release-Unicom|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release-Unicom|Windows Mobile 6 Professional SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release-Mobile|Windows Mobile 5.0 Pocket PC SDK (ARMV4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool

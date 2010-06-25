@@ -10,5 +10,7 @@
   <user></user>
   <password></password>
   <stream>1</stream>
-  <minspace>10485760</minspace>    
+  <minspace>10485760</minspace>
+  <outputimgwidth>352</outputimgwidth>
+  <outputimgheight>288</outputimgheight>
  </config>

@@ -169,6 +169,16 @@ int GetScreenLong()
 	int nScreenWidth = ::GetScreenWidth();
 	int nScreenHeight = ::GetScreenHeight();
 	int nScreenLong = max( nScreenWidth, nScreenHeight );
+
+	// 防止比例失调,当屏幕长度宽度比里超过10%的误差，则修改长度。
+// 	int nScreenShort = min( nScreenWidth, nScreenHeight );
+// 	int nScreenLongDesign = nScreenShort * 320 / 240;
+// 
+// 	if ( nScreenLong - nScreenLongDesign > nScreenLong / 20 )
+// 	{
+// //		nScreenLong = nScreenLongDesign;
+// 	}
+
 	return nScreenLong;
 }
 
