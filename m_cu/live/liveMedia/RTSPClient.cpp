@@ -356,20 +356,39 @@ char* RTSPClient::describeURL(char const* url, Authenticator* authenticator,
 	  envir() << "Need to read " << numExtraBytesNeeded
 		  << " extra bytes\n";
 	}
-	while (numExtraBytesNeeded > 0) {
-	  struct sockaddr_in fromAddress;
-	  char* ptr = &firstLine[bytesRead];
-	  int bytesRead2 = readSocket(envir(), fInputSocketNum, (unsigned char*)ptr,
-				      numExtraBytesNeeded, fromAddress);
-	  if (bytesRead2 < 0) break;
-	  ptr[bytesRead2] = '\0';
-	  if (fVerbosityLevel >= 1) {
-	    envir() << "Read " << bytesRead2 << " extra bytes: "
-		    << ptr << "\n";
-	  }
+	while (numExtraBytesNeeded > 0) 
+	{
+		struct sockaddr_in fromAddress;
+		char* ptr = &firstLine[bytesRead];
+		int bytesRead2 = readSocket(envir(), fInputSocketNum, (unsigned char*)ptr,
+					  numExtraBytesNeeded, fromAddress);
+		if (bytesRead2 < 0) break;
+		ptr[bytesRead2] = '\0';
+		if (fVerbosityLevel >= 1) 
+		{
+		envir() << "Read " << bytesRead2 << " extra bytes: "
+			<< ptr << "\n";
+		}
 
-	  bytesRead += bytesRead2;
-	  numExtraBytesNeeded -= bytesRead2;
+		bytesRead += bytesRead2;
+		numExtraBytesNeeded -= bytesRead2;
+
+		// thinkingl mark!!
+		// 河南遇到 Juniper SSG520 防火墙路由器篡改RTSP中的描述。
+		// 会修改SDP的长度，导致M_CU无法正常接收SDP。
+		// 这里进行纠错处理。
+		// 如果剩余字节很少了，就判断一下是否接收到了回车换行的结尾。
+		const int MAY_BE_END_LEN = 4;
+		if ( numExtraBytesNeeded < MAY_BE_END_LEN )
+		{
+			if ( bytesRead >= 4 && ( strcmp( &firstLine[bytesRead-4], "\r\n\r\n" ) == 0 ) )
+			{
+				envir() << "Read SDP Should end maybe no extra data!!!!" ;
+				numExtraBytesNeeded = 0;
+			}			
+		}
+		
+
 	}
 	if (numExtraBytesNeeded > 0) break; // one of the reads failed
       }
