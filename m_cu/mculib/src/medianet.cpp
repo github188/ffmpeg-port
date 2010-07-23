@@ -12,6 +12,8 @@
 #include "mcuconfig.h"
 #include "mcucommon.h"
 
+#include "mcuusageenvironment.h"
+
 #if defined( _WIN32_WCE ) || defined( __SYMBIAN32__ )
 #include "SDL.h"
 #else
@@ -796,7 +798,7 @@ int CMediaNet::MediaNet_Thread( void * pThisVoid )
 
 		// Begin by setting up our usage environment:
 		TaskScheduler* scheduler = BasicTaskScheduler::createNew();
-		env = BasicUsageEnvironment::createNew(*scheduler);
+		env = CMCUUsageEnvironment::createNew(*scheduler);
 
 		progName = "M_CU";
 

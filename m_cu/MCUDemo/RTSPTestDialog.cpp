@@ -76,9 +76,11 @@ BOOL CRTSPTestDialog::OnInitDialog()
 	CUIDialog::OnInitDialog();
 
 	// TODO:  在此添加额外的初始化
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://202.111.157.17:554/PuId-ChannelNo=170100112000441000-1&PlayMethod=0&StreamingType=1&UserId=170100400143001000&PuProperty=1&VauPtzAdd=202.111.157.17&VauPtzPort=5060&VauRtspAdd=202.111.157.17&VauRtspPort=554&PuName=%E4%BA%BA%E6%B0%91%E8%B7%AF%E5%A4%A7%E9%85%92%E5%BA%97-00" ) );
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://117.35.58.70:554/service?PuId-ChannelNo=27000000000000000011200014200000-1&PlayMethod=0&StreamingType=1" ) );
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://218.61.2.152:554/service?PuId-ChannelNo=11000000000000000011200001100000-1&PlayMethod=0&StreamingType=1" ) );
 
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://10.150.254.248:554/PuId-ChannelNo=55000000000000000011200001200000-1&PlayMethod=0&StreamingType=1" ) );
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://172.16.65.67:554/service?PUID-ChannelNo=110000112000014000-1&PlayMethod=0&StreamingType=3" ) );
 
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://221.224.163.200:554/service?PuId-ChannelNo=112200112000001000-1&PlayMethod=0&StreamingType=1" ) );

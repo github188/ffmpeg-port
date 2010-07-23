@@ -275,33 +275,45 @@ char* RTSPClient::describeURL(char const* url, Authenticator* authenticator,
 			       lineStart, "\"");
 	  break;
 	}
-      } else if (strncmp(lineStart, "Content-Base:", 13) == 0) {
-	int cbIndex = 13;
+      } 
+	  else if (strncmp(lineStart, "Content-Base:", 13) == 0) 
+	  {
+		int cbIndex = 13;
 
-	while (lineStart[cbIndex] == ' ' || lineStart[cbIndex] == '\t') ++cbIndex;
-	if (lineStart[cbIndex] != '\0'/*sanity check*/) {
-	  delete[] fBaseURL; fBaseURL = strDup(&lineStart[cbIndex]);
-	}
-      } else if (sscanf(lineStart, "Server: %s", serverType) == 1) {
-	if (strncmp(serverType, "Kasenna", 7) == 0) fServerIsKasenna = True;
-	if (strncmp(serverType, "WMServer", 8) == 0) fServerIsMicrosoft = True;
+		while (lineStart[cbIndex] == ' ' || lineStart[cbIndex] == '\t') ++cbIndex;
+		if (lineStart[cbIndex] != '\0'/*sanity check*/) 
+		{
+		  delete[] fBaseURL; 
+		  fBaseURL = strDup(&lineStart[cbIndex]);
+		}
+      } 
+	  else if (sscanf(lineStart, "Server: %s", serverType) == 1) 
+	  {
+		if (strncmp(serverType, "Kasenna", 7) == 0) fServerIsKasenna = True;
+		if (strncmp(serverType, "WMServer", 8) == 0) fServerIsMicrosoft = True;
 #ifdef SUPPORT_REAL_RTSP
-      } else if (sscanf(lineStart, "ETag: %s", fRealETagStr) == 1) {
+      } 
+	  else if (sscanf(lineStart, "ETag: %s", fRealETagStr) == 1) 
+	  {
 #endif
-      } else if (wantRedirection) {
-	if (sscanf(lineStart, "Location: %s", redirectionURL) == 1) {
-	  // Try again with this URL
-	  if (fVerbosityLevel >= 1) {
-	    envir() << "Redirecting to the new URL \""
-		    << redirectionURL << "\"\n";
-	  }
-	  reset();
-	  char* result = describeURL(redirectionURL, authenticator, allowKasennaProtocol, timeout);
-	  delete[] redirectionURL;
-	  delete[] serverType;
-	  delete[] cmd;
-	  return result;
-	}
+      } 
+	  else if (wantRedirection) 
+	  {
+		if (sscanf(lineStart, "Location: %s", redirectionURL) == 1) 
+		{
+			// Try again with this URL
+			if (fVerbosityLevel >= 1) 
+			{
+			envir() << "Redirecting to the new URL \""
+				<< redirectionURL << "\"\n";
+			}
+		  reset();
+		  char* result = describeURL(redirectionURL, authenticator, allowKasennaProtocol, timeout);
+		  delete[] redirectionURL;
+		  delete[] serverType;
+		  delete[] cmd;
+		  return result;
+		}
       }
     }
     delete[] serverType;
