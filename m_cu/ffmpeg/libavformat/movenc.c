@@ -562,7 +562,8 @@ static int mov_write_avcc_tag(ByteIOContext *pb, MOVTrack *track)
 	uint32_t sps_size=0, pps_size=0;	// 长度。
 	uint8_t *sps=0, *pps=0;				// 数据。
 	int nCursor = 0;
-
+	int nPpsCut = 0;
+	int nSpsCut = 0;
 
 //	av_log( 0, AV_LOG_ERROR, "avcc 1\n" );
 
@@ -594,25 +595,31 @@ static int mov_write_avcc_tag(ByteIOContext *pb, MOVTrack *track)
 
 	// 3gp标准中要的pps信息里没有0 0 0 1的头。
 	// 如果传入的pps中带有头，去掉。
+
 	if ( AV_RB32( pps ) == 0x00000001 )		
 	{
-		pps += 4;
+		nPpsCut = 4;
 	}
 	else if( AV_RB24( pps ) == 0x000001 )
 	{
-		pps += 3;
+		nPpsCut = 3;
 	}
 
 	// 同样处理sps。
 	if ( AV_RB32( sps ) == 0x00000001 )		
 	{
-		sps += 4;
+		nSpsCut = 4;
 	}
 	else if( AV_RB24( sps ) == 0x000001 )
 	{
-		sps += 3;
+		nSpsCut = 3;
 	}
 	
+	pps += nPpsCut;
+	pps_size -= nPpsCut;
+
+	sps += nSpsCut;
+	sps_size -= nSpsCut;
 	
 	
 
