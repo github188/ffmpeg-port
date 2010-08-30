@@ -553,6 +553,10 @@ tstring StringToUrl( LPCTSTR strStr )
         return ssRet.str();
     }
 
+	string strUtf8 = ::UTF16toUTF8( strStr );
+	const char *pUtf8Str = strUtf8.c_str();
+
+
     while( *strStr )
     {
         TCHAR nChar = /*ntohs*/( *strStr );
@@ -560,12 +564,24 @@ tstring StringToUrl( LPCTSTR strStr )
         {
             // ÖÐÎÄ¡£
  //           ssRet << nChar;
-            
-            mu_uint8 cHigh = 0xff & ( nChar >> 8 );
-            mu_uint8 cLow = 0xff & nChar;
+			TCHAR tszBuf[2] = { 0 };
+			tszBuf[0] = nChar;
 
-            ssRet << _T( "%" ) << setbase( 16 ) << (unsigned int)(cLow) ;
-            ssRet << _T( "%" ) << setbase( 16 ) << (unsigned int)(cHigh);
+			string strUtf8 = ::UTF16toUTF8( tszBuf );
+			unsigned char *puszUtf8 = (unsigned char*)strUtf8.c_str();
+			for ( size_t i=0; i<strUtf8.length(); ++i )
+			{
+				int nValue = (unsigned int)(puszUtf8[i]) ;
+				ssRet << _T( "%" ) << setbase( 16 ) << nValue; //(unsigned int)(puszUtf8[i]) ;
+				tstring dfwef = ssRet.str();
+				LPCTSTR dddd = dfwef.c_str();
+			}
+            
+//             mu_uint8 cHigh = 0xff & ( nChar >> 8 );
+//             mu_uint8 cLow = 0xff & nChar;
+// 
+//             ssRet << _T( "%" ) << setbase( 16 ) << (unsigned int)(cLow) ;
+//             ssRet << _T( "%" ) << setbase( 16 ) << (unsigned int)(cHigh);
 
         }
         else

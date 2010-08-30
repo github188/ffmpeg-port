@@ -172,14 +172,23 @@ void CMCUCommonTest::TestStringToUrl()
     LPCTSTR strTar = _T( "%23%25%26%2b%20end" );
     CPPUNIT_ASSERT_EQUAL( tstring( strTar ), strUrl );
 
-    str1 = _T( "http://abc# d13=我是神#%&+ end\n" );
+//     str1 = _T( "http://abc# d13=我是神#%&+ end\n" );
+// 
+//     strUrl = StringToUrl( str1 );
+// 
+//     // 00000002h: 11 62 2F 66 5E 79                               ; .b/f^y
+//     
+//     strTar = _T( "http://abc%23%20d13=%11%62%2f%66%5e%79%23%25%26%2b%20end" );
+//     CPPUNIT_ASSERT_EQUAL( tstring( strTar ), strUrl );
 
-    strUrl = StringToUrl( str1 );
+	str1 = _T( "http://张应能" );
 
-    // 00000002h: 11 62 2F 66 5E 79                               ; .b/f^y
-    
-    strTar = _T( "http://abc%23%20d13=%11%62%2f%66%5e%79%23%25%26%2b%20end" );
-    CPPUNIT_ASSERT_EQUAL( tstring( strTar ), strUrl );
+	strUrl = StringToUrl( str1 );
+
+	// 00000002h: 11 62 2F 66 5E 79                               ; .b/f^y
+
+	strTar = _T( "http://%e5%bc%a0%e5%ba%94%e8%83%bd" );
+	CPPUNIT_ASSERT_EQUAL( tstring( strTar ), strUrl );
 }
 
 
