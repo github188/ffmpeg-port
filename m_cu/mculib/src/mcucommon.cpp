@@ -553,10 +553,6 @@ tstring StringToUrl( LPCTSTR strStr )
         return ssRet.str();
     }
 
-	string strUtf8 = ::UTF16toUTF8( strStr );
-	const char *pUtf8Str = strUtf8.c_str();
-
-
     while( *strStr )
     {
         TCHAR nChar = /*ntohs*/( *strStr );
