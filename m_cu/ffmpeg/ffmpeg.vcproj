@@ -395,6 +395,7 @@
 		</Configuration>
 		<Configuration
 			Name="UnitTestRelease|Windows Mobile 6 Professional SDK (ARMV4I)"
+			IntermediateDirectory="Windows Mobile 6 Professional SDK (ARMV4I)\$(ConfigurationName)"
 			ConfigurationType="1"
 			>
 			<Tool

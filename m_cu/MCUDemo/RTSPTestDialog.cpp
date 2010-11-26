@@ -76,6 +76,8 @@ BOOL CRTSPTestDialog::OnInitDialog()
 	CUIDialog::OnInitDialog();
 
 	// TODO:  在此添加额外的初始化
+	this->m_cmbRtspUrl.AddString( _T( "rtsp://218.107.241.238:5540/service?PuId-ChannelNo=55000000000000000011200002000000-1&PlayMethod=0&StreamingType=1" ) );
+
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://202.111.157.17:1554/PuId-ChannelNo=170100112000441000-1&PlayMethod=0&StreamingType=1&UserId=170100400143001000&PuProperty=1&VauPtzAdd=202.111.157.17&VauPtzPort=5060&VauRtspAdd=202.111.157.17&VauRtspPort=554&PuName=%E4%BA%BA%E6%B0%91%E8%B7%AF%E5%A4%A7%E9%85%92%E5%BA%97-00" ) );
 
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://202.111.157.17:554/PuId-ChannelNo=170100112000441000-1&PlayMethod=0&StreamingType=1&UserId=170100400143001000&PuProperty=1&VauPtzAdd=202.111.157.17&VauPtzPort=5060&VauRtspAdd=202.111.157.17&VauRtspPort=554&PuName=%E4%BA%BA%E6%B0%91%E8%B7%AF%E5%A4%A7%E9%85%92%E5%BA%97-00" ) );
@@ -97,6 +99,9 @@ BOOL CRTSPTestDialog::OnInitDialog()
 
 	this->m_cmbRtspUrl.AddString( _T( "rtsp://172.16.161.125:554/service?PuId-ChannelNo=110300112000001000-1&PlayMethod=0&StreamingType=1&UserID=110300400001001000" ) );
 	m_cmbRtspUrl.SetCurSel( 0 );
+
+	this->FullScreen( FS_ShowSipButton | FS_ShowTaskBar | FS_ShowMenuBar );
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
